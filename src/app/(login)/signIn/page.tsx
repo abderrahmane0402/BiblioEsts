@@ -20,7 +20,9 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
       <Paragraph type={"sub_title"} size={"sm"}>
         Sign into your account
       </Paragraph>
-      <f.FormRoot className='w-4/5 flex flex-col gap-2'>
+      <f.FormRoot className='w-4/5 flex flex-col gap-2'
+        onSubmit={handleSubmit}
+      >
         <f.FormField name='email'>
           <div className="flex justify-between">
             <f.FormLabel>Email</f.FormLabel>
