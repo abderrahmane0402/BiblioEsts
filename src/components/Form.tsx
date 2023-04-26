@@ -1,7 +1,7 @@
-"use client"
 import { ElementRef, FC } from "react"
 import * as RadixForm from "@radix-ui/react-form"
 import { cn } from "@/utils/cn"
+import Paragraph from "@/ui/Paragraph"
 
 const FormControl = RadixForm.Control
 const FormSubmit = RadixForm.Submit
@@ -11,33 +11,36 @@ interface FormLabelProps extends RadixForm.FormLabelProps {}
 
 const FormLabel: FC<FormLabelProps> = ({ children, className, ...props }) => {
   return (
-    <RadixForm.Label className={cn(className, "")} {...props}></RadixForm.Label>
+    <RadixForm.Label className={cn(className, "")} {...props}>
+      <Paragraph size={"sm"}>{children}</Paragraph>
+    </RadixForm.Label>
   )
 }
 
 interface FormMessageProps extends RadixForm.FormMessageProps {}
 
-const FormMessage: FC<FormMessageProps> = ({
-  children,
-  className,
-  ...props
-}) => {
+const FormMessage: FC<FormMessageProps> = ({ children, ...props }) => {
   return (
-    <RadixForm.Message
-      className={cn(className, "")}
-      {...props}
-    ></RadixForm.Message>
+    <RadixForm.Message {...props}>
+      <Paragraph size={"sm"} type='warning'>
+        {children}
+      </Paragraph>
+    </RadixForm.Message>
   )
 }
-
 
 interface FormFieldProps extends RadixForm.FormFieldProps {}
 
 const FormField: FC<FormFieldProps> = ({ children, className, ...props }) => {
   return (
-    <RadixForm.Field className={cn(className, "")} {...props}></RadixForm.Field>
+    <RadixForm.Field className={cn(className, "")} {...props}>
+      {children}
+    </RadixForm.Field>
   )
 }
+
+export { FormLabel, FormMessage, FormField, FormSubmit, FormRoot, FormControl }
+
 // <Form.Root onSubmit={handleSubmit} className="w-full">
 //         <Form.Field name='email'>
 //           <div className="flex justify-between">

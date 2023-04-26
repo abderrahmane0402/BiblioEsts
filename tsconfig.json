@@ -21,11 +21,13 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/component/*": ["./src/components"],
-      "@/lib/*": ["./src/lib"],
-      "@/types/*": ["./src/types"],
-      "@/data/*": ["./src/data"],
-       "@/img/*":["./public"]    }
+      "@/component/*": ["./src/components/*"],
+      "@/ui/*": ["./src/components/ui/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/img/*": ["./public/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

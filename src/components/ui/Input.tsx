@@ -3,7 +3,7 @@ import { VariantProps, cva } from 'class-variance-authority'
 import { FC } from 'react'
 
 const InputVariants = cva(
-    'h-8'
+    'h-8 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700 focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-sm'
 )
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> , VariantProps<typeof InputVariants> {}

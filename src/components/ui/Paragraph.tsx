@@ -10,6 +10,7 @@ const ParagraphVariants = cva("font-normal p-2", {
       nrm: "text-black",
       nav: "text-white",
       sub_nav: "hover:text-[#CA3CFF]",
+      warning:"text-red-700"
     },
     size: {
       lg: "text-xl",
