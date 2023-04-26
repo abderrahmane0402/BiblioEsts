@@ -17,7 +17,11 @@ module.exports = {
         cblue: "#BBD1EA",
         platinum: "#DAE3E5",
       },
+      width: {
+        nav: "15%",
+        main: "85%",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 }
