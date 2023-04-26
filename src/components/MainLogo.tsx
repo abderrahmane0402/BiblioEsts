@@ -7,7 +7,7 @@ interface HeaderProps {
   Logo: StaticImageData;
 }
 
-export function Header({Logo} : HeaderProps) {
+export function MainLogo({Logo} : HeaderProps) {
   return (
     <header className='flex justify-center items-center h-24 max-h-[30%]'>
       <MLink href='/dashboard' type={"logo"} font={"none"}>
