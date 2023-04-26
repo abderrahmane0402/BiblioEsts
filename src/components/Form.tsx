@@ -33,7 +33,7 @@ interface FormFieldProps extends RadixForm.FormFieldProps {}
 
 const FormField: FC<FormFieldProps> = ({ children, className, ...props }) => {
   return (
-    <RadixForm.Field className={cn(className, "")} {...props}>
+    <RadixForm.Field className={cn(className, "w-full")} {...props}>
       {children}
     </RadixForm.Field>
   )
