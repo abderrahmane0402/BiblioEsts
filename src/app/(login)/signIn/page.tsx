@@ -20,31 +20,28 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
       <Paragraph type={"sub_title"} size={"sm"}>
         Sign into your account
       </Paragraph>
-      <f.FormRoot className='w-4/5 flex flex-col gap-2'
-      onClick={handleSubmit}>
+      <f.FormRoot className='w-4/5 flex flex-col gap-2'>
         <f.FormField name='email'>
-          <div>
+          <div className="flex justify-between">
             <f.FormLabel>Email</f.FormLabel>
-            <f.FormMessage match={"patternMismatch"}>
-              Please enter a valid email
-            </f.FormMessage>
-            <f.FormMessage match={"valueMissing"}>
-              Please enter your email
-            </f.FormMessage>
+            <f.FormMessage match={"valueMissing"}>saisir votre email</f.FormMessage>
+            <f.FormMessage match={"typeMismatch"}>saisir un email valide</f.FormMessage>
           </div>
           <f.FormControl asChild>
             <Input
               name='email'
               type='email'
               onChange={(e) => setEmail(e.target.value)}
+              maxLength={40}
+              required
             />
           </f.FormControl>
         </f.FormField>
         <f.FormField name='pass'>
           <div className="flex justify-between">
             <f.FormLabel>Password</f.FormLabel>
-            <f.FormMessage match={"typeMismatch"}>
-              Please enter a valid password
+            <f.FormMessage match={"tooShort"}>
+              minimum 8 caractere
             </f.FormMessage>
             <f.FormMessage match={"valueMissing"}>
               Please enter your password
@@ -55,6 +52,8 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
               name='pass'
               type='password'
               onChange={(e) => setPass(e.target.value)}
+              minLength={8}
+              required
             />
           </f.FormControl>
         </f.FormField>
