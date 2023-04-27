@@ -5,6 +5,7 @@ import Paragraph from "@/components/ui/Paragraph";
 import { FC, FormEvent, useState } from "react";
 import * as f from "@/components/Form";
 import Button from "@/components/ui/Button";
+import MLink from "@/components/ui/MLink";
 interface Sign_UpProps {}
 
 const Sign_Up: FC<Sign_UpProps> = ({}) => {
@@ -93,6 +94,8 @@ const Sign_Up: FC<Sign_UpProps> = ({}) => {
             </Button>
           </f.FormSubmit>
         </f.FormRoot>
+      <MLink type={"link"} className="text-blue-500 mb-4" href={"/signIn"}>Login</MLink>
+
       </div>
     );
   
