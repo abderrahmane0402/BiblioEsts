@@ -6,6 +6,7 @@ interface MyImageProps extends ImageProps {}
 
 const MyImage: FC<MyImageProps> = ({ className, ...props }) => {
   return (
+    // eslint-disable-next-line jsx-a11y/alt-text
     <Image
       className={cn(className, "object-cover")}
       fill

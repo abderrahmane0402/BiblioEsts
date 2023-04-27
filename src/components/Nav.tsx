@@ -19,7 +19,7 @@ export function Nav({ navItems }: NavProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <nav className='h-auto max-h-[80%] overflow-auto scrollbar-none'>
+    <nav className='h-4/5 overflow-auto scrollbar-none'>
       <ul>
         {navItems.map((navItem) => {
           return (
