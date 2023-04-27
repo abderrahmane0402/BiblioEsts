@@ -15,6 +15,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <div className='h-full w-nav text-white bg-[#011936] flex flex-col justify-between gap-1'>
         <div className='h-[80%]'>
           <MainLogo Logo={EstLogo} />
+          {/* TODO: update the links of the nav */}
           <Nav navItems={nav_el}/>
         </div>
       </div>
