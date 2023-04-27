@@ -30,7 +30,7 @@ export function Nav({ navItems }: NavProps) {
                 font='md'
                 className={`${
                   path == navItem.href
-                    ? "bg-[#c6ddf081]"
+                    ? "bg-[#62a0d381]"
                     : "hover:bg-[#250262] active:bg-[#c6ddf05a]"
                 } pl-7 justify-between`}
                 onClick={(e) => {
@@ -48,9 +48,9 @@ export function Nav({ navItems }: NavProps) {
                 </div>
                 {navItem.sub_nav && (
                   <AiFillCaretDown
-                    className={`transition-transform mr-4 text-white transform-gpu ${hidden.get(
-                      navItem.id ? "-rotate-90" : ""
-                    )}`}
+                    className={`transition-transform mr-4 text-white transform-gpu ${
+                      hidden.get(navItem.id) ? "" : "-rotate-90"
+                    }`}
                   />
                 )}
               </MLink>

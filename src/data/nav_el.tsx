@@ -35,7 +35,7 @@ export const nav_el: NavItem[] = [
     icon: <CgFileDocument />,
     isHid: true,
     sub_nav: [
-      { id: 3, href: "/main/Livres", title: "Livres", icon: <TbBooks /> },
+      { id: 3, href: "/livre", title: "Livres", icon: <TbBooks /> },
       { id: 4, href: "/main/PFE", title: "PFE", icon: <VscRepo /> },
     ],
   },
