@@ -1,7 +1,8 @@
 import { Nav } from "@/components/Nav"
 import EstLogo from "@/img/Mylogo.png"
 import { FC, ReactNode } from "react"
-import { Header } from "@/components/Header"
+import { MainLogo } from "@/components/MainLogo"
+import { nav_el } from "@/data/nav_el"
 
 interface LayoutProps {
   children: ReactNode
@@ -13,8 +14,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       {/* NAVIGATION BAR */}
       <div className='h-full w-nav text-white bg-[#011936] flex flex-col justify-between gap-1'>
         <div className='h-[80%]'>
-          <Header Logo={EstLogo} />
-          <Nav />
+          <MainLogo Logo={EstLogo} />
+          {/* TODO: update the links of the nav */}
+          <Nav navItems={nav_el}/>
         </div>
       </div>
       {/* BODY OF THE PAGE */}
