@@ -26,7 +26,7 @@ export interface NavItem {
   sub_nav?: SubNavItem[]
 }
 
-export const nav_el: NavItem[] = [
+export const navItems: NavItem[] = [
   { id: 1, href: "/dashboard", title: "Acceuil", icon: <MdSpaceDashboard /> },
   {
     id: 2,
