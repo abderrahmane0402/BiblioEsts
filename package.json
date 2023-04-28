@@ -23,11 +23,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
-<<<<<<< HEAD
     "sharp": "^0.32.1",
-=======
     "react-live-clock": "^6.1.13",
->>>>>>> 819a5a7cb5716a1fc0b38420af9ebf49a6b11728
     "tailwind-merge": "^1.12.0",
     "tailwind-scrollbar": "^3.0.0",
     "tailwindcss": "^3.3.1",

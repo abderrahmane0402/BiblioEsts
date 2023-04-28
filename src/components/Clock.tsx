@@ -6,7 +6,7 @@ const Clock = () => {
   return (
     <div className="px-3 py-2 rounded-md bg-white flex gap-3">
       <Paragraph size={"lg"} className='font-bold'>
-        <Clock2 ticking noSsr />
+        <Clock2 ticking />
       </Paragraph>
       <Paragraph size={"lg"} className='font-bold'>
         {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}
