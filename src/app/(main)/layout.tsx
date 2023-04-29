@@ -24,8 +24,8 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       </div>
       {/* BODY OF THE PAGE */}
       <div className='h-full w-main flex flex-col gap-1 px-3'>
-        <PageHeader navItems={navItems}/>
-        <div className='p-2 container h-4/5'>{children}</div>
+        <PageHeader navItems={navItems} />
+        <div className='p-2 container h-[88%]'>{children}</div>
       </div>
     </main>
   )

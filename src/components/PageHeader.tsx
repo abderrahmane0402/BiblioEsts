@@ -13,14 +13,20 @@ interface PageHeaderProps {
 const PageHeader: FC<PageHeaderProps> = ({ navItems }) => {
   const path = usePathname()
   const [title, setTitle] = useState<string>()
-  useEffect(() => {
-    setTitle(
-      navItems.find((el) => {
-        if (el.href) return el.href === path
-        else return el.sub_nav?.find((sub) => sub.href === path)
-      })?.title
-    )
 
+  function titlecal() {
+    for (let i = 0; i < navItems.length; i++) {
+      const element = navItems[i]
+      if (element.href) {
+        if (element.href === path) return element.title
+      } else {
+        const h = element.sub_nav?.find((sub) => sub.href === path)?.title
+        if (h) return h
+      }
+    }
+  }
+  useEffect(() => {
+    setTitle(titlecal())
     return () => {
       setTitle(undefined)
     }
