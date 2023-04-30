@@ -30,7 +30,7 @@ const Sign_Up: FC<Sign_UpProps> = ({}) => {
         >
           <f.FormField name="username">
             <div className="flex justify-between">
-              <f.FormLabel>Username</f.FormLabel>
+              <f.FormLabel>Username :</f.FormLabel>
               <f.FormMessage match={"valueMissing"}>
                 saisir votre username
               </f.FormMessage>
@@ -50,7 +50,7 @@ const Sign_Up: FC<Sign_UpProps> = ({}) => {
           </f.FormField>
           <f.FormField name="email">
             <div className="flex justify-between">
-              <f.FormLabel>Email</f.FormLabel>
+              <f.FormLabel>Email :</f.FormLabel>
               <f.FormMessage match={"valueMissing"}>
                 saisir votre email
               </f.FormMessage>
@@ -70,7 +70,7 @@ const Sign_Up: FC<Sign_UpProps> = ({}) => {
           </f.FormField>
           <f.FormField name="pass">
             <div className="flex justify-between">
-              <f.FormLabel>Password</f.FormLabel>
+              <f.FormLabel>Password :</f.FormLabel>
               <f.FormMessage match={"tooShort"}>
                 minimum 8 caractere
               </f.FormMessage>
