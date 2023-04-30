@@ -128,6 +128,29 @@ const page = () => {
               />
             </f.FormControl>
           </f.FormField>
+      {/* page de garde */}
+      <f.FormField name="page_garde" className="w-full">
+            <div className="w-full">
+                <Header size={"md"}>Page de garde :</Header>
+              <f.FormMessage match={"valueMissing"}>
+                Entrer l{"'"}page de garde
+              </f.FormMessage>
+              <f.FormMessage match={"typeMismatch"}>
+                entrer l{"'"}page de garde valide
+              </f.FormMessage>
+            </div>
+            <f.FormControl asChild>
+              <Input
+                className="h-12"
+                name="page_garde"
+                type="file"
+                // onChange={(e) => setEmail(e.target.value)}
+                maxLength={50}
+                required
+              />
+            </f.FormControl>
+          </f.FormField>
+
           {/* Observation */}
           <f.FormField name="observation" className="w-full">
             <div className="w-full">
@@ -152,33 +175,13 @@ const page = () => {
                 cols={50}
                 rows={5}
                 name="observation"
-                className="h-10 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-32"
+                className="h-10 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
                 required
               />
             </f.FormControl>
           </f.FormField>
-          {/* page de garde */}
-          <f.FormField name="page_garde" className="w-full">
-            <div className="w-full">
-                <Header size={"md"}>Page de garde :</Header>
-              <f.FormMessage match={"valueMissing"}>
-                Entrer l{"'"}page de garde
-              </f.FormMessage>
-              <f.FormMessage match={"typeMismatch"}>
-                entrer l{"'"}page de garde valide
-              </f.FormMessage>
-            </div>
-            <f.FormControl asChild>
-              <Input
-                className="h-12"
-                name="page_garde"
-                type="file"
-                // onChange={(e) => setEmail(e.target.value)}
-                maxLength={50}
-                required
-              />
-            </f.FormControl>
-          </f.FormField>
+          
+          
         </div>
       </div>
       <footer className="flex justify-center items-center py-12">
