@@ -11,7 +11,7 @@ interface FormLabelProps extends RadixForm.FormLabelProps {}
 
 const FormLabel: FC<FormLabelProps> = ({ children, className, ...props }) => {
   return (
-    <RadixForm.Label className={cn(className, "")} {...props}>
+    <RadixForm.Label  className={cn(className, "")} {...props}>
       <Paragraph size={"sm"}>{children}</Paragraph>
     </RadixForm.Label>
   )
