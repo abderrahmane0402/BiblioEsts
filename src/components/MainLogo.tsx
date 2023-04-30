@@ -9,7 +9,7 @@ interface HeaderProps {
 
 export function MainLogo({Logo} : HeaderProps) {
   return (
-    <header className='flex justify-center items-center h-24 max-h-[25%]'>
+    <header className='flex justify-center items-center h-24 max-h-[20%]'>
       <MLink href='/dashboard' type={"logo"} font={"none"}>
         <div className='relative w-full h-full'>
           <MyImage src={Logo} alt='LibEST-S' />

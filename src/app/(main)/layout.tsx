@@ -1,10 +1,10 @@
+import { MainLogo } from "@/components/MainLogo"
 import { Nav } from "@/components/Nav"
+import PageHeader from "@/components/PageHeader"
+import User from "@/components/User"
+import { navItems } from "@/data/nav_el"
 import EstLogo from "@/img/Mylogo.png"
 import { FC, ReactNode } from "react"
-import { MainLogo } from "@/components/MainLogo"
-import { navItems } from "@/data/nav_el"
-import User from "@/components/User"
-import PageHeader from "@/components/PageHeader"
 
 interface LayoutProps {
   children: ReactNode
@@ -12,7 +12,7 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <main className='flex flex-row h-full w-full'>
+    <main className='flex flex-row h-full w-full overflow-hidden'>
       {/* NAVIGATION BAR */}
       <div className='h-full w-nav text-white bg-[#011936] flex flex-col justify-between gap-1'>
         <div className='h-3/4'>

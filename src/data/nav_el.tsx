@@ -1,4 +1,3 @@
-import { ReactNode } from "react"
 import { CgFileDocument } from "react-icons/cg"
 import { MdSpaceDashboard, MdOutlineWork } from "react-icons/md"
 import {
@@ -9,21 +8,8 @@ import {
 } from "react-icons/fa"
 import { TbBooks, TbReportMoney } from "react-icons/tb"
 import { VscRepo } from "react-icons/vsc"
+import { NavItem } from "@/types"
 
-export interface SubNavItem {
-  id: number
-  href: string
-  title: string
-  icon: ReactNode
-}
-
-export interface NavItem {
-  id: number
-  href: string | null
-  title: string
-  icon: ReactNode
-  sub_nav?: SubNavItem[]
-}
 
 export const navItems: NavItem[] = [
   { id: 1, href: "/dashboard", title: "Acceuil", icon: <MdSpaceDashboard /> },
