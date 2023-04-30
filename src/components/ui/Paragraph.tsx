@@ -16,6 +16,7 @@ const ParagraphVariants = cva("font-normal p-2", {
       lg: "text-xl",
       md: "text-lg",
       sm: "text-md",
+      xl: "font-bold text-3xl tracking-wide",
     },
   },
   defaultVariants: {
