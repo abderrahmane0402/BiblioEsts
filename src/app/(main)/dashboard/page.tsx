@@ -1,6 +1,8 @@
+import Header from "@/ui/Header"
 import { Card } from "@/ui/Card"
 import Paragraph from "@/ui/Paragraph"
 import { FC } from "react"
+import { IoIosNotificationsOutline } from "react-icons/io"
 import { BiBookAdd } from "react-icons/bi"
 import { FaBookOpen } from "react-icons/fa"
 import { GiBurningBook } from "react-icons/gi"
@@ -67,11 +69,65 @@ const Page: FC<PageProps> = ({}) => {
         </Card>
       </div>
       <div className='h-2/5 w-full flex gap-6'>
-        <Card type={'mid'}></Card>
-        <Card type={'mid'}></Card>
+        <Card type={"mid"} className='py-2'>
+          <div className='h-1/5 w-full flex justify-between items-center'>
+            <Header size={"md"}>notification</Header>
+            <IoIosNotificationsOutline className='text-2xl' />
+          </div>
+          <div className='h-4/5'>
+            <div className='border-t-2 p-2 border-black/60'>
+              <Paragraph size={"md"}>exemple de notification</Paragraph>
+            </div>
+            <div className='border-t-2 p-2 border-black/60'>
+              <Paragraph size={"md"}>exemple de notification</Paragraph>
+            </div>
+            <div className='border-t-2 p-2 border-black/60'>
+              <Paragraph size={"md"}>exemple de notification</Paragraph>
+            </div>
+          </div>
+        </Card>
+        <Card type={"mid"}>
+          <div className='h-1/5 flex justify-between items-center'>
+            <Header size={"md"}>statistique</Header>
+          </div>
+          <div className='h-1/5 flex gap-2 justify-around items-center'>
+            <div className='flex flex-col items-center justify-center'>
+              <Paragraph size={"md"}>44%</Paragraph>
+              <Paragraph size={"sm"}>nouveau</Paragraph>
+            </div>
+            <div className='flex flex-col items-center justify-center'>
+              <Paragraph size={"md"}>44%</Paragraph>
+              <Paragraph size={"sm"}>perdue</Paragraph>
+            </div>
+            <div className='flex flex-col items-center justify-center'>
+              <Paragraph size={"md"}>44%</Paragraph>
+              <Paragraph size={"sm"}>endommager</Paragraph>
+            </div>
+            <div className='flex flex-col items-center justify-center'>
+              <Paragraph size={"md"}>44%</Paragraph>
+              <Paragraph size={"sm"}>emprunter</Paragraph>
+            </div>
+          </div>
+        </Card>
       </div>
-      <div className="h-2/5 w-full">
-        <Card type={'full'}></Card>
+      <div className='h-2/5 w-full'>
+        <Card type={"full"}>
+          <div className='h-1/5 w-full flex justify-between items-center'>
+            <Header size={"md"}>Les livre demander</Header>
+          </div>
+          <div className='border-t-2 p-2 border-black/60'>
+            <Paragraph size={"md"}>photo de livre description prix</Paragraph>
+          </div>
+          <div className='border-t-2 p-2 border-black/60'>
+            <Paragraph size={"md"}>photo de livre description prix</Paragraph>
+          </div>
+          <div className='border-t-2 p-2 border-black/60'>
+            <Paragraph size={"md"}>photo de livre description prix</Paragraph>
+          </div>
+          <div className='border-t-2 p-2 border-black/60'>
+            <Paragraph size={"md"}>photo de livre description prix</Paragraph>
+          </div>
+        </Card>
       </div>
     </div>
   )
