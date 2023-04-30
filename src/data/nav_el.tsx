@@ -31,7 +31,7 @@ export const navItems: NavItem[] = [
     sub_nav: [
       {
         id: 6,
-        href: "/addLivre",
+        href: "/student",
         title: "Etudiants",
         icon: <FaUserGraduate />,
       },

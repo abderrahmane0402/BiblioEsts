@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from "react"
 import MLink from "@/ui/MLink"
-import { NavItem } from "@/data/nav_el"
+import { NavItem } from "@/types"
 import { AiFillCaretDown } from "react-icons/ai"
 import { usePathname } from "next/navigation"
 
@@ -11,13 +11,29 @@ interface NavProps {
 
 export function Nav({ navItems }: NavProps) {
   const [hidden, sethidden] = useState(new Map())
+  const [active, setActive] = useState(new Map())
   const path = usePathname()
   useEffect(() => {
     navItems.map((navItem) => {
-      if (navItem.sub_nav) hidden.set(navItem.id, false)
+      if (navItem.sub_nav) {
+        hidden.set(navItem.id, false)
+      }
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  useEffect(() => {
+    setActive(new Map())
+    navItems.map((navItem) => {
+      navItem.sub_nav?.map((subNavItem) => {
+        if (subNavItem.href == path) {
+          let clone = new Map()
+          clone.set(navItem.id, true)
+          setActive(clone)
+        }
+      })
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [path])
   return (
     <nav className='h-4/5 overflow-auto scrollbar-none'>
       <ul>
@@ -29,7 +45,7 @@ export function Nav({ navItems }: NavProps) {
                 type='nav'
                 font='md'
                 className={`${
-                  path == navItem.href
+                  path == navItem.href || active.get(navItem.id)
                     ? "bg-[#62a0d381]"
                     : "hover:bg-[#250262] active:bg-[#c6ddf05a]"
                 } pl-7 justify-between`}
