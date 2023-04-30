@@ -8,7 +8,7 @@ const Clock = () => {
       <Paragraph size={"lg"} className='font-bold'>
         <Clock2 ticking />
       </Paragraph>
-      <Paragraph size={"lg"} className='font-bold'>
+      <Paragraph size={"lg"} >
         {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`}
       </Paragraph>
     </div>

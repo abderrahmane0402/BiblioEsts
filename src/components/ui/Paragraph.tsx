@@ -3,7 +3,7 @@ import { VariantProps, cva } from "class-variance-authority"
 import { type } from "os"
 import { FC, ParamHTMLAttributes } from "react"
 
-const ParagraphVariants = cva("font-normal p-2", {
+const ParagraphVariants = cva("font-normal flex items-center", {
   variants: {
     type: {
       sub_title: "text-gray-500",

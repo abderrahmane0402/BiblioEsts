@@ -4,7 +4,8 @@ import Clock from "@/components/Clock"
 import Header from "@/ui/Header"
 import { usePathname } from "next/navigation"
 import { FC } from "react"
-import { NavItem } from "@/data/nav_el"
+import { NavItem } from "@/types"
+import { PicTitle } from "@/utils/PicTitle"
 
 interface PageHeaderProps {
   navItems: NavItem[]
@@ -13,19 +14,14 @@ interface PageHeaderProps {
 const PageHeader: FC<PageHeaderProps> = ({ navItems }) => {
   const path = usePathname()
   const [title, setTitle] = useState<string>()
-  useEffect(() => {
-    setTitle(
-      navItems.find((el) => {
-        if (el.href) return el.href === path
-        else return el.sub_nav?.find((sub) => sub.href === path)
-      })?.title
-    )
 
+  useEffect(() => {
+    setTitle(PicTitle(navItems, path))
     return () => {
       setTitle(undefined)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [path])
+  }, [])
 
   return (
     <header className='container flex justify-between items-center h-24 max-h-[12%]'>
