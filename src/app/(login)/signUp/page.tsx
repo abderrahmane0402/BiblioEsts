@@ -89,7 +89,7 @@ const Sign_Up: FC<Sign_UpProps> = ({}) => {
             </f.FormControl>
           </f.FormField>
           <f.FormSubmit asChild>
-            <Button size={"md"} className="bg-gloucous text-white">
+            <Button size={"md"} btype={"submit"}>
               {""} Sign Up {""}
             </Button>
           </f.FormSubmit>

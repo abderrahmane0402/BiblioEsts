@@ -2,7 +2,7 @@ import { VariantProps, cva } from "class-variance-authority"
 import { FC } from "react"
 
 const CardVariants = cva(
-  "flex flex-col h-full px-4 bg-white rounded-sm shadow-md",
+  "h-full px-4 bg-white rounded-sm shadow-md",
   {
     variants: {
       type: {

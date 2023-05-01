@@ -17,7 +17,7 @@ const Page: FC<PageProps> = ({}) => {
       <div className='h-1/5 w-full flex gap-6'>
         <Card type={"mini"}>
           <div className='flex justify-between item-center h-1/2'>
-            <Paragraph size={"lg"} className='font-semibold'>
+            <Paragraph size={"lg"} className='font-semibold flex items-center'>
               nouveau livre
             </Paragraph>
             <div className='h-full flex justify-center items-center text-4xl'>
@@ -30,7 +30,7 @@ const Page: FC<PageProps> = ({}) => {
         </Card>
         <Card type={"mini"}>
           <div className='flex justify-between item-center h-1/2'>
-            <Paragraph size={"lg"} className='font-semibold'>
+            <Paragraph size={"lg"} className='font-semibold flex items-center'>
               livre perdue
             </Paragraph>
             <div className='h-full flex justify-center items-center text-4xl'>
@@ -43,7 +43,7 @@ const Page: FC<PageProps> = ({}) => {
         </Card>
         <Card type={"mini"}>
           <div className='flex justify-between item-center h-1/2'>
-            <Paragraph size={"lg"} className='font-semibold'>
+            <Paragraph size={"lg"} className='font-semibold flex items-center'>
               livre endommager
             </Paragraph>
             <div className='h-full flex justify-center items-center text-4xl'>
@@ -56,7 +56,7 @@ const Page: FC<PageProps> = ({}) => {
         </Card>
         <Card type={"mini"}>
           <div className='flex justify-between item-center h-1/2'>
-            <Paragraph size={"lg"} className='font-semibold'>
+            <Paragraph size={"lg"} className='font-semibold flex items-center'>
               livre existant
             </Paragraph>
             <div className='h-full flex justify-center items-center text-4xl'>
@@ -75,13 +75,13 @@ const Page: FC<PageProps> = ({}) => {
             <IoIosNotificationsOutline className='text-2xl' />
           </div>
           <div className='h-4/5'>
-            <div className='border-t-2 p-2 border-black/60'>
+            <div className='border-t-2 p-1 border-black/60'>
               <Paragraph size={"md"}>exemple de notification</Paragraph>
             </div>
-            <div className='border-t-2 p-2 border-black/60'>
+            <div className='border-t-2 p-1 border-black/60'>
               <Paragraph size={"md"}>exemple de notification</Paragraph>
             </div>
-            <div className='border-t-2 p-2 border-black/60'>
+            <div className='border-t-2 p-1 border-black/60'>
               <Paragraph size={"md"}>exemple de notification</Paragraph>
             </div>
           </div>
@@ -92,39 +92,39 @@ const Page: FC<PageProps> = ({}) => {
           </div>
           <div className='h-1/5 flex gap-2 justify-around items-center'>
             <div className='flex flex-col items-center justify-center'>
-              <Paragraph size={"md"}>44%</Paragraph>
-              <Paragraph size={"sm"}>nouveau</Paragraph>
+              <span>44%</span>
+              <span>emprunter</span>
             </div>
             <div className='flex flex-col items-center justify-center'>
-              <Paragraph size={"md"}>44%</Paragraph>
-              <Paragraph size={"sm"}>perdue</Paragraph>
+              <span>44%</span>
+              <span>emprunter</span>
             </div>
             <div className='flex flex-col items-center justify-center'>
-              <Paragraph size={"md"}>44%</Paragraph>
-              <Paragraph size={"sm"}>endommager</Paragraph>
+              <span>44%</span>
+              <span>emprunter</span>
             </div>
             <div className='flex flex-col items-center justify-center'>
-              <Paragraph size={"md"}>44%</Paragraph>
-              <Paragraph size={"sm"}>emprunter</Paragraph>
+              <span>44%</span>
+              <span>emprunter</span>
             </div>
           </div>
         </Card>
       </div>
       <div className='h-2/5 w-full'>
-        <Card type={"full"}>
+        <Card type={"full"} className='flex flex-col'>
           <div className='h-1/5 w-full flex justify-between items-center'>
             <Header size={"md"}>Les livre demander</Header>
           </div>
-          <div className='border-t-2 p-2 border-black/60'>
+          <div className='border-t-2 p-1 border-black/60'>
             <Paragraph size={"md"}>photo de livre description prix</Paragraph>
           </div>
-          <div className='border-t-2 p-2 border-black/60'>
+          <div className='border-t-2 p-1 border-black/60'>
             <Paragraph size={"md"}>photo de livre description prix</Paragraph>
           </div>
-          <div className='border-t-2 p-2 border-black/60'>
+          <div className='border-t-2 p-1 border-black/60'>
             <Paragraph size={"md"}>photo de livre description prix</Paragraph>
           </div>
-          <div className='border-t-2 p-2 border-black/60'>
+          <div className='border-t-2 p-1 border-black/60'>
             <Paragraph size={"md"}>photo de livre description prix</Paragraph>
           </div>
         </Card>

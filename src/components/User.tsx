@@ -20,7 +20,7 @@ export default function User({}) {
           <AiFillSetting className='w-4 h-4' />
         </MLink>
       </div>
-      <Button size={"md"} className=' bg-gloucous'>
+      <Button size={"sm"} btype="submit">
         log out
       </Button>
     </footer>

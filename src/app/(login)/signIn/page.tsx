@@ -67,7 +67,7 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
           </f.FormControl>
         </f.FormField>
         <f.FormSubmit asChild>
-          <Button size={"md"} className="bg-gloucous text-white">
+          <Button size={"md"} btype="submit">
             {""} Login {""}
           </Button>
         </f.FormSubmit>

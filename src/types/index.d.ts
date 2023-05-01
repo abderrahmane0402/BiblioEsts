@@ -1,12 +1,6 @@
 import { ReactNode } from "react"
 
 
-export interface CardInfo {
-    title:string,
-    icon:ReactNode,
-    details:string
-}
-
 export interface SubNavItem {
   id: number
   href: string

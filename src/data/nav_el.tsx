@@ -19,8 +19,8 @@ export const navItems: NavItem[] = [
     href: null,
     icon: <CgFileDocument />,
     sub_nav: [
-      { id: 3, href: "/addLivre", title: "Livres", icon: <TbBooks /> },
-      { id: 4, href: "/main/PFE", title: "PFE", icon: <VscRepo /> },
+      { id: 3, href: "/livre", title: "Livre", icon: <TbBooks /> },
+      { id: 4, href: "/PFE", title: "PFE", icon: <VscRepo /> },
     ],
   },
   {
@@ -38,11 +38,11 @@ export const navItems: NavItem[] = [
       { id: 7, href: "/main/Prof", title: "Professeurs", icon: <FaUserTie /> },
     ],
   },
-  { id: 8, href: "/main/empe", title: "Employes", icon: <MdOutlineWork /> },
-  { id: 9, href: "/main/Four", title: "Fournisseur", icon: <TbReportMoney /> },
+  { id: 8, href: "/employes", title: "Employes", icon: <MdOutlineWork /> },
+  { id: 9, href: "/Fournisseur", title: "Fournisseur", icon: <TbReportMoney /> },
   {
     id: 10,
-    href: "/main/approvis",
+    href: "/approvisionnement",
     title: "Approvis",
     icon: <FaFileContract />,
   },
