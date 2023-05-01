@@ -18,10 +18,10 @@ const page = () => {
                 Titre :
               </Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir le titre
+                modifier le titre
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir un titre valide
+                modifier un titre valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
@@ -29,6 +29,7 @@ const page = () => {
                 className="h-10"
                 name="title"
                 type="text"
+                // value={}
                 // onChange={(e) => setEmail(e.target.value)}
                 maxLength={255}
                 required
@@ -40,10 +41,10 @@ const page = () => {
             <div className="w-full">
               <Header size={"md"}>Autheur :</Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir l{"'"}autheur
+                modifier l{"'"}autheur
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir l{"'"}autheur valide
+                modifier l{"'"}autheur valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
@@ -54,6 +55,7 @@ const page = () => {
                 // onChange={(e) => setEmail(e.target.value)}
                 maxLength={50}
                 required
+                // value={}
               />
             </f.FormControl>
           </f.FormField>
@@ -64,10 +66,10 @@ const page = () => {
             <div className="w-full">
               <Header size={"md"}>Editeur :</Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir l{"'"}éditeur
+                modifier l{"'"}éditeur
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir l{"'"}éditeur valide
+                modifier l{"'"}éditeur valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
@@ -78,6 +80,7 @@ const page = () => {
                 // onChange={(e) => setEmail(e.target.value)}
                 maxLength={50}
                 required
+                // value={}
               />
             </f.FormControl>
           </f.FormField>
@@ -88,10 +91,10 @@ const page = () => {
             <div className="w-full">
               <Header size={"md"}>Date d{"'"}édition :</Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir la date d{"'"}édition
+                modifier la date d{"'"}édition
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir la date d{"'"}édition valide
+                modifier la date d{"'"}édition valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
@@ -102,6 +105,7 @@ const page = () => {
                 // onChange={(e) => setEmail(e.target.value)}
                 maxLength={50}
                 required
+                // value={}
               />
             </f.FormControl>
           </f.FormField>
@@ -112,10 +116,10 @@ const page = () => {
             <div className="w-full">
               <Header size={"md"}>Code :</Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir le code
+                modifier le code
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir le code valide
+                modifier le code valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
@@ -126,6 +130,7 @@ const page = () => {
                 // onChange={(e) => setEmail(e.target.value)}
                 maxLength={50}
                 required
+                // value={}
               />
             </f.FormControl>
           </f.FormField>
@@ -148,6 +153,7 @@ const page = () => {
                 // onChange={(e) => setEmail(e.target.value)}
                 maxLength={50}
                 required
+                // value={}
               />
             </f.FormControl>
           </f.FormField>
@@ -157,10 +163,10 @@ const page = () => {
             <div className="w-full">
               <Header size={"md"}>Observation :</Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir l{"'"}observation
+                modifier l{"'"}observation
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir l{"'"}observation valide
+                modifier l{"'"}observation valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
@@ -169,7 +175,7 @@ const page = () => {
                 rows={5}
                 name="observation"
                 className="h-10 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
-                required
+                // value={}
               />
             </f.FormControl>
           </f.FormField>
@@ -180,7 +186,7 @@ const page = () => {
       <footer className="flex justify-center items-center py-12">
         <f.FormSubmit asChild>
           <Button size={"md"} className="bg-[#CA3CFF] text-white w-3/12">
-            {""} Ajouter un livre {""}
+            {""} Modifier le livre {""}
           </Button>
         </f.FormSubmit>
       </footer>
