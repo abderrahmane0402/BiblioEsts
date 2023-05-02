@@ -1,5 +1,5 @@
 import { FC } from "react"
-import Image, { ImageProps, StaticImageData } from "next/image"
+import Image, { ImageProps } from "next/image"
 import { cn } from "@/utils/cn"
 
 interface MyImageProps extends ImageProps {}

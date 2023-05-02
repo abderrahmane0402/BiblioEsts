@@ -4,7 +4,7 @@ import PageHeader from "@/components/PageHeader"
 import User from "@/components/User"
 import { navItems } from "@/data/nav_el"
 import EstLogo from "@/img/Mylogo.png"
-import { FC, ReactNode, useContext } from "react"
+import { FC, ReactNode } from "react"
 
 interface LayoutProps {
   children: ReactNode

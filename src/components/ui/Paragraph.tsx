@@ -1,7 +1,6 @@
 import { cn } from "@/utils/cn"
 import { VariantProps, cva } from "class-variance-authority"
-import { type } from "os"
-import { FC, ParamHTMLAttributes } from "react"
+import { FC } from "react"
 
 const ParagraphVariants = cva("font-normal p-2 items-center", {
   variants: {

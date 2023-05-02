@@ -1,7 +1,6 @@
-import React from "react"
-import MLink from "@/ui/MLink"
-import MyImage from "./ui/MyImage"
-import { StaticImageData } from "next/image"
+import MLink from "@/ui/MLink";
+import { StaticImageData } from "next/image";
+import MyImage from "./ui/MyImage";
 
 interface HeaderProps {
   Logo: StaticImageData;

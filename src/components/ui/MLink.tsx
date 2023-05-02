@@ -1,8 +1,7 @@
 import { cn } from "@/utils/cn"
 import { VariantProps, cva } from "class-variance-authority"
-import { ClassValue } from "clsx"
 import Link, { LinkProps } from "next/link"
-import { AnchorHTMLAttributes, FC, ReactNode } from "react"
+import { FC, ReactNode } from "react"
 
 const MLinkVariants = cva("cursor-pointer select-none transition-colors", {
   variants: {

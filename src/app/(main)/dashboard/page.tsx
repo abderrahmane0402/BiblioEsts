@@ -1,11 +1,11 @@
-import Header from "@/ui/Header"
 import { Card } from "@/ui/Card"
+import Header from "@/ui/Header"
 import Paragraph from "@/ui/Paragraph"
 import { FC } from "react"
-import { IoIosNotificationsOutline } from "react-icons/io"
 import { BiBookAdd } from "react-icons/bi"
 import { FaBookOpen } from "react-icons/fa"
 import { GiBurningBook } from "react-icons/gi"
+import { IoIosNotificationsOutline } from "react-icons/io"
 import { TbBooksOff } from "react-icons/tb"
 
 interface PageProps {}

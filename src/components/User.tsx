@@ -1,9 +1,9 @@
+import userLogo from "@/img/userLogo.png"
+import Button from "@/ui/Button"
+import MLink from "@/ui/MLink"
+import MyImage from "@/ui/MyImage"
 import { AiFillSetting } from "react-icons/ai"
 import { BsPencilSquare } from "react-icons/bs"
-import MyImage from "@/ui/MyImage"
-import MLink from "@/ui/MLink"
-import Button from "@/ui/Button"
-import userLogo from "@/img/userLogo.png"
 
 export default function User({}) {
   return (

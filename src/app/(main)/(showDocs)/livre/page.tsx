@@ -2,7 +2,6 @@
 import DataTable from '@/components/DataTable'
 import { LivreColumns } from '@/data/tableColumns'
 import { Livre } from '@/types'
-import React from 'react'
 
 const Livres : Livre = {
   id:1,

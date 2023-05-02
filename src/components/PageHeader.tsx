@@ -1,11 +1,10 @@
 "use client"
-import React, { useEffect, useState } from "react"
 import Clock from "@/components/Clock"
-import Header from "@/ui/Header"
-import { usePathname } from "next/navigation"
-import { FC } from "react"
 import { NavItem } from "@/types"
+import Header from "@/ui/Header"
 import { PicTitle } from "@/utils/PicTitle"
+import { usePathname } from "next/navigation"
+import { FC, useEffect, useState } from "react"
 
 interface PageHeaderProps {
   navItems: NavItem[]

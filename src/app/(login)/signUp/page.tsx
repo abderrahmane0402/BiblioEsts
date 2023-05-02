@@ -1,11 +1,11 @@
 "use client";
-import Header from "@/components/ui/Header";
-import Input from "@/components/ui/Input";
-import Paragraph from "@/components/ui/Paragraph";
-import { FC, FormEvent, useState } from "react";
 import * as f from "@/components/Form";
 import Button from "@/components/ui/Button";
+import Header from "@/components/ui/Header";
+import Input from "@/components/ui/Input";
 import MLink from "@/components/ui/MLink";
+import Paragraph from "@/components/ui/Paragraph";
+import { FC, FormEvent, useState } from "react";
 interface Sign_UpProps {}
 
 const Sign_Up: FC<Sign_UpProps> = ({}) => {

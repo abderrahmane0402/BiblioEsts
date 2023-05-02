@@ -1,9 +1,9 @@
 "use client"
-import React, { useState, useEffect } from "react"
-import MLink from "@/ui/MLink"
 import { NavItem } from "@/types"
-import { AiFillCaretDown } from "react-icons/ai"
+import MLink from "@/ui/MLink"
 import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
+import { AiFillCaretDown } from "react-icons/ai"
 
 interface NavProps {
   navItems: NavItem[]
