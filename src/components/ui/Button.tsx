@@ -11,7 +11,7 @@ const ButtonVariants = cva(
         lg: "w-32 h-10",
         md: "w-28 h-10 font-semibold text-xl",
         sm:'w-20 h-9',
-        auto:'mx-2 my-2'
+        auto:'px-3 py-2'
       },
       btype: {
         submit: "bg-gloucous text-white",

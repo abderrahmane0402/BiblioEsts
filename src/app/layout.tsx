@@ -22,6 +22,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
     <html lang="en" className={nunito.className}>
       <body className="flex flex-col bg-platinum h-screen">
         {children}
+        <div id="modal"></div>
       </body>
     </html>
   );

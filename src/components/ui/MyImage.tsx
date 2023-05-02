@@ -11,7 +11,6 @@ const MyImage: FC<MyImageProps> = ({ className, ...props }) => {
       className={cn(className, "object-cover")}
       fill
       quality={100}
-      priority
       {...props}
     />
   )

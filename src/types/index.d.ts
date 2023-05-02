@@ -15,3 +15,17 @@ export interface NavItem {
   icon: ReactNode
   sub_nav?: SubNavItem[]
 }
+
+export interface Livre {
+  id:number
+  pgImg: string;
+  titre: string;
+  categorie: string;
+  autheur: string;
+  editeur: string;
+  dateE: Date;
+  code: number;
+  obser: string | null;
+  somaire: string;
+  prix: number;
+}
