@@ -15,7 +15,7 @@ const Page: FC<PageProps> = ({}) => {
     <div className='h-full w-full flex flex-col gap-3'>
       {/* mini cartes */}
       <div className='h-1/5 w-full flex gap-6'>
-        <Card type={"mini"}>
+        <Card type={"mini"} className="p-2">
           <div className='flex justify-between item-center h-1/2'>
             <Paragraph size={"lg"} className='font-semibold flex items-center'>
               nouveau livre
@@ -28,7 +28,7 @@ const Page: FC<PageProps> = ({}) => {
             16 nouveau a ete ajouter
           </Paragraph>
         </Card>
-        <Card type={"mini"}>
+        <Card type={"mini"} className="p-2">
           <div className='flex justify-between item-center h-1/2'>
             <Paragraph size={"lg"} className='font-semibold flex items-center'>
               livre perdue
@@ -41,7 +41,7 @@ const Page: FC<PageProps> = ({}) => {
             16 livre a ete perdue
           </Paragraph>
         </Card>
-        <Card type={"mini"}>
+        <Card type={"mini"} className="p-2">
           <div className='flex justify-between item-center h-1/2'>
             <Paragraph size={"lg"} className='font-semibold flex items-center'>
               livre endommager
@@ -54,7 +54,7 @@ const Page: FC<PageProps> = ({}) => {
             16 livre a ete endommager
           </Paragraph>
         </Card>
-        <Card type={"mini"}>
+        <Card type={"mini"} className="p-2">
           <div className='flex justify-between item-center h-1/2'>
             <Paragraph size={"lg"} className='font-semibold flex items-center'>
               livre existant
@@ -69,24 +69,24 @@ const Page: FC<PageProps> = ({}) => {
         </Card>
       </div>
       <div className='h-2/5 w-full flex gap-6'>
-        <Card type={"mid"} className='py-2'>
+        <Card type={"mid"} className='p-2'>
           <div className='h-1/5 w-full flex justify-between items-center'>
             <Header size={"md"}>notification</Header>
             <IoIosNotificationsOutline className='text-2xl' />
           </div>
           <div className='h-4/5'>
-            <div className='border-t-2 p-1 border-black/60'>
+            <div className='border-t-2  border-black/60'>
               <Paragraph size={"md"}>exemple de notification</Paragraph>
             </div>
-            <div className='border-t-2 p-1 border-black/60'>
+            <div className='border-t-2  border-black/60'>
               <Paragraph size={"md"}>exemple de notification</Paragraph>
             </div>
-            <div className='border-t-2 p-1 border-black/60'>
+            <div className='border-t-2  border-black/60'>
               <Paragraph size={"md"}>exemple de notification</Paragraph>
             </div>
           </div>
         </Card>
-        <Card type={"mid"}>
+        <Card type={"mid"} className="p-2">
           <div className='h-1/5 flex justify-between items-center'>
             <Header size={"md"}>statistique</Header>
           </div>
@@ -111,20 +111,20 @@ const Page: FC<PageProps> = ({}) => {
         </Card>
       </div>
       <div className='h-2/5 w-full'>
-        <Card type={"full"} className='flex flex-col'>
+        <Card type={"full"} className='flex flex-col p-2'>
           <div className='h-1/5 w-full flex justify-between items-center'>
             <Header size={"md"}>Les livre demander</Header>
           </div>
-          <div className='border-t-2 p-1 border-black/60'>
+          <div className='border-t-2  border-black/60'>
             <Paragraph size={"md"}>photo de livre description prix</Paragraph>
           </div>
-          <div className='border-t-2 p-1 border-black/60'>
+          <div className='border-t-2  border-black/60'>
             <Paragraph size={"md"}>photo de livre description prix</Paragraph>
           </div>
-          <div className='border-t-2 p-1 border-black/60'>
+          <div className='border-t-2  border-black/60'>
             <Paragraph size={"md"}>photo de livre description prix</Paragraph>
           </div>
-          <div className='border-t-2 p-1 border-black/60'>
+          <div className='border-t-2  border-black/60'>
             <Paragraph size={"md"}>photo de livre description prix</Paragraph>
           </div>
         </Card>

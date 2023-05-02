@@ -8,7 +8,7 @@ interface addDocs {
 const layout: FC<addDocs> = ({ children }) => {
   return (
     <div className='w-full h-full'>
-      <Card type={'full'}>{children}</Card>
+      <Card type={'full'} className="p-3">{children}</Card>
     </div>
   )
 }
