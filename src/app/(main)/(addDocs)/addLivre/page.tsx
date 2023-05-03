@@ -169,7 +169,7 @@ const page = () => {
                 rows={5}
                 name="observation"
                 className="h-10 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
-                required
+                
               />
             </f.FormControl>
           </f.FormField>
