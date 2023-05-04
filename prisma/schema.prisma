@@ -1,0 +1,202 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model approvisionement {
+  ID_APRO     Int         @id @default(autoincrement())
+  ID_U        Int
+  ID_FOR      Int
+  DEVIS       Decimal?    @db.Decimal(10, 0)
+  DATE        DateTime?   @db.Date
+  ENTREPRISE  String?     @db.VarChar(255)
+  ADRESSE     String?     @db.VarChar(255)
+  TELEPHONE   BigInt?
+  utilisateur utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_FAIRE")
+  fournisseur fournisseur @relation(fields: [ID_FOR], references: [ID_FOR], onUpdate: Restrict, map: "FK_FOUNIR")
+  contient    contient[]
+
+  @@index([ID_U], map: "FK_FAIRE")
+  @@index([ID_FOR], map: "FK_FOUNIR")
+}
+
+model categorie {
+  ID_CAT          Int         @id @default(autoincrement())
+  CAT_ID_CAT      Int?
+  LIBELLE         String?     @db.LongText
+  SUJET           String?     @db.Text
+  categorie       categorie?  @relation("categorieTocategorie", fields: [CAT_ID_CAT], references: [ID_CAT], onDelete: Restrict, onUpdate: Restrict, map: "FK_APPARTIENT_CAT")
+  other_categorie categorie[] @relation("categorieTocategorie")
+  livre           livre[]
+
+  @@index([CAT_ID_CAT], map: "FK_APPARTIENT_CAT")
+}
+
+model contient {
+  ID_APRO          Int
+  ID_LIVRE         BigInt
+  QTE              BigInt?
+  livre            livre            @relation(fields: [ID_LIVRE], references: [ID_LIVRE], onUpdate: Restrict, map: "FK_CONTIENT")
+  approvisionement approvisionement @relation(fields: [ID_APRO], references: [ID_APRO], onUpdate: Restrict, map: "FK_CONTIENT2")
+
+  @@id([ID_APRO, ID_LIVRE])
+  @@index([ID_LIVRE], map: "FK_CONTIENT")
+}
+
+model emprunt_livre_etudiant {
+  IDLE          BigInt      @id @default(autoincrement())
+  N_INVENTAIRE  BigInt
+  N_APOGEE      Int
+  ID_U          Int
+  DATE_D        DateTime?   @db.Date
+  DATE_F        DateTime?   @db.Date
+  DATE_R        DateTime?   @db.Date
+  OBSERVATIONLE String?     @db.Text
+  exemplaire    exemplaire  @relation(fields: [N_INVENTAIRE], references: [N_INVENTAIRE], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT2")
+  etudiant      etudiant    @relation(fields: [N_APOGEE], references: [N_APOGEE], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT3")
+  utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT")
+
+  @@index([N_INVENTAIRE], map: "FK_EMPRUNTER_LIVRE_ETUDIANT")
+  @@index([N_APOGEE], map: "FK_EMPRUNTE_LIVRE_ETUDIANT")
+  @@index([ID_U], map: "FK_SIGNER_LIVRE_ETUDIANT")
+}
+
+model emprunt_livre_prof {
+  IDLP          BigInt      @id @default(autoincrement())
+  N_INVENTAIRE  BigInt
+  ID_PROF       Int
+  ID_U          Int
+  DATE_D        DateTime?   @db.Date
+  DATE_F        DateTime?   @db.Date
+  DATE_R        DateTime?   @db.Date
+  OBSERVATIONLP String?     @db.Text
+  exemplaire    exemplaire  @relation(fields: [N_INVENTAIRE], references: [N_INVENTAIRE], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_PROF3")
+  prof          prof        @relation(fields: [ID_PROF], references: [ID_PROF], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_PROF2")
+  utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_PROF")
+
+  @@index([N_INVENTAIRE], map: "FK_EMPRUNTER_LIVRE_PROF")
+  @@index([ID_PROF], map: "FK_EMPRUNTE_LIVRE_PROF")
+  @@index([ID_U], map: "FK_SIGNER_LIVRE_PROF")
+}
+
+model emprunt_pfe_etudiant {
+  IDPE          BigInt      @id @default(autoincrement())
+  IDPFE         BigInt
+  ID_U          Int
+  N_APOGEE      Int
+  DATE_D        DateTime?   @db.Date
+  DATE_F        DateTime?   @db.Date
+  DATE_R        DateTime?   @db.Date
+  OBSERVATIONPE String?     @db.Text
+  pfe           pfe         @relation(fields: [IDPFE], references: [IDPFE], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT2")
+  etudiant      etudiant    @relation(fields: [N_APOGEE], references: [N_APOGEE], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT3")
+  utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT")
+
+  @@index([IDPFE], map: "FK_EMPRUNTER_PFE_ETUDIANT")
+  @@index([N_APOGEE], map: "FK_EMPRUNTE_PFE_ETUDIANT")
+  @@index([ID_U], map: "FK_SIGNER_PFE_ETUDIANT")
+}
+
+model emprunt_pfe_prof {
+  IDPP          BigInt      @id @default(autoincrement())
+  ID_U          Int
+  IDPFE         BigInt
+  ID_PROF       Int
+  DATE_D        DateTime?   @db.Date
+  DATE_F        DateTime?   @db.Date
+  DATE_R        DateTime?   @db.Date
+  OBSERVATIONPP String?     @db.Text
+  pfe           pfe         @relation(fields: [IDPFE], references: [IDPFE], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_PROF2")
+  prof          prof        @relation(fields: [ID_PROF], references: [ID_PROF], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_PROF3")
+  utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_PROF")
+
+  @@index([IDPFE], map: "FK_EMPRUNTER_PFE_PROF")
+  @@index([ID_PROF], map: "FK_EMPRUNTE_PFE_PROF")
+  @@index([ID_U], map: "FK_SIGNER_PFE_PROF")
+}
+
+model etudiant {
+  N_APOGEE               Int                      @id
+  NOM                    String?                  @db.Char(100)
+  PRENOM                 String?                  @db.Char(100)
+  FILERE                 String?                  @db.Char(20)
+  emprunt_livre_etudiant emprunt_livre_etudiant[]
+  emprunt_pfe_etudiant   emprunt_pfe_etudiant[]
+}
+
+model exemplaire {
+  N_INVENTAIRE           BigInt                   @id @default(autoincrement())
+  ID_LIVRE               BigInt
+  OBSERVATIONE           String?                  @db.Text
+  emprunt_livre_etudiant emprunt_livre_etudiant[]
+  emprunt_livre_prof     emprunt_livre_prof[]
+  livre                  livre                    @relation(fields: [ID_LIVRE], references: [ID_LIVRE], onUpdate: Restrict, map: "FK_AVOIR")
+
+  @@index([ID_LIVRE], map: "FK_AVOIR")
+}
+
+model fournisseur {
+  ID_FOR           Int                @id @default(autoincrement())
+  NOM              String?            @db.Char(100)
+  PRENOM           String?            @db.Char(100)
+  GMAIL            String?            @db.VarChar(255)
+  ADDRESSE         String?            @db.VarChar(255)
+  TELEPHONE        BigInt?
+  approvisionement approvisionement[]
+}
+
+model livre {
+  ID_LIVRE      BigInt       @id @default(autoincrement())
+  TITRE         String?      @db.VarChar(255)
+  AUTHEUR       String?      @db.Char(100)
+  ID_CAT        Int
+  EDITEUR       String?      @db.VarChar(255)
+  DATE_EDITION  DateTime?    @db.Date
+  CODE          Int?
+  OBSERVATIONL  String?      @db.Text
+  PAGE_DE_GARDE String?      @db.VarChar(255)
+  SOMAIRE       String?      @db.VarChar(255)
+  PRIX          Decimal?     @db.Decimal(10, 0)
+  contient      contient[]
+  exemplaire    exemplaire[]
+  categorie     categorie    @relation(fields: [ID_CAT], references: [ID_CAT], onUpdate: Restrict, map: "FK_APPARTIENT")
+
+  @@index([ID_CAT], map: "FK_APPARTIENT")
+}
+
+model pfe {
+  IDPFE                BigInt                 @id @default(autoincrement())
+  SUJET                String?                @db.Text
+  REALISATEUR          String?                @db.Text
+  ENCADRANT            String?                @db.Char(100)
+  DATE_REALISATION     Int?                   @db.Year
+  emprunt_pfe_etudiant emprunt_pfe_etudiant[]
+  emprunt_pfe_prof     emprunt_pfe_prof[]
+}
+
+model prof {
+  ID_PROF            Int                  @id @default(autoincrement())
+  NOM                String?              @db.Char(100)
+  PRENOM             String?              @db.Char(100)
+  DEPARTEMENT        String?              @db.Char(50)
+  emprunt_livre_prof emprunt_livre_prof[]
+  emprunt_pfe_prof   emprunt_pfe_prof[]
+}
+
+model utilisateur {
+  ID_U                   Int                      @id @default(autoincrement())
+  NOM                    String?                  @db.Char(100)
+  PRENOM                 String?                  @db.Char(100)
+  TELEPHONE              BigInt?
+  LOGIN                  String?                  @db.VarChar(100)
+  PASSWORD               String?                  @db.VarChar(255)
+  approvisionement       approvisionement[]
+  emprunt_livre_etudiant emprunt_livre_etudiant[]
+  emprunt_livre_prof     emprunt_livre_prof[]
+  emprunt_pfe_etudiant   emprunt_pfe_etudiant[]
+  emprunt_pfe_prof       emprunt_pfe_prof[]
+}

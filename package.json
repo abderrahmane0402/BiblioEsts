@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.10.8",
     "@mui/material": "^5.12.2",
     "@mui/x-data-grid": "^6.3.0",
+    "@prisma/client": "^4.13.0",
     "@radix-ui/react-form": "^0.0.2",
     "@types/node": "18.16.0",
     "@types/react": "18.0.38",
@@ -35,6 +36,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@types/babel__core": "^7.20.0"
+    "@types/babel__core": "^7.20.0",
+    "prisma": "^4.13.0"
   }
 }
