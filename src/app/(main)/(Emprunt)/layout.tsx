@@ -1,11 +1,11 @@
 import { Card } from "@/ui/Card"
 import { FC, ReactNode } from "react"
 
-interface updateDocs {
+interface Emprunt {
   children: ReactNode
 }
 
-const layout: FC<updateDocs> = ({ children }) => {
+const layout: FC<Emprunt> = ({ children }) => {
   return (
     <div className='w-full h-full'>
       <Card type={'full'} className="p-3">{children}</Card>
