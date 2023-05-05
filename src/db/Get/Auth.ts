@@ -8,8 +8,10 @@ export async function Auth(login: string, password: string) {
         PASSWORD: password,
       },
     })
+    await prisma.$disconnect
     return user
   } catch (e) {
+    await prisma.$disconnect
     throw Error("something went wrong with auth" + e)
   }
 }

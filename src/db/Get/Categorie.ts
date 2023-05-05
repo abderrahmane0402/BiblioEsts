@@ -10,8 +10,10 @@ export async function getCategories() {
         CAT_ID_CAT: null,
       },
     })
+    await prisma.$disconnect
     return categories
   } catch (e) {
+    await prisma.$disconnect
     throw Error("somthing went wrong" + e)
   }
 }
@@ -23,8 +25,10 @@ export async function getCategorie(id: number) {
         ID_CAT: id,
       },
     })
+    await prisma.$disconnect
     return categorie
   } catch (e) {
+    await prisma.$disconnect
     throw Error("somthing went wrong" + e)
   }
 }
