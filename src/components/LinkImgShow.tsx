@@ -4,7 +4,7 @@ import MLink from "./ui/MLink"
 import ShowImage from "./ui/ShowImage"
 
 interface LinkImgShowProps {
-  href: string
+  href: string | null
 }
 
 const LinkImgShow: FC<LinkImgShowProps> = ({ href }) => {
@@ -12,7 +12,7 @@ const LinkImgShow: FC<LinkImgShowProps> = ({ href }) => {
   return (
     <>
       <MLink
-        href={href}
+        href={""}
         type={"link"}
         onClick={(e) => {
           e.preventDefault()
@@ -21,7 +21,7 @@ const LinkImgShow: FC<LinkImgShowProps> = ({ href }) => {
       >
         afficher
       </MLink>
-      {show && <ShowImage href={href} show={setshow} />}
+      {show && <ShowImage href={href ? href : ""} show={setshow} />}
     </>
   )
 }

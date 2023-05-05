@@ -1,28 +1,16 @@
-'use client'
-import DataTable from '@/components/DataTable'
-import { LivreColumns } from '@/data/tableColumns'
-import { Livre } from '@/types'
+import DataTable from "@/components/DataTable"
+import { LivreColumns } from "@/data/tableColumns"
+import { getLivres } from "@/db/Get/Livres"
+import { Suspense } from 'react'
 
-const Livres : Livre = {
-  id:1,
-  pgImg:'/ESTS.jpg',
-  titre:'hello world',
-  autheur:'abderrahmane',
-  categorie:'fantasy',
-  code:223448,
-  dateE:new Date(),
-  editeur:'monaco editor',
-  obser:null,
-  prix:60,
-  somaire:'PDF'
-}
-
-const Livre = () => {
+const Livre = async () => {
+  let data = await getLivres()
+  console.log(data)
   return (
     <div className='w-full h-full'>
-      <DataTable columns={LivreColumns} rows={[
-        Livres
-      ]} />
+      <Suspense fallback={<div>Loading...</div>}>
+      <DataTable columns={LivreColumns} rows={data} ID='ID_LIVRE' />
+      </Suspense>
     </div>
   )
 }

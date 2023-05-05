@@ -6,33 +6,36 @@ import {
   DataGridProps,
   GridActionsCellItem,
   GridColDef,
-  GridRowParams
+  GridRowParams,
 } from "@mui/x-data-grid"
 import { FC, forwardRef } from "react"
 import { BiEdit } from "react-icons/bi"
 import { MdDelete } from "react-icons/md"
 
-interface DataTableProps extends DataGridProps {}
+interface DataTableProps extends DataGridProps {
+  ID: string
+}
 
 const DataTable: FC<DataTableProps> = forwardRef<
   HTMLDivElement,
   DataTableProps
->(({ rows, columns, ...props }, ref) => {
+>(({ rows, columns, ID, ...props }, ref) => {
   const ccolumns: GridColDef[] = [
     ...columns,
     {
       field: "actions",
+      width: 70,
       type: "actions",
       getActions: (params: GridRowParams) => [
         <GridActionsCellItem
           key={params.id}
-          icon={<MdDelete className='text-2xl' />}
+          icon={<MdDelete className='text-xl' />}
           label='delete'
           onClick={() => console.log("delete" + params.id)}
         />,
         <GridActionsCellItem
           key={params.id}
-          icon={<BiEdit className='text-2xl' />}
+          icon={<BiEdit className='text-xl' />}
           label='delete'
           onClick={() => console.log("delete" + params.id)}
         />,
@@ -48,6 +51,7 @@ const DataTable: FC<DataTableProps> = forwardRef<
       ref={ref}
       columns={ccolumns}
       rows={rows}
+      getRowId={(row) => row[ID]}
       autoPageSize
       {...props}
     />
