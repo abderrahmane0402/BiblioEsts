@@ -16,7 +16,7 @@ export function isActiveNested(href: string[]) {
   return href.includes(path)
 }
 
-export function getTitle() {
+export function getTitle() : string | undefined  {
   const path = usePathname()
   return menuMap.get(path)
 }

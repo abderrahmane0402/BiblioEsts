@@ -7,9 +7,9 @@ export function PageHeader2({}) {
   const title = getTitle()
   return (
     <>
-      <Header size={"md"}>Liste de {title.toLowerCase()}</Header>
+      <Header size={"md"}>Liste de {title?.toLowerCase()}</Header>
       <Button size={"auto"} type={"submit"}>
-        ajouter {title.toLowerCase()}
+        ajouter {title?.toLowerCase()}
       </Button>
     </>
   )

@@ -1,57 +1,52 @@
-"use client";
-import * as f from "@/components/Form";
-import Button from "@/ui/Button";
-import Header from "@/ui/Header";
-import Input from "@/ui/Input";
+"use client"
+import * as f from "@/components/Form"
+import Button from "@/ui/Button"
+import Header from "@/ui/Header"
+import Input from "@/ui/Input"
 
 const page = () => {
   return (
-    <f.FormRoot
-      className="w-full "
-      //</>onSubmit={handleSubmit}
-    >
-      <div className="flex flex-wrap ">
-        <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
-          <f.FormField name="title" className="w-full">
-            <div className="w-full">
-              <Header size={"md"} className="p">
+    <f.FormRoot className='w-full'>
+      <div className='flex flex-wrap w-full'>
+        <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
+          <f.FormField name='title' className='w-full'>
+            <div className='w-full'>
+              <Header size={"md"} className='p'>
                 Titre :
               </Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir le titre
+                modifier le titre
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir un titre valide
+                modifier un titre valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
               <Input
-                className="h-10"
-                name="title"
-                type="text"
-                // onChange={(e) => setEmail(e.target.value)}
+                className='h-10'
+                name='title'
+                type='text'
                 maxLength={255}
                 required
               />
             </f.FormControl>
           </f.FormField>
           {/* autheur */}
-          <f.FormField name="autheur" className="w-full">
-            <div className="w-full">
+          <f.FormField name='autheur' className='w-full'>
+            <div className='w-full'>
               <Header size={"md"}>Autheur :</Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir l{"'"}autheur
+                modifier l{"'"}autheur
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir l{"'"}autheur valide
+                modifier l{"'"}autheur valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
               <Input
-                className="h-10"
-                name="autheur"
-                type="text"
-                // onChange={(e) => setEmail(e.target.value)}
+                className='h-10'
+                name='autheur'
+                type='text'
                 maxLength={50}
                 required
               />
@@ -60,22 +55,21 @@ const page = () => {
 
           {/* Editeur */}
 
-          <f.FormField name="editeur" className="w-full">
-            <div className="w-full">
+          <f.FormField name='editeur' className='w-full'>
+            <div className='w-full'>
               <Header size={"md"}>Editeur :</Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir l{"'"}éditeur
+                modifier l{"'"}éditeur
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir l{"'"}éditeur valide
+                modifier l{"'"}éditeur valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
               <Input
-                className="h-10"
-                name="editeur"
-                type="text"
-                // onChange={(e) => setEmail(e.target.value)}
+                className='h-10'
+                name='editeur'
+                type='text'
                 maxLength={50}
                 required
               />
@@ -84,54 +78,52 @@ const page = () => {
 
           {/* Date edition */}
 
-          <f.FormField name="date_edi" className="w-full">
-            <div className="w-full">
+          <f.FormField name='date_edi' className='w-full'>
+            <div className='w-full'>
               <Header size={"md"}>Date d{"'"}édition :</Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir la date d{"'"}édition
+                modifier la date d{"'"}édition
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir la date d{"'"}édition valide
+                modifier la date d{"'"}édition valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
               <Input
-                className="h-10"
-                name="date_edi"
-                type="date"
-                // onChange={(e) => setEmail(e.target.value)}
+                className='h-10'
+                name='date_edi'
+                type='date'
                 maxLength={50}
                 required
               />
             </f.FormControl>
           </f.FormField>
         </div>
-        <div className="w-full md:w-1/2 pl-4">
+        <div className='w-full md:w-1/2 px-4'>
           {/* Code */}
-          <f.FormField name="code" className="w-full">
-            <div className="w-full">
+          <f.FormField name='code' className='w-full'>
+            <div className='w-full'>
               <Header size={"md"}>Code :</Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir le code
+                modifier le code
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir le code valide
+                modifier le code valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
               <Input
-                className="h-10"
-                name="code"
-                type="number"
-                // onChange={(e) => setEmail(e.target.value)}
+                className='h-10'
+                name='code'
+                type='number'
                 maxLength={50}
                 required
               />
             </f.FormControl>
           </f.FormField>
           {/* page de garde */}
-          <f.FormField name="page_garde" className="w-full">
-            <div className="w-full">
+          <f.FormField name='page_garde' className='w-full'>
+            <div className='w-full'>
               <Header size={"md"}>Page de garde :</Header>
               <f.FormMessage match={"valueMissing"}>
                 Entrer l{"'"}page de garde
@@ -142,10 +134,9 @@ const page = () => {
             </div>
             <f.FormControl asChild>
               <Input
-                className="h-12"
-                name="page_garde"
-                type="file"
-                // onChange={(e) => setEmail(e.target.value)}
+                className='h-12'
+                name='page_garde'
+                type='file'
                 maxLength={50}
                 required
               />
@@ -153,23 +144,22 @@ const page = () => {
           </f.FormField>
 
           {/* Observation */}
-          <f.FormField name="observation" className="w-full">
-            <div className="w-full">
+          <f.FormField name='observation' className='w-full'>
+            <div className='w-full'>
               <Header size={"md"}>Observation :</Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir l{"'"}observation
+                modifier l{"'"}observation
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir l{"'"}observation valide
+                modifier l{"'"}observation valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
               <textarea
                 cols={50}
                 rows={5}
-                name="observation"
-                className="h-10 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
-                
+                name='observation'
+                className='h-auto w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]'
               />
             </f.FormControl>
           </f.FormField>
@@ -177,16 +167,15 @@ const page = () => {
           {/* khassna nzido input dyal categorie  */}
         </div>
       </div>
-      <footer className="flex justify-center items-center py-12">
+      <footer className='flex justify-center items-center py-12'>
         <f.FormSubmit asChild>
-          <Button size={"md"} className="bg-[#CA3CFF] text-white w-3/12">
-            {""} Ajouter un livre {""}
+          <Button size={"md"} className='bg-[#CA3CFF] text-white w-3/12'>
+            Modifier le livre
           </Button>
         </f.FormSubmit>
       </footer>
     </f.FormRoot>
-  );
-};
+  )
+}
 
-export default page;
-
+export default page

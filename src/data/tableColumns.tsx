@@ -1,21 +1,27 @@
 "use client"
 import LinkImgShow from "@/components/LinkImgShow"
 import {
+  GridActionsCellItem,
   GridColDef,
   GridRenderCellParams,
+  GridRowParams,
   GridValueGetterParams,
 } from "@mui/x-data-grid"
+import { HiInformationCircle } from "react-icons/hi"
+import { BiEdit } from "react-icons/bi"
+import { MdDelete } from "react-icons/md"
+import { redirect } from "next/navigation"
 
 export const LivreColumns: GridColDef[] = [
-  {
-    field: "PAGE_DE_GARDE",
-    headerName: "Page de garde",
-    flex: 1,
-    hideable: false,
-    renderCell: (params: GridRenderCellParams) => (
-      <LinkImgShow href={params.value} />
-    ),
-  },
+  // {
+  //   field: "PAGE_DE_GARDE",
+  //   headerName: "Page de garde",
+  //   flex: 1,
+  //   hideable: false,
+  //   renderCell: (params: GridRenderCellParams) => (
+  //     <LinkImgShow href={params.value} />
+  //   ),
+  // },
   {
     field: "TITRE",
     headerName: "Titre",
@@ -53,7 +59,6 @@ export const LivreColumns: GridColDef[] = [
     type: "date",
   },
   { field: "CODE", headerName: "Code", flex: 1, type: "number" },
-  { field: "SOMAIRE", headerName: "Somaire", flex: 1, type: "string" },
   {
     field: "PRIX",
     flex: 1,
@@ -62,9 +67,31 @@ export const LivreColumns: GridColDef[] = [
     hideable: false,
   },
   {
-    field: "OBSERVATIONL",
-    flex: 1,
-    headerName: "Observation",
-    type: "string",
+    field: "actions",
+    width: 70,
+    type: "actions",
+    getActions: (params: GridRowParams) => [
+      <GridActionsCellItem
+        key={params.id}
+        icon={<HiInformationCircle className='text-xl' />}
+        label='showMore'
+        onClick={() => redirect('/livre/' + params.id)}
+        title="plus d'infos"
+      />,
+      <GridActionsCellItem
+        key={params.id}
+        icon={<MdDelete className='text-xl' />}
+        label='delete'
+        onClick={() => console.log("delete" + params.id)}
+        showInMenu
+      />,
+      <GridActionsCellItem
+        key={params.id}
+        icon={<BiEdit className='text-xl' />}
+        label='editer'
+        onClick={() => console.log("editer" + params.id)}
+        showInMenu
+      />,
+    ],
   },
 ]
