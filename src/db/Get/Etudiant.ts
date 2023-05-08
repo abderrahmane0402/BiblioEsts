@@ -7,8 +7,10 @@ export async function getEtudiant(id: number) {
         N_APOGEE: id,
       },
     })
+    await prisma.$disconnect
     return etudiant
   } catch (e) {
+    await prisma.$disconnect
     throw Error("somthing went wrong" + e)
   }
 }
@@ -16,8 +18,10 @@ export async function getEtudiant(id: number) {
 export async function getEtudiants() {
   try {
     const etudiants = await prisma.etudiant.findMany()
+    await prisma.$disconnect
     return etudiants
   } catch (e) {
+    await prisma.$disconnect
     throw Error("somthing went wrong" + e)
   }
 }

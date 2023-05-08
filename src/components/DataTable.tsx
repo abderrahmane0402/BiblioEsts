@@ -3,42 +3,18 @@ import { CustomColumnMenu } from "@/ui/x-data-grid-customization/CustomColumnMen
 import { CustomToolbar } from "@/ui/x-data-grid-customization/CustomToolBar"
 import {
   DataGrid,
-  DataGridProps,
-  GridActionsCellItem,
-  GridColDef,
-  GridRowParams
+  DataGridProps
 } from "@mui/x-data-grid"
 import { FC, forwardRef } from "react"
-import { BiEdit } from "react-icons/bi"
-import { MdDelete } from "react-icons/md"
 
-interface DataTableProps extends DataGridProps {}
+interface DataTableProps extends DataGridProps {
+  ID: string
+}
 
 const DataTable: FC<DataTableProps> = forwardRef<
   HTMLDivElement,
   DataTableProps
->(({ rows, columns, ...props }, ref) => {
-  const ccolumns: GridColDef[] = [
-    ...columns,
-    {
-      field: "actions",
-      type: "actions",
-      getActions: (params: GridRowParams) => [
-        <GridActionsCellItem
-          key={params.id}
-          icon={<MdDelete className='text-2xl' />}
-          label='delete'
-          onClick={() => console.log("delete" + params.id)}
-        />,
-        <GridActionsCellItem
-          key={params.id}
-          icon={<BiEdit className='text-2xl' />}
-          label='delete'
-          onClick={() => console.log("delete" + params.id)}
-        />,
-      ],
-    },
-  ]
+>(({ rows, columns, ID, ...props }, ref) => {
   return (
     <DataGrid
       slots={{
@@ -46,8 +22,9 @@ const DataTable: FC<DataTableProps> = forwardRef<
         toolbar: CustomToolbar,
       }}
       ref={ref}
-      columns={ccolumns}
+      columns={columns}
       rows={rows}
+      getRowId={(row) => row[ID]}
       autoPageSize
       {...props}
     />

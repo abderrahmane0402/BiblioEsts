@@ -21,7 +21,7 @@ const ShowImage: FC<ShowImageProps> = ({ href , show }) => {
         />
       </div>
     </div>,
-    document.querySelector("#modal")
+    document.querySelector("#modal")!
   )
 }
 

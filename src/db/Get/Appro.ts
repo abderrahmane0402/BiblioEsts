@@ -18,9 +18,10 @@ export async function getApprosShort() {
         },
       },
     })
-    console.log(appros)
+    await prisma.$disconnect
     return appros
   } catch (e) {
+    await prisma.$disconnect
     throw Error("somthing went wrong" + e)
   }
 }
@@ -41,9 +42,10 @@ export async function getAppros(id: number) {
         ID_APRO: id,
       },
     })
-    console.log(appros)
+    await prisma.$disconnect
     return appros
   } catch (e) {
+    await prisma.$disconnect
     throw Error("somthing went wrong" + e)
   }
 }

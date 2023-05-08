@@ -7,6 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model approvisionement {
   ID_APRO     Int         @id @default(autoincrement())
   ID_U        Int
@@ -38,8 +39,8 @@ model categorie {
 
 model contient {
   ID_APRO          Int
-  ID_LIVRE         BigInt
-  QTE              BigInt?
+  ID_LIVRE         Int
+  QTE              Int?
   livre            livre            @relation(fields: [ID_LIVRE], references: [ID_LIVRE], onUpdate: Restrict, map: "FK_CONTIENT")
   approvisionement approvisionement @relation(fields: [ID_APRO], references: [ID_APRO], onUpdate: Restrict, map: "FK_CONTIENT2")
 
@@ -48,8 +49,8 @@ model contient {
 }
 
 model emprunt_livre_etudiant {
-  IDLE          BigInt      @id @default(autoincrement())
-  N_INVENTAIRE  BigInt
+  IDLE          Int      @id @default(autoincrement())
+  N_INVENTAIRE  Int
   N_APOGEE      Int
   ID_U          Int
   DATE_D        DateTime?   @db.Date
@@ -66,8 +67,8 @@ model emprunt_livre_etudiant {
 }
 
 model emprunt_livre_prof {
-  IDLP          BigInt      @id @default(autoincrement())
-  N_INVENTAIRE  BigInt
+  IDLP          Int      @id @default(autoincrement())
+  N_INVENTAIRE  Int
   ID_PROF       Int
   ID_U          Int
   DATE_D        DateTime?   @db.Date
@@ -84,8 +85,8 @@ model emprunt_livre_prof {
 }
 
 model emprunt_pfe_etudiant {
-  IDPE          BigInt      @id @default(autoincrement())
-  IDPFE         BigInt
+  IDPE          Int      @id @default(autoincrement())
+  IDPFE         Int
   ID_U          Int
   N_APOGEE      Int
   DATE_D        DateTime?   @db.Date
@@ -102,9 +103,9 @@ model emprunt_pfe_etudiant {
 }
 
 model emprunt_pfe_prof {
-  IDPP          BigInt      @id @default(autoincrement())
+  IDPP          Int      @id @default(autoincrement())
   ID_U          Int
-  IDPFE         BigInt
+  IDPFE         Int
   ID_PROF       Int
   DATE_D        DateTime?   @db.Date
   DATE_F        DateTime?   @db.Date
@@ -129,8 +130,8 @@ model etudiant {
 }
 
 model exemplaire {
-  N_INVENTAIRE           BigInt                   @id @default(autoincrement())
-  ID_LIVRE               BigInt
+  N_INVENTAIRE           Int                   @id @default(autoincrement())
+  ID_LIVRE               Int
   OBSERVATIONE           String?                  @db.Text
   emprunt_livre_etudiant emprunt_livre_etudiant[]
   emprunt_livre_prof     emprunt_livre_prof[]
@@ -145,12 +146,12 @@ model fournisseur {
   PRENOM           String?            @db.Char(100)
   GMAIL            String?            @db.VarChar(255)
   ADDRESSE         String?            @db.VarChar(255)
-  TELEPHONE        BigInt?
+  TELEPHONE        Int?
   approvisionement approvisionement[]
 }
 
 model livre {
-  ID_LIVRE      BigInt       @id @default(autoincrement())
+  ID_LIVRE      Int       @id @default(autoincrement())
   TITRE         String?      @db.VarChar(255)
   AUTHEUR       String?      @db.Char(100)
   ID_CAT        Int
@@ -169,7 +170,7 @@ model livre {
 }
 
 model pfe {
-  IDPFE                BigInt                 @id @default(autoincrement())
+  IDPFE                Int                 @id @default(autoincrement())
   SUJET                String?                @db.Text
   REALISATEUR          String?                @db.Text
   ENCADRANT            String?                @db.Char(100)
@@ -191,7 +192,7 @@ model utilisateur {
   ID_U                   Int                      @id @default(autoincrement())
   NOM                    String?                  @db.Char(100)
   PRENOM                 String?                  @db.Char(100)
-  TELEPHONE              BigInt?
+  TELEPHONE              Int?
   LOGIN                  String?                  @db.VarChar(100)
   PASSWORD               String?                  @db.VarChar(255)
   approvisionement       approvisionement[]

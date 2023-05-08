@@ -7,7 +7,7 @@ export async function getLivres() {
         exemplaire: {
           select: {
             N_INVENTAIRE: true,
-            OBSERVATION: true,
+            OBSERVATIONE: true,
           },
         },
         categorie: {
@@ -17,9 +17,10 @@ export async function getLivres() {
         },
       },
     })
-    console.log(Livres)
+    await prisma.$disconnect
     return Livres
   } catch (e) {
+    await prisma.$disconnect
     throw Error("somthing went wrong" + e)
   }
 }
@@ -31,7 +32,7 @@ export async function getLivre(id: number) {
         exemplaire: {
           select: {
             N_INVENTAIRE: true,
-            OBSERVATION: true,
+            OBSERVATIONE: true,
           },
         },
         categorie: {
@@ -44,9 +45,10 @@ export async function getLivre(id: number) {
         ID_LIVRE: id,
       },
     })
-    console.log(Livre)
+    await prisma.$disconnect
     return Livre
   } catch (e) {
+    await prisma.$disconnect
     throw Error("somthing went wrong" + e)
   }
 }
@@ -58,9 +60,10 @@ export async function getExemplaire(id: number) {
         N_INVENTAIRE: id,
       },
     })
-    console.log(Exemplaire)
+    await prisma.$disconnect
     return Exemplaire
   } catch (e) {
+    await prisma.$disconnect
     throw Error("somthing went wrong" + e)
   }
 }

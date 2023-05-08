@@ -1,8 +1,7 @@
 import { MainLogo } from "@/components/MainLogo"
-import { Nav } from "@/components/Nav"
+import { ZNav } from "@/components/Nav"
 import PageHeader from "@/components/PageHeader"
 import User from "@/components/User"
-import { navItems } from "@/data/nav_el"
 import EstLogo from "@/img/Mylogo.png"
 import { FC, ReactNode } from "react"
 
@@ -18,13 +17,13 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <div className='h-3/4'>
           <MainLogo Logo={EstLogo} />
           {/* TODO: update the links of the nav */}
-          <Nav navItems={navItems} />
+          <ZNav />
         </div>
         <User />
       </div>
       {/* BODY OF THE PAGE */}
       <div className='h-full w-main flex flex-col gap-1 px-3'>
-        <PageHeader navItems={navItems} />
+        <PageHeader />
         <div className='p-2 container h-[88%]'>{children}</div>
       </div>
     </main>

@@ -3,7 +3,7 @@ import Autocomplete, { AutocompleteProps } from '@mui/joy/Autocomplete';
 
 
 
-interface SelectProps extends Omit<AutocompleteProps<any, any, any, any >, 'renderInput'> {
+interface SelectProps extends AutocompleteProps<any, any, any, any > {
   options: {
     id: number;
     label: string;
