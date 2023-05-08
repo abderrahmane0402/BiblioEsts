@@ -1,3 +1,4 @@
+'use client'
 import { ListItemIcon, ListItemText, MenuItem } from "@mui/material"
 import {
   GridColumnMenu,

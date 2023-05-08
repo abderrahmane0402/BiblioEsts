@@ -10,7 +10,8 @@ import {
 import { HiInformationCircle } from "react-icons/hi"
 import { BiEdit } from "react-icons/bi"
 import { MdDelete } from "react-icons/md"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 export const LivreColumns: GridColDef[] = [
   // {
@@ -73,24 +74,60 @@ export const LivreColumns: GridColDef[] = [
     getActions: (params: GridRowParams) => [
       <GridActionsCellItem
         key={params.id}
-        icon={<HiInformationCircle className='text-xl' />}
+        icon={
+          <Link href={`/moreInfo/livre/${params.id}`}>
+            <HiInformationCircle className='text-xl' />
+          </Link>
+        }
         label='showMore'
-        onClick={() => redirect('/livre/' + params.id)}
+        //!onClick={}
         title="plus d'infos"
-      />,
+      ></GridActionsCellItem>,
       <GridActionsCellItem
         key={params.id}
         icon={<MdDelete className='text-xl' />}
         label='delete'
-        onClick={() => console.log("delete" + params.id)}
         showInMenu
       />,
       <GridActionsCellItem
         key={params.id}
         icon={<BiEdit className='text-xl' />}
         label='editer'
-        onClick={() => console.log("editer" + params.id)}
         showInMenu
+      />,
+    ],
+  },
+]
+
+export const ExemplaireColumns: GridColDef[] = [
+  {
+    field: "N_INVENTAIRE",
+    headerName: "n_inventaire",
+    type: "number",
+    hideable: false,
+  },
+  {
+    field: "OBSERVATIONE",
+    headerName: "observation",
+    type: "string",
+    hideable: false,
+  },
+  {
+    field: "actions",
+    width: 70,
+    type: "actions",
+    getActions: (params: GridRowParams) => [
+      <GridActionsCellItem
+        key={params.id}
+        icon={<MdDelete className='text-xl' />}
+        label='delete'
+        onClick={() => console.log("delete" + params.id)}
+      />,
+      <GridActionsCellItem
+        key={params.id}
+        icon={<BiEdit className='text-xl' />}
+        label='editer'
+        onClick={() => console.log("editer" + params.id)}
       />,
     ],
   },
