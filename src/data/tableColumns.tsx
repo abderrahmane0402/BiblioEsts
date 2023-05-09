@@ -4,11 +4,10 @@ import {
   GridColDef, GridRowParams,
   GridValueGetterParams
 } from "@mui/x-data-grid"
-import { HiInformationCircle } from "react-icons/hi"
 import { BiEdit } from "react-icons/bi"
+import { HiInformationCircle } from 'react-icons/hi'
 import { MdDelete } from "react-icons/md"
 import Link from "next/link"
-
 
 
 export const ExemplaireColumns: GridColDef[] = [

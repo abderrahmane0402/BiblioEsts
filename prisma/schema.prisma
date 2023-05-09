@@ -7,7 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model approvisionement {
   ID_APRO     Int         @id @default(autoincrement())
   ID_U        Int
@@ -49,7 +48,7 @@ model contient {
 }
 
 model emprunt_livre_etudiant {
-  IDLE          Int      @id @default(autoincrement())
+  IDLE          Int         @id @default(autoincrement())
   N_INVENTAIRE  Int
   N_APOGEE      Int
   ID_U          Int
@@ -57,9 +56,9 @@ model emprunt_livre_etudiant {
   DATE_F        DateTime?   @db.Date
   DATE_R        DateTime?   @db.Date
   OBSERVATIONLE String?     @db.Text
+  utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT")
   exemplaire    exemplaire  @relation(fields: [N_INVENTAIRE], references: [N_INVENTAIRE], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT2")
   etudiant      etudiant    @relation(fields: [N_APOGEE], references: [N_APOGEE], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT3")
-  utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT")
 
   @@index([N_INVENTAIRE], map: "FK_EMPRUNTER_LIVRE_ETUDIANT")
   @@index([N_APOGEE], map: "FK_EMPRUNTE_LIVRE_ETUDIANT")
@@ -67,7 +66,7 @@ model emprunt_livre_etudiant {
 }
 
 model emprunt_livre_prof {
-  IDLP          Int      @id @default(autoincrement())
+  IDLP          Int         @id @default(autoincrement())
   N_INVENTAIRE  Int
   ID_PROF       Int
   ID_U          Int
@@ -75,9 +74,9 @@ model emprunt_livre_prof {
   DATE_F        DateTime?   @db.Date
   DATE_R        DateTime?   @db.Date
   OBSERVATIONLP String?     @db.Text
-  exemplaire    exemplaire  @relation(fields: [N_INVENTAIRE], references: [N_INVENTAIRE], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_PROF3")
-  prof          prof        @relation(fields: [ID_PROF], references: [ID_PROF], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_PROF2")
   utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_PROF")
+  prof          prof        @relation(fields: [ID_PROF], references: [ID_PROF], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_PROF2")
+  exemplaire    exemplaire  @relation(fields: [N_INVENTAIRE], references: [N_INVENTAIRE], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_PROF3")
 
   @@index([N_INVENTAIRE], map: "FK_EMPRUNTER_LIVRE_PROF")
   @@index([ID_PROF], map: "FK_EMPRUNTE_LIVRE_PROF")
@@ -85,7 +84,7 @@ model emprunt_livre_prof {
 }
 
 model emprunt_pfe_etudiant {
-  IDPE          Int      @id @default(autoincrement())
+  IDPE          Int         @id @default(autoincrement())
   IDPFE         Int
   ID_U          Int
   N_APOGEE      Int
@@ -93,9 +92,9 @@ model emprunt_pfe_etudiant {
   DATE_F        DateTime?   @db.Date
   DATE_R        DateTime?   @db.Date
   OBSERVATIONPE String?     @db.Text
+  utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT")
   pfe           pfe         @relation(fields: [IDPFE], references: [IDPFE], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT2")
   etudiant      etudiant    @relation(fields: [N_APOGEE], references: [N_APOGEE], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT3")
-  utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT")
 
   @@index([IDPFE], map: "FK_EMPRUNTER_PFE_ETUDIANT")
   @@index([N_APOGEE], map: "FK_EMPRUNTE_PFE_ETUDIANT")
@@ -103,7 +102,7 @@ model emprunt_pfe_etudiant {
 }
 
 model emprunt_pfe_prof {
-  IDPP          Int      @id @default(autoincrement())
+  IDPP          Int         @id @default(autoincrement())
   ID_U          Int
   IDPFE         Int
   ID_PROF       Int
@@ -111,9 +110,9 @@ model emprunt_pfe_prof {
   DATE_F        DateTime?   @db.Date
   DATE_R        DateTime?   @db.Date
   OBSERVATIONPP String?     @db.Text
+  utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_PROF")
   pfe           pfe         @relation(fields: [IDPFE], references: [IDPFE], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_PROF2")
   prof          prof        @relation(fields: [ID_PROF], references: [ID_PROF], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_PROF3")
-  utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_PROF")
 
   @@index([IDPFE], map: "FK_EMPRUNTER_PFE_PROF")
   @@index([ID_PROF], map: "FK_EMPRUNTE_PFE_PROF")
@@ -130,7 +129,7 @@ model etudiant {
 }
 
 model exemplaire {
-  N_INVENTAIRE           Int                   @id @default(autoincrement())
+  N_INVENTAIRE           Int                      @id @default(autoincrement())
   ID_LIVRE               Int
   OBSERVATIONE           String?                  @db.Text
   emprunt_livre_etudiant emprunt_livre_etudiant[]
@@ -151,7 +150,7 @@ model fournisseur {
 }
 
 model livre {
-  ID_LIVRE      Int       @id @default(autoincrement())
+  ID_LIVRE      Int          @id @default(autoincrement())
   TITRE         String?      @db.VarChar(255)
   AUTHEUR       String?      @db.Char(100)
   ID_CAT        Int
@@ -170,7 +169,7 @@ model livre {
 }
 
 model pfe {
-  IDPFE                Int                 @id @default(autoincrement())
+  IDPFE                Int                    @id @default(autoincrement())
   SUJET                String?                @db.Text
   REALISATEUR          String?                @db.Text
   ENCADRANT            String?                @db.Char(100)

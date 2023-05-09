@@ -1,57 +1,55 @@
+"use client";
 import { FC } from "react";
-import Autocomplete, { AutocompleteProps } from '@mui/joy/Autocomplete';
-
-
-
-interface SelectProps extends Omit<AutocompleteProps<any, any, any, any >, 'renderInput'> {
+import { SelectInputProps } from "@mui/material/Select/SelectInput";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+interface SelectProps extends SelectInputProps {
   options: {
-    id: number;
-    label: string;
+    ID_CAT: number;
+    LIBELLE: string;
   }[];
-  getOptionLabel: (option: { id: number; label: string }) => string;
-  getOptionSelected: (option: { id: number; label: string }, value: any) => boolean;
+  placeholder?: string;
 }
 
-const Select: FC<SelectProps> = ({ options,placeholder, getOptionLabel, getOptionSelected,className, ...props }) => {
+const InputSelect: FC<SelectProps> = ({ options, placeholder, ...props }) => {
   return (
-    <Autocomplete
-      placeholder="choose your cat"
-      options={options}
-      getOptionLabel={getOptionLabel} // use the label property for the option label
-      // getOptionSelected={getOptionSelected} // compare the id property for option selection
-      className="h-8 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg"
-      
-     {...props}
-    />
+    <Select
+      {...props}
+      className="  h-10 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg"
+    >
+      {options.map((option) => (
+        <MenuItem key={option.ID_CAT} value={option.ID_CAT}>
+          {option.LIBELLE}
+        </MenuItem>
+      ))}
+    </Select>
   );
 };
 
-export default Select;
-// interface SelectProps extends Omit<AutocompleteProps<any, any, any, any>, 'renderInput'> {
-//   options: {
-//     id: number;
-//     label: string;
-//   }[];
-//   getOptionLabel: (option: { id: number; label: string }) => string;
-//   getOptionSelected: (option: { id: number; label: string }, value: any) => boolean;
-//   renderInput: (params: TextFieldProps) => JSX.Element;
-// }
+export default InputSelect;
 
+// export default function BasicSelect() {
 
+//   const handleChange = (event: SelectChangeEvent) => {
+//     setAge(event.target.value as string);
+//   };
 
-
-
-// export default function Filter() {
 //   return (
-//     <FormControl id="filter-demo">
-//       <FormLabel>Custom filter</FormLabel>
-//       <Autocomplete
-//         placeholder="Type something"
-//         options={}
-//         getOptionLabel={(option) => option.title}
-//         filterOptions={filterOptions}
-//         sx={{ width: 300 }}
-//       />
-//     </FormControl>
+//     <Box sx={{ minWidth: 120 }}>
+//       <FormControl fullWidth>
+//         <InputLabel id="demo-simple-select-label">Age</InputLabel>
+//         <Select
+//           labelId="demo-simple-select-label"
+//           id="demo-simple-select"
+//           value={age}
+//           label="Age"
+//           onChange={handleChange}
+//         >
+//           <MenuItem value={10}>Ten</MenuItem>
+//           <MenuItem value={20}>Twenty</MenuItem>
+//           <MenuItem value={30}>Thirty</MenuItem>
+//         </Select>
+//       </FormControl>
+//     </Box>
 //   );
 // }
