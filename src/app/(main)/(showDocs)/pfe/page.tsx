@@ -1,9 +1,13 @@
-import React from 'react'
+import { Table } from "./table";
+import { getPfes } from "@/db/Get/Pfe";
 
-function Page() {
+const Livre = async () => {
+  let data = await getPfes();
   return (
-    <div>page</div>
-  )
-}
+    <div className="w-full h-full">
+      <Table data={data} />
+    </div>
+  );
+};
 
-export default Page
+export default Livre;

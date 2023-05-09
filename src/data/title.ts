@@ -2,7 +2,7 @@ export const menuMap = new Map()
 
 menuMap.set("/dashboard", "Acceuil")
 menuMap.set("/livre", "Livre")
-menuMap.set("/PFE", "PFE")
+menuMap.set("/pfe", "PFE")
 menuMap.set("/student", "Etudiants")
 menuMap.set("/main/Prof", "Professeurs")
 menuMap.set("/employes", "Employes")
