@@ -7,36 +7,53 @@ import {
   GridColDef,
   GridRowParams,
 } from "@mui/x-data-grid";
+import { useRouter } from "next/navigation";
 import { BiEdit } from "react-icons/bi";
+import { HiInformationCircle } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
 
 export function Table({ data }: { data: any }) {
+  const router = useRouter();
   const Columns: GridColDef[] = [
     {
-      field: "SUJET",
-      headerName: "Sujet",
+      field: "ID_APRO",
+      headerName: "id approvisionnement",
       flex: 1,
       type: "string",
       hideable: false,
     },
     {
-      field: "REALISATEUR",
+      field: "DATE",
+      headerName: "date",
+      flex: 1,
+      type: "date",
+      hideable: false,
+    },
+    {
+      field: "ENTREPRISE",
+      headerName: "entreprise",
       flex: 2,
-      headerName: "Réalisateur",
       type: "string",
       hideable: false,
     },
     {
-      field: "ENCADRANT",
-      flex: 1,
-      headerName: "Encadrant",
+      field: "ADRESSE",
+      headerName: "adresse",
+      flex: 2,
       type: "string",
       hideable: false,
     },
     {
-      field: "DATE_REALISATION",
+      field: "TELEPHONE",
+      headerName: "téléphone",
       flex: 1,
-      headerName: "Année de réalisation",
+      type: "number",
+      hideable: false,
+    },
+    {
+      field: "DEVIS",
+      headerName: "devis",
+      flex: 1,
       type: "number",
       hideable: false,
     },
@@ -47,13 +64,24 @@ export function Table({ data }: { data: any }) {
       getActions: (params: GridRowParams) => [
         <GridActionsCellItem
           key={params.id}
+          icon={<HiInformationCircle className="text-xl" />}
+          label="showMore"
+          onClick={() => {
+            router.push(`/moreInfo/appro/${params.id}`);
+          }}
+          title="plus d'infos"
+        ></GridActionsCellItem>,
+        <GridActionsCellItem
+          key={params.id}
           icon={<MdDelete className="text-xl" />}
           label="delete"
+          showInMenu
         />,
         <GridActionsCellItem
           key={params.id}
           icon={<BiEdit className="text-xl" />}
           label="editer"
+          showInMenu
         />,
       ],
     },
@@ -63,7 +91,7 @@ export function Table({ data }: { data: any }) {
     <DataTable
       columns={Columns}
       rows={data}
-      ID="IDPFE"
+      ID="ID_APRO"
       customSlots={{
         columnMenu: CustomColumnMenu,
         toolbar: CustomToolbar,

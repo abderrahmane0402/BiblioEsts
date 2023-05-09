@@ -13,30 +13,30 @@ import { MdDelete } from "react-icons/md";
 export function Table({ data }: { data: any }) {
   const Columns: GridColDef[] = [
     {
-      field: "SUJET",
-      headerName: "Sujet",
+      field: "NOM",
+      headerName: "Nom",
       flex: 1,
       type: "string",
       hideable: false,
     },
     {
-      field: "REALISATEUR",
+      field: "PRENOM",
+      headerName: "Prénom",
+      flex: 1,
+      type: "string",
+      hideable: false,
+    },
+    {
+      field: "LOGIN",
+      headerName: "Login",
       flex: 2,
-      headerName: "Réalisateur",
       type: "string",
       hideable: false,
     },
     {
-      field: "ENCADRANT",
+      field: "TELEPHONE",
+      headerName: "Téléphone",
       flex: 1,
-      headerName: "Encadrant",
-      type: "string",
-      hideable: false,
-    },
-    {
-      field: "DATE_REALISATION",
-      flex: 1,
-      headerName: "Année de réalisation",
       type: "number",
       hideable: false,
     },
@@ -46,14 +46,14 @@ export function Table({ data }: { data: any }) {
       type: "actions",
       getActions: (params: GridRowParams) => [
         <GridActionsCellItem
-          key={params.id}
+          key={`delete-${params.id}`}
           icon={<MdDelete className="text-xl" />}
-          label="delete"
+          label="Supprimer"
         />,
         <GridActionsCellItem
-          key={params.id}
+          key={`edit-${params.id}`}
           icon={<BiEdit className="text-xl" />}
-          label="editer"
+          label="Editer"
         />,
       ],
     },
@@ -63,7 +63,7 @@ export function Table({ data }: { data: any }) {
     <DataTable
       columns={Columns}
       rows={data}
-      ID="IDPFE"
+      ID="ID_U"
       customSlots={{
         columnMenu: CustomColumnMenu,
         toolbar: CustomToolbar,

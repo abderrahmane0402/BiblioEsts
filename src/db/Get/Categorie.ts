@@ -1,20 +1,21 @@
-import prisma from "@/utils/Prisma"
+import prisma from "@/utils/Prisma";
 
 export async function getCategories() {
   try {
     const categories = await prisma.categorie.findMany({
       include: {
-        other_categorie: true,
+        categorie: {
+          select: {
+            LIBELLE: true,
+          },
+        },
       },
-      where: {
-        CAT_ID_CAT: null,
-      },
-    })
-    await prisma.$disconnect
-    return categories
+    });
+    await prisma.$disconnect;
+    return categories;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
@@ -24,12 +25,12 @@ export async function getCategorie(id: number) {
       where: {
         ID_CAT: id,
       },
-    })
-    await prisma.$disconnect
-    return categorie
+    });
+    await prisma.$disconnect;
+    return categorie;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
@@ -39,15 +40,15 @@ export async function getCategories_Select() {
       select: {
         ID_CAT: true,
         LIBELLE: true,
-      }
-    })
-    await prisma.$disconnect()
+      },
+    });
+    await prisma.$disconnect();
     return categories.map(({ ID_CAT, LIBELLE }) => ({
-      ID_CAT ,
-      LIBELLE: LIBELLE ?? ""
-    }))
+      ID_CAT,
+      LIBELLE: LIBELLE ?? "",
+    }));
   } catch (e) {
-    await prisma.$disconnect()
-    throw Error("Something went wrong" + e)
+    await prisma.$disconnect();
+    throw Error("Something went wrong" + e);
   }
 }

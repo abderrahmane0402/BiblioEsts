@@ -1,11 +1,10 @@
-import DataTable from "@/components/DataTable";
 import MyImage from "@/components/ui/MyImage";
 import Paragraph from "@/components/ui/Paragraph";
-import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu";
-import { ExemplaireColumns } from "@/data/tableColumns";
 import { getLivre, getLivres } from "@/db/Get/Livres";
 import { getDate } from "@/utils/date";
 import { Table } from "./table";
+import Link from "next/link";
+import MLink from "@/components/ui/MLink";
 
 export const revalidate = 60;
 
@@ -24,7 +23,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       <div className="flex w-full h-3/5 items-center justify-center">
         <div className="relative w-1/5 h-full">
           <MyImage
-            src={livre!.PAGE_DE_GARDE ? livre!.PAGE_DE_GARDE : ""}
+            src={livre!.PAGE_DE_GARDE ? `/img/${livre!.PAGE_DE_GARDE}` : ""}
             alt="page de garde"
             priority
           />
@@ -85,6 +84,20 @@ const page = async ({ params }: { params: { id: string } }) => {
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
             {livre?.PRIX?.toNumber()} DH
+          </Paragraph>
+        </div>
+        <div className="flex">
+          <Paragraph type={"nrm"} size={"md"} className="font-bold">
+            Somaire :
+          </Paragraph>
+          <Paragraph type={"nrm"} size={"md"}>
+            <MLink
+              href={`/PDFviewer/${livre?.SOMAIRE}`}
+              font={"md"}
+              type={"link"}
+            >
+              ouvrir le pdf
+            </MLink>
           </Paragraph>
         </div>
         <div className="flex">
