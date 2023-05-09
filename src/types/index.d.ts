@@ -19,3 +19,7 @@ export interface Livre {
   somaire: string;
   prix: number;
 }
+declare type exemplaire = {
+  N_INVENTAIRE :number,
+  OBSERVATIONE : string,
+}

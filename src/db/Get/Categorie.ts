@@ -32,3 +32,22 @@ export async function getCategorie(id: number) {
     throw Error("somthing went wrong" + e)
   }
 }
+
+export async function getCategories_Select() {
+  try {
+    const categories = await prisma.categorie.findMany({
+      select: {
+        ID_CAT: true,
+        LIBELLE: true,
+      }
+    })
+    await prisma.$disconnect()
+    return categories.map(({ ID_CAT, LIBELLE }) => ({
+      ID_CAT ,
+      LIBELLE: LIBELLE ?? ""
+    }))
+  } catch (e) {
+    await prisma.$disconnect()
+    throw Error("Something went wrong" + e)
+  }
+}

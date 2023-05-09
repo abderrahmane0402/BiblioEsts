@@ -1,3 +1,4 @@
+'use client'
 import Paragraph from "@/ui/Paragraph"
 import { cn } from "@/utils/cn"
 import * as RadixForm from "@radix-ui/react-form"
