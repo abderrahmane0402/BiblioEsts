@@ -88,6 +88,14 @@ const page = async ({ params }: { params: { id: string } }) => {
         </div>
         <div className='flex'>
           <Paragraph type={"nrm"} size={"md"} className='font-bold'>
+            Somaire :
+          </Paragraph>
+          <a href={`/PDFviewer/${livre?.SOMAIRE}`} target='_blank'>
+            view pdf
+          </a>
+        </div>
+        <div className='flex'>
+          <Paragraph type={"nrm"} size={"md"} className='font-bold'>
             OBSERVATION :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
@@ -99,13 +107,13 @@ const page = async ({ params }: { params: { id: string } }) => {
         <DataTable
           columns={ExemplaireColumns}
           rows={livre!.exemplaire}
-          ID="N_INVENTAIRE"
-          className="h-auto"
+          ID='N_INVENTAIRE'
+          className='h-auto'
           customSlots={{
             columnMenu: CustomColumnMenu,
           }}
           hideFooter
-        />  
+        />
       </div>
     </div>
   )
