@@ -1,16 +1,12 @@
 "use client"
-import LinkImgShow from "@/components/LinkImgShow"
 import {
   GridActionsCellItem,
-  GridColDef,
-  GridRenderCellParams,
-  GridRowParams,
-  GridValueGetterParams,
+  GridColDef, GridRowParams,
+  GridValueGetterParams
 } from "@mui/x-data-grid"
 import { HiInformationCircle } from "react-icons/hi"
 import { BiEdit } from "react-icons/bi"
 import { MdDelete } from "react-icons/md"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
 
 export const LivreColumns: GridColDef[] = [
