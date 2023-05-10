@@ -1,20 +1,29 @@
 import prisma from "@/utils/Prisma";
-import { exemplaire, livre } from "@prisma/client";
+import { Prisma, exemplaire, livre } from "@prisma/client";
 
-export async function setLivres(livre: livre, exemplaire: exemplaire) {
+export async function setLivres(livre: any, exemplaire: any[]) {
   try {
-    const Livres = await prisma.livre.create({
+    await prisma.livre.create({
       data: {
+        AUTHEUR: livre.AUTHEUR,
+        TITRE: livre.TITRE,
+        ID_CAT: livre.ID_CAT,
+        EDITEUR: livre.EDITEUR,
+        DATE_EDITION: livre.DATE_EDITION,
+        CODE: livre.CODE,
+        OBSERVATIONL: livre.OBSERVATIONL,
+        PAGE_DE_GARDE: livre.PAGE_DE_GARDE,
+        SOMAIRE: livre.SOMAIRE,
+        PRIX: livre.PRIX,
         exemplaire: {
-          create: {
-            ...exemplaire,
+          createMany: {
+            data: exemplaire
           },
         },
-        ...livre,
       },
     });
+    
     await prisma.$disconnect;
-    return Livres;
   } catch (e) {
     await prisma.$disconnect;
     throw Error("somthing went wrong" + e);

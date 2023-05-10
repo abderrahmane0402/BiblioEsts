@@ -1,10 +1,26 @@
-"use client"
+
 import * as f from "@/components/Form"
+import { setPfe } from "@/db/Post/Pfe";
 import Button from "@/ui/Button"
 import Header from "@/ui/Header"
 import Input from "@/ui/Input"
+import { pfe } from "@prisma/client";
 
+async function addPfe(data: FormData) {
+  "use server";
+  const Pfe: pfe = {
+    IDPFE: 0, // Assign a default or null value depending on your requirements
+    SUJET: data.get("sujet") as string,
+    REALISATEUR: data.get("realisateur") as string,
+    ENCADRANT: data.get("encadrant") as string,
+    DATE_REALISATION: parseInt(data.get("date_realis") as string) || null,
+    
+  }
+  await setPfe(Pfe);
+}
 const page = () => {
+
+
   return (
     <f.FormRoot
       className='w-full '

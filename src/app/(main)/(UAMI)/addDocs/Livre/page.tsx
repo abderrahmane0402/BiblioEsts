@@ -6,18 +6,40 @@ import { AddExe } from "@/components/addExemplaire";
 import { getCategories_Select } from "@/db/Get/Categorie";
 import InputSelect from "@/components/ui/Select";
 
+import { setLivres } from "@/db/Post/Livre";
+import { Prisma, livre } from "@prisma/client";
+import { exemplaire } from "@/types";
+import { getDate } from "@/utils/date";
+
 async function addLivre(data: FormData) {
   "use server";
-
-  console.log(data.get("categorie"));
-
-  const formData = new FormData();
-  // formData.append('image', image);
-
-  //   const livre :livre ={
-  //     TITRE :data.get("title"),
-  //     AUTHEUR : data.get("")
-  // }
+  const livre = {
+    TITRE: data.get("title") as string,
+    AUTHEUR: data.get("autheur") as string,
+    EDITEUR: data.get("editeur") as string,
+    DATE_EDITION: getDate(new Date(data.get("date_edi"))) as string,
+    PRIX: new Prisma.Decimal(parseFloat(data.get("prix")!.toString())),
+    ID_CAT: Number(data.get("categorie")),
+    CODE: data.get("code") ? Number(data.get("code") as string) : null,
+    OBSERVATIONL: data.get("observation") as string,
+    PAGE_DE_GARDE: `/img/${data.get("page_garde").name}` as string,
+    SOMAIRE: `/pdf/${data.get("somaire").name}` as string,
+  };
+  let ex = JSON.parse(data.get("exemplaire")!.toString());
+  const exemplaire: exemplaire[] = ex.map((e: exemplaire) => {
+    return {
+      N_INVENTAIRE: e.N_INVENTAIRE,
+      OBSERVATIONE: e.OBSERVATIONE,
+    };
+  });
+  // await setLivres(exemplaire)
+  const Files = new FormData();
+  Files.append("image", data.get("page_garde"));
+  Files.append("pdf", data.get("somaire"));
+  await fetch("http://localhost:3000/api/saveFiles", {
+    method: "POST",
+    body: Files,
+  });
 }
 const Page = async () => {
   const data = await getCategories_Select();
@@ -140,7 +162,7 @@ const Page = async () => {
             </f.FormField>
             <f.FormField name="categorie" className="w-full">
               <div className="w-full">
-                <Header size={"md"}>Catégorie  :</Header>
+                <Header size={"md"}>Catégorie :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir une categorie
                 </f.FormMessage>
@@ -149,11 +171,14 @@ const Page = async () => {
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-             <InputSelect options={data} autoWidth={false} multiple={false} native={false}  />
+                <InputSelect
+                  options={data}
+                  autoWidth={false}
+                  multiple={false}
+                  native={false}
+                />
               </f.FormControl>
             </f.FormField>
-            
-            
           </div>
 
           <div className="w-full md:w-1/2 pl-4">
