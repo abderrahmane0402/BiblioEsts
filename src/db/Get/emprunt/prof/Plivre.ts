@@ -1,10 +1,10 @@
 // POUR LES PROFESSEURS
 
-import prisma from "@/utils/Prisma"
+import prisma from "@/utils/Prisma";
 
 export async function getPlivre(id: number) {
   try {
-    const emprunt = await prisma.emprunt_livre_prof.findMany({
+    const emprunt = await prisma.emprunt_livre_prof.findFirst({
       include: {
         utilisateur: true,
         prof: true,
@@ -25,12 +25,12 @@ export async function getPlivre(id: number) {
       where: {
         IDLP: id,
       },
-    })
-    await prisma.$disconnect
-    return emprunt
+    });
+    await prisma.$disconnect;
+    return emprunt;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
@@ -46,18 +46,24 @@ export async function Plivre() {
             PRENOM: true,
           },
         },
+        prof: {
+          select: {
+            NOM: true,
+            PRENOM: true,
+          },
+        },
       },
       where: {
         DATE_R: {
           not: null,
         },
       },
-    })
-    await prisma.$disconnect
-    return emprunt
+    });
+    await prisma.$disconnect;
+    return emprunt;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
@@ -73,16 +79,22 @@ export async function PlivreEncours() {
             PRENOM: true,
           },
         },
+        prof: {
+          select: {
+            NOM: true,
+            PRENOM: true,
+          },
+        },
       },
       where: {
-        DATE_R:null
+        DATE_R: null,
       },
-    })
-    await prisma.$disconnect
-    return emprunt
+    });
+    await prisma.$disconnect;
+    return emprunt;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
