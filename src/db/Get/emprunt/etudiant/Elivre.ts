@@ -4,9 +4,8 @@ import prisma from "@/utils/Prisma"
 
 export async function getElivre(id: number) {
   try {
-    const emprunt = await prisma.emprunt_livre_etudiant.findMany({
+    const emprunt = await prisma.emprunt_livre_etudiant.findFirst({
       include: {
-        utilisateur: true,
         etudiant: true,
         exemplaire: {
           include: {

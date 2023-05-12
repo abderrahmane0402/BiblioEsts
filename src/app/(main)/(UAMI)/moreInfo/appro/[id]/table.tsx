@@ -1,7 +1,6 @@
 "use client";
 import DataTable from "@/components/DataTable";
 import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu";
-import { CustomToolbar } from "@/components/ui/x-data-grid-customization/CustomToolBar";
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { useRouter } from "next/navigation";
 

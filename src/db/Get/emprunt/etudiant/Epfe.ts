@@ -4,7 +4,7 @@ import prisma from "@/utils/Prisma"
 
 export async function getEpfe(id: number) {
   try {
-    const epfe = await prisma.emprunt_pfe_etudiant.findMany({
+    const epfe = await prisma.emprunt_pfe_etudiant.findFirst({
       include: {
         pfe: true,
         etudiant: true,
