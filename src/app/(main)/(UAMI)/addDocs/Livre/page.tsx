@@ -25,6 +25,7 @@ async function addLivre(data: FormData) {
     PAGE_DE_GARDE: `/img/${data.get("page_garde").name}` as string,
     SOMAIRE: `/pdf/${data.get("somaire").name}` as string,
   };
+  
   let ex = JSON.parse(data.get("exemplaire")!.toString());
   const exemplaire: exemplaire[] = ex.map((e: exemplaire) => {
     return {
@@ -41,6 +42,7 @@ async function addLivre(data: FormData) {
     body: Files,
   });
 }
+
 const Page = async () => {
   const data = await getCategories_Select();
   return (

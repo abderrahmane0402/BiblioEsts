@@ -1,14 +1,36 @@
-"use client";
+
 import * as f from "@/components/Form";
+import { setUser } from "@/db/Post/Utilisateur";
 import Button from "@/ui/Button";
 import Header from "@/ui/Header";
 import Input from "@/ui/Input";
+import { utilisateur } from "@prisma/client";
+
+async function addUser(data: FormData) {
+  "use server";
+  const User = {
+    NOM: data.get("nom_user") as string  || null,
+    PRENOM: data.get("prenom_user") as string  || null,
+    TELEPHONE: data.get("telep_user") ? Number(data.get("telep_user") as string) : null,
+    LOGIN: data.get("login_user") as string  || null, // Assign the login value if available
+    PASSWORD: data.get("password_user") as string  || null, // Assign the password value if available
+  };
+  
+  
+  
+    await setUser(User);
+  //console.log(await setPfe(Pfe));
+  
+}
+
+
 
 const page = () => {
   return (
     <f.FormRoot
       className="w-full "
       //</>onSubmit={handleSubmit}
+      action={addUser}
     >
         {/* Nom */}
         <f.FormField name="nom_user" className="w-full">
@@ -28,7 +50,7 @@ const page = () => {
             type="text"
             // onChange={(e) => setEmail(e.target.value)}
             maxLength={20}
-            required
+            
           />
         </f.FormControl>
       </f.FormField>
@@ -50,7 +72,7 @@ const page = () => {
                 type="text"
                 // onChange={(e) => setEmail(e.target.value)}
                 maxLength={20}
-                required
+                
               />
             </f.FormControl>
           </f.FormField>
@@ -72,7 +94,7 @@ const page = () => {
                 type="number"
                 // onChange={(e) => setEmail(e.target.value)}
                 maxLength={10}
-                required
+                
               />
             </f.FormControl>
           </f.FormField>
@@ -94,7 +116,7 @@ const page = () => {
                 type="email"
                 // onChange={(e) => setEmail(e.target.value)}
                 maxLength={20}
-                required
+                
               />
             </f.FormControl>
           </f.FormField>
@@ -117,7 +139,7 @@ const page = () => {
                   type="password"
                   // onChange={(e) => setEmail(e.target.value)}
                   maxLength={20}
-                  required
+                  
                 />
             </f.FormControl>
           </f.FormField>

@@ -4,12 +4,16 @@ import PageHeader from "@/components/PageHeader"
 import User from "@/components/User"
 import { setLivres } from "@/db/Post/Livre"
 import EstLogo from "@/img/Mylogo.png"
+import { filiere } from "@/types"
 import { Prisma, exemplaire, livre } from "@prisma/client"
 import { FC, ReactNode } from "react"
 
 interface LayoutProps {
   children: ReactNode
 }
+
+
+
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (

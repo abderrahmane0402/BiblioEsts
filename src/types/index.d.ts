@@ -23,3 +23,9 @@ declare type exemplaire = {
   N_INVENTAIRE :number,
   OBSERVATIONE : string,
 }
+
+declare type filiere ={
+ID_FIL : number, 
+LIBELLE : string,
+
+}

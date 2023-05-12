@@ -1,7 +1,7 @@
 import prisma from "@/utils/Prisma";
 import { pfe } from "@prisma/client";
 
-export async function setPfe( Pfe: pfe) {
+export async function setPfe( Pfe : any) {
     try {
         await prisma.pfe.create({
           data: { ...Pfe
