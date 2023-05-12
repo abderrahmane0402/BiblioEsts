@@ -5,16 +5,15 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export const Button = ({ name }: { name: string }) => {
-  const path = usePathname();
-  const link = path.split("/");
+  let path = usePathname();
+  const link = path!.split("/");
   const [active, setactive] = useState(false);
   useEffect(() => {
-    setactive(`${name}`.includes(path));
-    console.log(path.includes(name));
+    setactive(path!.includes(name));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    setactive(path.includes(name));
+    setactive(path!.includes(name));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path]);
   return (
@@ -30,15 +29,14 @@ export const Button = ({ name }: { name: string }) => {
 
 export const Button2 = ({ name }: { name: string }) => {
   const path = usePathname();
-  const link = path.split("/");
+  const link = path!.split("/");
   const [active, setactive] = useState(false);
   useEffect(() => {
-    setactive(`${name}`.includes(path));
-    console.log(path.includes(name));
+    setactive(path!.includes(name));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    setactive(path.includes(name));
+    setactive(path!.includes(name));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path]);
   return (
@@ -54,15 +52,14 @@ export const Button2 = ({ name }: { name: string }) => {
 
 export const Button3 = ({ name }: { name: string }) => {
   const path = usePathname();
-  const link = path.split("/");
+  const link = path!.split("/");
   const [active, setactive] = useState(false);
   useEffect(() => {
-    setactive(`${name}`.includes(path));
-    console.log(path.includes(name));
+    setactive(path!.includes(name));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    setactive(path.includes(name));
+    setactive(path!.includes(name));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path]);
   return (

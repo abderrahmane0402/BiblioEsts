@@ -13,6 +13,15 @@ import { getDate } from "@/utils/date";
 
 async function addLivre(data: FormData) {
   "use server";
+  const Files = new FormData();
+  Files.append("image", data.get("page_garde"));
+  Files.append("pdf", data.get("somaire"));
+  const res = await fetch("http://localhost:3000/api/saveFiles", {
+    method: "POST",
+    body: Files,
+  });
+  const id = await res.json();
+  console.log(id);
   const livre = {
     TITRE: data.get("title") as string,
     AUTHEUR: data.get("autheur") as string,
@@ -33,13 +42,6 @@ async function addLivre(data: FormData) {
     };
   });
   // await setLivres(exemplaire)
-  const Files = new FormData();
-  Files.append("image", data.get("page_garde"));
-  Files.append("pdf", data.get("somaire"));
-  await fetch("http://localhost:3000/api/saveFiles", {
-    method: "POST",
-    body: Files,
-  });
 }
 const Page = async () => {
   const data = await getCategories_Select();
