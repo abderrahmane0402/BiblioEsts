@@ -1,7 +1,7 @@
 const Page = ({ params }: { params: { filename: string } }) => {
   return (
     <object
-      data={`/pdf/${params.filename}.pdf`}
+      data={`/pdf/${params.filename}`}
       type='application/pdf'
       width='100%'
       height='100%'

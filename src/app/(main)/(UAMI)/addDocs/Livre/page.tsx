@@ -1,61 +1,68 @@
-import * as f from "@/components/Form";
-import Button from "@/ui/Button";
-import Header from "@/ui/Header";
-import Input from "@/ui/Input";
-import { AddExe } from "@/components/addExemplaire";
-import { getCategories_Select } from "@/db/Get/Categorie";
-import InputSelect from "@/components/ui/Select";
+import * as f from "@/components/Form"
+import Button from "@/ui/Button"
+import Header from "@/ui/Header"
+import Input from "@/ui/Input"
+import { AddExe } from "@/components/addExemplaire"
+import { getCategories_Select } from "@/db/Get/Categorie"
+import InputSelect from "@/components/ui/Select"
 
-import { setLivres } from "@/db/Post/Livre";
-import { Prisma, livre } from "@prisma/client";
-import { exemplaire } from "@/types";
-import { getDate } from "@/utils/date";
+import { setLivres } from "@/db/Post/Livre"
+import { Prisma, livre } from "@prisma/client"
+import { exemplaire } from "@/types"
+import { getDate } from "@/utils/date"
 
 async function addLivre(data: FormData) {
-  "use server";
-  const Files = new FormData();
-  Files.append("image", data.get("page_garde"));
-  Files.append("pdf", data.get("somaire"));
-  const res = await fetch("http://localhost:3000/api/saveFiles", {
+  "use server"
+  const img = new FormData()
+  img.append("image", data.get("page_garde"))
+  const res = await fetch("http://localhost:3000/api/saveIMG", {
     method: "POST",
-    body: Files,
-  });
-  const id = await res.json();
-  console.log(id);
+    body: img,
+    cache: "no-store",
+  })
+  const imageName = await res.json()
+  const pdf = new FormData()
+  pdf.append("pdf", data.get("somaire"))
+  const pdfRes = await fetch("http://localhost:3000/api/savePDF", {
+    method: "POST",
+    body: pdf,
+    cache: "no-store",
+  })
+  const pdfName = await pdfRes.json()
   const livre = {
     TITRE: data.get("title") as string,
     AUTHEUR: data.get("autheur") as string,
     EDITEUR: data.get("editeur") as string,
-    DATE_EDITION: getDate(new Date(data.get("date_edi"))) as string,
+    DATE_EDITION: new Date(data.get("date_edi")),
     PRIX: new Prisma.Decimal(parseFloat(data.get("prix")!.toString())),
     ID_CAT: Number(data.get("categorie")),
     CODE: data.get("code") ? Number(data.get("code") as string) : null,
     OBSERVATIONL: data.get("observation") as string,
-    PAGE_DE_GARDE: `/img/${data.get("page_garde").name}` as string,
-    SOMAIRE: `/pdf/${data.get("somaire").name}` as string,
-  };
-  let ex = JSON.parse(data.get("exemplaire")!.toString());
+    PAGE_DE_GARDE: `${imageName.id}` as string,
+    SOMAIRE: `${pdfName.id}` as string,
+  }
+  let ex = JSON.parse(data.get("exemplaire")!.toString())
   const exemplaire: exemplaire[] = ex.map((e: exemplaire) => {
     return {
       N_INVENTAIRE: e.N_INVENTAIRE,
       OBSERVATIONE: e.OBSERVATIONE,
-    };
-  });
-  // await setLivres(exemplaire)
+    }
+  })
+  await setLivres(livre, exemplaire)
 }
 const Page = async () => {
-  const data = await getCategories_Select();
+  const data = await getCategories_Select()
   return (
-    <div className="overflow-auto w-full h-full">
-      <f.FormRoot className="w-full " action={addLivre}>
+    <div className='overflow-auto w-full h-full'>
+      <f.FormRoot className='w-full ' action={addLivre}>
         <Header size={"lg"}>Information de livre</Header>
-        <div className="flex flex-wrap ">
-          <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
+        <div className='flex flex-wrap '>
+          <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
             {/* nombre_inv */}
 
-            <f.FormField name="title" className="w-full">
-              <div className="w-full">
-                <Header size={"md"} className="p">
+            <f.FormField name='title' className='w-full'>
+              <div className='w-full'>
+                <Header size={"md"} className='p'>
                   Titre :
                 </Header>
                 <f.FormMessage match={"valueMissing"}>
@@ -67,17 +74,18 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="title"
-                  type="text"
+                  className='h-10'
+                  name='title'
+                  type='text'
                   // onChange={(e) => setEmail(e.target.value)}
                   maxLength={255}
+                  required
                 />
               </f.FormControl>
             </f.FormField>
             {/* autheur */}
-            <f.FormField name="autheur" className="w-full">
-              <div className="w-full">
+            <f.FormField name='autheur' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Autheur :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir l{"'"}autheur
@@ -88,9 +96,9 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="autheur"
-                  type="text"
+                  className='h-10'
+                  name='autheur'
+                  type='text'
                   // onChange={(e) => setEmail(e.target.value)}
                   maxLength={50}
                 />
@@ -99,8 +107,8 @@ const Page = async () => {
 
             {/* Editeur */}
 
-            <f.FormField name="editeur" className="w-full">
-              <div className="w-full">
+            <f.FormField name='editeur' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Editeur :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir l{"'"}éditeur
@@ -111,9 +119,9 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="editeur"
-                  type="text"
+                  className='h-10'
+                  name='editeur'
+                  type='text'
                   // onChange={(e) => setEmail(e.target.value)}
                   maxLength={50}
                 />
@@ -122,8 +130,8 @@ const Page = async () => {
 
             {/* Date edition */}
 
-            <f.FormField name="date_edi" className="w-full">
-              <div className="w-full">
+            <f.FormField name='date_edi' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Date d{"'"}édition :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir la date d{"'"}édition
@@ -134,16 +142,17 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="date_edi"
-                  type="date"
+                  className='h-10'
+                  name='date_edi'
+                  type='date'
                   maxLength={50}
+                  required
                 />
               </f.FormControl>
             </f.FormField>
             {/* prix */}
-            <f.FormField name="prix" className="w-full">
-              <div className="w-full">
+            <f.FormField name='prix' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Prix :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir le prix
@@ -154,16 +163,17 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="prix"
-                  type="number"
+                  className='h-10'
+                  name='prix'
+                  type='number'
                   // onChange={(e) => setEmail(e.target.value)}
                   maxLength={50}
+                  required
                 />
               </f.FormControl>
             </f.FormField>
-            <f.FormField name="categorie" className="w-full">
-              <div className="w-full">
+            <f.FormField name='categorie' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Catégorie :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir une categorie
@@ -183,10 +193,10 @@ const Page = async () => {
             </f.FormField>
           </div>
 
-          <div className="w-full md:w-1/2 pl-4">
+          <div className='w-full md:w-1/2 pl-4'>
             {/* Code */}
-            <f.FormField name="code" className="w-full">
-              <div className="w-full">
+            <f.FormField name='code' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Code :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir le code
@@ -197,17 +207,18 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="code"
-                  type="number"
+                  className='h-10'
+                  name='code'
+                  type='number'
                   // onChange={(e) => setEmail(e.target.value)}
                   maxLength={50}
+                  required
                 />
               </f.FormControl>
             </f.FormField>
             {/* page de garde */}
-            <f.FormField name="page_garde" className="w-full">
-              <div className="w-full">
+            <f.FormField name='page_garde' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Page de garde :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   Entrer l{"'"}page de garde
@@ -218,17 +229,19 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-12"
-                  name="page_garde"
-                  type="file"
+                  className='h-12'
+                  name='page_garde'
+                  type='file'
+                  accept='.jpg, .jpeg, .png'
                   // onChange={(e) => setEmail(e.target.value)}
                   maxLength={50}
+                  required
                 />
               </f.FormControl>
             </f.FormField>
             {/* SOMAIRE */}
-            <f.FormField name="somaire" className="w-full">
-              <div className="w-full">
+            <f.FormField name='somaire' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>SOMAIRE :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   Entrer un SOMAIRE
@@ -239,17 +252,19 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-12"
-                  name="somaire"
-                  type="file"
+                  className='h-12'
+                  name='somaire'
+                  type='file'
+                  accept='.pdf'
                   // onChange={(e) => setEmail(e.target.value)}
                   maxLength={50}
+                  required
                 />
               </f.FormControl>
             </f.FormField>
             {/* Observation */}
-            <f.FormField name="observation" className="w-full">
-              <div className="w-full">
+            <f.FormField name='observation' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Observation :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir l{"'"}observation
@@ -262,26 +277,26 @@ const Page = async () => {
                 <textarea
                   cols={50}
                   rows={5}
-                  name="observation"
-                  className="w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
+                  name='observation'
+                  className='w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]'
                 />
               </f.FormControl>
             </f.FormField>
           </div>
         </div>
 
-        <Header className="p-6">Ajouter un exemplaire</Header>
+        <Header className='p-6'>Ajouter un exemplaire</Header>
 
         <AddExe />
 
         <f.FormSubmit asChild>
-          <Button size={"md"} className="bg-[#CA3CFF] text-white w-3/12">
+          <Button size={"md"} className='bg-[#CA3CFF] text-white w-3/12'>
             {""} envoyer livre {""}
           </Button>
         </f.FormSubmit>
       </f.FormRoot>
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page
