@@ -50,6 +50,7 @@ async function addLivre(data: FormData) {
   })
   await setLivres(livre, exemplaire)
 }
+
 const Page = async () => {
   const data = await getCategories_Select()
   return (
