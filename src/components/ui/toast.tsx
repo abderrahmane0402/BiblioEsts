@@ -8,7 +8,7 @@ const ToastViewport = Toast.Viewport;
 const ToastActions = Toast.Action;
 
 const RootVariants = cva(
-  "w-80 h-auto rounded-lg p-4 shadow-lg flex flex-col gap-2",
+  "w-80 h-auto rounded-lg p-4 shadow-lg flex justify-between items-center gap-2",
   {
     variants: {
       Ttype: {
@@ -33,7 +33,7 @@ interface RootProps
 
 const Root: FC<RootProps> = ({ children, className, Ttype, ...props }) => {
   return (
-    <Toast.Root className={cn(RootVariants({ className, Ttype }))} {...props}>
+    <Toast.Root className={cn(RootVariants({ className, Ttype }) , 'data-[state=open]:animate-slideIn data-[state=closed]:animate-hide')} {...props}>
       {children}
     </Toast.Root>
   );

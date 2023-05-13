@@ -46,12 +46,13 @@ const Button: FC<ButtonProps> = ({
       disabled={isLoading}
       {...props}
     >
-      {isLoading && (
-        <span className="animate-spin">
+      {isLoading ? (
+        <span className="animate-spin text-3xl font-black">
           <AiOutlineLoading3Quarters />
         </span>
+      ) : (
+        children
       )}
-      {children}
     </button>
   );
 };
