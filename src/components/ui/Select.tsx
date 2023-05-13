@@ -15,9 +15,9 @@ const InputSelect: FC<SelectProps> = ({ options, placeholder, ...props }) => {
   return (
     <Select
       {...props}
-      className="  h-10 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg"
+      className="h-10 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg"
     >
-      {options.map((option) => (
+      {options?.map((option) => (
         <MenuItem key={option.ID_CAT} value={option.ID_CAT}>
           {option.LIBELLE}
         </MenuItem>
