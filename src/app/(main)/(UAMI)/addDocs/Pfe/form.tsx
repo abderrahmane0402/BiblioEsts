@@ -1,6 +1,7 @@
 "use client";
 import * as f from "@/components/Form";
 import addLivre from "@/components/server/addLivre";
+import addPfe from "@/components/server/addPfe";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
 import { useEffect, useRef, useState } from "react";
@@ -27,7 +28,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className="w-full"
       action={async (FormData) => {
-        const data = await addLivre(FormData);
+        const data = await addPfe(FormData);
         if (data) {
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);
@@ -55,7 +56,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         <Toast.Root open={open1} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>
-            <Toast.Description>Livre ajouté avec succés</Toast.Description>
+            <Toast.Description>pfe ajouté avec succés</Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen1(false)}>
             <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">

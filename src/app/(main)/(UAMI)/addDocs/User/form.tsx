@@ -1,9 +1,16 @@
 "use client";
 import * as f from "@/components/Form";
-import addLivre from "@/components/server/addLivre";
+import addUser from "@/components/server/addUser";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
 import { useEffect, useRef, useState } from "react";
+
+function checkPassword(password: any, conf: any) {
+  if (password === conf) {
+    return true;
+  }
+  return false;
+}
 
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null);
@@ -27,7 +34,18 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className="w-full"
       action={async (FormData) => {
-        const data = await addLivre(FormData);
+        if (
+          !checkPassword(
+            FormData.get("password_user"),
+            FormData.get("confirmation")
+          )
+        ) {
+          alert("confirmation de password incorrecte");
+          setIsLoading(false);
+          return;
+        }
+
+        const data = await addUser(FormData);
         if (data) {
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);
@@ -51,7 +69,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         </f.FormSubmit>
       </footer>
 
-      <Toast.Provider duration={1000}>
+      <Toast.Provider>
         <Toast.Root open={open1} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>

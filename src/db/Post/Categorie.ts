@@ -1,7 +1,7 @@
 import prisma from "@/utils/Prisma";
 import { categorie } from "@prisma/client";
 
-export async function setCategories(categorie: categorie) {
+export async function setCategorie(categorie: any) {
   try {
     await prisma.categorie.create({
       data: {

@@ -15,8 +15,10 @@ const InputSelect: FC<SelectProps> = ({ options, placeholder, ...props }) => {
   return (
     <Select
       {...props}
+      defaultValue={null}
       className="h-10 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg"
     >
+      <MenuItem value="" className="h-10 bg-black/40"></MenuItem>
       {options?.map((option) => (
         <MenuItem key={option.ID_CAT} value={option.ID_CAT}>
           {option.LIBELLE}
@@ -27,29 +29,3 @@ const InputSelect: FC<SelectProps> = ({ options, placeholder, ...props }) => {
 };
 
 export default InputSelect;
-
-// export default function BasicSelect() {
-
-//   const handleChange = (event: SelectChangeEvent) => {
-//     setAge(event.target.value as string);
-//   };
-
-//   return (
-//     <Box sx={{ minWidth: 120 }}>
-//       <FormControl fullWidth>
-//         <InputLabel id="demo-simple-select-label">Age</InputLabel>
-//         <Select
-//           labelId="demo-simple-select-label"
-//           id="demo-simple-select"
-//           value={age}
-//           label="Age"
-//           onChange={handleChange}
-//         >
-//           <MenuItem value={10}>Ten</MenuItem>
-//           <MenuItem value={20}>Twenty</MenuItem>
-//           <MenuItem value={30}>Thirty</MenuItem>
-//         </Select>
-//       </FormControl>
-//     </Box>
-//   );
-// }
