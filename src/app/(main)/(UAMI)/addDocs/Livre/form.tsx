@@ -7,15 +7,18 @@ import { useEffect, useRef, useState } from "react";
 
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null);
-  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    if (open === true && isLoading === true) {
+    if (
+      (open1 === true && isLoading === true) ||
+      (open2 === true && isLoading === true)
+    ) {
       setIsLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
-
+  }, [open1, open2]);
   return (
     <f.FormRoot
       onSubmit={() => {
@@ -26,9 +29,9 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       action={async (FormData) => {
         const data = await addLivre(FormData);
         if (data) {
-          setOpen(true);
+          setOpen1(true);
           form.current?.reset();
-        }
+        } else setOpen2(true);
       }}
     >
       {children}
@@ -43,12 +46,25 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       </f.FormSubmit>
 
       <Toast.Provider>
-        <Toast.Root open={open} Ttype={"success"}>
+        <Toast.Root open={open1} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>
             <Toast.Description>Livre ajouté avec succés</Toast.Description>
           </div>
-          <Toast.Close asChild onClick={() => setOpen(false)}>
+          <Toast.Close asChild onClick={() => setOpen1(false)}>
+            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
+              fermer
+            </button>
+          </Toast.Close>
+        </Toast.Root>
+        <Toast.Root open={open2} Ttype={"error"}>
+          <div>
+            <Toast.Title>Error</Toast.Title>
+            <Toast.Description>
+              verifier les informations inserer
+            </Toast.Description>
+          </div>
+          <Toast.Close asChild onClick={() => setOpen2(false)}>
             <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
               fermer
             </button>
