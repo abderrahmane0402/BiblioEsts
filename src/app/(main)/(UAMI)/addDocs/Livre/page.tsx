@@ -239,7 +239,6 @@ const Page = async () => {
         <Header className="p-6">Ajouter un exemplaire</Header>
 
         <AddExe />
-
       </Form>
     </div>
   );

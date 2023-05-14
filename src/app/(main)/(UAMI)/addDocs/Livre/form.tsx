@@ -65,7 +65,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen2(false)}>
-            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
+            <button className="border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg">
               fermer
             </button>
           </Toast.Close>

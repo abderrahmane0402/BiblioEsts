@@ -18,7 +18,6 @@ async function addPfe(data: FormData) {
   }
   
     await setPfe(Pfe);
-  //console.log(await setPfe(Pfe));
   
 }
 const Filière : filiere[]  = [
