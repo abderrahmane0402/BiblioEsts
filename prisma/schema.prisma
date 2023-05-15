@@ -134,7 +134,7 @@ model exemplaire {
   OBSERVATIONE           String?                  @db.Text
   emprunt_livre_etudiant emprunt_livre_etudiant[]
   emprunt_livre_prof     emprunt_livre_prof[]
-  livre                  livre                    @relation(fields: [ID_LIVRE], references: [ID_LIVRE], onUpdate: Restrict, map: "FK_AVOIR")
+  livre                  livre                    @relation(fields: [ID_LIVRE], references: [ID_LIVRE], onUpdate: Cascade , onDelete: Cascade, map: "FK_AVOIR")
 
   @@index([ID_LIVRE], map: "FK_AVOIR")
 }
@@ -177,15 +177,15 @@ model pfe {
   emprunt_pfe_etudiant emprunt_pfe_etudiant[]
   emprunt_pfe_prof     emprunt_pfe_prof[]
 }
+
 model prof {
-ID_PROF            Int                  @id @default(autoincrement())
+  ID_PROF            Int                  @id @default(autoincrement())
   NOM                String?              @db.Char(100)
   PRENOM             String?              @db.Char(100)
   DEPARTEMENT        String?              @db.Char(50)
   emprunt_livre_prof emprunt_livre_prof[]
   emprunt_pfe_prof   emprunt_pfe_prof[]
 }
-  
 
 model utilisateur {
   ID_U                   Int                      @id @default(autoincrement())

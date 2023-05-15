@@ -1,21 +1,21 @@
-"use client";
-import DataTable from "@/components/DataTable";
-import * as Toast from "@/components/ui/toast";
-import { CustomColumnMenu } from "@/ui/x-data-grid-customization/CustomColumnMenu";
-import { CustomToolbar } from "@/ui/x-data-grid-customization/CustomToolBar";
+"use client"
+import DataTable from "@/components/DataTable"
+import * as Toast from "@/components/ui/toast"
+import { CustomColumnMenu } from "@/ui/x-data-grid-customization/CustomColumnMenu"
+import { CustomToolbar } from "@/ui/x-data-grid-customization/CustomToolBar"
 import {
   GridActionsCellItem,
   GridColDef,
   GridRowParams,
-} from "@mui/x-data-grid";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { BiEdit } from "react-icons/bi";
-import { MdDelete } from "react-icons/md";
+} from "@mui/x-data-grid"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { BiEdit } from "react-icons/bi"
+import { MdDelete } from "react-icons/md"
 
 export function Table({ data }: { data: any }) {
-  const [isDeleted, setisDeleted] = useState(false);
-  const [notDeleted, setnotDeleted] = useState(false);
+  const [isDeleted, setisDeleted] = useState(false)
+  const [notDeleted, setnotDeleted] = useState(false)
   const router = useRouter()
   const Columns: GridColDef[] = [
     {
@@ -53,8 +53,8 @@ export function Table({ data }: { data: any }) {
       getActions: (params: GridRowParams) => [
         <GridActionsCellItem
           key={`delete-${params.id}`}
-          icon={<MdDelete className="text-xl" />}
-          label="Supprimer"
+          icon={<MdDelete className='text-xl' />}
+          label='Supprimer'
           onClick={() => {
             fetch(`/api/etudiant/${params.id}`, {
               method: "DELETE",
@@ -62,31 +62,31 @@ export function Table({ data }: { data: any }) {
               .then((res) => res.text())
               .then((data) => {
                 if (data === "ok") {
-                  router.refresh();
-                  setisDeleted(data === "ok");
-                  setTimeout(() => setisDeleted(false), 2000);
+                  router.refresh()
+                  setisDeleted(data === "ok")
+                  setTimeout(() => setisDeleted(false), 2000)
                 } else {
-                  setnotDeleted(true);
-                  setTimeout(() => setnotDeleted(false), 2000);
+                  setnotDeleted(true)
+                  setTimeout(() => setnotDeleted(false), 2000)
                 }
-              });
+              })
           }}
         />,
         <GridActionsCellItem
           key={`edit-${params.id}`}
-          icon={<BiEdit className="text-xl" />}
-          label="Editer"
+          icon={<BiEdit className='text-xl' />}
+          label='Editer'
         />,
       ],
     },
-  ];
+  ]
 
   return (
     <>
       <DataTable
         columns={Columns}
         rows={data}
-        ID="N_APOGEE"
+        ID='N_APOGEE'
         customSlots={{
           columnMenu: CustomColumnMenu,
           toolbar: CustomToolbar,
@@ -99,11 +99,11 @@ export function Table({ data }: { data: any }) {
           <div>
             <Toast.Title>succès</Toast.Title>
             <Toast.Description>
-              Categorie Supprimer avec succés
+              Etudiant Supprimer avec succés
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setisDeleted(false)}>
-            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
+            <button className='bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg'>
               fermer
             </button>
           </Toast.Close>
@@ -112,17 +112,17 @@ export function Table({ data }: { data: any }) {
           <div>
             <Toast.Title>Error</Toast.Title>
             <Toast.Description>
-              categorie utiliser dans un livre ou comme categorie pere
+              imposible de supprimer cet etudiant
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setnotDeleted(false)}>
-            <button className="border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg">
+            <button className='border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg'>
               fermer
             </button>
           </Toast.Close>
         </Toast.Root>
-        <Toast.ToastViewport className="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none" />
+        <Toast.ToastViewport className='[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none' />
       </Toast.Provider>
     </>
-  );
+  )
 }

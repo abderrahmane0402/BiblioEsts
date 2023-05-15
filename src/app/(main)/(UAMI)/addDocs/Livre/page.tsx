@@ -1,11 +1,9 @@
 import * as f from "@/components/Form";
 import { AddExe } from "@/components/addExemplaire";
-import addLivre from "@/components/server/addLivre";
-import Button from "@/ui/Button";
-import Header from "@/ui/Header";
-import Input from "@/ui/Input";
 import InputSelect from "@/components/ui/Select";
 import { getCategories_Select } from "@/db/Get/Categorie";
+import Header from "@/ui/Header";
+import Input from "@/ui/Input";
 import Form from "./form";
 
 const Page = async () => {
@@ -186,7 +184,6 @@ const Page = async () => {
                   name="page_garde"
                   type="file"
                   accept=".jpg, .jpeg, .png"
-                  maxLength={50}
                   required
                 />
               </f.FormControl>
