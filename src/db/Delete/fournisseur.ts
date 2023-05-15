@@ -1,14 +1,13 @@
 import prisma from "@/utils/Prisma";
 
-export async function setCategorie(categorie: any) {
+export async function removeFourni(id: number) {
   try {
-    await prisma.categorie.create({
-      data: {
-        ...categorie
+    await prisma.fournisseur.delete({
+      where: {
+        ID_FOR: id,
       },
     });
     await prisma.$disconnect;
-    
   } catch (e) {
     await prisma.$disconnect;
     throw Error("somthing went wrong" + e);
