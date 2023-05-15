@@ -101,7 +101,7 @@ export function Table({ data }: { data: any }) {
           <div>
             <Toast.Title>succès</Toast.Title>
             <Toast.Description>
-              Categorie Supprimer avec succés
+              utilisateur Supprimer avec succés
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setisDeleted(false)}>
@@ -114,7 +114,7 @@ export function Table({ data }: { data: any }) {
           <div>
             <Toast.Title>Error</Toast.Title>
             <Toast.Description>
-              categorie utiliser dans un livre ou comme categorie pere
+              imposible de supprimer utilisateur
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setnotDeleted(false)}>
