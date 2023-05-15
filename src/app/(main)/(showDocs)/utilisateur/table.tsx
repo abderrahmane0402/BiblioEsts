@@ -76,6 +76,9 @@ export function Table({ data }: { data: any }) {
           key={`edit-${params.id}`}
           icon={<BiEdit className="text-xl" />}
           label="Editer"
+          onClick={() => {
+            router.push(`/updateDocs/User/${params.id}`);
+          }}
         />,
       ],
     },

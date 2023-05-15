@@ -5,15 +5,7 @@ import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
 import { FC, ReactPortal, useEffect, useRef, useState } from "react";
 
-interface FormProps extends ReactPortal{
-  id : number  ,
-  children :  React.ReactNode
-}
-
-  
-  const Form :  FC<FormProps> =  ({id , children }) => {
-      
-
+const Form = ({ id, children }: { id: number ,children : React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null);
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +16,6 @@ interface FormProps extends ReactPortal{
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
-
   return (
     <f.FormRoot
       onSubmit={() => {
@@ -33,14 +24,13 @@ interface FormProps extends ReactPortal{
       ref={form}
       className="w-full"
       action={async (FormData) => {
-        const data = await updateLivre(FormData  , id);
+        const data = await updateLivre(FormData, id);
         if (data) {
           setOpen(true);
           form.current?.reset();
         }
       }}
     >
-      
       {children}
       <f.FormSubmit asChild>
         <Button
@@ -48,7 +38,7 @@ interface FormProps extends ReactPortal{
           isLoading={isLoading}
           className="bg-[#CA3CFF] text-white w-3/12"
         >
-          Modifier le  livre
+          Modifier le livre
         </Button>
       </f.FormSubmit>
 
@@ -56,7 +46,9 @@ interface FormProps extends ReactPortal{
         <Toast.Root open={open} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>
-            <Toast.Description>Livre a été modifié avec succés</Toast.Description>
+            <Toast.Description>
+              Livre a été modifié avec succés
+            </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen(false)}>
             <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">

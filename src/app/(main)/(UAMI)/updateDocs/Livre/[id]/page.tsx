@@ -5,7 +5,6 @@ import Form from "./Form";
 import { getLivre } from "@/db/Get/Livres";
 import InputSelect from "@/components/ui/Select";
 import { getCategories_Select } from "@/db/Get/Categorie";
-import { Decimal } from "@prisma/client/runtime";
 import { getDate } from "@/utils/date";
 
 // export const revalidate = 0;
@@ -20,7 +19,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="overflow-auto w-full h-full">
-      <Form  id={id} key={null}  type={""} props={undefined}    >
+      <Form  id={id}  >
         <Header size={"lg"}>Information de livre</Header>
         <div className="flex flex-wrap ">
           <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
@@ -152,14 +151,12 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-                <InputSelect
+                <InputSelect 
                   options={data}
                   autoWidth={false}
                   multiple={false}
                   native={false}
-                  value={livre?.ID_CAT}
                   name="categorie"
-                  
                 /> 
                </f.FormControl>
             </f.FormField>

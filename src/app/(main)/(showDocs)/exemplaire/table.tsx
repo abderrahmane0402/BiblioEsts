@@ -19,81 +19,71 @@ export function Table({ data }: { data: any }) {
   const router = useRouter();
   const Columns: GridColDef[] = [
     {
-      field: "SUJET",
-      headerName: "Sujet",
-      flex: 1,
-      type: "string",
-      hideable: false,
-    },
-    {
-      field: "REALISATEUR",
-      flex: 2,
-      headerName: "Réalisateur",
-      type: "string",
-      hideable: false,
-    },
-    {
-      field: "ENCADRANT",
-      flex: 1,
-      headerName: "Encadrant",
-      type: "string",
-      hideable: false,
-    },
-    {
-      field: "DATE_REALISATION",
-      flex: 1,
-      headerName: "Année de réalisation",
+      field: "N_INVENTAIRE",
+      headerName: "N_Inventaire",
       type: "number",
       hideable: false,
     },
     {
-      field: "actions",
-      width: 70,
-      type: "actions",
-      getActions: (params: GridRowParams) => [
-        <GridActionsCellItem
-          key={params.id}
-          icon={<MdDelete className="text-xl" />}
-          label="delete"
-          onClick={() => {
-            fetch(`/api/pfe/${params.id}`, {
-              method: "DELETE",
-            })
-              .then((res) => res.text())
-              .then((data) => {
-                if (data === "ok") {
-                  router.refresh();
-                  setisDeleted(data === "ok");
-                  setTimeout(() => setisDeleted(false), 2000);
-                } else {
-                  setnotDeleted(true);
-                  setTimeout(() => setnotDeleted(false), 2000);
-                }
-              });
-          }}
-        />,
-        <GridActionsCellItem
-          key={params.id}
-          icon={<BiEdit className="text-xl" />}
-          label="editer"
-          onClick={() => {
-            router.push(`/updateDocs/Pfe/${params.id}`);
-          }}
-        />,
-      ],
+      field: "OBSERVATIONE",
+      headerName: "Observation",
+      type: "string",
+      hideable: false,
+    },
+    {
+        field: "actions",
+        width: 70,
+        type: "actions",
+        getActions: (params: GridRowParams) => [
+          
+          <GridActionsCellItem
+            key={params.id}
+            icon={<MdDelete className="text-xl" />}
+            label="delete"
+            onClick={() => {
+              fetch(`/api/exemplaire/${params.id}`, {
+                method: "DELETE",
+              })
+                .then((res) => res.text())
+                .then((data) => {
+                  if (data === "ok") {
+                    router.refresh();
+                    setisDeleted(data === "ok");
+                    setTimeout(() => setisDeleted(false), 2000);
+                  } else {
+                    setnotDeleted(true);
+                    setTimeout(() => setnotDeleted(false), 2000);
+                  }
+                });
+            }}
+          />,
+          <GridActionsCellItem
+            key={params.id}
+            icon={<BiEdit className="text-xl" />}
+            label="editer"
+            onClick={() => {
+              router.push(`/updateDocs/Exemplaire/${params.id}`);
+            }}
+          />,
+        ],
     },
   ];
 
   return (
+    // <DataTable
+      
+    // />
     <>
       <DataTable
         columns={Columns}
-        rows={data}
-        ID="IDPFE"
+        rows={data ? data : []}
+        ID="N_INVENTAIRE"
+        className="h-auto"
         customSlots={{
           columnMenu: CustomColumnMenu,
           toolbar: CustomToolbar,
         }}
+        hideFooter
         autoPageSize
       />
       <Toast.Provider>
@@ -101,7 +91,7 @@ export function Table({ data }: { data: any }) {
           <div>
             <Toast.Title>succès</Toast.Title>
             <Toast.Description>
-              Categorie Supprimer avec succés
+              Exemplaire a  été  Supprimeé avec succés
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setisDeleted(false)}>
@@ -114,7 +104,7 @@ export function Table({ data }: { data: any }) {
           <div>
             <Toast.Title>Error</Toast.Title>
             <Toast.Description>
-              categorie utiliser dans un livre ou comme categorie pere
+              Exemplaire utiliser dans un livre ou comme categorie pere
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setnotDeleted(false)}>
@@ -126,5 +116,6 @@ export function Table({ data }: { data: any }) {
         <Toast.ToastViewport className="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none" />
       </Toast.Provider>
     </>
+    
   );
 }

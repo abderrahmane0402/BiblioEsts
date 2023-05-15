@@ -12,7 +12,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
   const Pfe = await getPfe(id);
 
   return (
-    <Form id={id} key={undefined}  props={undefined} type={undefined}  >
+    <Form id={id}   >
       {/* sujet */}
 
       <f.FormField name="sujet" className="w-full">
