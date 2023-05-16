@@ -11,6 +11,22 @@ export async function getProfs() {
   }
 }
 
+export async function getProfshort() {
+  try {
+    const profs = await prisma.prof.findMany({
+      select: {
+        NOM: true,
+        PRENOM: true,
+      },
+    })
+    await prisma.$disconnect
+    return profs
+  } catch (e) {
+    await prisma.$disconnect
+    throw Error("somthing went wrong with the database" + e)
+  }
+}
+
 export async function getProf(id: number) {
   try {
     const prof = await prisma.prof.findUnique({

@@ -25,3 +25,18 @@ export async function getEtudiants() {
     throw Error("somthing went wrong" + e)
   }
 }
+
+export async function getEtudiantsShort() {
+  try {
+    const etudiants = await prisma.etudiant.findMany({
+      select: {
+        N_APOGEE: true,
+      },
+    })
+    await prisma.$disconnect
+    return etudiants
+  } catch (e) {
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
+  }
+}
