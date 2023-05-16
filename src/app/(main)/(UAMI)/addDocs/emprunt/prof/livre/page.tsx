@@ -2,10 +2,9 @@ import * as f from "@/components/Form";
 import Header from "@/components/ui/Header";
 import Input from "@/components/ui/Input";
 import AutoComplete from "@/components/ui/autoComplete";
-import Form from "../../form";
 import { getNinv } from "@/db/Get/Livres";
 import { getProfshort } from "@/db/Get/Prof";
-import { empruntLivreP } from "@/components/server/Emprunt/livre";
+import Form from "../../form";
 
 const Page = async () => {
   const [Apoge, Inv] = await Promise.all([getProfshort(), getNinv()]);
@@ -14,7 +13,7 @@ const Page = async () => {
   );
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE);
   return (
-    <Form handleSubmit={empruntLivreP}>
+    <Form>
       <div className="flex w-full">
         <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
           {/* nmr_Inv */}

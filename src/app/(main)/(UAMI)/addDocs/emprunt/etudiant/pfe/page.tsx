@@ -1,5 +1,4 @@
 import * as f from "@/components/Form";
-import { empruntPfeE } from "@/components/server/Emprunt/pfe";
 import Header from "@/components/ui/Header";
 import Input from "@/components/ui/Input";
 import AutoComplete from "@/components/ui/autoComplete";
@@ -12,7 +11,7 @@ const Page = async () => {
   const result = Apoge.map((obj) => obj.N_APOGEE);
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE);
   return (
-    <Form handleSubmit={empruntPfeE}>
+    <Form>
       <div className="flex w-full">
         <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
           {/* nmr_Inv */}
