@@ -67,6 +67,16 @@ export async function getExemplaire(id: number) {
     throw Error("somthing went wrong" + e)
   }
 }
+export async function getExemplaires() {
+  try {
+    const Exemplaire = await prisma.exemplaire.findMany()
+    await prisma.$disconnect
+    return Exemplaire
+  } catch (e) {
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
+  }
+}
 
 export async function getNinv() {
   try {

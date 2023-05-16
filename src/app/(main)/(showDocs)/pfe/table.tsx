@@ -74,8 +74,11 @@ export function Table({ data }: { data: any }) {
         />,
         <GridActionsCellItem
           key={params.id}
-          icon={<BiEdit className='text-xl' />}
-          label='editer'
+          icon={<BiEdit className="text-xl" />}
+          label="editer"
+          onClick={() => {
+            router.push(`/updateDocs/Pfe/${params.id}`);
+          }}
         />,
       ],
     },

@@ -13,7 +13,7 @@ interface SelectProps extends SelectInputProps {
 
 const InputSelect: FC<SelectProps> = ({ options, placeholder, ...props }) => {
   return (
-    <Select
+    <Select required 
       {...props}
       defaultValue={null}
       className="h-10 w-full bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg"

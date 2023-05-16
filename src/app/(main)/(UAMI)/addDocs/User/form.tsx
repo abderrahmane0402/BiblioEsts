@@ -1,6 +1,6 @@
 "use client";
 import * as f from "@/components/Form";
-import addUser from "@/components/server/addUser";
+import addUser from "@/components/server/User/addUser";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
 import { useEffect, useRef, useState } from "react";

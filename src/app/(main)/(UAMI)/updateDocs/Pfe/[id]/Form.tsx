@@ -3,19 +3,12 @@ import * as f from "@/components/Form";
 import updatePfe from "@/components/server/Pfe/UpdatePfe";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
-import { FC, ReactPortal, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
-interface FormProps extends ReactPortal{
-  id : number  ,
-  children :  React.ReactNode,
-  props : any ,
-  key: any;
-  type: any;
-}
 
-  
-  const Form :  FC<FormProps> =  ({id , children , props, key , type}) => {
-      
+const Form =  ({ id, children }: { id: number ,children : React.ReactNode }) => {
+  const router = useRouter()
 
   const form = useRef<HTMLFormElement>(null);
   const [open, setOpen] = useState(false);
@@ -39,7 +32,7 @@ interface FormProps extends ReactPortal{
         const data = await updatePfe(FormData  , id);
         if (data) {
           setOpen(true);
-          form.current?.reset();
+          router.refresh;
         }
       }}
     >

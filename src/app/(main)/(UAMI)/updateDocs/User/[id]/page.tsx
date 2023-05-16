@@ -1,11 +1,15 @@
 import * as f from "@/components/Form";
 import Header from "@/ui/Header";
 import Input from "@/ui/Input";
-import Form from "./form";
+import Form from "./Form";
+import { getUtilisateur } from "@/db/Get/Utilisateur";
 
-const page = () => {
+const Page = async ({ params }: { params: { id: string } }) => {
+  // const data = await getCategories_Select();
+  const id = parseInt(params.id);
+  const User = await getUtilisateur(id);
   return (
-    <Form>
+    <Form id={id}>
       {/* Nom */}
       <f.FormField name="nom_user" className="w-full">
         <div className="w-full">
@@ -18,7 +22,7 @@ const page = () => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className="h-10" name="nom_user" type="text" required />
+          <Input className="h-10" name="nom_user" type="text" required defaultValue={User!.NOM as string} />
         </f.FormControl>
       </f.FormField>
       {/* prenom */}
@@ -33,7 +37,7 @@ const page = () => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className="h-10" name="prenom_user" type="text" required />
+          <Input className="h-10" name="prenom_user" defaultValue={User!.PRENOM as string} type="text" required />
         </f.FormControl>
       </f.FormField>
       {/* telephone */}
@@ -50,7 +54,7 @@ const page = () => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className="h-10" name="telep_user" type="number" required />
+          <Input className="h-10" name="telep_user" type="number" defaultValue={User!.TELEPHONE as number} required />
         </f.FormControl>
       </f.FormField>
       {/* email  */}
@@ -65,7 +69,7 @@ const page = () => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className="h-10" name="login_user" type="text" required />
+          <Input className="h-10" name="login_user" type="text" defaultValue={User!.LOGIN as string}  required />
         </f.FormControl>
       </f.FormField>
       {/* password */}
@@ -115,4 +119,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

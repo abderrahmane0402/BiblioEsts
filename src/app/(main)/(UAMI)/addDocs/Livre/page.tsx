@@ -1,9 +1,9 @@
 import * as f from "@/components/Form";
 import { AddExe } from "@/components/addExemplaire";
-import InputSelect from "@/components/ui/Select";
-import { getCategories_Select } from "@/db/Get/Categorie";
 import Header from "@/ui/Header";
 import Input from "@/ui/Input";
+import InputSelect from "@/components/ui/Select";
+import { getCategories_Select } from "@/db/Get/Categorie";
 import Form from "./form";
 
 const Page = async () => {
