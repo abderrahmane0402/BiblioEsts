@@ -1,7 +1,7 @@
 import prisma from "@/utils/Prisma"
 import { approvisionement, exemplaire, fournisseur, livre } from "@prisma/client"
 
-export async function setPlivre(Plivre : approvisionement, fournisseur : any ,livre : livre[]) {
+export async function setAprolivre(Plivre : approvisionement, fournisseur : any ,livre : livre[]) {
 
   try {
     await prisma.approvisionement.create({

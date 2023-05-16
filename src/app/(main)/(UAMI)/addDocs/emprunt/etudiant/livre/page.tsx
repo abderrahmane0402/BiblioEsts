@@ -5,13 +5,14 @@ import AutoComplete from "@/components/ui/autoComplete"
 import Form from "../../form"
 import { getEtudiantsShort } from "@/db/Get/Etudiant"
 import { getNinv } from "@/db/Get/Livres"
+import { empruntLivreE } from "@/components/server/Emprunt/livre"
 
 const Page = async () => {
   const [Apoge, Inv] = await Promise.all([getEtudiantsShort(), getNinv()])
   const result = Apoge.map((obj) => obj.N_APOGEE)
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE)
   return (
-    <Form>
+    <Form handleSubmit={empruntLivreE}>
       <div className='flex w-full'>
         <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
           {/* nmr_Inv */}
@@ -68,7 +69,6 @@ const Page = async () => {
                 className='h-10'
                 name='date_D'
                 type='date'
-                // onChange={(e) => setEmail(e.target.value)}
                 maxLength={255}
                 required
               />
@@ -92,7 +92,6 @@ const Page = async () => {
                 className='h-10'
                 name='date_f'
                 type='date'
-                // onChange={(e) => setEmail(e.target.value)}
                 maxLength={255}
                 required
               />

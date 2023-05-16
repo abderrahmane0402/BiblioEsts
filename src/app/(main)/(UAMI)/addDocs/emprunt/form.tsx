@@ -5,7 +5,13 @@ import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
 import { useEffect, useRef, useState } from "react";
 
-const Form = ({ children }: { children: React.ReactNode }) => {
+const Form = ({
+  children,
+  handleSubmit,
+}: {
+  children: React.ReactNode;
+  handleSubmit: (formData: FormData) => Promise<boolean>;
+}) => {
   const form = useRef<HTMLFormElement>(null);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -27,7 +33,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className="w-full"
       action={async (FormData) => {
-        const data = await addPfe(FormData);
+        const data = await handleSubmit(FormData);
         if (data) {
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);

@@ -1,4 +1,4 @@
-import prisma from "@/utils/Prisma"
+import prisma from "@/utils/Prisma";
 
 export async function getEtudiant(id: number) {
   try {
@@ -6,23 +6,23 @@ export async function getEtudiant(id: number) {
       where: {
         N_APOGEE: id,
       },
-    })
-    await prisma.$disconnect
-    return etudiant
+    });
+    await prisma.$disconnect;
+    return etudiant;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
 export async function getEtudiants() {
   try {
-    const etudiants = await prisma.etudiant.findMany()
-    await prisma.$disconnect
-    return etudiants
+    const etudiants = await prisma.etudiant.findMany();
+    await prisma.$disconnect;
+    return etudiants;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
@@ -32,11 +32,23 @@ export async function getEtudiantsShort() {
       select: {
         N_APOGEE: true,
       },
-    })
-    await prisma.$disconnect
-    return etudiants
+      where: {
+        emprunt_livre_etudiant: {
+          none: {
+            DATE_R: null,
+          },
+        },
+        emprunt_pfe_etudiant: {
+          none: {
+            DATE_R: null,
+          },
+        },
+      },
+    });
+    await prisma.$disconnect;
+    return etudiants;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }

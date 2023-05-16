@@ -8,6 +8,7 @@ export const Button = ({ name }: { name: string }) => {
   let path = usePathname();
   const link = path!.split("/");
   const [active, setactive] = useState(false);
+
   useEffect(() => {
     setactive(path!.includes(name));
     // eslint-disable-next-line react-hooks/exhaustive-deps
