@@ -1,5 +1,5 @@
 import prisma from "@/utils/Prisma";
-
+import { revalidatePath } from "next/cache"
 export async function removeFourni(id: number) {
   try {
     await prisma.fournisseur.delete({

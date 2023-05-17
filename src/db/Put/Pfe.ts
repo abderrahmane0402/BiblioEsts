@@ -1,8 +1,8 @@
 import prisma from "@/utils/Prisma";
-import { pfe } from "@prisma/client";
 
 export async function PutPfe(pfe_Id: number ,Pfe: any) {
   try {
+    
     await prisma.pfe.update({
       where: {
         IDPFE : pfe_Id

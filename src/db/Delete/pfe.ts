@@ -1,6 +1,6 @@
 
 import prisma from "@/utils/Prisma";
-
+import { revalidatePath } from "next/cache"
 export async function removePFE(id: number) {
   try {
     await prisma.pfe.delete({
