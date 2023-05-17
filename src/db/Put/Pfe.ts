@@ -1,18 +1,19 @@
 import prisma from "@/utils/Prisma";
+import { revalidatePath } from "next/cache";
 
-export async function PutPfe(pfe_Id: number ,Pfe: any) {
+export async function PutPfe(pfe_Id: string ,Pfe: any) {
   try {
     
     await prisma.pfe.update({
       where: {
-        IDPFE : pfe_Id
+        Cote : pfe_Id
       },
       data: {
         ...Pfe,
        
       }
     });
-
+    revalidatePath("/pfe")
     await prisma.$disconnect();
   } catch (e) {
     await prisma.$disconnect();

@@ -24,12 +24,9 @@ export function Table({ data }: { data: any }) {
       hideable: false,
     },
     {
-      field: "professeur",
-      headerName: "professeur",
+      field: "Code",
+      headerName: "Code",
       flex: 1,
-      valueGetter(params) {
-        return params.row.professeur.NOM + " " + params.row.professeur.PRENOM;
-      },
       type: "string",
       hideable: false,
     },

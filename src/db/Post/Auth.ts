@@ -1,4 +1,5 @@
 import prisma from "@/utils/Prisma";
+import { revalidatePath } from "next/cache";
 
 export async function Authentication(login: string, password: string) {
   try {
@@ -8,6 +9,7 @@ export async function Authentication(login: string, password: string) {
         PASSWORD: password,
       },
     });
+    revalidatePath("utilisateur")
     await prisma.$disconnect;
     return user;
   } catch (e) {

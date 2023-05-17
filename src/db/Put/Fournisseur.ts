@@ -1,5 +1,6 @@
 import prisma from "@/utils/Prisma";
 import { fournisseur } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 export async function PutFournisseur(fournisseur_Id: number ,Fournisseur: fournisseur) {
   try {
@@ -12,7 +13,7 @@ export async function PutFournisseur(fournisseur_Id: number ,Fournisseur: fourni
        
       }
     });
-
+      revalidatePath("/fournisseur")
     await prisma.$disconnect();
   } catch (e) {
     await prisma.$disconnect();

@@ -15,9 +15,7 @@ export async function getProfshort() {
   try {
     const profs = await prisma.prof.findMany({
       select: {
-        ID_PROF: true,
-        NOM: true,
-        PRENOM: true,
+        Code: true,
       },
       where: {
         emprunt_livre_prof: {
@@ -40,11 +38,11 @@ export async function getProfshort() {
   }
 }
 
-export async function getProf(id: number) {
+export async function getProf(id: string) {
   try {
     const prof = await prisma.prof.findUnique({
       where: {
-        ID_PROF: id,
+        Code: id,
       },
     });
     await prisma.$disconnect;

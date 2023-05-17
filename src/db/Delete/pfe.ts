@@ -1,13 +1,14 @@
 
 import prisma from "@/utils/Prisma";
 import { revalidatePath } from "next/cache"
-export async function removePFE(id: number) {
+export async function removePFE(id: string) {
   try {
     await prisma.pfe.delete({
       where: {
-        IDPFE: id,
+        Cote: id,
       },
     });
+    revalidatePath("/pfe");
     await prisma.$disconnect;
   } catch (e) {
     await prisma.$disconnect;

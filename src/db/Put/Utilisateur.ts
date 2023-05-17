@@ -1,5 +1,7 @@
 import prisma from "@/utils/Prisma";
 import { utilisateur } from "@prisma/client";
+import { revalidatePath } from "next/cache";
+
 
 export async function PutUtilisateur(utilisateur_Id: number ,Utilisateur: utilisateur) {
   try {
@@ -12,7 +14,7 @@ export async function PutUtilisateur(utilisateur_Id: number ,Utilisateur: utilis
        
       }
     });
-
+    revalidatePath("/utilisateur")
     await prisma.$disconnect();
   } catch (e) {
     await prisma.$disconnect();

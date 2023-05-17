@@ -16,15 +16,15 @@ export function Table({ data }: { data: any }) {
   const router = useRouter();
   const Columns: GridColDef[] = [
     {
-      field: "IDPFE",
-      headerName: "N°PFE",
+      field: "Cote",
+      headerName: "Cote",
       flex: 0.7,
-      type: "number",
+      type: "string",
       hideable: false,
     },
     {
-      field: "professeur",
-      headerName: "professeur",
+      field: "Code",
+      headerName: "Code",
       flex: 1,
       valueGetter(params) {
         return params.row.professeur.NOM + " " + params.row.professeur.PRENOM;

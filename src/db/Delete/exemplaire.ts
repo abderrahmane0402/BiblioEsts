@@ -8,6 +8,7 @@ export async function removeExemplaire(id: number) {
         N_INVENTAIRE: id,
       },
     });
+    revalidatePath("/exemplaires");
     await prisma.$disconnect;
   } catch (e) {
     await prisma.$disconnect;

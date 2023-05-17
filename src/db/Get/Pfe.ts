@@ -11,11 +11,11 @@ export async function getPfes() {
   }
 }
 
-export async function getPfe(id: number) {
+export async function getPfe(id: string) {
   try {
     const pfe = await prisma.pfe.findUnique({
       where: {
-        IDPFE: id,
+        Cote: id,
       },
     })
     await prisma.$disconnect

@@ -1,5 +1,6 @@
 import prisma from "@/utils/Prisma";
 import { categorie } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 export async function PutCategorie(categorie_Id: number ,Categorie: categorie) {
   try {
@@ -12,7 +13,8 @@ export async function PutCategorie(categorie_Id: number ,Categorie: categorie) {
        
       }
     });
-
+    revalidatePath("categorie")
+    
     await prisma.$disconnect();
   } catch (e) {
     await prisma.$disconnect();

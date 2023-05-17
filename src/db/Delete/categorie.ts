@@ -7,6 +7,7 @@ export async function removeCat(id: number) {
         ID_CAT: id,
       },
     });
+    revalidatePath("categories");
     await prisma.$disconnect;
   } catch (e) {
     await prisma.$disconnect;

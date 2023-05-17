@@ -1,5 +1,6 @@
 import prisma from "@/utils/Prisma";
 import { exemplaire } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 export async function PutExemplaire(exempl_Id: number ,Exemplaires: exemplaire) {
   try {
@@ -12,7 +13,7 @@ export async function PutExemplaire(exempl_Id: number ,Exemplaires: exemplaire) 
        
       }
     });
-
+      revalidatePath("/exemplaire")
     await prisma.$disconnect();
   } catch (e) {
     await prisma.$disconnect();

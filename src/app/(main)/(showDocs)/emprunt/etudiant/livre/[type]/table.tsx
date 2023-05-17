@@ -23,8 +23,8 @@ export function Table({ data }: { data: any }) {
       hideable: false,
     },
     {
-      field: "N_APOGEE",
-      headerName: "N_APOGEE",
+      field: "N_inscription",
+      headerName: "N_inscription",
       flex: 0.7,
       type: "string",
       hideable: false,

@@ -7,6 +7,7 @@ export async function removeUser(id: number) {
         ID_U: id,
       },
     });
+    revalidatePath("utilisateur");
     await prisma.$disconnect;
   } catch (e) {
     await prisma.$disconnect;

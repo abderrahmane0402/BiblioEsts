@@ -19,6 +19,13 @@ export function Table({ data }: { data: any }) {
   const router = useRouter()
   const Columns: GridColDef[] = [
     {
+      field: "Cote",
+      headerName: "Cote",
+      flex: 1,
+      type: "string",
+      hideable: false,
+    },
+    {
       field: "SUJET",
       headerName: "Sujet",
       flex: 1,

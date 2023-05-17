@@ -1,5 +1,6 @@
 import prisma from "@/utils/Prisma";
-import { Prisma, exemplaire, livre } from "@prisma/client";
+
+import { revalidatePath } from "next/cache";
 
 export async function setLivres(livre: any, exemplaire: any[]) {
   try {
@@ -23,7 +24,8 @@ export async function setLivres(livre: any, exemplaire: any[]) {
         },
       },
     });
-    
+
+    revalidatePath("/livre");
     await prisma.$disconnect;
   } catch (e) {
     await prisma.$disconnect;
