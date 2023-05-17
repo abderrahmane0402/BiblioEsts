@@ -3,8 +3,6 @@ import { ZNav } from "@/components/Nav"
 import PageHeader from "@/components/PageHeader"
 import User from "@/components/User"
 import EstLogo from "@/img/Mylogo.png"
-import { filiere } from "@/types"
-import { Prisma, exemplaire, livre } from "@prisma/client"
 import { FC, ReactNode } from "react"
 
 interface LayoutProps {

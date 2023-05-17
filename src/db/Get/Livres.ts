@@ -1,4 +1,4 @@
-import prisma from "@/utils/Prisma"
+import prisma from "@/utils/Prisma";
 
 export async function getLivres() {
   try {
@@ -16,12 +16,12 @@ export async function getLivres() {
           },
         },
       },
-    })
-    await prisma.$disconnect
-    return Livres
+    });
+    await prisma.$disconnect;
+    return Livres;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
@@ -44,12 +44,12 @@ export async function getLivre(id: number) {
       where: {
         ID_LIVRE: id,
       },
-    })
-    await prisma.$disconnect
-    return Livre
+    });
+    await prisma.$disconnect;
+    return Livre;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
@@ -59,21 +59,48 @@ export async function getExemplaire(id: number) {
       where: {
         N_INVENTAIRE: id,
       },
-    })
-    await prisma.$disconnect
-    return Exemplaire
+    });
+    await prisma.$disconnect;
+    return Exemplaire;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 export async function getExemplaires() {
   try {
-    const Exemplaire = await prisma.exemplaire.findMany()
-    await prisma.$disconnect
-    return Exemplaire
+    const Exemplaire = await prisma.exemplaire.findMany();
+    await prisma.$disconnect;
+    return Exemplaire;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
+  }
+}
+
+export async function getNinv() {
+  try {
+    const Livres = await prisma.exemplaire.findMany({
+      select: {
+        N_INVENTAIRE: true,
+      },
+      where: {
+        emprunt_livre_etudiant: {
+          none: {
+            DATE_R: null,
+          },
+        },
+        emprunt_livre_prof: {
+          none: {
+            DATE_R: null,
+          },
+        },
+      },
+    });
+    await prisma.$disconnect;
+    return Livres;
+  } catch (e) {
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }

@@ -1,21 +1,19 @@
 "use client";
 import * as f from "@/components/Form";
+import { Auth } from "@/components/server/Auth";
 import Button from "@/components/ui/Button";
 import Header from "@/components/ui/Header";
 import Input from "@/components/ui/Input";
 import MLink from "@/components/ui/MLink";
 import Paragraph from "@/components/ui/Paragraph";
-import { FC, FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { FC, useState } from "react";
 
 interface Sign_inProps {}
 
 const Sign_in: FC<Sign_inProps> = ({}) => {
-  const [email, setEmail] = useState<string>("");
-  const [pass, setPass] = useState<string>("");
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    console.log(email + pass);
-  };
+  const [error, setError] = useState(false);
+  const router = useRouter();
   return (
     <div className="flex flex-col items-center">
       <Header>Login</Header>
@@ -24,8 +22,22 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
       </Paragraph>
       <f.FormRoot
         className="w-4/5 flex flex-col items-center justify-center gap-2"
-        onSubmit={handleSubmit}
+        action={async (FormData) => {
+          const res = await Auth(FormData);
+          if (res) {
+            sessionStorage.setItem("login", FormData.get("login") as string);
+            sessionStorage.setItem("password", FormData.get("pass") as string);
+            router.push("/dashboard");
+          } else {
+            setError(true);
+          }
+        }}
       >
+        {error && (
+          <Paragraph type={"warning"} size={"sm"}>
+            incorrect login ou mot de pass
+          </Paragraph>
+        )}
         <f.FormField name="email">
           <div className="flex justify-between">
             <f.FormLabel>Email :</f.FormLabel>
@@ -37,13 +49,7 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
             </f.FormMessage>
           </div>
           <f.FormControl asChild>
-            <Input
-              name="email"
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              maxLength={40}
-              required
-            />
+            <Input name="login" type="text" maxLength={40} required />
           </f.FormControl>
         </f.FormField>
         <f.FormField name="pass">
@@ -57,13 +63,7 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
             </f.FormMessage>
           </div>
           <f.FormControl asChild>
-            <Input
-              name="pass"
-              type="password"
-              onChange={(e) => setPass(e.target.value)}
-              minLength={8}
-              required
-            />
+            <Input name="pass" type="password" minLength={8} required />
           </f.FormControl>
         </f.FormField>
         <f.FormSubmit asChild>
@@ -72,9 +72,12 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
           </Button>
         </f.FormSubmit>
       </f.FormRoot>
-      <MLink type={"link"} className="text-blue-500"  href={""}>Forget_Password?</MLink>
-      <MLink type={"link"} className="text-blue-500" href={"/signUp"}>Sign_up</MLink>
-      
+      <MLink type={"link"} className="text-blue-500" href={""}>
+        Forget_Password?
+      </MLink>
+      <MLink type={"link"} className="text-blue-500" href={"/signUp"}>
+        Sign_up
+      </MLink>
     </div>
   );
 };
