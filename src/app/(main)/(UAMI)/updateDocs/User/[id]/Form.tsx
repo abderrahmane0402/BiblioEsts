@@ -65,7 +65,7 @@ const Form = ({ id, children }: { id: number ,children : React.ReactNode }) => {
             isLoading={isLoading}
             className="bg-[#CA3CFF] text-white w-3/12"
           >
-            Modifier pfe
+            Modifier User
           </Button>
         </f.FormSubmit>
       </footer>

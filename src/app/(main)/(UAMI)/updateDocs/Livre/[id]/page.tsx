@@ -203,8 +203,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   type="file"
                   accept=".jpg, .jpeg, .png"
                   maxLength={50}
-                  
-                  defaultValue={livre?.PAGE_DE_GARDE as string}
+                  defaultValue={livre!.PAGE_DE_GARDE as string}
+                  required
                 />
               </f.FormControl>
             </f.FormField>
@@ -227,8 +227,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   accept=".pdf"
              
                   maxLength={50}
-                  
-                  defaultValue={livre?.SOMAIRE as string}
+                  required
+                  defaultValue={livre!.SOMAIRE as string}
              
                 />
               </f.FormControl>

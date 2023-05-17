@@ -79,6 +79,7 @@ export function Table({ data }: { data: any }) {
           key={params.id}
           icon={<MdDelete className="text-xl" />}
           label="delete"
+          
           showInMenu
         />,
         <GridActionsCellItem
@@ -86,6 +87,9 @@ export function Table({ data }: { data: any }) {
           icon={<BiEdit className="text-xl" />}
           label="editer"
           showInMenu
+          onClick={() => {
+            router.push(`/updateDocs/Emprunt/empLivEtud/${params.id}`);
+          }}
         />,
       ],
     },
