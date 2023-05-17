@@ -2,10 +2,9 @@ import * as f from "@/components/Form";
 import Header from "@/components/ui/Header";
 import Input from "@/components/ui/Input";
 import AutoComplete from "@/components/ui/autoComplete";
-import Form from "../../form";
 import { getEtudiantsShort } from "@/db/Get/Etudiant";
 import { getNinv } from "@/db/Get/Livres";
-import { empruntLivreE } from "@/components/server/Emprunt/livre";
+import Form from "./form";
 
 const Page = async () => {
   const [Apoge, Inv] = await Promise.all([getEtudiantsShort(), getNinv()]);

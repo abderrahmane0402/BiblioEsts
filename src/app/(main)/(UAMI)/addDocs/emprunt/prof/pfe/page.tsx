@@ -3,7 +3,7 @@ import Header from "@/components/ui/Header";
 import Input from "@/components/ui/Input";
 import AutoComplete from "@/components/ui/autoComplete";
 import { getProfshort } from "@/db/Get/Prof";
-import Form from "../../form";
+import Form from "./form";
 import { getCote } from "@/db/Get/Pfe";
 
 const Page = async () => {

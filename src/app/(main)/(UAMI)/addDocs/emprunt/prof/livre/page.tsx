@@ -4,7 +4,7 @@ import Input from "@/components/ui/Input";
 import AutoComplete from "@/components/ui/autoComplete";
 import { getNinv } from "@/db/Get/Livres";
 import { getProfshort } from "@/db/Get/Prof";
-import Form from "../../form";
+import Form from "./form";
 
 const Page = async () => {
   const [Apoge, Inv] = await Promise.all([getProfshort(), getNinv()]);
