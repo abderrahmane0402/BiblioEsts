@@ -3,19 +3,23 @@ import * as f from "@/components/Form";
 import updateLivre from "@/components/server/Livre/updatelivre";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
-import { FC, ReactPortal, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 
 const Form = ({ id, children }: { id: number ,children : React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null);
-  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    if (open === true && isLoading === true) {
+    if (
+      (open1 === true && isLoading === true) ||
+      (open2 === true && isLoading === true)
+    ) {
       setIsLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
-
+  }, [open1, open2]);
   return (
     <f.FormRoot
       onSubmit={() => {
@@ -24,34 +28,51 @@ const Form = ({ id, children }: { id: number ,children : React.ReactNode }) => {
       ref={form}
       className="w-full"
       action={async (FormData) => {
-        const data = await updateLivre(FormData, id);
+        const data = await updateLivre(FormData,id);
         if (data) {
-          setOpen(true);
+          setOpen1(true);
+          setTimeout(() => setOpen1(false), 1000);
           form.current?.reset();
+        } else {
+          setOpen2(true);
+          setTimeout(() => setOpen2(false), 1000);
         }
       }}
     >
       {children}
-      <f.FormSubmit asChild>
-        <Button
-          size={"md"}
-          isLoading={isLoading}
-          className="bg-[#CA3CFF] text-white w-3/12"
-        >
-          Modifier le livre
-        </Button>
-      </f.FormSubmit>
+      <footer className="flex justify-center items-center py-12">
+        <f.FormSubmit asChild>
+          <Button
+            size={"md"}
+            isLoading={isLoading}
+            className="bg-[#CA3CFF] text-white w-3/12"
+          >
+            Modifier Livre
+          </Button>
+        </f.FormSubmit>
+      </footer>
 
-      <Toast.Provider>
-        <Toast.Root open={open} Ttype={"success"}>
+      <Toast.Provider duration={1000}>
+        <Toast.Root open={open1} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>
+            <Toast.Description>Livre a été modifier avec succés</Toast.Description>
+          </div>
+          <Toast.Close asChild onClick={() => setOpen1(false)}>
+            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
+              fermer
+            </button>
+          </Toast.Close>
+        </Toast.Root>
+        <Toast.Root open={open2} Ttype={"error"}>
+          <div>
+            <Toast.Title>Error</Toast.Title>
             <Toast.Description>
-              Livre a été modifié avec succés
+              verifier les informations inserer
             </Toast.Description>
           </div>
-          <Toast.Close asChild onClick={() => setOpen(false)}>
-            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
+          <Toast.Close asChild onClick={() => setOpen2(false)}>
+            <button className="border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg">
               fermer
             </button>
           </Toast.Close>

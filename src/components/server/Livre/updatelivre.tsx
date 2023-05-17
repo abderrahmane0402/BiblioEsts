@@ -1,28 +1,61 @@
 "use server";
 
+import { getLivre } from "@/db/Get/Livres";
 import { PutLivres } from "@/db/Put/Livre";
 import { Prisma, livre } from "@prisma/client";
+import { log } from "console";
 
 export default async function updateLivre(data: FormData ,id: number) {
   
   try {
-    
-    const img = new FormData();
-    img.append("image", data.get("page_garde")as string);
-    const res = await fetch("http://localhost:3000/api/saveIMG", {
-      method: "PUT",
-      body: img,
-      cache: "no-store",
-    });
-    const imageName = await res.json();
+    const livredel = await getLivre(id)
+    let  imageName;
+    let pdfName;
+   
+    if(data.get("somaire")){
+      await fetch(`http://localhost:3000/api/deletePDF/${livredel?.SOMAIRE}`, {
+        method: "DELETE",
+        cache: "no-store",
+      });
+      
     const pdf = new FormData();
     pdf.append("pdf", data.get("somaire") as string );
     const pdfRes = await fetch("http://localhost:3000/api/savePDF", {
-      method: "PUT",
+      method: "POST",
       body: pdf,
       cache: "no-store",
     });
-    const pdfName = await pdfRes.json();
+     pdfName = await pdfRes.json();
+     pdfName = pdfName.id
+    }
+    else 
+    {
+      imageName = livredel?.SOMAIRE
+    }
+    
+    
+
+    if(data.get("page_garde"))
+    {
+      await fetch(`http://localhost:3000/api/deleteIMG/${livredel?.PAGE_DE_GARDE}`, {
+        method: "DELETE",
+        cache: "no-store",
+      });
+      const img = new FormData();
+      img.append("image", data.get("page_garde")as string);
+      const res = await fetch("http://localhost:3000/api/saveIMG", {
+        method: "POST",
+        body: img,
+        cache: "no-store",
+      });
+       imageName = await res.json();
+       imageName = imageName.id
+    }else {
+      imageName = livredel?.PAGE_DE_GARDE
+    }
+    
+   
+   
     const livre  : livre= {
       ID_LIVRE: id,
       TITRE: data.get("title") as string,
@@ -33,8 +66,8 @@ export default async function updateLivre(data: FormData ,id: number) {
       ID_CAT: Number(data.get("categorie")) ,
       CODE: data.get("code") ? Number(data.get("code") as string) : null,
       OBSERVATIONL: data.get("observation") as string,
-      PAGE_DE_GARDE: `${imageName.id}` as string,
-      SOMAIRE: `${pdfName.id}` as string,
+      PAGE_DE_GARDE: `${imageName}` as string,
+      SOMAIRE: `${pdfName}` as string,
     };
     console.log(livre);
     

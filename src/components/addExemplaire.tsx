@@ -1,5 +1,4 @@
 "use client";
-import { ExemplaireColumns } from "@/data/tableColumns";
 import * as f from "@/components/Form";
 import DataTable from "./DataTable";
 import {
@@ -19,10 +18,6 @@ export function AddExe() {
   const [ni, setni] = useState<number>();
   const [ob, setob] = useState<string>("");
   const ie = () => {
-    if (livre.size == 0) {
-      alert("Ajouter au moins un exemplaire");
-      return;
-    }
     let clone = new Map(livre);
     clone.set(ni, ob);
     setLivre(clone);
