@@ -1,3 +1,4 @@
+import CercleChart from "@/components/cercleChart"
 import {
   countElivre,
   countEpfe,
@@ -16,11 +17,37 @@ import { AiOutlineProject } from "react-icons/ai"
 import { BiBook } from "react-icons/bi"
 import { FaBookOpen } from "react-icons/fa"
 import { GrStakeholder } from "react-icons/gr"
-import { IoIosNotificationsOutline } from "react-icons/io"
 import {
   MdOutlineNotificationsActive,
   MdOutlineNotificationsNone,
 } from "react-icons/md"
+
+const data = {
+  labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+  datasets: [
+    {
+      label: "# of Votes",
+      data: [12, 19, 3, 5, 2, 3],
+      backgroundColor: [
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+        "rgba(255, 206, 86, 0.2)",
+        "rgba(75, 192, 192, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(255, 159, 64, 0.2)",
+      ],
+      borderColor: [
+        "rgba(255, 99, 132, 1)",
+        "rgba(54, 162, 235, 1)",
+        "rgba(255, 206, 86, 1)",
+        "rgba(75, 192, 192, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(255, 159, 64, 1)",
+      ],
+      borderWidth: 1,
+    },
+  ],
+}
 
 const Page = async ({}) => {
   //TODO:Test notification and complete the page
@@ -140,23 +167,8 @@ const Page = async ({}) => {
           <div className='h-1/5 flex justify-between items-center'>
             <Header size={"md"}>statistique</Header>
           </div>
-          <div className='h-1/5 flex gap-2 justify-around items-center'>
-            <div className='flex flex-col items-center justify-center'>
-              <span>44%</span>
-              <span>emprunter</span>
-            </div>
-            <div className='flex flex-col items-center justify-center'>
-              <span>44%</span>
-              <span>emprunter</span>
-            </div>
-            <div className='flex flex-col items-center justify-center'>
-              <span>44%</span>
-              <span>emprunter</span>
-            </div>
-            <div className='flex flex-col items-center justify-center'>
-              <span>44%</span>
-              <span>emprunter</span>
-            </div>
+          <div className='h-4/5 flex gap-2 justify-center items-center'>
+            <CercleChart data={data} />
           </div>
         </Card>
       </div>
