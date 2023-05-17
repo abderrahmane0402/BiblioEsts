@@ -7,7 +7,7 @@ export const empruntLivreE = async (formData: FormData) => {
   try {
     const emprunt = {
       N_INVENTAIRE: Number(formData.get("nmr_Inv")),
-      N_APOGEE: Number(formData.get("num_apogee")),
+      N_inscription: formData.get("num_apogee") as string,
       ID_U: /*Number(formData.get("id_u"))*/ 1,
       DATE_D: new Date(formData.get("date_D") as string),
       DATE_F: new Date(formData.get("date_f") as string),
@@ -22,10 +22,10 @@ export const empruntLivreE = async (formData: FormData) => {
 
 export async function empruntLivreP(formData: FormData) {
   try {
-    const idProf = Number(formData.get("prof")?.toString().split(" ")[0]);
     const emprunt = {
       N_INVENTAIRE: Number(formData.get("nmr_Inv")),
-      ID_PROF: idProf,
+      Code: formData.get("prof") as string,
+
       ID_U: /*Number(formData.get("id_u"))*/ 1,
       DATE_D: new Date(formData.get("date_D") as string),
       DATE_F: new Date(formData.get("date_f") as string),

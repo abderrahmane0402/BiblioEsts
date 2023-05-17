@@ -9,7 +9,7 @@ import { empruntLivreE } from "@/components/server/Emprunt/livre";
 
 const Page = async () => {
   const [Apoge, Inv] = await Promise.all([getEtudiantsShort(), getNinv()]);
-  const result = Apoge.map((obj) => obj.N_APOGEE);
+  const result = Apoge.map((obj) => obj.N_inscription);
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE);
   return (
     <Form>
@@ -36,13 +36,13 @@ const Page = async () => {
           <f.FormField name="num_apogee" className="w-full">
             <div className="w-full">
               <Header size={"md"} className="p">
-                Numéro d{"'"}apogée :
+                Numéro d{"'"}inscription :
               </Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir le numéro d{"'"}apogée
+                saisir le numéro d{"'"}inscription
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir un numéro d{"'"}apogée valide
+                saisir un numéro d{"'"}inscription valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>

@@ -8,7 +8,7 @@ import Form from "../../form";
 
 const Page = async () => {
   const [Apoge, Inv] = await Promise.all([getEtudiantsShort(), getNinv()]);
-  const result = Apoge.map((obj) => obj.N_APOGEE);
+  const result = Apoge.map((obj) => obj.N_inscription);
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE);
   return (
     <Form>

@@ -9,8 +9,7 @@ import Form from "../../form";
 const Page = async () => {
   const [Apoge, Inv] = await Promise.all([getProfshort(), getNinv()]);
   const result = Apoge.map(
-    (obj) => obj.ID_PROF + " " + obj.NOM + " " + obj.PRENOM
-  );
+    (obj) => obj.Code );
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE);
   return (
     <Form>
@@ -37,13 +36,13 @@ const Page = async () => {
           <f.FormField name="prof" className="w-full">
             <div className="w-full">
               <Header size={"md"} className="p">
-                Nom et Prenom :
+                Code :
               </Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir le numéro nom et le prenom
+                saisir le COde
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir un text valid
+                saisir un Code valid
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
