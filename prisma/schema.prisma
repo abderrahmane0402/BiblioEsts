@@ -50,7 +50,7 @@ model contient {
 model emprunt_livre_etudiant {
   IDLE          Int         @id @default(autoincrement())
   N_INVENTAIRE  Int
-  N_APOGEE      Int
+  N_inscription String
   ID_U          Int
   DATE_D        DateTime?   @db.Date
   DATE_F        DateTime?   @db.Date
@@ -58,10 +58,10 @@ model emprunt_livre_etudiant {
   OBSERVATIONLE String?     @db.Text
   utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT")
   exemplaire    exemplaire  @relation(fields: [N_INVENTAIRE], references: [N_INVENTAIRE], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT2")
-  etudiant      etudiant    @relation(fields: [N_APOGEE], references: [N_APOGEE], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT3")
+  etudiant      etudiant    @relation(fields: [N_inscription], references: [N_inscription], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT3")
 
   @@index([N_INVENTAIRE], map: "FK_EMPRUNTER_LIVRE_ETUDIANT")
-  @@index([N_APOGEE], map: "FK_EMPRUNTE_LIVRE_ETUDIANT")
+  @@index([N_inscription], map: "FK_EMPRUNTE_LIVRE_ETUDIANT")
   @@index([ID_U], map: "FK_SIGNER_LIVRE_ETUDIANT")
 }
 
@@ -87,17 +87,17 @@ model emprunt_pfe_etudiant {
   IDPE          Int         @id @default(autoincrement())
   Cote          String
   ID_U          Int
-  N_APOGEE      Int
+  N_inscription String
   DATE_D        DateTime?   @db.Date
   DATE_F        DateTime?   @db.Date
   DATE_R        DateTime?   @db.Date
   OBSERVATIONPE String?     @db.Text
   utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT")
   pfe           pfe         @relation(fields: [Cote], references: [Cote], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT2")
-  etudiant      etudiant    @relation(fields: [N_APOGEE], references: [N_APOGEE], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT3")
+  etudiant      etudiant    @relation(fields: [N_inscription], references: [N_inscription], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT3")
 
   @@index([Cote], map: "FK_EMPRUNTER_PFE_ETUDIANT")
-  @@index([N_APOGEE], map: "FK_EMPRUNTE_PFE_ETUDIANT")
+  @@index([N_inscription], map: "FK_EMPRUNTE_PFE_ETUDIANT")
   @@index([ID_U], map: "FK_SIGNER_PFE_ETUDIANT")
 }
 
