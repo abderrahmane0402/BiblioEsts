@@ -17,8 +17,13 @@ import { BiBook } from "react-icons/bi"
 import { FaBookOpen } from "react-icons/fa"
 import { GrStakeholder } from "react-icons/gr"
 import { IoIosNotificationsOutline } from "react-icons/io"
+import {
+  MdOutlineNotificationsActive,
+  MdOutlineNotificationsNone,
+} from "react-icons/md"
 
 const Page = async ({}) => {
+  //TODO:Test notification and complete the page
   const [countL, countP, countEL, countEP] = await Promise.all([
     countLivre(),
     countPFE(),
@@ -92,36 +97,41 @@ const Page = async ({}) => {
         <Card type={"mid"} className='p-2'>
           <div className='h-1/5 w-full flex justify-between items-center'>
             <Header size={"md"}>notification</Header>
-            <IoIosNotificationsOutline className='text-2xl' />
+            {nLE || nLP || nPP || nPE ? (
+              <MdOutlineNotificationsActive className='text-2xl' />
+            ) : (
+              <MdOutlineNotificationsNone className='text-2xl' />
+            )}
           </div>
           <div className='h-4/5 overflow-auto scrollbar-none'>
             {nLE ? (
               <div className='border-t-2  border-black/60'>
                 <Paragraph size={"md"}>
-                  {nLE.N_INVENTAIRE} - {nLE.etudiant.NOM} -{" "}
-                  {nLE.etudiant.PRENOM} - {getDate(nLE.DATE_F)}
+                  {nLE.N_INVENTAIRE} - {nLE.etudiant.N_inscription} -{" "}
+                  {getDate(nLE.DATE_F)}
                 </Paragraph>
               </div>
             ) : null}
             {nLP ? (
               <div className='border-t-2  border-black/60'>
                 <Paragraph size={"md"}>
-                  {nLP.N_INVENTAIRE} - {nLP.prof.NOM} - {nLP.prof.PRENOM} -{" "}
-                  {getDate(nLP.DATE_F)}
+                  {nLP.N_INVENTAIRE} - {nLP.prof.Code} - {getDate(nLP.DATE_F)}
                 </Paragraph>
               </div>
             ) : null}
             {nPE ? (
               <div className='border-t-2  border-black/60'>
                 <Paragraph size={"md"}>
-                  {nPE.IDPFE} - {nPE.etudiant.NOM} - {nPE.etudiant.PRENOM} -{" "}
+                  {nPE.Cote} - {nPE.etudiant.N_inscription} -
                   {getDate(nPE.DATE_F)}
                 </Paragraph>
               </div>
             ) : null}
             {nPP ? (
               <div className='border-t-2  border-black/60'>
-                <Paragraph size={"md"}></Paragraph>
+                <Paragraph size={"md"}>
+                  {nPP.Cote} - {nPP.prof.Code} - {getDate(nPP.DATE_F)}
+                </Paragraph>
               </div>
             ) : null}
           </div>

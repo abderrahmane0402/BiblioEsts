@@ -77,10 +77,7 @@ export async function notificationLE() {
       select: {
         DATE_F: true,
         etudiant: {
-          select: {
-            NOM: true,
-            PRENOM: true,
-          },
+          select: { N_inscription: true, NOM: true, PRENOM: true },
         },
         N_INVENTAIRE: true,
       },
@@ -110,11 +107,12 @@ export async function notificationPP() {
         DATE_F: true,
         prof: {
           select: {
+            Code: true,
             NOM: true,
             PRENOM: true,
           },
         },
-        IDPFE: true,
+        Cote: true,
       },
       where: {
         DATE_R: {
@@ -142,11 +140,12 @@ export async function notificationPE() {
         DATE_F: true,
         etudiant: {
           select: {
+            N_inscription: true,
             NOM: true,
             PRENOM: true,
           },
         },
-        IDPFE: true,
+        Cote: true,
       },
       where: {
         DATE_R: {
@@ -174,6 +173,7 @@ export async function notificationLP() {
         DATE_F: true,
         prof: {
           select: {
+            Code: true,
             NOM: true,
             PRENOM: true,
           },
