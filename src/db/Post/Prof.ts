@@ -1,14 +1,14 @@
 import prisma from "@/utils/Prisma"
 import { revalidatePath } from "next/cache"
 
-export async function setApprovi(Aprovis: any) {
+export async function setProf(prof: any) {
   try {
-    await prisma.approvisionement.create({
+    await prisma.prof.create({
       data: {
-        ...Aprovis,
+        ...prof,
       },
     })
-    revalidatePath("/approvisionnement")
+    revalidatePath("/prof")
     await prisma.$disconnect
   } catch (e) {
     await prisma.$disconnect
