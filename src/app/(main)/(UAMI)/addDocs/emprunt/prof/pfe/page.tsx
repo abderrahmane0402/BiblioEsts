@@ -18,13 +18,11 @@ const Page = async () => {
           <f.FormField name="pfe" className="w-full">
             <div className="w-full">
               <Header size={"md"} className="p">
-                N d{"'"}inventaire :
+                Cote :
               </Header>
-              <f.FormMessage match={"valueMissing"}>
-                saisir le numero d{"'"}inventaire
-              </f.FormMessage>
+              <f.FormMessage match={"valueMissing"}>saisir Cote</f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir un nombre d{"'"}inventaire valide
+                saisir un Cote valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>

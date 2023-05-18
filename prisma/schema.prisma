@@ -194,7 +194,7 @@ model utilisateur {
   NOM                    String?                  @db.Char(100)
   PRENOM                 String?                  @db.Char(100)
   TELEPHONE              Int?
-  LOGIN                  String?                  @db.VarChar(100)
+  LOGIN                  String?                  @unique @db.VarChar(100)
   PASSWORD               String?                  @db.VarChar(255)
   approvisionement       approvisionement[]
   emprunt_livre_etudiant emprunt_livre_etudiant[]

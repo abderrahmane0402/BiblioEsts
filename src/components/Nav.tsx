@@ -33,7 +33,7 @@ export const ZNav = ({}) => {
             href: "",
             icon: <FaChalkboardTeacher />,
           }}
-          href={["/student", "/main/Prof"]}
+          href={["/emprunt/etudiant/livre", "/prof"]}
           title={["Etudiants", "Professeurs"]}
           icon={[<FaUserGraduate />, <FaUserTie />]}
         />
