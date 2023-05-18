@@ -14,6 +14,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
   const data = await getCategories_Select();
   const id = parseInt(params.id);
   const livre = await getLivre(id);
+  console.log(getDate(livre?.DATE_EDITION));
   
 
 
@@ -114,7 +115,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   type="date"
                   maxLength={50}
                   required
-                  
+
+                  defaultValue="2023-05-06"
                 />
               </f.FormControl>
             </f.FormField>
@@ -157,6 +159,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   multiple={false}
                   native={false}
                   name="categorie"
+                  defaultValue={livre?.ID_CAT?.toString() || ""}
                 /> 
                </f.FormControl>
             </f.FormField>

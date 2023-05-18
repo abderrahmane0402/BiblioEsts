@@ -63,13 +63,13 @@ export default async function updateLivre(data: FormData ,id: number) {
       EDITEUR: data.get("editeur") as string,
       DATE_EDITION: new Date(data.get("date_edi") as string ),
       PRIX: new Prisma.Decimal(parseFloat(data.get("prix")!.toString())),
-      ID_CAT: Number(data.get("categorie")) ,
+      ID_CAT: Number(data.get("categorie")) as number,
       CODE: data.get("code") ? Number(data.get("code") as string) : null,
       OBSERVATIONL: data.get("observation") as string,
       PAGE_DE_GARDE: `${imageName}` as string,
       SOMAIRE: `${pdfName}` as string,
     };
-    console.log(livre);
+    
     
     await PutLivres(id,livre);
     return true;
