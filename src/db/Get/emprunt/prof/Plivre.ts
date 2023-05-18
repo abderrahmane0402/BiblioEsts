@@ -2,6 +2,23 @@
 
 import prisma from "@/utils/Prisma";
 
+export async function getPlivreID(id : number)
+{
+  try {
+  const emprunt  = await prisma.emprunt_livre_prof.findUnique({
+    where: {
+      IDLP: id,
+    },
+    }
+  )
+  await prisma.$disconnect
+  return emprunt
+} catch (e) {
+  await prisma.$disconnect
+  throw Error("somthing went wrong" + e)
+}
+}
+
 export async function getPlivre(id: number) {
   try {
     const emprunt = await prisma.emprunt_livre_prof.findFirst({

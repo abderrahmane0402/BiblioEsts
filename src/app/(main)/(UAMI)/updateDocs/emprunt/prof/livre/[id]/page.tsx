@@ -4,18 +4,25 @@ import Input from "@/components/ui/Input";
 import AutoComplete from "@/components/ui/autoComplete";
 import { getNinv } from "@/db/Get/Livres";
 import { getProfshort } from "@/db/Get/Prof";
-import Form from "../../form";
+import Form from "./form";
+import { getDate } from "@/utils/date";
+import { getPlivreID } from "@/db/Get/emprunt/prof/Plivre";
 
-const Page = async () => {
-  const [Apoge, Inv] = await Promise.all([getProfshort(), getNinv()]);
-  const result = Apoge.map((obj) => obj.NOM + " " + obj.PRENOM);
+
+const Page = async ({ params }: { params: { id: string } }) => {
+
+  const id = parseInt(params.id);
+ 
+  const [Apoge, Inv,emp] = await Promise.all([getProfshort(), getNinv(), getPlivreID(id)]);
+  const result = Apoge.map(
+    (obj) => obj.Code );
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE);
   return (
-    <Form>
+    <Form id={id}>
       <div className="flex w-full">
         <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
           {/* nmr_Inv */}
-          <f.FormField name="pfe" className="w-full">
+          <f.FormField name="nmr_Inv" className="w-full">
             <div className="w-full">
               <Header size={"md"} className="p">
                 N d{"'"}inventaire :
@@ -28,24 +35,24 @@ const Page = async () => {
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
-              <AutoComplete options={result2} name="pfe" />
+              <AutoComplete options={result2} name="nmr_Inv" defaultValue={emp?.N_INVENTAIRE} />
             </f.FormControl>
           </f.FormField>
           {/* npm et prenom */}
           <f.FormField name="prof" className="w-full">
             <div className="w-full">
               <Header size={"md"} className="p">
-                Nom et Prenom :
+                Code :
               </Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir le numéro nom et le prenom
+                saisir le Code
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir un text valid
+                saisir un Code valid
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
-              <AutoComplete options={result} name="prof" />
+              <AutoComplete options={result} name="prof"  defaultValue={emp?.Code}/>
             </f.FormControl>
           </f.FormField>
         </div>

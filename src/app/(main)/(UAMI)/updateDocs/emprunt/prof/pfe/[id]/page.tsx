@@ -4,50 +4,53 @@ import Input from "@/components/ui/Input";
 import AutoComplete from "@/components/ui/autoComplete";
 import { getNinv } from "@/db/Get/Livres";
 import { getProfshort } from "@/db/Get/Prof";
-import Form from "../../form";
+import Form from "./form";
+import { getCote } from "@/db/Get/Pfe";
+import { getPpfeID } from "@/db/Get/emprunt/prof/Ppfe";
 
-const Page = async () => {
-  const [Apoge, Inv] = await Promise.all([getProfshort(), getNinv()]);
-  const result = Apoge.map(
-    (obj) => obj.ID_PROF + " " + obj.NOM + " " + obj.PRENOM
-  );
-  const result2 = Inv.map((obj) => obj.N_INVENTAIRE);
+const Page = async ({ params }: { params: { id: string } }) => {
+  const id = parseInt(params.id);
+
+  const [Apoge, Inv,emp] = await Promise.all([getProfshort(), getCote(),getPpfeID(id)]);
+  const result = Apoge.map((obj) => obj.Code);
+  const result2 = Inv.map((obj) => obj.Cote);
+
   return (
-    <Form>
+    
+ 
+    <Form id={id}>
       <div className="flex w-full">
         <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
           {/* nmr_Inv */}
-          <f.FormField name="nmr_Inv" className="w-full">
+          <f.FormField name="pfe" className="w-full">
             <div className="w-full">
               <Header size={"md"} className="p">
-                N d{"'"}inventaire :
+                Cote :
               </Header>
-              <f.FormMessage match={"valueMissing"}>
-                saisir le numero d{"'"}inventaire
-              </f.FormMessage>
+              <f.FormMessage match={"valueMissing"}>saisir Cote</f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir un nombre d{"'"}inventaire valide
+                saisir un Cote valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
-              <AutoComplete options={result2} name="nmr_Inv" />
+              <AutoComplete options={result2} name="pfe"  defaultValue={emp?.Cote}/>
             </f.FormControl>
           </f.FormField>
           {/* npm et prenom */}
           <f.FormField name="prof" className="w-full">
             <div className="w-full">
               <Header size={"md"} className="p">
-                Nom et Prenom :
+                Code :
               </Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir le numéro nom et le prenom
+                saisir le code
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir un text valid
+                saisir un code valid
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
-              <AutoComplete options={result} name="prof" />
+              <AutoComplete options={result} name="prof"  defaultValue={emp?.Code}/>
             </f.FormControl>
           </f.FormField>
         </div>

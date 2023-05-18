@@ -2,6 +2,24 @@
 
 import prisma from "@/utils/Prisma"
 
+export async function getElivreID(id : number)
+{
+  try {
+  const emprunt  = await prisma.emprunt_livre_etudiant.findUnique({
+
+    where: {
+      IDLE: id,
+    },
+    }
+  )
+  await prisma.$disconnect
+  return emprunt
+} catch (e) {
+  await prisma.$disconnect
+  throw Error("somthing went wrong" + e)
+}
+}
+
 export async function getElivre(id: number) {
   try {
     const emprunt  = await prisma.emprunt_livre_etudiant.findFirst({

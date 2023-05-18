@@ -39,7 +39,7 @@ const Page = async () => {
                 Code :
               </Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir le COde
+                saisir le Code
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
                 saisir un Code valid

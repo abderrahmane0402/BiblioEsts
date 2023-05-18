@@ -114,7 +114,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   type="date"
                   maxLength={50}
                   required
-                  defaultValue={getDate(livre!.DATE_EDITION) as string }
+                  
                 />
               </f.FormControl>
             </f.FormField>
