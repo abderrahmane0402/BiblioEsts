@@ -2,6 +2,25 @@
 
 import prisma from "@/utils/Prisma"
 
+export async function getEpfeID(id : number)
+{
+  try {
+  const emprunt  = await prisma.emprunt_pfe_etudiant.findUnique({
+
+    where: {
+      IDPE: id,
+    },
+    }
+  )
+  await prisma.$disconnect
+  return emprunt
+} catch (e) {
+  await prisma.$disconnect
+  throw Error("somthing went wrong" + e)
+}
+}
+
+
 export async function getEpfe(id: number) {
   try {
     const epfe = await prisma.emprunt_pfe_etudiant.findFirst({

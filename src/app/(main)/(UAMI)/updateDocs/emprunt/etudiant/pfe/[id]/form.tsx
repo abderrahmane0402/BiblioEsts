@@ -1,15 +1,18 @@
 "use client";
 import * as f from "@/components/Form";
 import { empruntPfeE } from "@/components/server/Emprunt/pfe";
+import { UpdateEmpruntPfeE } from "@/components/server/UpdateEmprunt/pfe";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
 import { useEffect, useRef, useState } from "react";
 
-const Form = ({ children }: { children: React.ReactNode }) => {
+const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) => {
   const form = useRef<HTMLFormElement>(null);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const userInfo = sessionStorage.getItem("login");
+
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -27,7 +30,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className="w-full"
       action={async (FormData) => {
-        const data = await empruntPfeE(FormData);
+        const data = await UpdateEmpruntPfeE(FormData,id,userInfo || "");
         if (data) {
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);
@@ -46,7 +49,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             isLoading={isLoading}
             className="bg-[#CA3CFF] text-white w-3/12"
           >
-            ajouter Emprunt
+            Modifier Emprunt
           </Button>
         </f.FormSubmit>
       </footer>
@@ -55,7 +58,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         <Toast.Root open={open1} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>
-            <Toast.Description>Emprunt ajouté avec succés</Toast.Description>
+            <Toast.Description>Emprunt a été modifier avec succés</Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen1(false)}>
             <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">

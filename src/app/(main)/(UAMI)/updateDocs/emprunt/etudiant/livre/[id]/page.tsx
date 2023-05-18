@@ -4,12 +4,13 @@ import Input from "@/components/ui/Input";
 import AutoComplete from "@/components/ui/autoComplete";
 import { getEtudiantsShort } from "@/db/Get/Etudiant";
 import { getNinv } from "@/db/Get/Livres";
-import { empruntLivreE } from "@/components/server/Emprunt/livre";
 import Form from "./form";
+import { getElivreID } from "@/db/Get/emprunt/etudiant/Elivre";
+import { getDate } from "@/utils/date";
 
 const Page = async ({ params }: { params: { id: string } }) => {
   const id = parseInt(params.id);
-  const [Apoge, Inv] = await Promise.all([getEtudiantsShort(), getNinv()]);
+  const [Apoge, Inv,emp] = await Promise.all([getEtudiantsShort(), getNinv(),getElivreID(id)]);
   const result = Apoge.map((obj) => obj.N_inscription);
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE);
   return (
@@ -30,7 +31,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
-              <AutoComplete options={result2} name="nmr_Inv" />
+              <AutoComplete options={result2} name="nmr_Inv" defaultValue={emp?.N_INVENTAIRE }/>
             </f.FormControl>
           </f.FormField>
           {/* num_apogee */}
@@ -47,7 +48,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
-              <AutoComplete options={result} name="num_apogee" />
+              <AutoComplete options={result} name="num_apogee" defaultValue={emp?.N_inscription} />
             </f.FormControl>
           </f.FormField>
           {/* date_D */}
@@ -72,6 +73,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 type="date"
                 maxLength={255}
                 required
+                defaultValue={getDate(emp!.DATE_D) || '' }
               />
             </f.FormControl>
           </f.FormField>
@@ -95,6 +97,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 type="date"
                 maxLength={255}
                 required
+                defaultValue={getDate(emp!.DATE_F) || '' }
               />
             </f.FormControl>
           </f.FormField>
