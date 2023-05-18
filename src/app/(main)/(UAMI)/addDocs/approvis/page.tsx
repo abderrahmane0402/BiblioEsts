@@ -1,12 +1,11 @@
-import Header from "@/components/ui/Header"
 import * as f from "@/components/Form"
+import Header from "@/components/ui/Header"
 import Input from "@/components/ui/Input"
 import InputSelect from "@/components/ui/Select"
-import Button from "@/components/ui/Button"
 import { getFournisseurShort } from "@/db/Get/Fournisseur"
 import { getNinv } from "@/db/Get/Livres"
-import Form from "./form"
 import Link from "next/link"
+import Form from "./form"
 
 async function Page() {
   const [fournisseur, livre] = await Promise.all([
@@ -22,7 +21,6 @@ async function Page() {
   return (
     <div className='overflow-auto w-full h-full'>
       <Form>
-        <Header size={"lg"}>Information de Entreprise</Header>
         <div className='flex flex-wrap'>
           <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
             {/* N d'approvisionnement */}
@@ -166,6 +164,21 @@ async function Page() {
                   nouveau
                 </Link>
               </div>
+            </div>
+            <Header size={"md"}>livre :</Header>
+            <div className='flex gap-4'>
+              <Link
+                href={"/addDocs/fournisseur"}
+                className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'
+              >
+                ajouter Livre
+              </Link>
+              <Link
+                href={"/addDocs/fournisseur"}
+                className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'
+              >
+                nouveau Livre
+              </Link>
             </div>
           </div>
         </div>
