@@ -15,7 +15,7 @@ model approvisionement {
   DATE        DateTime?   @db.Date
   ENTREPRISE  String?     @db.VarChar(255)
   ADRESSE     String?     @db.VarChar(255)
-  TELEPHONE   BigInt?
+  TELEPHONE   String?     @db.VarChar(255)
   utilisateur utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_FAIRE")
   fournisseur fournisseur @relation(fields: [ID_FOR], references: [ID_FOR], onUpdate: Restrict, map: "FK_FOUNIR")
   contient    contient[]
@@ -146,7 +146,7 @@ model fournisseur {
   PRENOM           String?            @db.Char(100)
   GMAIL            String?            @db.VarChar(255)
   ADDRESSE         String?            @db.VarChar(255)
-  TELEPHONE        Int?
+  TELEPHONE        String?            @db.VarChar(255)
   approvisionement approvisionement[]
 }
 
