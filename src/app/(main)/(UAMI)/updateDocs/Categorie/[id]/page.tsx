@@ -6,8 +6,8 @@ import { getCategorie, getCategories_Select } from "@/db/Get/Categorie";
 import InputSelect from "@/components/ui/Select";
 
 
-const page = async ({ params }: { params: { id: number } }) => {
-  const id = params.id;
+const page = async ({ params }: { params: { id: string } }) => {
+  const id = parseInt(params.id);
   const [data,cat] = await Promise.all([getCategories_Select(),getCategorie(id)]) ;
   
  
@@ -49,7 +49,7 @@ const page = async ({ params }: { params: { id: number } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className="h-10" name="sujet" type="text"  defaultValue={cat?.SUJET as string}/>
+          <Input className="h-10" name="sujet" type="text"   defaultValue={cat?.SUJET as string}/>
         </f.FormControl>
       </f.FormField>
       <f.FormField name="categorie" className="w-full">
@@ -65,7 +65,8 @@ const page = async ({ params }: { params: { id: number } }) => {
             multiple={false}
             native={false}
             name="categorie"
-
+            defaultValue={cat?.CAT_ID_CAT?.toString() || ""}
+            
           />
         </f.FormControl>
       </f.FormField>

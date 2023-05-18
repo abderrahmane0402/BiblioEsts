@@ -4,42 +4,29 @@ import Header from "@/ui/Header"
 import Input from "@/ui/Input"
 import AutoComplete from "@/components/ui/autoComplete"
 import Form from "./form"
+import { getProf } from "@/db/Get/Prof"
 
 const Filière = ["GI", "TM", "GIM", "TIMQ"]
 
-const page = () => {
+const page = async ({ params }: { params: { id: string } } ) => {
+  const id = params.id 
+  const prf = await getProf(id)
+
   return (
-    <Form>
-         {/* numero d'insctiption */}
-         <f.FormField name='num_ins' className='w-full'>
-        <div className='w-full'>
-          <Header size={"md"} className='p'>
-            numero d{"'"}insctiption :
-          </Header>
-          <f.FormMessage match={"valueMissing"}>saisir le numero</f.FormMessage>
-          <f.FormMessage match={"typeMismatch"}>
-            saisir un numero valide
-          </f.FormMessage>
-        </div>
-        <f.FormControl asChild>
-          <Input className='h-10' name='num_ins' type='text' required />
-        </f.FormControl>
-      </f.FormField>
+    <Form id={id}>
       {/* Numero Apogee */}
-      <f.FormField name='num_apoge' className='w-full'>
+      <f.FormField name='code' className='w-full'>
         <div className='w-full'>
           <Header size={"md"} className='p'>
-            numero apogee :
+            Code :
           </Header>
-          <f.FormMessage match={"valueMissing"}>
-            saisir le numero apogee
-          </f.FormMessage>
+          <f.FormMessage match={"valueMissing"}>saisir un Code</f.FormMessage>
           <f.FormMessage match={"typeMismatch"}>
-            saisir un Numero valide
+            saisir un Code valide
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='num_apoge' type='text' required />
+          <Input className='h-10' name='code' type='text' defaultValue={prf?.Code} required />
         </f.FormControl>
       </f.FormField>
 
@@ -55,7 +42,7 @@ const page = () => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='nom' type='text' required />
+          <Input className='h-10' name='nom' type='text' defaultValue={prf?.NOM as string} required />
         </f.FormControl>
       </f.FormField>
 
@@ -71,10 +58,9 @@ const page = () => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='prenom' type='text' required />
+          <Input className='h-10' name='prenom' type='text' required defaultValue={prf?.PRENOM as string} />
         </f.FormControl>
       </f.FormField>
-      
 
       {/* filiere */}
       <f.FormField name='filiere' className='w-full'>
@@ -90,7 +76,7 @@ const page = () => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <AutoComplete options={Filière} name='filiere' />
+          <AutoComplete options={Filière} name='filiere' defaultValue={prf?.DEPARTEMENT} />
         </f.FormControl>
       </f.FormField>
     </Form>

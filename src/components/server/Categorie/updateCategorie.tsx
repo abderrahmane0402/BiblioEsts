@@ -8,20 +8,12 @@ import { categorie } from "@prisma/client";
 export default async function updateCategorie(data: FormData, id : number) {
 
   try {
-    const categorie = await getCategorie(id);
-    let  cat  
-    if(data.get("categorie"))
-    {
-        cat = data.get("categorie") as string
-    }
-    else {
-        cat =  categorie!.ID_CAT 
-    }
+  
     const Categorie = {
     ID_CAT : id,
       LIBELLE: data.get("libelle") as string,
       SUJET: data.get("sujet") as string,
-      CAT_ID_CAT: cat as number,
+      CAT_ID_CAT: Number(data.get("categorie")) as number,
     };
     await PutCategorie(id,Categorie);
     return true;

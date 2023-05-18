@@ -96,7 +96,7 @@ export function Table({ data }: { data: any }) {
       <DataTable
         columns={Columns}
         rows={data}
-        ID='IDPFE'
+        ID='Cote'
         customSlots={{
           columnMenu: CustomColumnMenu,
           toolbar: CustomToolbar,

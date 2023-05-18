@@ -76,6 +76,8 @@ export function Table({ data }: { data: any }) {
           key={`edit-${params.id}`}
           icon={<BiEdit className='text-xl' />}
           label='Editer'
+          onClick={() => {
+            router.push(`/updateDocs/professeur/${params.id}`);}}
         />,
       ],
     },
@@ -86,7 +88,7 @@ export function Table({ data }: { data: any }) {
       <DataTable
         columns={Columns}
         rows={data}
-        ID='ID_PROF'
+        ID='Code'
         customSlots={{
           columnMenu: CustomColumnMenu,
           toolbar: CustomToolbar,

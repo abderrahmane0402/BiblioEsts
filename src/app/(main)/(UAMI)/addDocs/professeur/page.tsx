@@ -62,13 +62,13 @@ const page = () => {
       <f.FormField name='filiere' className='w-full'>
         <div className='w-full'>
           <Header size={"md"} className='p'>
-            Filiere
+            Département
           </Header>
           <f.FormMessage match={"valueMissing"}>
-            saisir la filiere
+            saisir la Département
           </f.FormMessage>
           <f.FormMessage match={"typeMismatch"}>
-            saisir une filiere
+            saisir une Département
           </f.FormMessage>
         </div>
         <f.FormControl asChild>

@@ -114,7 +114,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   type="date"
                   maxLength={50}
                   required
-                  
+
+                  defaultValue={getDate(livre?.DATE_EDITION) || ""}
                 />
               </f.FormControl>
             </f.FormField>
@@ -157,6 +158,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   multiple={false}
                   native={false}
                   name="categorie"
+                  defaultValue={livre?.ID_CAT?.toString() || ""}
                 /> 
                </f.FormControl>
             </f.FormField>
@@ -204,7 +206,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   accept=".jpg, .jpeg, .png"
                   maxLength={50}
                   defaultValue={livre!.PAGE_DE_GARDE as string}
-                  required
+                  
                 />
               </f.FormControl>
             </f.FormField>
@@ -227,7 +229,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   accept=".pdf"
              
                   maxLength={50}
-                  required
+                  
                   defaultValue={livre!.SOMAIRE as string}
              
                 />
