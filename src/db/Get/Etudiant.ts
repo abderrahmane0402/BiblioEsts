@@ -1,10 +1,10 @@
 import prisma from "@/utils/Prisma";
 
-export async function getEtudiant(id: string ) {
+export async function getEtudiant(id: number ) {
   try {
     const etudiant = await prisma.etudiant.findUnique({
       where: {
-        N_inscription: id,
+        N_APOGEE: id,
       },
     });
     await prisma.$disconnect;

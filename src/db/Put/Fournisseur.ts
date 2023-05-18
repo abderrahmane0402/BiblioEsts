@@ -2,7 +2,7 @@ import prisma from "@/utils/Prisma";
 import { fournisseur } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
-export async function PutFournisseur(fournisseur_Id: number ,Fournisseur: fournisseur) {
+export async function PutFournisseur(fournisseur_Id: number ,Fournisseur: any) {
   try {
     await prisma.fournisseur.update({
       where: {

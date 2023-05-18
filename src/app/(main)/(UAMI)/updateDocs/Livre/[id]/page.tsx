@@ -14,7 +14,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
   const data = await getCategories_Select();
   const id = parseInt(params.id);
   const livre = await getLivre(id);
-  console.log(getDate(livre?.DATE_EDITION));
   
 
 
@@ -116,7 +115,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   maxLength={50}
                   required
 
-                  defaultValue="2023-05-06"
+                  defaultValue={getDate(livre?.DATE_EDITION) || ""}
                 />
               </f.FormControl>
             </f.FormField>
@@ -207,7 +206,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   accept=".jpg, .jpeg, .png"
                   maxLength={50}
                   defaultValue={livre!.PAGE_DE_GARDE as string}
-                  required
+                  
                 />
               </f.FormControl>
             </f.FormField>
@@ -230,7 +229,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   accept=".pdf"
              
                   maxLength={50}
-                  required
+                  
                   defaultValue={livre!.SOMAIRE as string}
              
                 />
