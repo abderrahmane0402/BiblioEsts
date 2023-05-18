@@ -65,8 +65,6 @@ const page = async ({ params }: { params: { id: number } }) => {
             multiple={false}
             native={false}
             name="categorie"
-            
-            
 
           />
         </f.FormControl>
