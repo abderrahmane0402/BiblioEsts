@@ -6,6 +6,7 @@ import { getFournisseurShort } from "@/db/Get/Fournisseur"
 import { getNinv } from "@/db/Get/Livres"
 import Link from "next/link"
 import Form from "./form"
+import AddLivre from "./addLivre"
 
 async function Page() {
   const [fournisseur, livre] = await Promise.all([
@@ -163,21 +164,6 @@ async function Page() {
                   nouveau
                 </Link>
               </div>
-            </div>
-            <Header size={"md"}>livre :</Header>
-            <div className='flex gap-4'>
-              <Link
-                href={"/addDocs/fournisseur"}
-                className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'
-              >
-                ajouter Livre
-              </Link>
-              <Link
-                href={"/addDocs/fournisseur"}
-                className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'
-              >
-                nouveau Livre
-              </Link>
             </div>
           </div>
         </div>
