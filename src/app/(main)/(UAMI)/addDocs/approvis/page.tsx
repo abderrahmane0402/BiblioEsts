@@ -51,7 +51,7 @@ async function Page() {
             {/* Nom d'Entreprise */}
             <f.FormField name='entreprise' className='w-full'>
               <div className='w-full'>
-                <Header size={"md"}>Nom d&apros;entreprise :</Header>
+                <Header size={"md"}>Nom d{"'"}entreprise :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir un nom
                 </f.FormMessage>
@@ -155,6 +155,7 @@ async function Page() {
                       autoWidth={false}
                       multiple={false}
                       native={false}
+                      defaultValue=""
                     />
                   </f.FormControl>
                 </f.FormField>

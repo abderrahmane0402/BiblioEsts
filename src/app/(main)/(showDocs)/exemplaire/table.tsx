@@ -25,6 +25,7 @@ export function Table({ data }: { data: any }) {
       hideable: false,
     },
     {
+      width : 350 ,
       field: "OBSERVATIONE",
       headerName: "Observation",
       type: "string",
