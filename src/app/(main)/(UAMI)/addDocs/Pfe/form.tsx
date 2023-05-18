@@ -1,6 +1,5 @@
 "use client";
 import * as f from "@/components/Form";
-import addLivre from "@/components/server/Livre/addLivre";
 import addPfe from "@/components/server/Pfe/addPfe";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
@@ -47,7 +46,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             isLoading={isLoading}
             className="bg-[#CA3CFF] text-white w-3/12"
           >
-            ajouter pfe
+            Ajouter pfe
           </Button>
         </f.FormSubmit>
       </footer>

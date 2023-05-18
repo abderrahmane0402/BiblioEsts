@@ -1,4 +1,5 @@
 import prisma from "@/utils/Prisma";
+import { categorie } from "@prisma/client";
 
 export async function getCategories() {
   try {
@@ -19,15 +20,16 @@ export async function getCategories() {
   }
 }
 
-export async function getCategorie(id: number) {
+export async function getCategorie  (id: number) {
   try {
-    const categorie = await prisma.categorie.findFirst({
+    const Categorie = await prisma.categorie.findFirst({
       where: {
-        ID_CAT: id,
+        ID_CAT : id ,
+   
       },
     });
     await prisma.$disconnect;
-    return categorie;
+    return Categorie;
   } catch (e) {
     await prisma.$disconnect;
     throw Error("somthing went wrong" + e);

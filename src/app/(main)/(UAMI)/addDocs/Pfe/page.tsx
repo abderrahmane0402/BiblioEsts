@@ -1,35 +1,49 @@
 import * as f from "@/components/Form";
-import InputSelect from "@/components/ui/Select";
-import { setPfe } from "@/db/Post/Pfe";
-import { filiere } from "@/types";
-import Button from "@/ui/Button";
+
 import Header from "@/ui/Header";
 import Input from "@/ui/Input";
 import Form from "./form";
+import AutoComplete from "@/components/ui/autoComplete";
 
-const Filière: filiere[] = [
+const Filière= [
   {
-    ID_FIL: 1,
+    id : 1,
     LIBELLE: "Génie Informatique (GI) ",
   },
   {
-    ID_FIL: 2,
+    id : 2,   
     LIBELLE: "TECHNIQUES DE MANAGEMENT (TM) ",
   },
   {
-    ID_FIL: 3,
+    id : 3, 
     LIBELLE: "TECHNIQUES INSTRUMENTALES & MANAGEMENT DE LA QUALITÉ (TIMQ)",
   },
   {
-    ID_FIL: 4,
+    id : 4,
     LIBELLE: "GÉNIE INDUSTRIEL & MAINTENANCE (GIM)",
   },
 ];
 
+
 const page = () => {
+  const result2 = Filière.map((obj) => obj.LIBELLE);
   return (
     <Form>
       {/* sujet */}
+      <f.FormField name="cote" className="w-full">
+        <div className="w-full">
+          <Header size={"md"} className="p">
+            Code :
+          </Header>
+          <f.FormMessage match={"valueMissing"}>saisir le cote</f.FormMessage>
+          <f.FormMessage match={"typeMismatch"}>
+            saisir un cote valide
+          </f.FormMessage>
+        </div>
+        <f.FormControl asChild>
+          <Input className="h-10" name="cote" type="text" required />
+        </f.FormControl>
+      </f.FormField>
 
       <f.FormField name="sujet" className="w-full">
         <div className="w-full">
@@ -78,6 +92,17 @@ const page = () => {
         </div>
         <f.FormControl asChild>
           <Input className="h-10" name="encadrant" type="text" required />
+        </f.FormControl>
+      </f.FormField>
+      {/* filiere */}
+      <f.FormField name="filiere" className="w-full">
+        <div className="w-full">
+          <Header size={"md"} className="p">Filiere</Header>
+          <f.FormMessage match={"valueMissing"}>saisir la filiere</f.FormMessage>
+          <f.FormMessage match={"typeMismatch"}>saisir une filiere</f.FormMessage>
+        </div>
+        <f.FormControl asChild>
+        <AutoComplete options={result2} name="filiere"  />
         </f.FormControl>
       </f.FormField>
       {/* date_realis */}

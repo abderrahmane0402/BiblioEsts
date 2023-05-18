@@ -12,10 +12,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
         <Header size={"md"}>Etudiant</Header>
         <div className="flex">
           <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            N°Apogee :
+          N_inscription :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
-            {data?.N_APOGEE}
+            {data?.N_inscription}
           </Paragraph>
         </div>
         <div className="flex">

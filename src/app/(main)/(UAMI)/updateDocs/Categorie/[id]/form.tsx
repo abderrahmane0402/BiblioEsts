@@ -1,18 +1,16 @@
 "use client";
 import * as f from "@/components/Form";
-import { empruntLivreE } from "@/components/server/Emprunt/livre";
-import { UpdateEmpruntLivreE } from "@/components/server/UpdateEmprunt/livre";
+import addCategorie from "@/components/server/Categorie/addCategorie";
+import updateCategorie from "@/components/server/Categorie/updateCategorie";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) => {
+const Form = ({ children, id  }: { children: React.ReactNode, id : number } ) => {
   const form = useRef<HTMLFormElement>(null);
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter()
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -30,11 +28,11 @@ const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) 
       ref={form}
       className="w-full"
       action={async (FormData) => {
-        const data = await UpdateEmpruntLivreE(FormData, id );
+        const data = await updateCategorie(FormData,id);
         if (data) {
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);
-          router.refresh
+          form.current?.reset();
         } else {
           setOpen2(true);
           setTimeout(() => setOpen2(false), 1000);
@@ -49,7 +47,7 @@ const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) 
             isLoading={isLoading}
             className="bg-[#CA3CFF] text-white w-3/12"
           >
-            Mofifier Emprunt
+            Modifier Categorie
           </Button>
         </f.FormSubmit>
       </footer>
@@ -58,7 +56,7 @@ const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) 
         <Toast.Root open={open1} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>
-            <Toast.Description>Emprunt a été modifier avec succés</Toast.Description>
+            <Toast.Description>Categorie a été modifié avec succés</Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen1(false)}>
             <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">

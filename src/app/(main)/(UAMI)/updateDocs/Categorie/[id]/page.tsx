@@ -1,22 +1,18 @@
 import * as f from "@/components/Form";
-import Button from "@/ui/Button";
 import Header from "@/ui/Header";
 import Input from "@/ui/Input";
 import Form from "./form";
-import { getCategories_Select } from "@/db/Get/Categorie";
+import { getCategorie, getCategories_Select } from "@/db/Get/Categorie";
 import InputSelect from "@/components/ui/Select";
 
-// const [categoryId, setCategoryId] = useState<number | null>(null);
 
-// const handleCategoryChange = (option: any) => {
-//   setCategoryId(option?.id ?? null);
-// };
-
-const page = async () => {
-  const data = await getCategories_Select();
-
+const page = async ({ params }: { params: { id: number } }) => {
+  const id = params.id;
+  const [data,cat] = await Promise.all([getCategories_Select(),getCategorie(id)]) ;
+  
+ 
   return (
-    <Form>
+    <Form id={id}>
       {/* Libelle */}
       <f.FormField name="libelle" className="w-full">
         <div className="w-full">
@@ -36,6 +32,7 @@ const page = async () => {
             name="libelle"
             type="text"
             required
+            defaultValue={cat?.LIBELLE as string}
           />
         </f.FormControl>
       </f.FormField>
@@ -52,7 +49,7 @@ const page = async () => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className="h-10" name="sujet" type="text" />
+          <Input className="h-10" name="sujet" type="text"  defaultValue={cat?.SUJET as string}/>
         </f.FormControl>
       </f.FormField>
       <f.FormField name="categorie" className="w-full">
@@ -68,6 +65,9 @@ const page = async () => {
             multiple={false}
             native={false}
             name="categorie"
+            
+            
+
           />
         </f.FormControl>
       </f.FormField>

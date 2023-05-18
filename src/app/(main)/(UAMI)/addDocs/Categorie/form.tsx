@@ -1,6 +1,6 @@
 "use client";
 import * as f from "@/components/Form";
-import addCategorie from "@/components/server/addCategorie";
+import addCategorie from "@/components/server/Categorie/addCategorie";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
 import { useEffect, useRef, useState } from "react";
@@ -46,7 +46,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             isLoading={isLoading}
             className="bg-[#CA3CFF] text-white w-3/12"
           >
-            ajouter Categorie
+            Ajouter Categorie
           </Button>
         </f.FormSubmit>
       </footer>

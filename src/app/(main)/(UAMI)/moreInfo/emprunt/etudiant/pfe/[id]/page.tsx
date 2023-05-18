@@ -11,10 +11,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
         <Header size={"md"}>Etudiant</Header>
         <div className="flex">
           <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            N°Apogee :
+          N_inscription :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
-            {data?.N_APOGEE}
+            {data?.N_inscription}
           </Paragraph>
         </div>
         <div className="flex">
@@ -46,10 +46,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
         <Header size={"md"}>PFE</Header>
         <div className="flex">
           <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Idpfe :
+          N_inscription :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
-            {data?.pfe.IDPFE}
+            {data?.pfe.Cote}
           </Paragraph>
         </div>
         <div className="flex">

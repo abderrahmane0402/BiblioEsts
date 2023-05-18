@@ -11,6 +11,14 @@ const Page = async ({ params }: { params: { id: string } }) => {
         <Header size={"md"}>Professeur</Header>
         <div className="flex">
           <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
+            Code :
+          </Paragraph>
+          <Paragraph type={"nrm"} size={"md"}>
+            {data?.prof.Code}
+          </Paragraph>
+        </div>
+        <div className="flex">
+          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
             Nom :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
@@ -38,15 +46,23 @@ const Page = async ({ params }: { params: { id: string } }) => {
         <Header size={"md"}>PFE</Header>
         <div className="flex">
           <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Idpfe :
+            Cote :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
-            {data?.pfe.IDPFE}
+            {data?.pfe.Cote}
           </Paragraph>
         </div>
         <div className="flex">
           <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            realisateur :
+            Sujet :
+          </Paragraph>
+          <Paragraph type={"nrm"} size={"md"}>
+            {data?.pfe.SUJET}
+          </Paragraph>
+        </div>
+        <div className="flex">
+          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
+            Realisateur :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
             {data?.pfe.REALISATEUR}
@@ -54,7 +70,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
         </div>
         <div className="flex">
           <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            encadrant :
+            Encadrant :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
             {data?.pfe.ENCADRANT}
@@ -68,14 +84,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             {data?.pfe.DATE_REALISATION}
           </Paragraph>
         </div>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            sujet :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {data?.pfe.SUJET}
-          </Paragraph>
-        </div>
+       
       </div>
       <div className="h-2/5 w-full flex flex-col flex-wrap">
         <Header size={"md"}>Emprunt</Header>

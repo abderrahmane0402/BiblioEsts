@@ -2,17 +2,18 @@ import * as f from "@/components/Form";
 import Header from "@/components/ui/Header";
 import Input from "@/components/ui/Input";
 import AutoComplete from "@/components/ui/autoComplete";
-import Form from "../../form";
 import { getEtudiantsShort } from "@/db/Get/Etudiant";
 import { getNinv } from "@/db/Get/Livres";
 import { empruntLivreE } from "@/components/server/Emprunt/livre";
+import Form from "./form";
 
-const Page = async () => {
+const Page = async ({ params }: { params: { id: string } }) => {
+  const id = parseInt(params.id);
   const [Apoge, Inv] = await Promise.all([getEtudiantsShort(), getNinv()]);
-  const result = Apoge.map((obj) => obj.N_APOGEE);
+  const result = Apoge.map((obj) => obj.N_inscription);
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE);
   return (
-    <Form>
+    <Form id={id}>
       <div className="flex w-full">
         <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
           {/* nmr_Inv */}
@@ -36,13 +37,13 @@ const Page = async () => {
           <f.FormField name="num_apogee" className="w-full">
             <div className="w-full">
               <Header size={"md"} className="p">
-                Numéro d{"'"}apogée :
+              N_inscription :
               </Header>
               <f.FormMessage match={"valueMissing"}>
-                saisir le numéro d{"'"}apogée
+                saisir le N_inscription
               </f.FormMessage>
               <f.FormMessage match={"typeMismatch"}>
-                saisir un numéro d{"'"}apogée valide
+                saisir un N_inscription valide
               </f.FormMessage>
             </div>
             <f.FormControl asChild>

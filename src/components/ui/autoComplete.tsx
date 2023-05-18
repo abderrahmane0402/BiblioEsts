@@ -7,13 +7,13 @@ interface AutoCompleteProps {
   name: string
 }
 
-const AutoComplete: FC<AutoCompleteProps> = ({ options, name }) => {
+const AutoComplete: FC<AutoCompleteProps> = ({ options, name , }) => {
   return (
     <Autocomplete
       freeSolo
       id='combo-box-demo'
       options={options}
-      renderInput={(params) => <TextField name={name} {...params} />}
+      renderInput={(params) => <TextField name={name}  {...params} />}
     />
   )
 }

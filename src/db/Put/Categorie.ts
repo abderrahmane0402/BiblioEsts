@@ -14,7 +14,6 @@ export async function PutCategorie(categorie_Id: number ,Categorie: categorie) {
       }
     });
     revalidatePath("categorie")
-    
     await prisma.$disconnect();
   } catch (e) {
     await prisma.$disconnect();

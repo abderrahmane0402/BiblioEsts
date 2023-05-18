@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 
-const Form =  ({ id, children }: { id: number ,children : React.ReactNode }) => {
+const Form =  ({ id, children }: { id: string ,children : React.ReactNode }) => {
   const router = useRouter()
 
   const form = useRef<HTMLFormElement>(null);
