@@ -23,7 +23,7 @@ export const NestedNav: FC<NestedNavProps> = ({
   return (
     <li>
       <MLink
-        href={principale.href}
+        href={principale.href == '' ? '/' : principale.href}
         type="nav"
         font="md"
         className={`${

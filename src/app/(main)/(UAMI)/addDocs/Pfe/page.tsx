@@ -2,25 +2,25 @@ import * as f from "@/components/Form";
 import { filiere } from "@/types";
 import Header from "@/ui/Header";
 import Input from "@/ui/Input";
-import Form from "./form";
 import AutoComplete from "@/components/ui/autoComplete";
+import Form from "./form";
 
 const Filière= [
   {
     id : 1,
-    LIBELLE: "Génie Informatique (GI) ",
+    LIBELLE: "GI",
   },
   {
     id : 2,   
-    LIBELLE: "TECHNIQUES DE MANAGEMENT (TM) ",
+    LIBELLE: "TM",
   },
   {
     id : 3, 
-    LIBELLE: "TECHNIQUES INSTRUMENTALES & MANAGEMENT DE LA QUALITÉ (TIMQ)",
+    LIBELLE: "TIMQ",
   },
   {
     id : 4,
-    LIBELLE: "GÉNIE INDUSTRIEL & MAINTENANCE (GIM)",
+    LIBELLE: "GIM",
   },
 ];
 
