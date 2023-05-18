@@ -1,8 +1,5 @@
 import * as f from "@/components/Form";
-import InputSelect from "@/components/ui/Select";
-import { setPfe } from "@/db/Post/Pfe";
 import { filiere } from "@/types";
-import Button from "@/ui/Button";
 import Header from "@/ui/Header";
 import Input from "@/ui/Input";
 import Form from "./form";
