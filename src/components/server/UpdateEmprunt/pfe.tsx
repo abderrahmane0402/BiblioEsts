@@ -1,3 +1,4 @@
+'use server'
 import { getEpfeID } from "@/db/Get/emprunt/etudiant/Epfe";
 import { getPpfeID } from "@/db/Get/emprunt/prof/Ppfe";
 import { getUserID } from "@/db/Post/Utilisateur";

@@ -1,3 +1,4 @@
+'use server'
 import { getUserID } from "@/db/Post/Utilisateur";
 import { setEpfe } from "@/db/Post/emprunt/etudiant/Epfe";
 

@@ -7,12 +7,12 @@ import { Table } from "./table"
 
 export const dynamic = "force-dynamic"
 
-export async function generateStaticParams() {
-  const livres = await getLivres()
-  return livres.map((livres) => {
-    id: livres.ID_LIVRE
-  })
-}
+// export async function generateStaticParams() {
+//   const livres = await getLivres()
+//   return livres.map((livres) => {
+//     id: livres.ID_LIVRE
+//   })
+// }
 
 const page = async ({ params }: { params: { id: string } }) => {
   const id = parseInt(params.id)
