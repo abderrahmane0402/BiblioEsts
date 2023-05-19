@@ -12,7 +12,7 @@ export default function AddLivre({
 }: {
   livre?: {
     value?: Map<number, number>
-    set: Dispatch<SetStateAction<Map<number, number> | undefined>>
+    set: Dispatch<SetStateAction<Map<number, number>>>
   }
 }) {
   const [open, setOpen] = useState(false)
@@ -45,6 +45,7 @@ export default function AddLivre({
                 livre?.set(clone)
               }
             }}
+            checked={livre?.value?.has(params.row.ID_LIVRE)}
           />
         )
       },
@@ -101,6 +102,7 @@ export default function AddLivre({
               clone.set(params.row.ID_LIVRE, parseInt(e.target.value))
               livre?.set(clone)
             }}
+            value={livre?.value?.get(params.row.ID_LIVRE) || 0}
           />
         )
       },
@@ -115,9 +117,9 @@ export default function AddLivre({
           e.preventDefault()
           setOpen(true)
         }}
-        className="className='h-10 flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'"
+        className="className='h-10 flex text-lg items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'"
       >
-        open
+        ajouter livre
       </button>
       <Modal
         open={open}

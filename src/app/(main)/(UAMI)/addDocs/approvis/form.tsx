@@ -13,9 +13,11 @@ const Form = ({ children }: { children: React.ReactNode }) => {
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const userInfo = sessionStorage.getItem("login")
   const [livre, setLivre] = useState<Map<number, number>>(new Map())
-  console.log(userInfo)
+  const [userInfo, setUserInfo] = useState<string | null>(null)
+  useEffect(() => {
+    setUserInfo(sessionStorage.getItem("login"))
+  }, [])
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||

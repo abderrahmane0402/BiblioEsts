@@ -6,7 +6,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    await removeProf(parseInt(params.id as string))
+    await removeProf(params.id as string)
     revalidatePath("/prof")
     return new Response("ok")
   } catch (e) {

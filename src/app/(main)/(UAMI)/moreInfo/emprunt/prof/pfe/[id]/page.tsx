@@ -1,10 +1,10 @@
 import Header from "@/components/ui/Header";
 import Paragraph from "@/components/ui/Paragraph";
-import { getPpfe } from "@/db/Get/emprunt/prof/Ppfe";
+import { getPpfeID } from "@/db/Get/emprunt/prof/Ppfe";
 import { getDate } from "@/utils/date";
 
 const Page = async ({ params }: { params: { id: string } }) => {
-  const data = await getPpfe(parseInt(params.id));
+  const data = await getPpfeID(parseInt(params.id));
   return (
     <div className="w-full h-full gap-3 overflow-auto scroll-smooth">
       <div className="h-2/5 w-full flex flex-col flex-wrap">

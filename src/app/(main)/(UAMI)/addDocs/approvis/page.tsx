@@ -70,18 +70,18 @@ async function Page() {
 
             {/* Address */}
 
-            <f.FormField name='address' className='w-full'>
+            <f.FormField name='addresse' className='w-full'>
               <div className='w-full'>
-                <Header size={"md"}>Address :</Header>
+                <Header size={"md"}>Addresse :</Header>
                 <f.FormMessage match={"valueMissing"}>
-                  saisir l&apos;address
+                  saisir l&apos;addresse
                 </f.FormMessage>
                 <f.FormMessage match={"typeMismatch"}>
-                  saisir address valide
+                  saisir addresse valide
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-                <Input className='h-10' name='address' type='text' required />
+                <Input className='h-10' name='addresse' type='text' required />
               </f.FormControl>
             </f.FormField>
 

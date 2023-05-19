@@ -5,7 +5,7 @@ import {
   GridColDef,
   GridRowParams,
 } from "@mui/x-data-grid"
-import { useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import { MdDelete } from "react-icons/md"
 import DataTable from "./DataTable"
 import Button from "./ui/Button"
@@ -13,14 +13,21 @@ import Header from "./ui/Header"
 import Input from "./ui/Input"
 import { CustomColumnMenu } from "./ui/x-data-grid-customization/CustomColumnMenu"
 
-export function AddExe() {
-  const [livre, setLivre] = useState<Map<any, any>>(new Map())
+export function AddExe({
+  livre,
+}: {
+  livre?: {
+    value?: Map<number, string>
+    set: Dispatch<SetStateAction<Map<number, string>>>
+  }
+}) {
   const [ni, setni] = useState<number>()
   const [ob, setob] = useState<string>("")
   const ie = () => {
-    let clone = new Map(livre)
+    if (!ni) return
+    let clone = new Map(livre?.value)
     clone.set(ni, ob)
-    setLivre(clone)
+    livre?.set(clone)
     setni(0)
     setob("")
   }
@@ -47,9 +54,9 @@ export function AddExe() {
           icon={<MdDelete className='text-xl' />}
           label='delete'
           onClick={() => {
-            let clone = new Map(livre)
-            clone.delete(params.id)
-            setLivre(clone)
+            let clone = new Map(livre?.value)
+            clone.delete(params.id as number)
+            livre?.set(clone)
           }}
         />,
       ],
@@ -80,17 +87,6 @@ export function AddExe() {
           />
         </f.FormControl>
       </f.FormField>
-
-      <input
-        type='hidden'
-        name='exemplaire'
-        value={JSON.stringify(
-          Array.from(livre, ([key, value]) => ({
-            N_INVENTAIRE: key,
-            OBSERVATIONE: value,
-          }))
-        )}
-      />
 
       {/* Observation_EXemplaire */}
       <f.FormField name='observationEX' className='w-full'>
@@ -130,7 +126,7 @@ export function AddExe() {
 
       <DataTable
         columns={ExemplaireColumns}
-        rows={Array.from(livre, ([key, value]) => ({
+        rows={Array.from(livre?.value || [], ([key, value]) => ({
           N_INVENTAIRE: key,
           OBSERVATIONE: value,
         }))}
