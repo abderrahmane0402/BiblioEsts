@@ -56,7 +56,7 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
             <Input name='login' type='text' maxLength={40} required />
           </f.FormControl>
         </f.FormField>
-        <f.FormField name='pass'>
+        <f.FormField name='pass' className='mb-3'>
           <div className='flex justify-between'>
             <f.FormLabel>Password :</f.FormLabel>
             <f.FormMessage match={"tooShort"}>
@@ -70,7 +70,7 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
             <Input name='pass' type='password' minLength={8} required />
           </f.FormControl>
         </f.FormField>
-        <f.FormSubmit asChild className='w-full mt-3'>
+        <f.FormSubmit asChild className='w-full'>
           <LoadingButton
             className='w-full bg-[#1976d2]'
             loading={loading}

@@ -13,7 +13,7 @@ interface RootLayoutProps {
   children: ReactNode
 }
 
-const nunito: NextFont = Aleo({ weight: "700", subsets: ["latin"] })
+const nunito: NextFont = Aleo({ weight: "400", subsets: ["latin"] })
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
