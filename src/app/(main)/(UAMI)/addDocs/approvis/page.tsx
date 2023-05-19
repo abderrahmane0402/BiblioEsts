@@ -6,6 +6,7 @@ import { getFournisseurShort } from "@/db/Get/Fournisseur"
 import { getNinv } from "@/db/Get/Livres"
 import Link from "next/link"
 import Form from "./form"
+import AddLivre from "./addLivre"
 
 async function Page() {
   const [fournisseur, livre] = await Promise.all([
@@ -69,18 +70,18 @@ async function Page() {
 
             {/* Address */}
 
-            <f.FormField name='address' className='w-full'>
+            <f.FormField name='addresse' className='w-full'>
               <div className='w-full'>
-                <Header size={"md"}>Address :</Header>
+                <Header size={"md"}>Addresse :</Header>
                 <f.FormMessage match={"valueMissing"}>
-                  saisir l&apos;address
+                  saisir l&apos;addresse
                 </f.FormMessage>
                 <f.FormMessage match={"typeMismatch"}>
-                  saisir address valide
+                  saisir addresse valide
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-                <Input className='h-10' name='address' type='text' required />
+                <Input className='h-10' name='addresse' type='text' required />
               </f.FormControl>
             </f.FormField>
 
@@ -165,10 +166,10 @@ async function Page() {
                 </Link>
               </div>
             </div>
-            <Header size={"md"}>livre :</Header>
+            {/* <Header size={"md"}>livre :</Header>
             <div className='flex gap-4'>
               <Link
-                href={"/addDocs/Livre"}
+                href={"/addDocs/fournisseur"}
                 className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'
               >
                 ajouter Livre
@@ -179,7 +180,7 @@ async function Page() {
               >
                 nouveau Livre
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </Form>

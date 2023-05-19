@@ -17,7 +17,7 @@ export function Table({ data }: { data: any }) {
   const Columns: GridColDef[] = [
     {
       field: "ID_APRO",
-      headerName: "id approvisionnement",
+      headerName: "N approvisionnement",
       flex: 1,
       type: "string",
       hideable: false,

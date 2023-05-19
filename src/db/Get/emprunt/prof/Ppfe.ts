@@ -2,22 +2,23 @@
 
 import prisma from "@/utils/Prisma"
 
-export async function getPpfeID(id : number)
-{
+export async function getPpfeID(id: number) {
   try {
-  const emprunt  = await prisma.emprunt_pfe_prof.findUnique({
-
-    where: {
-      IDPP: id,
-    },
-    }
-  )
-  await prisma.$disconnect
-  return emprunt
-} catch (e) {
-  await prisma.$disconnect
-  throw Error("somthing went wrong" + e)
-}
+    const emprunt = await prisma.emprunt_pfe_prof.findUnique({
+      include: {
+        pfe: true,
+        prof: true,
+      },
+      where: {
+        IDPP: id,
+      },
+    })
+    await prisma.$disconnect
+    return emprunt
+  } catch (e) {
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
+  }
 }
 //* HISTORIQUE DE TOUTE LES EMPRUNTS
 

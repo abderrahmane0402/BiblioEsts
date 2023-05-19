@@ -9,7 +9,7 @@ interface SelectProps extends SelectInputProps {
     LIBELLE: string;
   }[];
   placeholder?: string;
-  defaultValue : string 
+  defaultValue? : string 
 }
 
 const InputSelect: FC<SelectProps> = ({ options, placeholder, defaultValue, ...props }) => {

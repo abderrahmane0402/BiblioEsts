@@ -3,8 +3,16 @@ import { setApprovi } from "@/db/Post/Aprovis"
 import { getUserID } from "@/db/Post/Utilisateur"
 import { Prisma, approvisionement } from "@prisma/client"
 
-export default async function addApprovi(formData: FormData, login: string) {
+export default async function addApprovi(
+  formData: FormData,
+  login: string,
+  livre: Map<number, number>
+) {
   const user = await getUserID(login)
+  const livres = Array.from(livre, ([key, value]) => ({
+    ID_LIVRE: key,
+    QTE: value,
+  }))
   try {
     const Approvi: approvisionement = {
       ID_APRO: Number(formData.get("appro")),
@@ -16,7 +24,7 @@ export default async function addApprovi(formData: FormData, login: string) {
       ID_U: user!.ID_U,
       TELEPHONE: formData.get("tele") as string,
     }
-    await setApprovi(Approvi)
+    await setApprovi(Approvi, livres)
     return true
   } catch (error) {
     console.log(error)

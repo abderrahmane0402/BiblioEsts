@@ -2,16 +2,22 @@
 import * as f from "@/components/Form"
 import addApprovi from "@/components/server/approvis/addApprovis"
 import Button from "@/components/ui/Button"
+import Header from "@/components/ui/Header"
 import * as Toast from "@/components/ui/toast"
 import { useEffect, useRef, useState } from "react"
+import AddLivre from "./addLivre"
+import Link from "next/link"
 
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null)
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const userInfo = sessionStorage.getItem("login")
-  const [livre, setLivre] = useState<Map<number, number>>()
+  const [livre, setLivre] = useState<Map<number, number>>(new Map())
+  const [userInfo, setUserInfo] = useState<string | null>(null)
+  useEffect(() => {
+    setUserInfo(sessionStorage.getItem("login"))
+  }, [])
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -29,11 +35,12 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className='w-full'
       action={async (FormData) => {
-        const data = await addApprovi(FormData, userInfo || "")
+        const data = await addApprovi(FormData, userInfo || "", livre)
         if (data) {
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)
           form.current?.reset()
+          setLivre(new Map())
         } else {
           setOpen2(true)
           setTimeout(() => setOpen2(false), 1000)
@@ -41,6 +48,16 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
+      <Header size={"md"}>livre :</Header>
+      <div className='flex gap-4'>
+        <AddLivre livre={{ value: livre, set: setLivre }} />
+        <Link
+          href={"/addDocs/fournisseur"}
+          className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'
+        >
+          nouveau Livre
+        </Link>
+      </div>
       <footer className='flex justify-center items-center py-12'>
         <f.FormSubmit asChild>
           <Button
