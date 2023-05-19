@@ -1,8 +1,7 @@
 import * as f from "@/components/Form"
-import { filiere } from "@/types"
+import AutoComplete from "@/components/ui/autoComplete"
 import Header from "@/ui/Header"
 import Input from "@/ui/Input"
-import AutoComplete from "@/components/ui/autoComplete"
 import Form from "./form"
 
 const Filière = ["GI", "TM", "GIM", "TIMQ"]

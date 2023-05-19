@@ -10,12 +10,14 @@ export function Table({ data }: { data: any }) {
       headerName: "n_inventaire",
       type: "number",
       hideable: false,
+      
     },
     {
       field: "OBSERVATIONE",
       headerName: "observation",
       type: "string",
       hideable: false,
+      width : 350   ,
     },
   ];
 

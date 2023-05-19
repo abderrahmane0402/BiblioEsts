@@ -140,6 +140,7 @@ const Page = async () => {
                   autoWidth={false}
                   multiple={false}
                   native={false}
+                  defaultValue=""
                 />
               </f.FormControl>
             </f.FormField>

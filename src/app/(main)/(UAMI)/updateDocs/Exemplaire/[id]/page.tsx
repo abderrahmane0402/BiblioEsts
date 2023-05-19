@@ -62,7 +62,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             rows={5}
             name="observationEX"
             className="w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
-            defaultValue={Expl!.OBSERVATIONE as string }
+            defaultValue={Expl?.OBSERVATIONE as string }
           />
         </f.FormControl>
       </f.FormField>

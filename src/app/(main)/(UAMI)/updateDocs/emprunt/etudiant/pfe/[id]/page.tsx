@@ -7,6 +7,7 @@ import { getNinv } from "@/db/Get/Livres";
 import Form from "./form";
 import { getEpfeID } from "@/db/Get/emprunt/etudiant/Epfe";
 import { getCote } from "@/db/Get/Pfe";
+import { getDate } from "@/utils/date";
 
 const Page = async ({ params }: { params: { id: string } }) => {
   
@@ -72,6 +73,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 type="date"
                 maxLength={255}
                 required
+                defaultValue={getDate(emp?.DATE_D) || '' }
+
               />
             </f.FormControl>
           </f.FormField>
@@ -95,6 +98,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 type="date"
                 maxLength={255}
                 required
+                defaultValue={getDate(emp?.DATE_F) || '' }
               />
             </f.FormControl>
           </f.FormField>

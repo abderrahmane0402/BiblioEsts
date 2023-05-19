@@ -1,5 +1,4 @@
 import * as f from "@/components/Form";
-import Button from "@/ui/Button";
 import Header from "@/ui/Header";
 import Input from "@/ui/Input";
 import Form from "./form";
@@ -67,8 +66,8 @@ const page = async () => {
             autoWidth={false}
             multiple={false}
             native={false}
-            name="categorie"
-          />
+            name="categorie" 
+            defaultValue={""}          />
         </f.FormControl>
       </f.FormField>
     </Form>

@@ -1,6 +1,5 @@
 import Header from "@/components/ui/Header";
 import Paragraph from "@/components/ui/Paragraph";
-import ShowImage from "@/components/ui/ShowImage";
 import { getElivre } from "@/db/Get/emprunt/etudiant/Elivre";
 import { getDate } from "@/utils/date";
 

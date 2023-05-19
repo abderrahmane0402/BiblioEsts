@@ -46,7 +46,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             isLoading={isLoading}
             className='bg-[#CA3CFF] text-white w-3/12'
           >
-            ajouter prof
+            Ajouter prof
           </Button>
         </f.FormSubmit>
       </footer>

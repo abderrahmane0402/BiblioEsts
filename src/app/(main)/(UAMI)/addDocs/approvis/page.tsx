@@ -168,7 +168,7 @@ async function Page() {
             <Header size={"md"}>livre :</Header>
             <div className='flex gap-4'>
               <Link
-                href={"/addDocs/fournisseur"}
+                href={"/addDocs/Livre"}
                 className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'
               >
                 ajouter Livre

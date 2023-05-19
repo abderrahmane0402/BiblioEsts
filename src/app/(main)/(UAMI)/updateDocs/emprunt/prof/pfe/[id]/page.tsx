@@ -7,6 +7,7 @@ import { getProfshort } from "@/db/Get/Prof";
 import Form from "./form";
 import { getCote } from "@/db/Get/Pfe";
 import { getPpfeID } from "@/db/Get/emprunt/prof/Ppfe";
+import { getDate } from "@/utils/date";
 
 const Page = async ({ params }: { params: { id: string } }) => {
   const id = parseInt(params.id);
@@ -75,6 +76,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 type="date"
                 maxLength={255}
                 required
+                defaultValue={getDate(emp?.DATE_D) || '' }
+
               />
             </f.FormControl>
           </f.FormField>
@@ -97,6 +100,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 name="date_f"
                 type="date"
                 maxLength={255}
+                defaultValue={getDate(emp?.DATE_F) || '' }
                 required
               />
             </f.FormControl>

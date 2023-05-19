@@ -1,32 +1,14 @@
 import * as f from "@/components/Form";
-import { filiere } from "@/types";
+import AutoComplete from "@/components/ui/autoComplete";
 import Header from "@/ui/Header";
 import Input from "@/ui/Input";
-import AutoComplete from "@/components/ui/autoComplete";
 import Form from "./form";
 
-const Filière= [
-  {
-    id : 1,
-    LIBELLE: "GI",
-  },
-  {
-    id : 2,   
-    LIBELLE: "TM",
-  },
-  {
-    id : 3, 
-    LIBELLE: "TIMQ",
-  },
-  {
-    id : 4,
-    LIBELLE: "GIM",
-  },
-];
+const Filière = ["GI", "TM", "GIM", "TIMQ"]
+
 
 
 const page = () => {
-  const result2 = Filière.map((obj) => obj.LIBELLE);
   return (
     <Form>
       {/* sujet */}
@@ -102,7 +84,7 @@ const page = () => {
           <f.FormMessage match={"typeMismatch"}>saisir une filiere</f.FormMessage>
         </div>
         <f.FormControl asChild>
-        <AutoComplete options={result2} name="filiere"  />
+        <AutoComplete options={Filière} name="filiere"  />
         </f.FormControl>
       </f.FormField>
       {/* date_realis */}

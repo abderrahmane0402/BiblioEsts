@@ -2,7 +2,6 @@
 
 import { getElivreID } from "@/db/Get/emprunt/etudiant/Elivre";
 import { getPlivreID } from "@/db/Get/emprunt/prof/Plivre";
-import { getPpfeID } from "@/db/Get/emprunt/prof/Ppfe";
 import { getUserID } from "@/db/Post/Utilisateur";
 import { PutElivre } from "@/db/Put/emprunt/etudiant/Elivre";
 import { PutPlivre } from "@/db/Put/emprunt/prof/Plivre";

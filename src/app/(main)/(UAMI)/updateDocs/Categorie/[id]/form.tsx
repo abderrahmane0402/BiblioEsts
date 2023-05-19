@@ -1,6 +1,5 @@
 "use client";
 import * as f from "@/components/Form";
-import addCategorie from "@/components/server/Categorie/addCategorie";
 import updateCategorie from "@/components/server/Categorie/updateCategorie";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";

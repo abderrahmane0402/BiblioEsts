@@ -54,7 +54,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       <div className="max-h-2/5 h-auto w-full flex flex-col flex-wrap">
         <div className="flex">
           <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Nom d&apos;entreprise :
+            Nom d{"'"}entreprise :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
             {apro?.ENTREPRISE}

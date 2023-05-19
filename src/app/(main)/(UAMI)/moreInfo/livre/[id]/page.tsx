@@ -1,10 +1,9 @@
+import MLink from "@/components/ui/MLink";
 import MyImage from "@/components/ui/MyImage";
 import Paragraph from "@/components/ui/Paragraph";
 import { getLivre, getLivres } from "@/db/Get/Livres";
 import { getDate } from "@/utils/date";
 import { Table } from "./table";
-import Link from "next/link";
-import MLink from "@/components/ui/MLink";
 
 export const revalidate = 60;
 

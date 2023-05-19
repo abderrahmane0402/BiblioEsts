@@ -48,7 +48,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             isLoading={isLoading}
             className="bg-[#CA3CFF] text-white w-3/12"
           >
-            ajouter Emprunt
+            Ajouter Emprunt
           </Button>
         </f.FormSubmit>
       </footer>
@@ -57,7 +57,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         <Toast.Root open={open1} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>
-            <Toast.Description>Emprunt ajouté avec succés</Toast.Description>
+            <Toast.Description>Emprunt a été  ajouté avec succés</Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen1(false)}>
             <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">

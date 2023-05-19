@@ -73,7 +73,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 type="date"
                 maxLength={255}
                 required
-                defaultValue={getDate(emp!.DATE_D) || '' }
+                defaultValue={getDate(emp?.DATE_D) || '' }
               />
             </f.FormControl>
           </f.FormField>
@@ -97,7 +97,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 type="date"
                 maxLength={255}
                 required
-                defaultValue={getDate(emp!.DATE_F) || '' }
+                defaultValue={getDate(emp?.DATE_F) || '' }
               />
             </f.FormControl>
           </f.FormField>
