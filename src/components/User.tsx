@@ -4,6 +4,7 @@ import MLink from "@/ui/MLink"
 import MyImage from "@/ui/MyImage"
 import { AiFillSetting } from "react-icons/ai"
 import { BsPencilSquare } from "react-icons/bs"
+import Logout from "./logout"
 
 export default function User({}) {
   return (
@@ -20,9 +21,7 @@ export default function User({}) {
           <AiFillSetting className='w-4 h-4' />
         </MLink>
       </div>
-      <Button size={"sm"} btype="submit">
-        log out
-      </Button>
+      <Logout />
     </footer>
   )
 }

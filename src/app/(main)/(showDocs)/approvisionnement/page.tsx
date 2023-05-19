@@ -1,14 +1,15 @@
-import { getApprosShort } from "@/db/Get/Appro";
-import { Table } from "./table";
-import { getPfes } from "@/db/Get/Pfe";
+import { getApprosShort } from "@/db/Get/Appro"
+import { Table } from "./table"
+
+export const dynamic = "force-dynamic"
 
 const Page = async () => {
-  let data = await getApprosShort();
+  let data = await getApprosShort()
   return (
-    <div className="w-full h-full">
+    <div className='w-full h-full'>
       <Table data={data} />
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

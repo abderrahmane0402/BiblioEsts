@@ -22,6 +22,8 @@ import {
   MdOutlineNotificationsNone,
 } from "react-icons/md"
 
+export const dynamic = "force-dynamic"
+
 const data = {
   labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
   datasets: [

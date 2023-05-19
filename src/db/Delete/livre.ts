@@ -7,7 +7,7 @@ export async function removeLivre(id: number) {
         ID_LIVRE: id,
       },
     });
-    revalidatePath("/livres");
+    revalidatePath("/livre");
     await prisma.$disconnect;
   } catch (e) {
     await prisma.$disconnect;

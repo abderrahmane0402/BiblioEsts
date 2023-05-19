@@ -7,7 +7,6 @@ import InputSelect from "@/components/ui/Select";
 import { getCategories_Select } from "@/db/Get/Categorie";
 import { getDate } from "@/utils/date";
 
-// export const revalidate = 0;
 
 
 const Page = async ({ params }: { params: { id: string } }) => {
@@ -205,7 +204,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   type="file"
                   accept=".jpg, .jpeg, .png"
                   maxLength={50}
-                  defaultValue={livre!.PAGE_DE_GARDE as string}
                   
                 />
               </f.FormControl>
@@ -227,11 +225,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   name="somaire"
                   type="file"
                   accept=".pdf"
-             
                   maxLength={50}
-                  
-                  defaultValue={livre!.SOMAIRE as string}
-             
                 />
               </f.FormControl>
             </f.FormField>
@@ -252,7 +246,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   rows={5}
                   name="observation"
                   defaultValue={livre?.OBSERVATIONL as string}
-                  
                   className="w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
                 />
               </f.FormControl>

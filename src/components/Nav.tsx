@@ -8,9 +8,10 @@ import {
   FaUserGraduate,
   FaUserTie,
 } from "react-icons/fa"
-import { MdOutlineWork, MdSpaceDashboard } from "react-icons/md"
+import { MdCategory, MdOutlineWork, MdSpaceDashboard } from "react-icons/md"
 import { TbBooks, TbReportMoney } from "react-icons/tb"
 import { VscRepo } from "react-icons/vsc"
+import { GiBlackBook } from "react-icons/gi"
 
 export const ZNav = ({}) => {
   return (
@@ -23,9 +24,9 @@ export const ZNav = ({}) => {
             href: "",
             icon: <CgFileDocument />,
           }}
-          href={["/livre", "/PFE"]}
-          title={["Livre", "PFE"]}
-          icon={[<TbBooks />, <VscRepo />]}
+          href={["/livre", "/pfe", "/categorie", "/exemplaire"]}
+          title={["Livre", "PFE", "Categorie", "Exemplaire"]}
+          icon={[<TbBooks />, <VscRepo />, <MdCategory />, <GiBlackBook />]}
         />
         <NestedNav
           principale={{
@@ -33,17 +34,23 @@ export const ZNav = ({}) => {
             href: "",
             icon: <FaChalkboardTeacher />,
           }}
-          href={["/emprunt/etudiant/livre", "/prof"]}
+          href={[
+            "/emprunt/etudiant/livre/encours",
+            "/emprunt/prof/livre/encours",
+          ]}
           title={["Etudiants", "Professeurs"]}
           icon={[<FaUserGraduate />, <FaUserTie />]}
         />
-        <Nav href='/employes' title='Employes' icon={<MdOutlineWork />} />
-        <Nav href='/Fournisseur' title='Fournisseur' icon={<TbReportMoney />} />
+        <Nav href='/utilisateur' title='Utilisateur' icon={<MdOutlineWork />} />
+        <Nav href='/fournisseur' title='Fournisseur' icon={<TbReportMoney />} />
         <Nav
           href='/approvisionnement'
           title='Approvis'
           icon={<FaFileContract />}
         />
+        <Nav href='/etudiant' title='Etudiant' icon={<FaUserGraduate />} />
+        <Nav href='/prof' title='Professeur' icon={<FaUserTie />} />
+        <Nav href='/fournisseur' title='Fournisseur' icon={<FaUserTie />} />
       </ul>
     </nav>
   )
