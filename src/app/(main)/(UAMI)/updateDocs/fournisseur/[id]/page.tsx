@@ -3,9 +3,12 @@ import Header from "@/ui/Header"
 import Input from "@/ui/Input"
 import Form from "./form"
 import { getFournisseur } from "@/db/Get/Fournisseur"
+
+export const dynamic = "force-dynamic"
+
 const page = async ({ params }: { params: { id: string } }) => {
-  const id = parseInt(params.id);
-  const four =await getFournisseur(id)
+  const id = parseInt(params.id)
+  const four = await getFournisseur(id)
   return (
     <Form id={id}>
       {/* Nom */}
@@ -20,7 +23,13 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='nom' type='text' defaultValue={four?.NOM as string} required />
+          <Input
+            className='h-10'
+            name='nom'
+            type='text'
+            defaultValue={four?.NOM as string}
+            required
+          />
         </f.FormControl>
       </f.FormField>
 
@@ -36,7 +45,13 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='prenom' type='text' defaultValue={four?.PRENOM as string} required />
+          <Input
+            className='h-10'
+            name='prenom'
+            type='text'
+            defaultValue={four?.PRENOM as string}
+            required
+          />
         </f.FormControl>
       </f.FormField>
 
@@ -50,7 +65,12 @@ const page = async ({ params }: { params: { id: string } }) => {
           <f.FormMessage match={"typeMismatch"}>saisir une email</f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input type='email' name='email' defaultValue={four?.GMAIL as string} className='h-10' />
+          <Input
+            type='email'
+            name='email'
+            defaultValue={four?.GMAIL as string}
+            className='h-10'
+          />
         </f.FormControl>
       </f.FormField>
 
@@ -68,7 +88,12 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input type='text' name='adresse' defaultValue={four?.ADDRESSE as string} className='h-10' />
+          <Input
+            type='text'
+            name='adresse'
+            defaultValue={four?.ADDRESSE as string}
+            className='h-10'
+          />
         </f.FormControl>
       </f.FormField>
 
@@ -86,7 +111,12 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input type='text' name='tele' defaultValue={four?.TELEPHONE as string } className='h-10' />
+          <Input
+            type='text'
+            name='tele'
+            defaultValue={four?.TELEPHONE as string}
+            className='h-10'
+          />
         </f.FormControl>
       </f.FormField>
     </Form>

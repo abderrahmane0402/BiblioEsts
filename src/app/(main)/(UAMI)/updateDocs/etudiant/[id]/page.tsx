@@ -5,11 +5,13 @@ import Header from "@/ui/Header"
 import Input from "@/ui/Input"
 import Form from "./form"
 
+export const dynamic = "force-dynamic"
+
 const Filière = ["GI", "TM", "GIM", "TIMQ"]
 
 const page = async ({ params }: { params: { id: string } }) => {
-  const id = parseInt(params.id) 
-  const etd= await getEtudiant(id)
+  const id = parseInt(params.id)
+  const etd = await getEtudiant(id)
 
   return (
     <Form id={id}>
@@ -25,7 +27,13 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='num_ins' type='text' defaultValue={etd?.N_inscription} required />
+          <Input
+            className='h-10'
+            name='num_ins'
+            type='text'
+            defaultValue={etd?.N_inscription}
+            required
+          />
         </f.FormControl>
       </f.FormField>
       {/* Numero Apogee */}
@@ -42,7 +50,13 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='num_apoge' type='text' required defaultValue={etd?.N_APOGEE} />
+          <Input
+            className='h-10'
+            name='num_apoge'
+            type='text'
+            required
+            defaultValue={etd?.N_APOGEE}
+          />
         </f.FormControl>
       </f.FormField>
 
@@ -58,7 +72,13 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='nom' type='text' required  defaultValue={etd?.NOM as string}/>
+          <Input
+            className='h-10'
+            name='nom'
+            type='text'
+            required
+            defaultValue={etd?.NOM as string}
+          />
         </f.FormControl>
       </f.FormField>
 
@@ -74,10 +94,15 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='prenom' type='text' required defaultValue={etd?.PRENOM as string} />
+          <Input
+            className='h-10'
+            name='prenom'
+            type='text'
+            required
+            defaultValue={etd?.PRENOM as string}
+          />
         </f.FormControl>
       </f.FormField>
-      
 
       {/* filiere */}
       <f.FormField name='filiere' className='w-full'>
@@ -93,7 +118,11 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <AutoComplete options={Filière} name='filiere'  defaultValue={etd?.FILERE}/>
+          <AutoComplete
+            options={Filière}
+            name='filiere'
+            defaultValue={etd?.FILERE}
+          />
         </f.FormControl>
       </f.FormField>
     </Form>

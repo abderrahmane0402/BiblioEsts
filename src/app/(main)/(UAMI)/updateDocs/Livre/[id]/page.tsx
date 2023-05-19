@@ -1,31 +1,29 @@
-import * as f from "@/components/Form";
-import Header from "@/ui/Header";
-import Input from "@/ui/Input";
-import Form from "./Form";
-import { getLivre } from "@/db/Get/Livres";
-import InputSelect from "@/components/ui/Select";
-import { getCategories_Select } from "@/db/Get/Categorie";
-import { getDate } from "@/utils/date";
+import * as f from "@/components/Form"
+import Header from "@/ui/Header"
+import Input from "@/ui/Input"
+import Form from "./Form"
+import { getLivre } from "@/db/Get/Livres"
+import InputSelect from "@/components/ui/Select"
+import { getCategories_Select } from "@/db/Get/Categorie"
+import { getDate } from "@/utils/date"
 
-
+export const dynamic = "force-dynamic"
 
 const Page = async ({ params }: { params: { id: string } }) => {
-  const data = await getCategories_Select();
-  const id = parseInt(params.id);
-  const livre = await getLivre(id);
-  
-
+  const data = await getCategories_Select()
+  const id = parseInt(params.id)
+  const livre = await getLivre(id)
 
   return (
-    <div className="overflow-auto w-full h-full">
-      <Form  id={id}  >
+    <div className='overflow-auto w-full h-full'>
+      <Form id={id}>
         <Header size={"lg"}>Information de livre</Header>
-        <div className="flex flex-wrap ">
-          <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
+        <div className='flex flex-wrap '>
+          <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
             {/* nombre_inv */}
-            <f.FormField name="title" className="w-full">
-              <div className="w-full">
-                <Header size={"md"} className="p">
+            <f.FormField name='title' className='w-full'>
+              <div className='w-full'>
+                <Header size={"md"} className='p'>
                   Titre :
                 </Header>
                 <f.FormMessage match={"valueMissing"}>
@@ -37,9 +35,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="title"
-                  type="text"
+                  className='h-10'
+                  name='title'
+                  type='text'
                   maxLength={255}
                   required
                   defaultValue={livre?.TITRE as string}
@@ -48,8 +46,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </f.FormControl>
             </f.FormField>
             {/* autheur */}
-            <f.FormField name="autheur" className="w-full">
-              <div className="w-full">
+            <f.FormField name='autheur' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Autheur :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir l{"'"}autheur
@@ -60,20 +58,19 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="autheur"
-                  type="text"
+                  className='h-10'
+                  name='autheur'
+                  type='text'
                   maxLength={50}
                   defaultValue={livre?.AUTHEUR as string}
-                  
                 />
               </f.FormControl>
             </f.FormField>
 
             {/* Editeur */}
 
-            <f.FormField name="editeur" className="w-full">
-              <div className="w-full">
+            <f.FormField name='editeur' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Editeur :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir l{"'"}éditeur
@@ -84,20 +81,19 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="editeur"
-                  type="text"
+                  className='h-10'
+                  name='editeur'
+                  type='text'
                   maxLength={50}
                   defaultValue={livre?.EDITEUR as string}
-                  
                 />
               </f.FormControl>
             </f.FormField>
 
             {/* Date edition */}
 
-            <f.FormField name="date_edi" className="w-full">
-              <div className="w-full">
+            <f.FormField name='date_edi' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Date d{"'"}édition :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir la date d{"'"}édition
@@ -108,19 +104,18 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="date_edi"
-                  type="date"
+                  className='h-10'
+                  name='date_edi'
+                  type='date'
                   maxLength={50}
                   required
-
                   defaultValue={getDate(livre?.DATE_EDITION) || ""}
                 />
               </f.FormControl>
             </f.FormField>
             {/* prix */}
-            <f.FormField name="prix" className="w-full">
-              <div className="w-full">
+            <f.FormField name='prix' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Prix :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir le prix
@@ -131,17 +126,17 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="prix"
-                  type="number"
+                  className='h-10'
+                  name='prix'
+                  type='number'
                   maxLength={50}
                   required
-                  defaultValue={parseFloat(livre!.PRIX!.toString())  }
+                  defaultValue={parseFloat(livre!.PRIX!.toString())}
                 />
               </f.FormControl>
             </f.FormField>
-            <f.FormField name="categorie" className="w-full">
-              <div className="w-full">
+            <f.FormField name='categorie' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Catégorie :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir une categorie
@@ -151,22 +146,22 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-                <InputSelect 
+                <InputSelect
                   options={data}
                   autoWidth={false}
                   multiple={false}
                   native={false}
-                  name="categorie"
+                  name='categorie'
                   defaultValue={livre?.ID_CAT?.toString() || ""}
-                /> 
-               </f.FormControl>
+                />
+              </f.FormControl>
             </f.FormField>
-          </div> 
+          </div>
 
-          <div className="w-full md:w-1/2 pl-4">
+          <div className='w-full md:w-1/2 pl-4'>
             {/* Code */}
-            <f.FormField name="code" className="w-full">
-              <div className="w-full">
+            <f.FormField name='code' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Code :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir le code
@@ -177,9 +172,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="code"
-                  type="number"
+                  className='h-10'
+                  name='code'
+                  type='number'
                   maxLength={50}
                   required
                   defaultValue={livre?.CODE as number}
@@ -187,8 +182,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </f.FormControl>
             </f.FormField>
             {/* page de garde */}
-            <f.FormField name="page_garde" className="w-full">
-              <div className="w-full">
+            <f.FormField name='page_garde' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Page de garde :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   Entrer l{"'"}page de garde
@@ -199,18 +194,17 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-12"
-                  name="page_garde"
-                  type="file"
-                  accept=".jpg, .jpeg, .png"
+                  className='h-12'
+                  name='page_garde'
+                  type='file'
+                  accept='.jpg, .jpeg, .png'
                   maxLength={50}
-                  
                 />
               </f.FormControl>
             </f.FormField>
             {/* SOMAIRE */}
-            <f.FormField name="somaire" className="w-full">
-              <div className="w-full">
+            <f.FormField name='somaire' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>SOMAIRE :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   Entrer un SOMAIRE
@@ -221,17 +215,17 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-12"
-                  name="somaire"
-                  type="file"
-                  accept=".pdf"
+                  className='h-12'
+                  name='somaire'
+                  type='file'
+                  accept='.pdf'
                   maxLength={50}
                 />
               </f.FormControl>
             </f.FormField>
             {/* Observation */}
-            <f.FormField name="observation" className="w-full">
-              <div className="w-full">
+            <f.FormField name='observation' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Observation :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir l{"'"}observation
@@ -244,9 +238,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 <textarea
                   cols={50}
                   rows={5}
-                  name="observation"
+                  name='observation'
                   defaultValue={livre?.OBSERVATIONL as string}
-                  className="w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
+                  className='w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]'
                 />
               </f.FormControl>
             </f.FormField>
@@ -254,6 +248,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
         </div>
       </Form>
     </div>
-  );
-};
-export default Page 
+  )
+}
+export default Page

@@ -1,22 +1,24 @@
-import * as f from "@/components/Form";
-import Header from "@/ui/Header";
-import Input from "@/ui/Input";
-import Form from "./form";
-import { getCategorie, getCategories_Select } from "@/db/Get/Categorie";
-import InputSelect from "@/components/ui/Select";
+import * as f from "@/components/Form"
+import Header from "@/ui/Header"
+import Input from "@/ui/Input"
+import Form from "./form"
+import { getCategorie, getCategories_Select } from "@/db/Get/Categorie"
+import InputSelect from "@/components/ui/Select"
 
-
+export const dynamic = "force-dynamic"
 const page = async ({ params }: { params: { id: string } }) => {
-  const id = parseInt(params.id);
-  const [data,cat] = await Promise.all([getCategories_Select(),getCategorie(id)]) ;
-  
- 
+  const id = parseInt(params.id)
+  const [data, cat] = await Promise.all([
+    getCategories_Select(),
+    getCategorie(id),
+  ])
+
   return (
     <Form id={id}>
       {/* Libelle */}
-      <f.FormField name="libelle" className="w-full">
-        <div className="w-full">
-          <Header size={"md"} className="p">
+      <f.FormField name='libelle' className='w-full'>
+        <div className='w-full'>
+          <Header size={"md"} className='p'>
             Titre :
           </Header>
           <f.FormMessage match={"valueMissing"}>
@@ -28,9 +30,9 @@ const page = async ({ params }: { params: { id: string } }) => {
         </div>
         <f.FormControl asChild>
           <Input
-            className="h-10"
-            name="libelle"
-            type="text"
+            className='h-10'
+            name='libelle'
+            type='text'
             required
             defaultValue={cat?.LIBELLE as string}
           />
@@ -38,9 +40,9 @@ const page = async ({ params }: { params: { id: string } }) => {
       </f.FormField>
       {/* sujet */}
 
-      <f.FormField name="sujet" className="w-full">
-        <div className="w-full">
-          <Header size={"md"} className="p">
+      <f.FormField name='sujet' className='w-full'>
+        <div className='w-full'>
+          <Header size={"md"} className='p'>
             Sujet :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le sujet</f.FormMessage>
@@ -49,12 +51,17 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className="h-10" name="sujet" type="text"   defaultValue={cat?.SUJET as string}/>
+          <Input
+            className='h-10'
+            name='sujet'
+            type='text'
+            defaultValue={cat?.SUJET as string}
+          />
         </f.FormControl>
       </f.FormField>
-      <f.FormField name="categorie" className="w-full">
-        <div className="w-full">
-          <Header size={"md"} className="p">
+      <f.FormField name='categorie' className='w-full'>
+        <div className='w-full'>
+          <Header size={"md"} className='p'>
             categorie pere:
           </Header>
         </div>
@@ -64,14 +71,13 @@ const page = async ({ params }: { params: { id: string } }) => {
             autoWidth={false}
             multiple={false}
             native={false}
-            name="categorie"
+            name='categorie'
             defaultValue={cat?.CAT_ID_CAT?.toString() || ""}
-            
           />
         </f.FormControl>
       </f.FormField>
     </Form>
-  );
-};
+  )
+}
 
-export default page;
+export default page

@@ -6,10 +6,12 @@ import AutoComplete from "@/components/ui/autoComplete"
 import Form from "./form"
 import { getProf } from "@/db/Get/Prof"
 
+export const dynamic = "force-dynamic"
+
 const Filière = ["GI", "TM", "GIM", "TIMQ"]
 
-const page = async ({ params }: { params: { id: string } } ) => {
-  const id = params.id 
+const page = async ({ params }: { params: { id: string } }) => {
+  const id = params.id
   const prf = await getProf(id)
 
   return (
@@ -26,7 +28,13 @@ const page = async ({ params }: { params: { id: string } } ) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='code' type='text' defaultValue={prf?.Code} required />
+          <Input
+            className='h-10'
+            name='code'
+            type='text'
+            defaultValue={prf?.Code}
+            required
+          />
         </f.FormControl>
       </f.FormField>
 
@@ -42,7 +50,13 @@ const page = async ({ params }: { params: { id: string } } ) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='nom' type='text' defaultValue={prf?.NOM as string} required />
+          <Input
+            className='h-10'
+            name='nom'
+            type='text'
+            defaultValue={prf?.NOM as string}
+            required
+          />
         </f.FormControl>
       </f.FormField>
 
@@ -58,7 +72,13 @@ const page = async ({ params }: { params: { id: string } } ) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='prenom' type='text' required defaultValue={prf?.PRENOM as string} />
+          <Input
+            className='h-10'
+            name='prenom'
+            type='text'
+            required
+            defaultValue={prf?.PRENOM as string}
+          />
         </f.FormControl>
       </f.FormField>
 
@@ -76,7 +96,11 @@ const page = async ({ params }: { params: { id: string } } ) => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <AutoComplete options={Filière} name='filiere' defaultValue={prf?.DEPARTEMENT} />
+          <AutoComplete
+            options={Filière}
+            name='filiere'
+            defaultValue={prf?.DEPARTEMENT}
+          />
         </f.FormControl>
       </f.FormField>
     </Form>
