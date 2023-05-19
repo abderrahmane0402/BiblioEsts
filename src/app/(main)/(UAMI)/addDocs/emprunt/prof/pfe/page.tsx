@@ -6,6 +6,7 @@ import { getProfshort } from "@/db/Get/Prof";
 import Form from "./form";
 import { getCote } from "@/db/Get/Pfe";
 
+export const dynamic = "force-dynamic"
 const Page = async () => {
   const [Apoge, Inv] = await Promise.all([getProfshort(), getCote()]);
   const result = Apoge.map((obj) => obj.Code);
