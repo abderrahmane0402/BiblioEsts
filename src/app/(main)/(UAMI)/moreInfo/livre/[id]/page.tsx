@@ -58,7 +58,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             Date Edition :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
-            {getDate(livre!.DATE_EDITION!)}
+            {livre!.DATE_EDITION}
           </Paragraph>
         </div>
         <div className='flex'>
