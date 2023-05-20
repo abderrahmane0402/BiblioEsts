@@ -1,5 +1,6 @@
 "use server"
 
+import { getLivre } from "@/db/Get/Livres"
 import { setLivres } from "@/db/Post/Livre"
 import { Prisma } from "@prisma/client"
 import { revalidatePath } from "next/cache"
@@ -10,6 +11,7 @@ export default async function addLivre(
 ) {
   try {
     const img = new FormData()
+    
     img.append("image", data.get("page_garde") || "")
     const res = await fetch("http://localhost:3000/api/saveIMG", {
       method: "POST",

@@ -59,7 +59,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         <AddLivre livre={{ value: livre, set: setLivre }} />
         <Link
           href={"/addDocs/livre"}
-          className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'
+          className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-950 hover:bg-sky-600 active:bg-sky-200'
         >
           nouveau Livre
         </Link>

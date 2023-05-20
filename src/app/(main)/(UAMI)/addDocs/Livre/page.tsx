@@ -184,7 +184,6 @@ const Page = async () => {
                   className="h-12"
                   name="page_garde"
                   type="file"
-                  accept=".jpg, .jpeg, .png"
                   required
                 />
               </f.FormControl>

@@ -2,7 +2,10 @@
 import * as f from "@/components/Form";
 import addCategorie from "@/components/server/Categorie/addCategorie";
 import Button from "@/components/ui/Button";
+import Header from "@/components/ui/Header";
 import * as Toast from "@/components/ui/toast";
+
+import TextField from '@mui/material/TextField';
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -42,7 +45,10 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         }
       }}
     >
+   
+
       {children}
+     
       <footer className="flex justify-center items-center py-12">
         <f.FormSubmit asChild>
           <Button

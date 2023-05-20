@@ -3,7 +3,7 @@ import DataTable from "@/components/DataTable"
 import { Card } from "@/components/ui/Card"
 import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu"
 import { getDate } from "@/utils/date"
-import { Modal } from "@mui/material"
+import { Button, Modal } from "@mui/material"
 import { GridColDef } from "@mui/x-data-grid"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
@@ -117,9 +117,9 @@ export default function AddLivre({
           e.preventDefault()
           setOpen(true)
         }}
-        className="className='h-10 flex text-lg items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'"
+         className="className='h-10 flex text-lg items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-950 hover:bg-sky-600 active:bg-sky-200'"
       >
-        ajouter livre
+        Ajouter livre
       </button>
       <Modal
         open={open}

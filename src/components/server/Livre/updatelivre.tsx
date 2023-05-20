@@ -61,7 +61,7 @@ export default async function updateLivre(data: FormData ,id: number) {
       TITRE: data.get("title") as string,
       AUTHEUR: data.get("autheur") as string,
       EDITEUR: data.get("editeur") as string,
-      DATE_EDITION: new Date(data.get("date_edi") as string ),
+      DATE_EDITION: data.get("date_edi") as number,
       PRIX: new Prisma.Decimal(parseFloat(data.get("prix")!.toString())),
       ID_CAT: Number(data.get("categorie")) as number,
       CODE: data.get("code") ? Number(data.get("code") as string) : null,
