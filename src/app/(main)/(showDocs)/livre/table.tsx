@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { BiEdit } from "react-icons/bi"
 import { HiInformationCircle } from "react-icons/hi"
-import { MdDelete } from "react-icons/md"
+import { MdAddCircle, MdDelete } from "react-icons/md"
 
 export function Table({ data }: { data: any }) {
   const [isDeleted, setisDeleted] = useState(false)
@@ -29,7 +29,7 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "categorie",
-      headerName: "Categorie",
+      headerName: "Catégorie",
       flex: 1,
       type: "string",
       valueGetter: (params: GridValueGetterParams) =>
@@ -38,7 +38,7 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "AUTHEUR",
-      headerName: "Autheur",
+      headerName: "Auteur",
       flex: 1.5,
       type: "string",
       hideable: false,
@@ -52,9 +52,9 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "DATE_EDITION",
-      headerName: "dateEdition",
+      headerName: "Date d'édition",
       flex: 1,
-      type: "date",
+      type: "number",
     },
     { field: "CODE", headerName: "Code", flex: 1, type: "number" },
     {
@@ -62,17 +62,26 @@ export function Table({ data }: { data: any }) {
       flex: 1,
       headerName: "Prix",
       type: "number",
-      hideable: false,
+      hideable: true,
     },
     {
       field: "actions",
-      width: 70,
+      width: 150,
       type: "actions",
       getActions: (params: GridRowParams) => [
         <GridActionsCellItem
           key={params.id}
           icon={<HiInformationCircle className='text-xl' />}
-          label='showMore'
+          label="plus d'information"
+          onClick={() => {
+            router.push(`/moreInfo/livre/${params.id}`)
+          }}
+          title="plus d'infos"
+        ></GridActionsCellItem>,
+        <GridActionsCellItem
+          key={params.id}
+          icon={<MdAddCircle className='text-xl' />}
+          label='Ajouter exemplaire'
           onClick={() => {
             router.push(`/moreInfo/livre/${params.id}`)
           }}

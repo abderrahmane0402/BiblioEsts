@@ -18,21 +18,21 @@ export function Table({ data }: { data: any }) {
   const Columns: GridColDef[] = [
     {
       field: "N_INVENTAIRE",
-      headerName: "N°Inventaire",
+      headerName: "Numéro d'Inventaire",
       flex: 0.7,
       type: "string",
       hideable: false,
     },
     {
       field: "N_inscription",
-      headerName: "N_inscription",
+      headerName: "Numéro inscription",
       flex: 0.7,
       type: "string",
       hideable: false,
     },
     {
       field: "DATE_D",
-      headerName: "début",
+      headerName: "Début",
       flex: 0.7,
       type: "date",
       hideable: false,
@@ -40,7 +40,7 @@ export function Table({ data }: { data: any }) {
 
     {
       field: "DATE_F",
-      headerName: "fin",
+      headerName: "Fin",
       flex: 0.7,
       type: "date",
       hideable: false,

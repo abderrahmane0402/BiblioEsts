@@ -3,12 +3,15 @@ import * as f from "@/components/Form"
 import { empruntLivreP } from "@/components/server/Emprunt/livre"
 import Button from "@/components/ui/Button"
 import * as Toast from "@/components/ui/toast"
+import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null)
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
+  const router = useRouter()
+
   const [isLoading, setIsLoading] = useState(false)
   const [userInfo, setUserInfo] = useState<string | null>(null)
   useEffect(() => {
@@ -35,6 +38,8 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         if (data) {
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)
+          router.push("/emprunt/prof/livre/encours")
+
           form.current?.reset()
         } else {
           setOpen2(true)

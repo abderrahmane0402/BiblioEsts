@@ -7,12 +7,14 @@ import * as Toast from "@/components/ui/toast"
 import { useEffect, useRef, useState } from "react"
 import AddLivre from "./addLivre"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 export const dynamic = "force-dynamic"
 
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null)
   const [open1, setOpen1] = useState(false)
+  const router = useRouter()
   const [open2, setOpen2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [livre, setLivre] = useState<Map<number, number>>(new Map())
@@ -41,8 +43,10 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         if (data) {
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)
+          router.push("/approvisionnement")
           form.current?.reset()
           setLivre(new Map())
+
         } else {
           setOpen2(true)
           setTimeout(() => setOpen2(false), 1000)
@@ -101,8 +105,10 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         </Toast.Root>
         <Toast.ToastViewport className='[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none' />
       </Toast.Provider>
+      
     </f.FormRoot>
   )
+
 }
 
 export default Form

@@ -74,7 +74,7 @@ async function Page() {
               <div className='w-full'>
                 <Header size={"md"}>Addresse :</Header>
                 <f.FormMessage match={"valueMissing"}>
-                  saisir l&apos;addresse
+                  saisir l{"'"}addresse
                 </f.FormMessage>
                 <f.FormMessage match={"typeMismatch"}>
                   saisir addresse valide
