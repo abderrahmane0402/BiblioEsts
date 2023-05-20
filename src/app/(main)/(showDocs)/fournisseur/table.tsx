@@ -11,7 +11,7 @@ import {
 import { BiEdit } from "react-icons/bi"
 import { MdDelete } from "react-icons/md"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export function Table({ data }: { data: any }) {
   const [isDeleted, setisDeleted] = useState(false)
@@ -90,6 +90,10 @@ export function Table({ data }: { data: any }) {
     },
   ]
 
+  useEffect(() => {
+    router.refresh()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <>
       <DataTable

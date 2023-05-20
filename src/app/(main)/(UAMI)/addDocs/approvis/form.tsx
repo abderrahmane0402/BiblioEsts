@@ -8,6 +8,8 @@ import { useEffect, useRef, useState } from "react"
 import AddLivre from "./addLivre"
 import Link from "next/link"
 
+export const dynamic = "force-dynamic"
+
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null)
   const [open1, setOpen1] = useState(false)
@@ -52,7 +54,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       <div className='flex gap-4'>
         <AddLivre livre={{ value: livre, set: setLivre }} />
         <Link
-          href={"/addDocs/fournisseur"}
+          href={"/addDocs/livre"}
           className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'
         >
           nouveau Livre

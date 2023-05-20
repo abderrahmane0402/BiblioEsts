@@ -9,7 +9,7 @@ import {
   GridRowParams,
 } from "@mui/x-data-grid"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { BiEdit } from "react-icons/bi"
 import { MdDelete } from "react-icons/md"
 
@@ -81,16 +81,20 @@ export function Table({ data }: { data: any }) {
         />,
         <GridActionsCellItem
           key={params.id}
-          icon={<BiEdit className="text-xl" />}
-          label="editer"
+          icon={<BiEdit className='text-xl' />}
+          label='editer'
           onClick={() => {
-            router.push(`/updateDocs/Pfe/${params.id}`);
+            router.push(`/updateDocs/Pfe/${params.id}`)
           }}
         />,
       ],
     },
   ]
 
+  useEffect(() => {
+    router.refresh()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <>
       <DataTable
@@ -107,9 +111,7 @@ export function Table({ data }: { data: any }) {
         <Toast.Root open={isDeleted} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>
-            <Toast.Description>
-              PFE Supprimer avec succés
-            </Toast.Description>
+            <Toast.Description>PFE Supprimer avec succés</Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setisDeleted(false)}>
             <button className='bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg'>

@@ -10,7 +10,7 @@ import {
   GridValueGetterParams,
 } from "@mui/x-data-grid"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { BiEdit } from "react-icons/bi"
 import { HiInformationCircle } from "react-icons/hi"
 import { MdDelete } from "react-icons/md"
@@ -106,12 +106,16 @@ export function Table({ data }: { data: any }) {
           label='editer'
           showInMenu
           onClick={() => {
-            router.push(`/updateDocs/Livre/${params.id}`);
+            router.push(`/updateDocs/Livre/${params.id}`)
           }}
         />,
       ],
     },
   ]
+  useEffect(() => {
+    router.refresh()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>

@@ -1,5 +1,5 @@
 import "./globals.css"
-import { Nunito } from "next/font/google"
+import { Aleo, Nunito } from "next/font/google"
 import { Metadata } from "next"
 import { FC, ReactNode } from "react"
 import { NextFont } from "next/dist/compiled/@next/font"
@@ -13,7 +13,7 @@ interface RootLayoutProps {
   children: ReactNode
 }
 
-const nunito: NextFont = Nunito({ weight: "400", subsets: ["latin"] })
+const nunito: NextFont = Aleo({ weight: "400", subsets: ["latin"] })
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (

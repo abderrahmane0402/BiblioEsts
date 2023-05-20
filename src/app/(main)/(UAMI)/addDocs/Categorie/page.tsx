@@ -11,6 +11,8 @@ import InputSelect from "@/components/ui/Select";
 //   setCategoryId(option?.id ?? null);
 // };
 
+export const dynamic = "force-dynamic"
+
 const page = async () => {
   const data = await getCategories_Select();
 

@@ -9,7 +9,7 @@ import {
   GridRowParams,
 } from "@mui/x-data-grid"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { BiEdit } from "react-icons/bi"
 import { MdDelete } from "react-icons/md"
 
@@ -77,12 +77,17 @@ export function Table({ data }: { data: any }) {
           icon={<BiEdit className='text-xl' />}
           label='Editer'
           onClick={() => {
-            router.push(`/updateDocs/professeur/${params.id}`);}}
+            router.push(`/updateDocs/professeur/${params.id}`)
+          }}
         />,
       ],
     },
   ]
 
+  useEffect(() => {
+    router.refresh()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <>
       <DataTable

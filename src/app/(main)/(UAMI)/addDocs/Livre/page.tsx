@@ -1,11 +1,11 @@
 import * as f from "@/components/Form";
-import { AddExe } from "@/components/addExemplaire";
-import Header from "@/ui/Header";
-import Input from "@/ui/Input";
 import InputSelect from "@/components/ui/Select";
 import { getCategories_Select } from "@/db/Get/Categorie";
+import Header from "@/ui/Header";
+import Input from "@/ui/Input";
 import Form from "./form";
 
+export const dynamic = "force-dynamic"
 const Page = async () => {
   const data = await getCategories_Select();
 
