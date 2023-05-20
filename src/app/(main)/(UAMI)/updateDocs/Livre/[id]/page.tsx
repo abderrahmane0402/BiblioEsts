@@ -106,10 +106,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 <Input
                   className='h-10'
                   name='date_edi'
-                  type='date'
+                  type='number'
                   maxLength={50}
                   required
-                  defaultValue={getDate(livre?.DATE_EDITION) || ""}
+                  defaultValue={livre?.DATE_EDITION || ""}
                 />
               </f.FormControl>
             </f.FormField>

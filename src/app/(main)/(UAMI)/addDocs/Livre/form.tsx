@@ -21,19 +21,19 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       (open1 === true && isLoading === true) ||
       (open2 === true && isLoading === true)
     ) {
-      setIsLoading(false)
+      setIsLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open1, open2])
+  }, [open1, open2]);
   return (
     <f.FormRoot
       onSubmit={() => {
-        setIsLoading(true)
+        setIsLoading(true);
       }}
       ref={form}
-      className='w-full'
+      className="w-full pt-2"
       action={async (FormData) => {
-        const data = await addLivre(FormData, livre)
+        const data = await addLivre(FormData, livre);
         if (data) {
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)
@@ -41,13 +41,13 @@ const Form = ({ children }: { children: React.ReactNode }) => {
           form.current?.reset()
           setLivre(new Map())
         } else {
-          setOpen2(true)
-          setTimeout(() => setOpen2(false), 1000)
+          setOpen2(true);
+          setTimeout(() => setOpen2(false), 1000);
         }
       }}
     >
       {children}
-      <Header className='p-6'>Ajouter un exemplaire</Header>
+      <Header className="p-6">Ajouter un exemplaire</Header>
 
       <AddExe
         livre={{
@@ -56,12 +56,12 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         }}
       />
 
-      <footer className='flex justify-center items-center py-12'>
+      <footer className="flex justify-center items-center py-12">
         <f.FormSubmit asChild>
           <Button
             size={"md"}
             isLoading={isLoading}
-            className='bg-[#CA3CFF] text-white w-3/12'
+            className="bg-[#CA3CFF] text-white w-3/12"
           >
             Ajouter Livre
           </Button>
@@ -77,7 +77,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen1(false)}>
-            <button className='bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg'>
+            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
               fermer
             </button>
           </Toast.Close>
@@ -90,15 +90,15 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen2(false)}>
-            <button className='border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg'>
+            <button className="border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg">
               fermer
             </button>
           </Toast.Close>
         </Toast.Root>
-        <Toast.ToastViewport className='[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none' />
+        <Toast.ToastViewport className="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none" />
       </Toast.Provider>
     </f.FormRoot>
-  )
-}
+  );
+};
 
-export default Form
+export default Form;

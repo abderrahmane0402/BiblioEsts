@@ -1,24 +1,24 @@
-"use client"
-import DataTable from "@/components/DataTable"
-import * as Toast from "@/components/ui/toast"
-import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu"
-import { CustomToolbar } from "@/components/ui/x-data-grid-customization/CustomToolBar"
+"use client";
+import DataTable from "@/components/DataTable";
+import * as Toast from "@/components/ui/toast";
+import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu";
+import { CustomToolbar } from "@/components/ui/x-data-grid-customization/CustomToolBar";
 import {
   GridActionsCellItem,
   GridColDef,
   GridRowParams,
   GridValueGetterParams,
-} from "@mui/x-data-grid"
-import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
-import { BiEdit } from "react-icons/bi"
-import { HiInformationCircle } from "react-icons/hi"
-import { MdAddCircle, MdDelete } from "react-icons/md"
+} from "@mui/x-data-grid";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { BiEdit } from "react-icons/bi";
+import { HiInformationCircle } from "react-icons/hi";
+import { MdAddCircle, MdDelete } from "react-icons/md";
 
 export function Table({ data }: { data: any }) {
-  const [isDeleted, setisDeleted] = useState(false)
-  const [notDeleted, setnotDeleted] = useState(false)
-  const router = useRouter()
+  const [isDeleted, setisDeleted] = useState(false);
+  const [notDeleted, setnotDeleted] = useState(false);
+  const router = useRouter();
   const Columns: GridColDef[] = [
     {
       field: "TITRE",
@@ -71,7 +71,7 @@ export function Table({ data }: { data: any }) {
       getActions: (params: GridRowParams) => [
         <GridActionsCellItem
           key={params.id}
-          icon={<HiInformationCircle className='text-xl' />}
+          icon={<HiInformationCircle className="text-xl" />}
           label="plus d'information"
           onClick={() => {
             router.push(`/moreInfo/livre/${params.id}`)
@@ -81,16 +81,16 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<MdAddCircle className='text-xl' />}
-          label='Ajouter exemplaire'
+          label="Ajouter exemplaire"
           onClick={() => {
-            router.push(`/moreInfo/livre/${params.id}`)
+            router.push(`/moreInfo/livre/${params.id}`);
           }}
           title="plus d'infos"
         ></GridActionsCellItem>,
         <GridActionsCellItem
           key={params.id}
-          icon={<MdDelete className='text-xl' />}
-          label='delete'
+          icon={<MdDelete className="text-xl" />}
+          label="delete"
           showInMenu
           onClick={() => {
             fetch(`/api/livre/${params.id}`, {
@@ -99,39 +99,39 @@ export function Table({ data }: { data: any }) {
               .then((res) => res.text())
               .then((data) => {
                 if (data === "ok") {
-                  router.refresh()
-                  setisDeleted(data === "ok")
-                  setTimeout(() => setisDeleted(false), 2000)
+                  router.refresh();
+                  setisDeleted(data === "ok");
+                  setTimeout(() => setisDeleted(false), 2000);
                 } else {
-                  setnotDeleted(true)
-                  setTimeout(() => setnotDeleted(false), 2000)
+                  setnotDeleted(true);
+                  setTimeout(() => setnotDeleted(false), 2000);
                 }
-              })
+              });
           }}
         />,
         <GridActionsCellItem
           key={params.id}
-          icon={<BiEdit className='text-xl' />}
-          label='editer'
+          icon={<BiEdit className="text-xl" />}
+          label="editer"
           showInMenu
           onClick={() => {
-            router.push(`/updateDocs/Livre/${params.id}`)
+            router.push(`/updateDocs/Livre/${params.id}`);
           }}
         />,
       ],
     },
-  ]
+  ];
   useEffect(() => {
-    router.refresh()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    router.refresh();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
       <DataTable
         columns={Columns}
         rows={data}
-        ID='ID_LIVRE'
+        ID="ID_LIVRE"
         customSlots={{
           columnMenu: CustomColumnMenu,
           toolbar: CustomToolbar,
@@ -145,7 +145,7 @@ export function Table({ data }: { data: any }) {
             <Toast.Description>Livre Supprimer avec succés</Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setisDeleted(false)}>
-            <button className='bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg'>
+            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
               fermer
             </button>
           </Toast.Close>
@@ -158,13 +158,13 @@ export function Table({ data }: { data: any }) {
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setnotDeleted(false)}>
-            <button className='border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg'>
+            <button className="border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg">
               fermer
             </button>
           </Toast.Close>
         </Toast.Root>
-        <Toast.ToastViewport className='[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none' />
+        <Toast.ToastViewport className="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none" />
       </Toast.Provider>
     </>
-  )
+  );
 }

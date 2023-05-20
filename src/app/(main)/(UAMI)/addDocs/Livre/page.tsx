@@ -5,7 +5,7 @@ import Header from "@/ui/Header";
 import Input from "@/ui/Input";
 import Form from "./form";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 const Page = async () => {
   const data = await getCategories_Select();
 
@@ -15,7 +15,6 @@ const Page = async () => {
         <Header size={"lg"}>Information de livre</Header>
         <div className="flex flex-wrap ">
           <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
-            {/* nombre_inv */}
             <f.FormField name="title" className="w-full">
               <div className="w-full">
                 <Header size={"md"} className="p">
@@ -38,7 +37,6 @@ const Page = async () => {
                 />
               </f.FormControl>
             </f.FormField>
-            {/* autheur */}
             <f.FormField name="autheur" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Autheur :</Header>
@@ -58,8 +56,6 @@ const Page = async () => {
                 />
               </f.FormControl>
             </f.FormField>
-
-            {/* Editeur */}
 
             <f.FormField name="editeur" className="w-full">
               <div className="w-full">
@@ -81,8 +77,6 @@ const Page = async () => {
               </f.FormControl>
             </f.FormField>
 
-            {/* Date edition */}
-
             <f.FormField name="date_edi" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Date d{"'"}édition :</Header>
@@ -103,7 +97,6 @@ const Page = async () => {
                 />
               </f.FormControl>
             </f.FormField>
-            {/* prix */}
             <f.FormField name="prix" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Prix :</Header>
@@ -147,7 +140,6 @@ const Page = async () => {
           </div>
 
           <div className="w-full md:w-1/2 pl-4">
-            {/* Code */}
             <f.FormField name="code" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Code :</Header>
@@ -168,7 +160,6 @@ const Page = async () => {
                 />
               </f.FormControl>
             </f.FormField>
-            {/* page de garde */}
             <f.FormField name="page_garde" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Page de garde :</Header>
@@ -188,7 +179,6 @@ const Page = async () => {
                 />
               </f.FormControl>
             </f.FormField>
-            {/* SOMAIRE */}
             <f.FormField name="somaire" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>SOMAIRE :</Header>
@@ -232,8 +222,6 @@ const Page = async () => {
             </f.FormField> */}
           </div>
         </div>
-
-        
       </Form>
     </div>
   );

@@ -156,7 +156,7 @@ model livre {
   AUTHEUR       String?      @db.Char(100)
   ID_CAT        Int
   EDITEUR       String?      @db.VarChar(255)
-  DATE_EDITION  DateTime?    @db.Date
+  DATE_EDITION  Int?         @db.Year
   CODE          Int?
   OBSERVATIONL  String?      @db.Text
   PAGE_DE_GARDE String?      @db.VarChar(255)

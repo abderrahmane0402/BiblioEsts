@@ -2,6 +2,7 @@ import Header from "@/components/ui/Header";
 import Paragraph from "@/components/ui/Paragraph";
 import { getAppro, getAppros } from "@/db/Get/Appro";
 import { Table } from "./table";
+import { livre } from "@prisma/client";
 
 export const revalidate = 60;
 
@@ -27,9 +28,9 @@ export async function generateStaticParams() {
 const page = async ({ params }: { params: { id: string } }) => {
   const id = parseInt(params.id);
   const apro = await getAppro(id);
-  const Livre = apro?.contient.map((l): Livre => {
+  const Livre = apro?.contient.map((l) => {
     return {
-      ID_LIVRE:l.livre.ID_LIVRE,
+      ID_LIVRE: l.livre.ID_LIVRE,
       TITRE: l.livre.TITRE,
       AUTHEUR: l.livre.AUTHEUR,
       EDITEUR: l.livre.EDITEUR,

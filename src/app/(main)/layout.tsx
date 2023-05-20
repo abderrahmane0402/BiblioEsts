@@ -13,7 +13,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   
   return (
     <>
-      <SessionValidate />
+      {/* <SessionValidate /> */}
       <main className='flex flex-row h-full w-full overflow-hidden'>
         {/* NAVIGATION BAR */}
         <div className='h-full w-nav text-white bg-[#011936] flex flex-col justify-between gap-1'>
