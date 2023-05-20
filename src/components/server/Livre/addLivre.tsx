@@ -33,7 +33,7 @@ export default async function addLivre(
       PRIX: new Prisma.Decimal(parseFloat(data.get("prix")!.toString())),
       ID_CAT: Number(data.get("categorie")),
       CODE: data.get("code") ? Number(data.get("code") as string) : null,
-      OBSERVATIONL: data.get("observation") as string,
+      // OBSERVATIONL: data.get("observation") as string,
       PAGE_DE_GARDE: `${imageName.id}` as string,
       SOMAIRE: `${pdfName.id}` as string,
     }

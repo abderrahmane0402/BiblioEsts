@@ -8,6 +8,7 @@ import Form from "./form"
 
 export const dynamic = "force-dynamic"
 const Page = async () => {
+
   const [Apoge, Inv] = await Promise.all([getProfshort(), getNinv()])
   const result = Apoge.map((obj) => obj.Code)
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE)

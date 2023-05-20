@@ -3,10 +3,12 @@ import * as f from "@/components/Form"
 import addEtudiant from "@/components/server/etudiant/addEtudiant"
 import Button from "@/components/ui/Button"
 import * as Toast from "@/components/ui/toast"
+import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null)
+  const router= useRouter()
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -19,6 +21,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open1, open2])
+  
   return (
     <f.FormRoot
       onSubmit={() => {
@@ -31,6 +34,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         if (data) {
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)
+          router.push("/etudiant")
           form.current?.reset()
         } else {
           setOpen2(true)
@@ -41,12 +45,13 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       {children}
       <footer className='flex justify-center items-center py-12'>
         <f.FormSubmit asChild>
-          <Button
+          <Button 
             size={"md"}
             isLoading={isLoading}
             className='bg-[#CA3CFF] text-white w-3/12'
           >
             Ajouter etudiant
+
           </Button>
         </f.FormSubmit>
       </footer>

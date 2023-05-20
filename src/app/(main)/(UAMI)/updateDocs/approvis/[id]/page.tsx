@@ -7,11 +7,17 @@ import { getNinv } from "@/db/Get/Livres"
 import Link from "next/link"
 import Form from "./form"
 import AddLivre from "./addLivre"
+import { getApproID } from "@/db/Get/Appro"
+import { getDate } from "@/utils/date"
+import { Decimal } from "@prisma/client/runtime"
 
-async function Page() {
-  const [fournisseur, livre] = await Promise.all([
+async function Page({ params }: { params: { id: string } }) {
+  const id = parseInt(params.id)
+  const [fournisseur, livre,apro] = await Promise.all([
+    
     getFournisseurShort(),
     getNinv(),
+    getApproID(id)
   ])
   let options = fournisseur.map((f) => {
     return {
@@ -44,6 +50,7 @@ async function Page() {
                   type='number'
                   maxLength={255}
                   required
+                  defaultValue={apro?.ID_APRO as number}
                 />
               </f.FormControl>
             </f.FormField>
@@ -64,6 +71,7 @@ async function Page() {
                   name='entreprise'
                   type='text'
                   required
+                  defaultValue={apro?.ENTREPRISE as string}
                 />
               </f.FormControl>
             </f.FormField>
@@ -74,14 +82,14 @@ async function Page() {
               <div className='w-full'>
                 <Header size={"md"}>Addresse :</Header>
                 <f.FormMessage match={"valueMissing"}>
-                  saisir l{"'"}addresse
+                  saisir l&apos;addresse
                 </f.FormMessage>
                 <f.FormMessage match={"typeMismatch"}>
                   saisir addresse valide
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-                <Input className='h-10' name='addresse' type='text' required />
+                <Input className='h-10' name='addresse' type='text' required  defaultValue={apro?.ADRESSE as string}/>
               </f.FormControl>
             </f.FormField>
 
@@ -97,7 +105,7 @@ async function Page() {
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-                <Input className='h-10' name='tele' type='text' required />
+                <Input className='h-10' name='tele' type='text' required defaultValue={apro?.TELEPHONE as string} />
               </f.FormControl>
             </f.FormField>
           </div>
@@ -115,7 +123,7 @@ async function Page() {
                   </f.FormMessage>
                 </div>
                 <f.FormControl asChild>
-                  <Input className='h-10' name='date' type='date' required />
+                  <Input className='h-10' name='date' type='date' required defaultValue={getDate(apro?.DATE) || "" } />
                 </f.FormControl>
               </div>
             </f.FormField>
@@ -124,14 +132,14 @@ async function Page() {
               <div className='w-full'>
                 <Header size={"md"}>Devis :</Header>
                 <f.FormMessage match={"valueMissing"}>
-                  saisir un numero
+                  saisir un devis
                 </f.FormMessage>
                 <f.FormMessage match={"typeMismatch"}>
-                  saisir un numero valide
+                  saisir un devis valide
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-                <Input className='h-10' name='devis' type='number' required />
+                <Input className='h-10' name='devis' type='number' required defaultValue={parseFloat(apro!.DEVIS!.toString()) } />
               </f.FormControl>
             </f.FormField>
 
@@ -154,7 +162,7 @@ async function Page() {
                       autoWidth={false}
                       multiple={false}
                       native={false}
-                      defaultValue=""
+                      defaultValue={apro?.ID_FOR.toString()}
                     />
                   </f.FormControl>
                 </f.FormField>

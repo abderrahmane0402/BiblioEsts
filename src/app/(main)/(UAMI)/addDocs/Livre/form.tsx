@@ -1,18 +1,21 @@
-"use client";
-import * as f from "@/components/Form";
-import { AddExe } from "@/components/addExemplaire";
-import addLivre from "@/components/server/Livre/addLivre";
-import Button from "@/components/ui/Button";
-import Header from "@/components/ui/Header";
-import * as Toast from "@/components/ui/toast";
-import { useEffect, useRef, useState } from "react";
+"use client"
+import * as f from "@/components/Form"
+import { AddExe } from "@/components/addExemplaire"
+import addLivre from "@/components/server/Livre/addLivre"
+import Button from "@/components/ui/Button"
+import Header from "@/components/ui/Header"
+import * as Toast from "@/components/ui/toast"
+import { useRouter } from "next/navigation"
+import { useEffect, useRef, useState } from "react"
 
 const Form = ({ children }: { children: React.ReactNode }) => {
-  const [livre, setLivre] = useState<Map<number, string>>(new Map());
-  const form = useRef<HTMLFormElement>(null);
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [livre, setLivre] = useState<Map<number, string>>(new Map())
+  const form = useRef<HTMLFormElement>(null)
+  const [open1, setOpen1] = useState(false)
+  const [open2, setOpen2] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -32,10 +35,11 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       action={async (FormData) => {
         const data = await addLivre(FormData, livre);
         if (data) {
-          setOpen1(true);
-          setTimeout(() => setOpen1(false), 1000);
-          form.current?.reset();
-          setLivre(new Map());
+          setOpen1(true)
+          setTimeout(() => setOpen1(false), 1000)
+          router.push("/livre")
+          form.current?.reset()
+          setLivre(new Map())
         } else {
           setOpen2(true);
           setTimeout(() => setOpen2(false), 1000);

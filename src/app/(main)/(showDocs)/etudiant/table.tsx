@@ -20,14 +20,14 @@ export function Table({ data }: { data: any }) {
   const Columns: GridColDef[] = [
     {
       field: "N_inscription",
-      headerName: "N°inscription",
+      headerName: "Numero inscription",
       flex: 1,
       type: "string",
       hideable: false,
     },
     {
       field: "N_APOGEE",
-      headerName: "N° Apogée",
+      headerName: "Numéro Apogée",
       flex: 1,
       type: "string",
       hideable: false,

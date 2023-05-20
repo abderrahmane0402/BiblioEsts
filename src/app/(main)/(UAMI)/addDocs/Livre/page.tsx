@@ -41,10 +41,10 @@ const Page = async () => {
               <div className="w-full">
                 <Header size={"md"}>Autheur :</Header>
                 <f.FormMessage match={"valueMissing"}>
-                  saisir l{"'"}autheur
+                  saisir l{"'"}auteur
                 </f.FormMessage>
                 <f.FormMessage match={"typeMismatch"}>
-                  saisir l{"'"}autheur valide
+                  saisir l{"'"}auteur valide
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
@@ -91,7 +91,7 @@ const Page = async () => {
                 <Input
                   className="h-10"
                   name="date_edi"
-                  type="date"
+                  type="number"
                   maxLength={50}
                   required
                 />
@@ -113,7 +113,7 @@ const Page = async () => {
                   name="prix"
                   type="number"
                   maxLength={50}
-                  required
+                  
                 />
               </f.FormControl>
             </f.FormField>
@@ -201,7 +201,8 @@ const Page = async () => {
                 />
               </f.FormControl>
             </f.FormField>
-            <f.FormField name="observation" className="w-full">
+            {/* Observation */}
+            {/* <f.FormField name="observation" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Observation :</Header>
                 <f.FormMessage match={"valueMissing"}>
@@ -219,7 +220,7 @@ const Page = async () => {
                   className="w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
                 />
               </f.FormControl>
-            </f.FormField>
+            </f.FormField> */}
           </div>
         </div>
       </Form>
