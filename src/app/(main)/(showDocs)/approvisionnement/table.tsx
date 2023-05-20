@@ -82,6 +82,9 @@ export function Table({ data }: { data: any }) {
           icon={<BiEdit className="text-xl" />}
           label="editer"
           showInMenu
+          onClick={() => {
+            router.push(`/addDocs/appro/${params.id}`);
+          }}
         />,
       ],
     },

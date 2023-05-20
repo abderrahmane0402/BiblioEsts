@@ -42,6 +42,21 @@ export async function getAppro(id: number) {
     throw Error("somthing went wrong" + e);
   }
 }
+export async function getApproID(id: number) {
+  try {
+    const appros = await prisma.approvisionement.findUnique({
+      where: {
+        ID_APRO: id,
+      },
+     
+    });
+    await prisma.$disconnect;
+    return appros;
+  } catch (e) {
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
+  }
+}
 
 export async function getAppros() {
   try {
