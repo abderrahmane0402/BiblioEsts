@@ -1,7 +1,6 @@
 import { MainLogo } from "@/components/MainLogo"
 import { ZNav } from "@/components/Nav"
 import PageHeader from "@/components/PageHeader"
-import User from "@/components/User"
 import SessionValidate from "@/components/sessionValidate"
 import EstLogo from "@/img/Mylogo.png"
 import { FC, ReactNode } from "react"
@@ -11,6 +10,7 @@ interface LayoutProps {
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {
+  
   return (
     <>
       <SessionValidate />
@@ -22,12 +22,11 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             {/* TODO: update the links of the nav */}
             <ZNav />
           </div>
-          <User />
         </div>
         {/* BODY OF THE PAGE */}
-        <div className='h-full w-main flex flex-col gap-1 px-3'>
+        <div className='h-full w-main flex flex-col px-3'>
           <PageHeader />
-          <div className='p-2 container h-[88%]'>{children}</div>
+          <div className='container h-full'>{children}</div>
         </div>
       </main>
     </>
