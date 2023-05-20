@@ -44,7 +44,7 @@ const StyledDataGrid = styled(DataGrid)(() => ({
     borderBottom: `1px solid #33181881`,
   },
 
-  "& .MuiDataGrid-columnHeader": {
+  "& .MuiDataGrid-columnHeaders": {
     borderBottom: `1px solid black`,
   },
   "& .MuiPaginationItem-root": {
