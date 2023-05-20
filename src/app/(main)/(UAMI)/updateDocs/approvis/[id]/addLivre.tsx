@@ -1,27 +1,26 @@
-"use client"
-import DataTable from "@/components/DataTable"
-import { Card } from "@/components/ui/Card"
-import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu"
-import { getDate } from "@/utils/date"
-import { Modal } from "@mui/material"
-import { GridActionsCellItem, GridColDef, GridRowParams } from "@mui/x-data-grid"
-import { useRouter } from "next/navigation"
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
-import { BiEdit } from "react-icons/bi"
-import { HiInformationCircle } from "react-icons/hi"
-import { MdDelete } from "react-icons/md"
-import * as Toast from "@/components/ui/toast"
+"use client";
+import DataTable from "@/components/DataTable";
+import { Card } from "@/components/ui/Card";
+import * as Toast from "@/components/ui/toast";
+import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu";
+import { Modal } from "@mui/material";
+import {
+  GridActionsCellItem,
+  GridColDef,
+  GridRowParams,
+} from "@mui/x-data-grid";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { BiEdit } from "react-icons/bi";
+import { HiInformationCircle } from "react-icons/hi";
+import { MdDelete } from "react-icons/md";
 
-
-export default function AddLivre(
-  { data }: { data: any }
-) {
-  const router = useRouter()
-  const [isDeleted, setisDeleted] = useState(false)
-  const [notDeleted, setnotDeleted] = useState(false)
-  const [open, setOpen] = useState(false)
-  const [livres, setLivres] = useState([])
-  
+export default function AddLivre({ data }: { data: any }) {
+  const router = useRouter();
+  const [isDeleted, setisDeleted] = useState(false);
+  const [notDeleted, setnotDeleted] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [livres, setLivres] = useState([]);
 
   const Columns: GridColDef[] = [
     {
@@ -69,17 +68,17 @@ export default function AddLivre(
       getActions: (params: GridRowParams) => [
         <GridActionsCellItem
           key={params.id}
-          icon={<HiInformationCircle className='text-xl' />}
-          label='showMore'
+          icon={<HiInformationCircle className="text-xl" />}
+          label="showMore"
           onClick={() => {
-            router.push(`/moreInfo/livre/${params.id}`)
+            router.push(`/moreInfo/livre/${params.id}`);
           }}
           title="plus d'infos"
         ></GridActionsCellItem>,
         <GridActionsCellItem
           key={params.id}
-          icon={<MdDelete className='text-xl' />}
-          label='delete'
+          icon={<MdDelete className="text-xl" />}
+          label="delete"
           showInMenu
           onClick={() => {
             fetch(`/api/livre/${params.id}`, {
@@ -88,20 +87,20 @@ export default function AddLivre(
               .then((res) => res.text())
               .then((data) => {
                 if (data === "ok") {
-                  router.refresh()
-                  setisDeleted(data === "ok")
-                  setTimeout(() => setisDeleted(false), 2000)
+                  router.refresh();
+                  setisDeleted(data === "ok");
+                  setTimeout(() => setisDeleted(false), 2000);
                 } else {
-                  setnotDeleted(true)
-                  setTimeout(() => setnotDeleted(false), 2000)
+                  setnotDeleted(true);
+                  setTimeout(() => setnotDeleted(false), 2000);
                 }
-              })
+              });
           }}
         />,
         <GridActionsCellItem
           key={params.id}
-          icon={<BiEdit className='text-xl' />}
-          label='editer'
+          icon={<BiEdit className="text-xl" />}
+          label="editer"
           showInMenu
           onClick={() => {
             router.push(`/updateDocs/Livre/${params.id}`);
@@ -109,28 +108,28 @@ export default function AddLivre(
         />,
       ],
     },
-  ]
+  ];
 
   return (
     <>
-      <input type='hidden' name='livre' />
+      <input type="hidden" name="livre" />
       <button
         onClick={(e) => {
-          e.preventDefault()
-          setOpen(true)
+          e.preventDefault();
+          setOpen(true);
         }}
         className="className='h-10 flex text-lg items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'"
       >
         ajouter livre
       </button>
-      <Modal 
+      <Modal
         open={open}
         onClose={() => setOpen(false)}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
-        className='flex justify-center items-center'
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="flex justify-center items-center"
       >
-        <div className='h-4/5 w-4/5'>
+        <div className="h-4/5 w-4/5">
           <Card type={"full"}>
             <DataTable
               columns={Columns}
@@ -139,11 +138,13 @@ export default function AddLivre(
               }}
               autoPageSize
               rows={livres}
-              ID='ID_LIVRE'
+              ID="ID_LIVRE"
             />
           </Card>
         </div>
-        <Toast.Provider>
+      </Modal>
+
+      <Toast.Provider>
         <Toast.Root open={isDeleted} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>
@@ -152,7 +153,7 @@ export default function AddLivre(
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setisDeleted(false)}>
-            <button className='bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg'>
+            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
               fermer
             </button>
           </Toast.Close>
@@ -165,16 +166,15 @@ export default function AddLivre(
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setnotDeleted(false)}>
-            <button className='border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg'>
+            <button className="border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg">
               fermer
             </button>
           </Toast.Close>
         </Toast.Root>
-        <Toast.ToastViewport className='[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none' />
+        <Toast.ToastViewport className="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none" />
       </Toast.Provider>
-      </Modal>
     </>
-  )
+  );
 }
 // "use client"
 // import * as Toast from "@/components/ui/toast"
