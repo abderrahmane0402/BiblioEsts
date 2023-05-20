@@ -3,10 +3,12 @@
 import { getUserID } from "@/db/Post/Utilisateur";
 import { setElivre } from "@/db/Post/emprunt/etudiant/Elivre";
 import { setPlivre } from "@/db/Post/emprunt/prof/Plivre";
+import { cookies } from "next/headers";
 
-export const empruntLivreE = async (formData: FormData, login: string) => {
+export const empruntLivreE = async (formData: FormData) => {
   try {
-    const user = await getUserID(login);
+    const login = cookies().get("login")?.value;
+    const user = await getUserID(login || "");
     const emprunt = {
       N_INVENTAIRE: Number(formData.get("nmr_Inv")),
       N_inscription: formData.get("num_apogee") as string,
@@ -22,9 +24,10 @@ export const empruntLivreE = async (formData: FormData, login: string) => {
   }
 };
 
-export async function empruntLivreP(formData: FormData, login: string) {
+export async function empruntLivreP(formData: FormData) {
   try {
-    const user = await getUserID(login);
+    const login = cookies().get("login")?.value;
+    const user = await getUserID(login || "");
     const emprunt = {
       N_INVENTAIRE: Number(formData.get("nmr_Inv")),
       Code: formData.get("prof") as string,

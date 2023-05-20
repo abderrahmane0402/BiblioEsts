@@ -4,6 +4,7 @@ import { getTitle } from "@/utils/dashboard";
 import { ListItemIcon, Menu, MenuItem, Tooltip } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Chip from "@mui/material/Chip";
+import { cookies } from "next/headers";
 import { useRouter } from "next/navigation";
 import React, { FC, useEffect, useState } from "react";
 import { BiLogOut } from "react-icons/bi";
@@ -21,13 +22,7 @@ const PageHeader = () => {
     setAnchorEl(null);
   };
   useEffect(() => {
-    fetch("/api/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ login: sessionStorage.getItem("login") }),
-    })
+    fetch("/api/user", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         setUser(data);
