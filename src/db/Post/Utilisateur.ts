@@ -36,3 +36,21 @@ export async function getUserID(Login: string) {
     throw new Error("Something went wrong: " + e);
   }
 }
+export async function getUser(Login: string) {
+  try {
+    const user = await prisma.utilisateur.findUnique({
+      select: {
+        NOM: true,
+        PRENOM: true,
+      },
+      where: {
+        LOGIN: Login,
+      },
+    });
+    await prisma.$disconnect();
+    return user;
+  } catch (e) {
+    await prisma.$disconnect();
+    throw new Error("Something went wrong: " + e);
+  }
+}
