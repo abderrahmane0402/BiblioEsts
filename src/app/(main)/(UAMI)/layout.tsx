@@ -7,7 +7,7 @@ interface updateDocs {
 
 const layout: FC<updateDocs> = ({ children }) => {
   return (
-    <div className='w-full h-full   '>
+    <div className='w-full h-full '>
       <Card type={'full'} className="p-3">{children}</Card>
     </div>
   )

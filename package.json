@@ -9,8 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.8",
-    "@emotion/styled": "^11.10.8",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
     "@mui/joy": "latest",
     "@mui/lab": "^5.0.0-alpha.130",
     "@mui/material": "^5.13.1",
@@ -36,7 +37,6 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
     "react-live-clock": "^6.1.13",
-    "react-rainbow-components": "^1.3.1",
     "sharp": "^0.32.1",
     "tailwind-merge": "^1.12.0",
     "tailwind-scrollbar": "^3.0.0",

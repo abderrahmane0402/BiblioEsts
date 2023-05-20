@@ -2,4 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-.button{}
+.button{
+    color: #33181881;}

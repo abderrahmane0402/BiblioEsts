@@ -35,7 +35,7 @@ const PageHeader = () => {
   }, []);
 
   return (
-    <header className="container flex justify-between items-center px-3 py-4">
+    <header className="container flex justify-between items-center px-3 py-1">
       <Header>{title}</Header>
       <Tooltip title="Account settings">
         <Chip
