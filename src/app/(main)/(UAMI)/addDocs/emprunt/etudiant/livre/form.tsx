@@ -13,10 +13,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [userInfo, setUserInfo] = useState<string | null>(null)
-  useEffect(() => {
-    setUserInfo(sessionStorage.getItem("login"))
-  }, [])
+  
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -34,8 +31,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className='w-full'
       action={async (FormData) => {
-        console.log(userInfo)
-        const data = await empruntLivreE(FormData, userInfo || "")
+        const data = await empruntLivreE(FormData)
         if (data) {
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)

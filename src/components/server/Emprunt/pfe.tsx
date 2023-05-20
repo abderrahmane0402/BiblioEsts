@@ -1,10 +1,12 @@
-'use server'
+"use server";
 import { getUserID } from "@/db/Post/Utilisateur";
 import { setEpfe } from "@/db/Post/emprunt/etudiant/Epfe";
+import { cookies } from "next/headers";
 
-export const empruntPfeE = async (formData: FormData, login: string) => {
+export const empruntPfeE = async (formData: FormData) => {
   try {
-    const user = await getUserID(login);
+    const login = cookies().get("login")?.value;
+    const user = await getUserID(login || "");
     const emprunt = {
       Cote: formData.get("pfe") as string,
       N_inscription: formData.get("nIns") as string,
@@ -20,9 +22,10 @@ export const empruntPfeE = async (formData: FormData, login: string) => {
   }
 };
 
-export const empruntPfeP = async (formData: FormData, login: string) => {
+export const empruntPfeP = async (formData: FormData) => {
   try {
-    const user = await getUserID(login);
+    const login = cookies().get("login")?.value;
+    const user = await getUserID(login || "");
     const emprunt = {
       Cote: formData.get("pfe") as string,
       Code: formData.get("prof") as string,

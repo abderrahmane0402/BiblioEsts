@@ -5,32 +5,32 @@ import { getPlivreID } from "@/db/Get/emprunt/prof/Plivre";
 import { getUserID } from "@/db/Post/Utilisateur";
 import { PutElivre } from "@/db/Put/emprunt/etudiant/Elivre";
 import { PutPlivre } from "@/db/Put/emprunt/prof/Plivre";
+import { cookies } from "next/headers";
 
-export const UpdateEmpruntLivreE = async (formData: FormData,id : number,login : string ) => {
+export const UpdateEmpruntLivreE = async (formData: FormData, id: number) => {
   try {
-    const emp = await getElivreID(id)
-    let d,f;
-    if(formData.get("date_D")){
-      d = formData.get("date_D")
+    const emp = await getElivreID(id);
+    let d, f;
+    if (formData.get("date_D")) {
+      d = formData.get("date_D");
+    } else {
+      d = emp?.DATE_D;
     }
-    else {
-      d=emp?.DATE_D;
+    if (formData.get("date_f")) {
+      f = formData.get("date_f");
+    } else {
+      f = emp?.DATE_F;
     }
-    if(formData.get("date_f")){
-      f = formData.get("date_f")
-    }
-    else {
-      f=emp?.DATE_F;
-    }
-    const user = await getUserID(login);
+    const login = cookies().get("login")?.value;
+    const user = await getUserID(login || "");
     const emprunt = {
       N_INVENTAIRE: Number(formData.get("nmr_Inv")),
       N_inscription: formData.get("num_apogee") as string,
       ID_U: user?.ID_U,
-      DATE_D: d ,
+      DATE_D: d,
       DATE_F: f,
     };
-    await PutElivre(emprunt, id );
+    await PutElivre(emprunt, id);
     return true;
   } catch (error) {
     console.log(error);
@@ -38,31 +38,30 @@ export const UpdateEmpruntLivreE = async (formData: FormData,id : number,login :
   }
 };
 
-export async function UpdateEmpruntLivreP(formData: FormData,id : number,login : string ) {
+export async function UpdateEmpruntLivreP(formData: FormData, id: number) {
   try {
-    const  emp = await getPlivreID(id)
-    const user = await getUserID(login);
-    let d,f;
-    if(formData.get("date_D")){
-      d = formData.get("date_D")
+    const emp = await getPlivreID(id);
+    const login = cookies().get("login")?.value;
+    const user = await getUserID(login || "");
+    let d, f;
+    if (formData.get("date_D")) {
+      d = formData.get("date_D");
+    } else {
+      d = emp?.DATE_D;
     }
-    else {
-      d=emp?.DATE_D;
-    }
-    if(formData.get("date_f")){
-      f = formData.get("date_f")
-    }
-    else {
-      f=emp?.DATE_F;
+    if (formData.get("date_f")) {
+      f = formData.get("date_f");
+    } else {
+      f = emp?.DATE_F;
     }
     const emprunt = {
       N_INVENTAIRE: Number(formData.get("nmr_Inv")),
       Code: formData.get("prof") as string,
       ID_U: user?.ID_U,
-      DATE_D: d ,
+      DATE_D: d,
       DATE_F: f,
     };
-    await PutPlivre(emprunt,id);
+    await PutPlivre(emprunt, id);
     return true;
   } catch (error) {
     console.log(error);

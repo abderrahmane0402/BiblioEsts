@@ -1,18 +1,19 @@
-"use server"
-import { setApprovi } from "@/db/Post/Aprovis"
-import { getUserID } from "@/db/Post/Utilisateur"
-import { Prisma, approvisionement } from "@prisma/client"
+"use server";
+import { setApprovi } from "@/db/Post/Aprovis";
+import { getUserID } from "@/db/Post/Utilisateur";
+import { Prisma, approvisionement } from "@prisma/client";
+import { cookies } from "next/headers";
 
 export default async function addApprovi(
   formData: FormData,
-  login: string,
   livre: Map<number, number>
 ) {
-  const user = await getUserID(login)
+  const login = cookies().get("login")?.value;
+  const user = await getUserID(login || "");
   const livres = Array.from(livre, ([key, value]) => ({
     ID_LIVRE: key,
     QTE: value,
-  }))
+  }));
   try {
     const Approvi: approvisionement = {
       ID_APRO: Number(formData.get("appro")),
@@ -23,11 +24,11 @@ export default async function addApprovi(
       ID_FOR: Number(formData.get("fournisseur")),
       ID_U: user!.ID_U,
       TELEPHONE: formData.get("tele") as string,
-    }
-    await setApprovi(Approvi, livres)
-    return true
+    };
+    await setApprovi(Approvi, livres);
+    return true;
   } catch (error) {
-    console.log(error)
-    return false
+    console.log(error);
+    return false;
   }
 }
