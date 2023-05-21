@@ -22,7 +22,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       <div className='flex w-full h-3/5 items-center justify-center'>
         <div className='relative w-1/5 h-full'>
           <MyImage
-            src={livre!.PAGE_DE_GARDE ? `/img/${livre!.PAGE_DE_GARDE}` : ""}
+            src={livre!.PAGE_DE_GARDE}
             alt='page de garde'
             priority
           />

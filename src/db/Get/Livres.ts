@@ -77,6 +77,28 @@ export async function getExemplaires() {
     throw Error("somthing went wrong" + e)
   }
 }
+export async function getExemplairesLivre() {
+  try {
+    const Exemplaire = await prisma.exemplaire.findMany({
+      include:{
+        livre : {
+          select :{
+            TITRE : true,
+            AUTHEUR : true,
+            DATE_EDITION : true,
+            EDITEUR : true
+          }
+        }
+      }
+    })
+
+    await prisma.$disconnect
+    return Exemplaire
+  } catch (e) {
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
+  }
+}
 
 export async function getNinv() {
   try {

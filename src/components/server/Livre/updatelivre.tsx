@@ -1,4 +1,5 @@
 "use server";
+
 import { getLivre } from "@/db/Get/Livres";
 import { PutLivres } from "@/db/Put/Livre";
 import { Prisma, livre } from "@prisma/client";
@@ -9,18 +10,6 @@ export default async function updateLivre(data: FormData, id: number) {
     const livredel = await getLivre(id);
     let imageName;
     let pdfName;
-    const fs = require('fs');
-
-    // const imagePath = data.get("page_garde") ;
-    // const imageBuffer = fs.readFileSync(imagePath);
-    //   console.log("zaza"+imageBuffer+"zaza");
-        
-
-
-
-
-
-
 
     if (data.get("somaire")) {
       await fetch(`http://localhost:3000/api/deletePDF/${livredel?.SOMAIRE}`, {
@@ -83,39 +72,3 @@ export default async function updateLivre(data: FormData, id: number) {
     return false;
   }
 }
-
-// import { NextApiRequest, NextApiResponse } from 'next';
-// import prisma from '../../lib/prisma';
-// import formidable from 'formidable';
-// import fs from 'fs/promises';
-
-// // export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-//   const form = new formidable.IncomingForm();
-
-//   form.parse(req, async (err, fields, files) => {
-//     if (err) {
-//       console.error(err);
-//       return res.status(500).json({ error: 'Error uploading image' });
-//     }
-
-//     const { name, path } = files.image;
-
-//     try {
-//       // Read the image file as a buffer
-//       const imageBuffer = await fs.readFile(path);
-
-//       // Save the image in the database
-//       await prisma.image.create({
-//         data: {
-//           name,
-//           data: imageBuffer
-//         }
-//       });
-
-//       res.status(200).json({ message: 'Image uploaded successfully' });
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ error: 'Error uploading image' });
-//     }
-//   });
-// }

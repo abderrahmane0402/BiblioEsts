@@ -11,7 +11,6 @@ export const config = {
 }
 
 const handler: NextApiHandler = async (req, res) => {
-
   try {
     await fs.readdir(path.join(process.cwd() + "/public", "/img"))
   } catch (error) {
@@ -32,40 +31,3 @@ const handler: NextApiHandler = async (req, res) => {
 }
 
 export default handler
-
-
-// import { NextApiRequest, NextApiResponse } from 'next';
-// import prisma from '../../lib/prisma';
-// import formidable from 'formidable';
-// import fs from 'fs/promises';
-
-// export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-//   const form = new formidable.IncomingForm();
-
-//   form.parse(req, async (err, fields, files) => {
-//     if (err) {
-//       console.error(err);
-//       return res.status(500).json({ error: 'Error uploading image' });
-//     }
-
-//     const { name, path } = files.image;
-
-//     try {
-//       // Read the image file as a buffer
-//       const imageBuffer = await fs.readFile(path);
-
-//       // Save the image in the database
-//       await prisma.image.create({
-//         data: {
-//           name,
-//           data: imageBuffer
-//         }
-//       });
-
-//       res.status(200).json({ message: 'Image uploaded successfully' });
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ error: 'Error uploading image' });
-//     }
-//   });
-// }

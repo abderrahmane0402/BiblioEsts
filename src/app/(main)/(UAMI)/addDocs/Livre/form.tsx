@@ -5,6 +5,7 @@ import addLivre from "@/components/server/Livre/addLivre"
 import Button from "@/components/ui/Button"
 import Header from "@/components/ui/Header"
 import * as Toast from "@/components/ui/toast"
+import { convertBase64 } from "@/utils/uploadIMG"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
@@ -15,7 +16,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
   const [open2, setOpen2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-
+  
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -26,14 +27,18 @@ const Form = ({ children }: { children: React.ReactNode }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open1, open2]);
   return (
-    <f.FormRoot
+    <f.FormRoot 
       onSubmit={() => {
         setIsLoading(true);
       }}
       ref={form}
       className="w-full pt-2"
       action={async (FormData) => {
-        const data = await addLivre(FormData, livre);
+       
+     
+       const garde= await convertBase64(FormData.get("page_garde") )
+        console.log(garde)
+        const data = await addLivre(FormData, livre ,garde);
         if (data) {
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)
@@ -47,6 +52,10 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
+
+        
+
+
       <Header className="p-6">Ajouter un exemplaire</Header>
 
       <AddExe
