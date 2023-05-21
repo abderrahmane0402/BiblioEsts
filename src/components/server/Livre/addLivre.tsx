@@ -6,7 +6,8 @@ import { revalidatePath } from "next/cache";
 export default async function addLivre(
   data: FormData,
   ex: Map<number, string>,
-  garde : any
+  garde : any,
+  som : any
 ) {
 
 
@@ -37,7 +38,7 @@ export default async function addLivre(
       CODE: data.get("code") ? Number(data.get("code") as string) : null,
       // OBSERVATIONL: data.get("observation") as string,
       PAGE_DE_GARDE: garde  ,
-      // SOMAIRE: `${pdfName.id}` as string,
+      SOMAIRE: som ,
     };
     let exemplaire = Array.from(ex, ([key, value]) => ({
       N_INVENTAIRE: key,

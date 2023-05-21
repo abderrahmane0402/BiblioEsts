@@ -160,7 +160,7 @@ model livre {
   CODE          Int?
   OBSERVATIONL  String?      @db.Text
   PAGE_DE_GARDE String       @db.LongText
-  SOMAIRE       String?      @db.VarChar(255)
+  SOMAIRE       String       @db.LongText
   PRIX          Decimal?     @db.Decimal(10, 0)
   contient      contient[]
   exemplaire    exemplaire[]
