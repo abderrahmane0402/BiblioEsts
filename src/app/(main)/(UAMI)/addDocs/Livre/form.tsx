@@ -5,6 +5,7 @@ import addLivre from "@/components/server/Livre/addLivre";
 import Button from "@/components/ui/Button";
 import Header from "@/components/ui/Header";
 import * as Toast from "@/components/ui/toast";
+import { convertBase64 } from "@/utils/uploadIMG";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -22,7 +23,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open2]);
   return (
-    <f.FormRoot
+    <f.FormRoot 
       onSubmit={() => {
         setOpen2(false);
         setIsLoading(true);
@@ -30,7 +31,11 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className="w-full pt-2"
       action={async (FormData) => {
-        const data = await addLivre(FormData, livre);
+       
+     
+       const garde= await convertBase64(FormData.get("page_garde") )
+        console.log(garde)
+        const data = await addLivre(FormData, livre ,garde);
         if (data) {
           router.push("/livre");
           setLivre(new Map());
@@ -41,6 +46,10 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
+
+        
+
+
       <Header className="p-6">Ajouter un exemplaire</Header>
 
       <AddExe

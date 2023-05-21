@@ -50,12 +50,12 @@ model contient {
 model emprunt_livre_etudiant {
   IDLE          Int         @id @default(autoincrement())
   N_INVENTAIRE  Int
-  N_inscription String
   ID_U          Int
   DATE_D        DateTime?   @db.Date
   DATE_F        DateTime?   @db.Date
   DATE_R        DateTime?   @db.Date
   OBSERVATIONLE String?     @db.Text
+  N_inscription String
   utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT")
   exemplaire    exemplaire  @relation(fields: [N_INVENTAIRE], references: [N_INVENTAIRE], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT2")
   etudiant      etudiant    @relation(fields: [N_inscription], references: [N_inscription], onUpdate: Restrict, map: "FK_EMPRUNT_LIVRE_ETUDIANT3")
@@ -87,11 +87,11 @@ model emprunt_pfe_etudiant {
   IDPE          Int         @id @default(autoincrement())
   Cote          String
   ID_U          Int
-  N_inscription String
   DATE_D        DateTime?   @db.Date
   DATE_F        DateTime?   @db.Date
   DATE_R        DateTime?   @db.Date
   OBSERVATIONPE String?     @db.Text
+  N_inscription String
   utilisateur   utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT")
   pfe           pfe         @relation(fields: [Cote], references: [Cote], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT2")
   etudiant      etudiant    @relation(fields: [N_inscription], references: [N_inscription], onUpdate: Restrict, map: "FK_EMPRUNT_PFE_ETUDIANT3")
@@ -135,7 +135,7 @@ model exemplaire {
   OBSERVATIONE           String?                  @db.Text
   emprunt_livre_etudiant emprunt_livre_etudiant[]
   emprunt_livre_prof     emprunt_livre_prof[]
-  livre                  livre                    @relation(fields: [ID_LIVRE], references: [ID_LIVRE], onUpdate: Cascade, onDelete: Cascade, map: "FK_AVOIR")
+  livre                  livre                    @relation(fields: [ID_LIVRE], references: [ID_LIVRE], onDelete: Cascade, map: "FK_AVOIR")
 
   @@index([ID_LIVRE], map: "FK_AVOIR")
 }
@@ -156,10 +156,10 @@ model livre {
   AUTHEUR       String?      @db.Char(100)
   ID_CAT        Int
   EDITEUR       String?      @db.VarChar(255)
-  DATE_EDITION  Int?         @db.Year
+  DATE_EDITION  Int?
   CODE          Int?
   OBSERVATIONL  String?      @db.Text
-  PAGE_DE_GARDE String?      @db.VarChar(255)
+  PAGE_DE_GARDE String       @db.LongText
   SOMAIRE       String?      @db.VarChar(255)
   PRIX          Decimal?     @db.Decimal(10, 0)
   contient      contient[]

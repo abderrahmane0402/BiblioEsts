@@ -1,11 +1,12 @@
 import { Table } from "./table"
-import { getExemplaires } from "@/db/Get/Livres"
+import { getExemplaires, getExemplairesLivre } from "@/db/Get/Livres"
 import { Suspense } from "react"
 
 export const dynamic = "force-dynamic"
 
 const Page = async () => {
-  let data = await getExemplaires()
+  let data = await getExemplairesLivre()
+
   return (
     <div className='w-full h-full'>
       <Suspense fallback={<div>Loading...</div>}>

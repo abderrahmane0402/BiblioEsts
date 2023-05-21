@@ -8,7 +8,7 @@ import Form from "./form";
 export const dynamic = "force-dynamic";
 const Page = async () => {
   const data = await getCategories_Select();
-
+ 
   return (
     <div className="overflow-auto w-full h-full">
       <Form>
@@ -157,6 +157,7 @@ const Page = async () => {
                   type="number"
                   maxLength={50}
                   required
+
                 />
               </f.FormControl>
             </f.FormField>
@@ -175,8 +176,8 @@ const Page = async () => {
                   className="h-12"
                   name="page_garde"
                   type="file"
-                  accept=".jpg, .jpeg, .png"
                   required
+
                 />
               </f.FormControl>
             </f.FormField>
@@ -197,7 +198,7 @@ const Page = async () => {
                   type="file"
                   accept=".pdf"
                   maxLength={50}
-                  required
+                  
                 />
               </f.FormControl>
             </f.FormField>

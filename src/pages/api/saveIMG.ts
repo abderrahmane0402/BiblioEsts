@@ -1,20 +1,22 @@
-import { NextApiHandler } from "next";
-import formidable from "formidable";
-import path from "path";
-import fs from "fs/promises";
+import { NextApiHandler } from "next"
+import formidable from "formidable"
+import path from "path"
+import fs from "fs/promises"
+import { getLivre } from "@/db/Get/Livres"
 
 export const config = {
   api: {
     bodyParser: false,
   },
-};
-let a;
+}
+
 const handler: NextApiHandler = async (req, res) => {
   try {
     await fs.readdir(path.join(process.cwd() + "/public/static", "/img"));
   } catch (error) {
     await fs.mkdir(path.join(process.cwd() + "/public/static", "/img"));
   }
+  
   const options: formidable.Options = {
     uploadDir: path.join(process.cwd(), "/public/static/img"),
     filename: (name, ext, path, form) => {
