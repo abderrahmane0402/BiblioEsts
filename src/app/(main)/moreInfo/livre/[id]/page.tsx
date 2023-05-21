@@ -5,6 +5,7 @@ import { getLivre } from "@/db/Get/Livres";
 import { Table } from "./table";
 import { Card } from "@/components/ui/Card";
 import Header from "@/components/mui/MuiHeader";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -61,6 +62,12 @@ const page = async ({ params }: { params: { id: string } }) => {
           <span className="w-1/2 text-[#5B3169]">Prix</span>
           <span className="w-1/2 text-[#242424]">
             {livre?.PRIX?.toNumber()} DH
+          </span>
+        </div>
+        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
+          <span className="w-1/2 text-[#5B3169]">Somaire</span>
+          <span className="w-1/2 text-[#242424]">
+            <Link href={`/PDFviewer/${livre?.ID_LIVRE}`}>Afficher</Link>
           </span>
         </div>
       </div>
