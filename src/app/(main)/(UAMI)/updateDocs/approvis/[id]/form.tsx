@@ -16,9 +16,6 @@ const Form = ({ children }: { children: React.ReactNode }) => {
   const [livre, setLivre] = useState<Map<number, number>>(new Map())
   const [userInfo, setUserInfo] = useState<string | null>(null)
   useEffect(() => {
-    setUserInfo(sessionStorage.getItem("login"))
-  }, [])
-  useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
       (open2 === true && isLoading === true)
@@ -35,7 +32,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className='w-full'
       action={async (FormData) => {
-        const data = await addApprovi(FormData, userInfo || "", livre)
+        const data = await addApprovi(FormData, livre)
         if (data) {
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)

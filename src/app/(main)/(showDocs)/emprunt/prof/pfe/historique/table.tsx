@@ -25,10 +25,10 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "Code",
-      headerName: "Code",
+      headerName: "enseignant",
       flex: 1,
       valueGetter(params) {
-        return params.row.professeur.NOM + " " + params.row.professeur.PRENOM
+        return params.row.prof.NOM + " " + params.row.prof.PRENOM
       },
       type: "string",
       hideable: false,

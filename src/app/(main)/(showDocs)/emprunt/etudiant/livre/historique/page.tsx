@@ -5,8 +5,7 @@ import { Table } from "./table"
 export const dynamic = "force-dynamic"
 
 const Page = async ({ params }: { params: { type: string } }) => {
-  let data: any
-  data = params.type == "encours" ? await ElivreEncours() : await Elivre()
+  let data =  await Elivre()
   return (
     <div className='w-full h-full'>
       <Suspense fallback={<div>Loading...</div>}>

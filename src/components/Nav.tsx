@@ -13,7 +13,7 @@ import { TbBooks, TbReportMoney } from "react-icons/tb"
 import { VscRepo } from "react-icons/vsc"
 import { GiBlackBook } from "react-icons/gi"
 
-export const ZNav = ({}) => {
+export const ZNav = () => {
   return (
     <nav className='h-4/5 overflow-auto scrollbar-none'>
       <ul>
@@ -50,7 +50,6 @@ export const ZNav = ({}) => {
         />
         <Nav href='/etudiant' title='Etudiant' icon={<FaUserGraduate />} />
         <Nav href='/prof' title='Professeur' icon={<FaUserTie />} />
-        <Nav href='/fournisseur' title='Fournisseur' icon={<FaUserTie />} />
       </ul>
     </nav>
   )
