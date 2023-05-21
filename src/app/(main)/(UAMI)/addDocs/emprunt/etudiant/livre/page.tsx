@@ -74,29 +74,6 @@ const Page = async () => {
               />
             </f.FormControl>
           </f.FormField>
-          {/* date_f */}
-          <f.FormField name="date_f" className="w-full">
-            <div className="w-full">
-              <Header size={"md"} className="p">
-                Date fin :
-              </Header>
-              <f.FormMessage match={"valueMissing"}>
-                saisir la date fin
-              </f.FormMessage>
-              <f.FormMessage match={"typeMismatch"}>
-                saisir une date fin valide
-              </f.FormMessage>
-            </div>
-            <f.FormControl asChild>
-              <Input
-                className="h-10"
-                name="date_f"
-                type="date"
-                maxLength={255}
-                required
-              />
-            </f.FormControl>
-          </f.FormField>
         </div>
       </div>
     </Form>

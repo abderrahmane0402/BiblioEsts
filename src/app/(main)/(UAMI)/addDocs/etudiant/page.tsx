@@ -13,7 +13,7 @@ const page = () => {
          <f.FormField name='num_ins' className='w-full'>
         <div className='w-full'>
           <Header size={"md"} className='p'>
-            numero d{"'"}insctiption :
+            Numero d{"'"}insctiption :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le numero</f.FormMessage>
           <f.FormMessage match={"typeMismatch"}>
@@ -28,7 +28,7 @@ const page = () => {
       <f.FormField name='num_apoge' className='w-full'>
         <div className='w-full'>
           <Header size={"md"} className='p'>
-            numero apogee :
+            Numero apogee :
           </Header>
           <f.FormMessage match={"valueMissing"}>
             saisir le numero apogee

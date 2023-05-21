@@ -67,13 +67,13 @@ export function AddExe({
       <f.FormField name='nbr_invEX' className='w-full'>
         <div className='w-full'>
           <Header size={"md"} className='p'>
-            Nombre d{"'"}inventaire :
+            Numéro d{"'"}inventaire :
           </Header>
           <f.FormMessage match={"valueMissing"}>
-            saisir le nombre d{"'"}inventaire
+            saisir le Numéro d{"'"}inventaire
           </f.FormMessage>
           <f.FormMessage match={"typeMismatch"}>
-            saisir un nombre d{"'"}inventaire valide
+            saisir un Numéro d{"'"}inventaire valide
           </f.FormMessage>
         </div>
         <f.FormControl asChild>

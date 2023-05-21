@@ -8,6 +8,7 @@ import Form from "./form"
 
 export const dynamic = "force-dynamic"
 const Page = async () => {
+
   const [Apoge, Inv] = await Promise.all([getProfshort(), getNinv()])
   const result = Apoge.map((obj) => obj.Code)
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE)
@@ -68,29 +69,6 @@ const Page = async () => {
               <Input
                 className='h-10'
                 name='date_D'
-                type='date'
-                maxLength={255}
-                required
-              />
-            </f.FormControl>
-          </f.FormField>
-          {/* date_f */}
-          <f.FormField name='date_f' className='w-full'>
-            <div className='w-full'>
-              <Header size={"md"} className='p'>
-                Date fin :
-              </Header>
-              <f.FormMessage match={"valueMissing"}>
-                saisir la date fin
-              </f.FormMessage>
-              <f.FormMessage match={"typeMismatch"}>
-                saisir une date fin valide
-              </f.FormMessage>
-            </div>
-            <f.FormControl asChild>
-              <Input
-                className='h-10'
-                name='date_f'
                 type='date'
                 maxLength={255}
                 required

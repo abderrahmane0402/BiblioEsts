@@ -74,7 +74,7 @@ async function Page() {
               <div className='w-full'>
                 <Header size={"md"}>Addresse :</Header>
                 <f.FormMessage match={"valueMissing"}>
-                  saisir l&apos;addresse
+                  saisir l{"'"}addresse
                 </f.FormMessage>
                 <f.FormMessage match={"typeMismatch"}>
                   saisir addresse valide
@@ -160,7 +160,7 @@ async function Page() {
                 </f.FormField>
                 <Link
                   href={"/addDocs/fournisseur"}
-                  className='h-10 flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-400 hover:bg-sky-600 active:bg-sky-200'
+                  className='h-10 flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-950 hover:bg-sky-600 active:bg-sky-200'
                 >
                   nouveau
                 </Link>

@@ -5,6 +5,7 @@ import Header from "@/components/ui/Header"
 import Input from "@/components/ui/Input"
 import Paragraph from "@/components/ui/Paragraph"
 import LoadingButton from "@mui/lab/LoadingButton"
+import { cookies } from "next/dist/client/components/headers"
 import { useRouter } from "next/navigation"
 import { FC, useRef, useState } from "react"
 
@@ -27,8 +28,6 @@ const Sign_in: FC<Sign_inProps> = ({}) => {
         action={async (FormData) => {
           const res = await Auth(FormData)
           if (res) {
-            sessionStorage.setItem("login", FormData.get("login") as string)
-            sessionStorage.setItem("password", FormData.get("pass") as string)
             router.push("/dashboard")
           } else {
             setError(true)

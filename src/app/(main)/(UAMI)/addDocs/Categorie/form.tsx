@@ -2,12 +2,18 @@
 import * as f from "@/components/Form";
 import addCategorie from "@/components/server/Categorie/addCategorie";
 import Button from "@/components/ui/Button";
+import Header from "@/components/ui/Header";
 import * as Toast from "@/components/ui/toast";
+
+import TextField from '@mui/material/TextField';
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null);
   const [open1, setOpen1] = useState(false);
+  const router = useRouter()
+
   const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -31,6 +37,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         if (data) {
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);
+          router.push("/categorie")
           form.current?.reset();
         } else {
           setOpen2(true);
@@ -38,7 +45,10 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         }
       }}
     >
+   
+
       {children}
+     
       <footer className="flex justify-center items-center py-12">
         <f.FormSubmit asChild>
           <Button

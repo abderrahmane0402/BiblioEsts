@@ -3,17 +3,17 @@ import * as f from "@/components/Form"
 import { empruntPfeE } from "@/components/server/Emprunt/pfe"
 import Button from "@/components/ui/Button"
 import * as Toast from "@/components/ui/toast"
+import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null)
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
+  const router = useRouter()
+
   const [isLoading, setIsLoading] = useState(false)
-  const [userInfo, setUserInfo] = useState<string | null>(null)
-  useEffect(() => {
-    setUserInfo(sessionStorage.getItem("login"))
-  }, [])
+  
 
   useEffect(() => {
     if (
@@ -32,10 +32,12 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className='w-full'
       action={async (FormData) => {
-        const data = await empruntPfeE(FormData, userInfo || "")
+        const data = await empruntPfeE(FormData)
         if (data) {
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)
+          router.push("/emprunt/etudiant/pfe/encours")
+
           form.current?.reset()
         } else {
           setOpen2(true)

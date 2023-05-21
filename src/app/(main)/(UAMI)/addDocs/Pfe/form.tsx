@@ -3,6 +3,7 @@ import * as f from "@/components/Form";
 import addPfe from "@/components/server/Pfe/addPfe";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const Form = ({ children }: { children: React.ReactNode }) => {
@@ -10,6 +11,8 @@ const Form = ({ children }: { children: React.ReactNode }) => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter()
+
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -31,6 +34,8 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         if (data) {
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);
+          router.push("/pfe")
+
           form.current?.reset();
         } else {
           setOpen2(true);

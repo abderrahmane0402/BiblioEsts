@@ -5,17 +5,16 @@ import Header from "@/ui/Header";
 import Input from "@/ui/Input";
 import Form from "./form";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 const Page = async () => {
   const data = await getCategories_Select();
-
+ 
   return (
     <div className="overflow-auto w-full h-full">
       <Form>
         <Header size={"lg"}>Information de livre</Header>
         <div className="flex flex-wrap ">
           <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
-            {/* nombre_inv */}
             <f.FormField name="title" className="w-full">
               <div className="w-full">
                 <Header size={"md"} className="p">
@@ -38,15 +37,14 @@ const Page = async () => {
                 />
               </f.FormControl>
             </f.FormField>
-            {/* autheur */}
             <f.FormField name="autheur" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Autheur :</Header>
                 <f.FormMessage match={"valueMissing"}>
-                  saisir l{"'"}autheur
+                  saisir l{"'"}auteur
                 </f.FormMessage>
                 <f.FormMessage match={"typeMismatch"}>
-                  saisir l{"'"}autheur valide
+                  saisir l{"'"}auteur valide
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
@@ -58,8 +56,6 @@ const Page = async () => {
                 />
               </f.FormControl>
             </f.FormField>
-
-            {/* Editeur */}
 
             <f.FormField name="editeur" className="w-full">
               <div className="w-full">
@@ -81,8 +77,6 @@ const Page = async () => {
               </f.FormControl>
             </f.FormField>
 
-            {/* Date edition */}
-
             <f.FormField name="date_edi" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Date d{"'"}édition :</Header>
@@ -97,13 +91,12 @@ const Page = async () => {
                 <Input
                   className="h-10"
                   name="date_edi"
-                  type="date"
+                  type="number"
                   maxLength={50}
                   required
                 />
               </f.FormControl>
             </f.FormField>
-            {/* prix */}
             <f.FormField name="prix" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Prix :</Header>
@@ -120,7 +113,7 @@ const Page = async () => {
                   name="prix"
                   type="number"
                   maxLength={50}
-                  required
+                  
                 />
               </f.FormControl>
             </f.FormField>
@@ -147,7 +140,6 @@ const Page = async () => {
           </div>
 
           <div className="w-full md:w-1/2 pl-4">
-            {/* Code */}
             <f.FormField name="code" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Code :</Header>
@@ -165,10 +157,10 @@ const Page = async () => {
                   type="number"
                   maxLength={50}
                   required
+
                 />
               </f.FormControl>
             </f.FormField>
-            {/* page de garde */}
             <f.FormField name="page_garde" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Page de garde :</Header>
@@ -184,12 +176,11 @@ const Page = async () => {
                   className="h-12"
                   name="page_garde"
                   type="file"
-                  accept=".jpg, .jpeg, .png"
                   required
+
                 />
               </f.FormControl>
             </f.FormField>
-            {/* SOMAIRE */}
             <f.FormField name="somaire" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>SOMAIRE :</Header>
@@ -207,12 +198,12 @@ const Page = async () => {
                   type="file"
                   accept=".pdf"
                   maxLength={50}
-                  required
+                  
                 />
               </f.FormControl>
             </f.FormField>
             {/* Observation */}
-            <f.FormField name="observation" className="w-full">
+            {/* <f.FormField name="observation" className="w-full">
               <div className="w-full">
                 <Header size={"md"}>Observation :</Header>
                 <f.FormMessage match={"valueMissing"}>
@@ -230,11 +221,9 @@ const Page = async () => {
                   className="w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
                 />
               </f.FormControl>
-            </f.FormField>
+            </f.FormField> */}
           </div>
         </div>
-
-        
       </Form>
     </div>
   );

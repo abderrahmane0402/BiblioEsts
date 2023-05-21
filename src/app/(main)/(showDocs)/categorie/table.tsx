@@ -27,7 +27,7 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "categorie",
-      headerName: "Catégorie parent",
+      headerName: "Catégorie mère",
       flex: 0.7,
       valueGetter(params) {
         return params.row.categorie?.LIBELLE
