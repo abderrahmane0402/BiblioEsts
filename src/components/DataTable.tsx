@@ -77,6 +77,7 @@ const DataTable: FC<DataTableProps> = forwardRef<
       slotProps={customSlotsProps}
       getRowId={(row) => row[ID || "id"]}
       {...props}
+      rowHeight={70}
     />
   );
 });
