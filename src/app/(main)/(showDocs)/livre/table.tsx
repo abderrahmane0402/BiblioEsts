@@ -1,5 +1,6 @@
 "use client";
 import DataTable from "@/components/DataTable";
+import MyImage from "@/components/ui/MyImage";
 import * as Toast from "@/components/ui/toast";
 import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu";
 import { CustomToolbar } from "@/components/ui/x-data-grid-customization/CustomToolBar";
@@ -20,6 +21,20 @@ export function Table({ data }: { data: any }) {
   const [notDeleted, setnotDeleted] = useState(false);
   const router = useRouter();
   const Columns: GridColDef[] = [
+    {
+      field: "PAGE_DE_GARDE",
+      headerName: "",
+      width: 60,
+      type: "string",
+      hideable: false,
+      renderCell(params) {
+        return (
+          <div className="relative w-full h-4/5">
+            <MyImage src={params.row.PAGE_DE_GARDE || ""} alt="page de garde" />
+          </div>
+        );
+      },
+    },
     {
       field: "TITRE",
       headerName: "Titre",
@@ -74,13 +89,13 @@ export function Table({ data }: { data: any }) {
           icon={<HiInformationCircle className="text-xl" />}
           label="plus d'information"
           onClick={() => {
-            router.push(`/moreInfo/livre/${params.id}`)
+            router.push(`/moreInfo/livre/${params.id}`);
           }}
           title="plus d'infos"
         ></GridActionsCellItem>,
         <GridActionsCellItem
           key={params.id}
-          icon={<MdAddCircle className='text-xl' />}
+          icon={<MdAddCircle className="text-xl" />}
           label="Ajouter exemplaire"
           onClick={() => {
             router.push(`/moreInfo/livre/${params.id}`);
