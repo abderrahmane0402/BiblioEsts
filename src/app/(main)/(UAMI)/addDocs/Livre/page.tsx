@@ -177,7 +177,7 @@ const Page = async () => {
                   name="page_garde"
                   type="file"
                   required
-
+                  
                 />
               </f.FormControl>
             </f.FormField>
@@ -198,7 +198,7 @@ const Page = async () => {
                   type="file"
                   accept=".pdf"
                   maxLength={50}
-                  
+                  required
                 />
               </f.FormControl>
             </f.FormField>

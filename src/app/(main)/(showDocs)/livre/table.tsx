@@ -90,7 +90,7 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<MdDelete className="text-xl" />}
-          label="delete"
+          label="Supprimer"
           showInMenu
           onClick={() => {
             fetch(`/api/livre/${params.id}`, {
@@ -112,7 +112,7 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<BiEdit className="text-xl" />}
-          label="editer"
+          label="Modifer"
           showInMenu
           onClick={() => {
             router.push(`/updateDocs/Livre/${params.id}`);

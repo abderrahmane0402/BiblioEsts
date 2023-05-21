@@ -26,18 +26,21 @@ export async function getElivre(id: number) {
       include: {
         etudiant: true,
         exemplaire: {
-          include: {
+          include: {         
             livre: {
-              select: {
-                AUTHEUR: true,
-                EDITEUR: true,
-                TITRE: true,
-                PAGE_DE_GARDE: true,
-                DATE_EDITION: true,
+              include : {
+                categorie: {
+                  select: {
+                    LIBELLE: true,
+                  },
+                }, 
               },
+
             },
+            
           },
         },
+        
       },
       where: {
         IDLE: id,

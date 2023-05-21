@@ -25,6 +25,33 @@ export function Table({ data }: { data: any }) {
       hideable: false,
     },
     {
+      
+      field: "TITRE",
+      headerName: "Titre",
+      type: "string",
+      hideable: false,
+    },
+    {
+
+      field: "AUTHEUR",
+      headerName: "Auteur",
+      type: "string",
+      hideable: true,
+    },{
+
+      field: "EDITEUR",
+      headerName: "Editeur",
+      type: "string",
+      hideable: true,
+    },
+    {
+
+      field: "DATE_EDITION",
+      headerName: "Date d'édition",
+      type: "number",
+      hideable: true,
+    },
+    {
       width: 350,
       field: "OBSERVATIONE",
       headerName: "Observation",
@@ -39,7 +66,7 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<MdDelete className='text-xl' />}
-          label='delete'
+          label='Supprimer'
           onClick={() => {
             fetch(`/api/exemplaire/${params.id}`, {
               method: "DELETE",
@@ -60,7 +87,7 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<BiEdit className='text-xl' />}
-          label='editer'
+          label='Modifier'
           onClick={() => {
             router.push(`/updateDocs/Exemplaire/${params.id}`)
           }}

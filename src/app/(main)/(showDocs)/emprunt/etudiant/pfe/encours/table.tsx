@@ -80,7 +80,7 @@ export function Table({ data }: { data: any }) {
           icon={<HiInformationCircle className="text-xl" />}
           label="showMore"
           onClick={() => {
-            router.push(`/moreInfo/emprunt/etudiant/pfe/${params.id}`);
+            router.push(`/emprunt/etudiant/pfe/${params.id}`);
           }}
           title="plus d'infos"
           showInMenu
@@ -88,13 +88,13 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<MdDelete className="text-xl" />}
-          label="delete"
+          label="Supprimer"
           showInMenu
         />,
         <GridActionsCellItem
           key={params.id}
           icon={<BiEdit className="text-xl" />}
-          label="editer"
+          label="Modifier"
           showInMenu
         />,
       ],
