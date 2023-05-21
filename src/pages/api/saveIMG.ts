@@ -12,22 +12,22 @@ export const config = {
 
 const handler: NextApiHandler = async (req, res) => {
   try {
-    await fs.readdir(path.join(process.cwd() + "/public", "/img"))
+    await fs.readdir(path.join(process.cwd() + "/public/static", "/img"));
   } catch (error) {
-    await fs.mkdir(path.join(process.cwd() + "/public", "/img"))
+    await fs.mkdir(path.join(process.cwd() + "/public/static", "/img"));
   }
   
   const options: formidable.Options = {
-    uploadDir: path.join(process.cwd(), "/public/img"),
+    uploadDir: path.join(process.cwd(), "/public/static/img"),
     filename: (name, ext, path, form) => {
-      return Date.now().toString() + "_" + path.originalFilename
+      return Date.now().toString() + "_" + path.originalFilename;
     },
-  }
-  const form = formidable(options)
+  };
+  const form = formidable(options);
   form.on("fileBegin", function (name, file) {
-    res.json({ id: file.newFilename })
-  })
-  form.parse(req)
-}
+    res.json({ id: file.newFilename });
+  });
+  form.parse(req);
+};
 
-export default handler
+export default handler;

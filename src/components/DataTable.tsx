@@ -38,14 +38,14 @@ const StyledDataGrid = styled(DataGrid)(() => ({
     display: "none",
   },
   "& .MuiDataGrid-columnHeader, .MuiDataGrid-cell": {
-    borderRight: `1px solid #33181881`,
+    borderRight: `2px solid #DEE2E6`,
   },
   "& .MuiDataGrid-columnsContainer, .MuiDataGrid-cell": {
-    borderBottom: `1px solid #33181881`,
+    borderBottom: `2px solid #DEE2E6`,
   },
 
   "& .MuiDataGrid-columnHeaders": {
-    borderBottom: `1px solid black`,
+    borderBottom: `2px solid #DEE2E6`,
   },
   "& .MuiPaginationItem-root": {
     borderRadius: 0,
@@ -53,11 +53,11 @@ const StyledDataGrid = styled(DataGrid)(() => ({
   "& .MuiDataGrid-columnHeaderTitle": {
     fontSize: "18px",
     fontWeight: "bold",
-    color: "#0000009f",
+    color: "#212529",
   },
   "& .MuiDataGrid-cellContent": {
     fontSize: "18px",
-    color: "black",
+    color: "#323539",
   },
 }));
 

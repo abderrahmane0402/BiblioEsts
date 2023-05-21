@@ -1,11 +1,11 @@
-import { Ppfe, PpfeEncours } from "@/db/Get/emprunt/prof/Ppfe"
+import { Elivre, ElivreEncours } from "@/db/Get/emprunt/etudiant/Elivre"
 import { Suspense } from "react"
 import { Table } from "./table"
 
 export const dynamic = "force-dynamic"
 
-const Page = async ({ params }: { params: { type: string } }) => {
-  const data = params.type == "encours" ? await PpfeEncours() : await Ppfe()
+const Page = async () => {
+  let data = await ElivreEncours()
   return (
     <div className='w-full h-full'>
       <Suspense fallback={<div>Loading...</div>}>

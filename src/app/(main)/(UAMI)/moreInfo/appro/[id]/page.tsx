@@ -4,7 +4,7 @@ import { getAppro, getAppros } from "@/db/Get/Appro";
 import { Table } from "./table";
 import { livre } from "@prisma/client";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 type Livre = {
   ID_LIVRE: number | null;
@@ -18,12 +18,6 @@ type Livre = {
   QTE: number | null;
 };
 
-export async function generateStaticParams() {
-  const apros = await getAppros();
-  return apros.map((apros) => {
-    id: apros.ID_APRO;
-  });
-}
 
 const page = async ({ params }: { params: { id: string } }) => {
   const id = parseInt(params.id);

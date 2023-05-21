@@ -1,34 +1,31 @@
-"use client"
-import * as f from "@/components/Form"
-import { AddExe } from "@/components/addExemplaire"
-import addLivre from "@/components/server/Livre/addLivre"
-import Button from "@/components/ui/Button"
-import Header from "@/components/ui/Header"
-import * as Toast from "@/components/ui/toast"
-import { convertBase64 } from "@/utils/uploadIMG"
-import { useRouter } from "next/navigation"
-import { useEffect, useRef, useState } from "react"
+"use client";
+import * as f from "@/components/Form";
+import { AddExe } from "@/components/addExemplaire";
+import addLivre from "@/components/server/Livre/addLivre";
+import Button from "@/components/ui/Button";
+import Header from "@/components/ui/Header";
+import * as Toast from "@/components/ui/toast";
+import { convertBase64 } from "@/utils/uploadIMG";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 const Form = ({ children }: { children: React.ReactNode }) => {
-  const [livre, setLivre] = useState<Map<number, string>>(new Map())
-  const form = useRef<HTMLFormElement>(null)
-  const [open1, setOpen1] = useState(false)
-  const [open2, setOpen2] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
-  
+  const [livre, setLivre] = useState<Map<number, string>>(new Map());
+  const form = useRef<HTMLFormElement>(null);
+  const [open2, setOpen2] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
   useEffect(() => {
-    if (
-      (open1 === true && isLoading === true) ||
-      (open2 === true && isLoading === true)
-    ) {
+    if (open2 === true && isLoading === true) {
       setIsLoading(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open1, open2]);
+  }, [open2]);
   return (
     <f.FormRoot 
       onSubmit={() => {
+        setOpen2(false);
         setIsLoading(true);
       }}
       ref={form}
@@ -43,14 +40,11 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         console.log(som)
         const data = await addLivre(FormData, livre ,garde,som);
         if (data) {
-          setOpen1(true)
-          setTimeout(() => setOpen1(false), 1000)
-          router.push("/livre")
-          form.current?.reset()
-          setLivre(new Map())
+          router.push("/livre");
+          setLivre(new Map());
         } else {
           setOpen2(true);
-          setTimeout(() => setOpen2(false), 1000);
+          setTimeout(() => setOpen2(false), 5000);
         }
       }}
     >
@@ -80,20 +74,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         </f.FormSubmit>
       </footer>
 
-      <Toast.Provider duration={1000}>
-        <Toast.Root open={open1} Ttype={"success"}>
-          <div>
-            <Toast.Title>succès</Toast.Title>
-            <Toast.Description>
-              Livre a été ajouté avec succés
-            </Toast.Description>
-          </div>
-          <Toast.Close asChild onClick={() => setOpen1(false)}>
-            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
-              fermer
-            </button>
-          </Toast.Close>
-        </Toast.Root>
+      <Toast.Provider>
         <Toast.Root open={open2} Ttype={"error"}>
           <div>
             <Toast.Title>Error</Toast.Title>
