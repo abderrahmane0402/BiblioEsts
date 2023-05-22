@@ -1,4 +1,5 @@
 import prisma from "@/utils/Prisma"
+import { exemplaire } from "@prisma/client"
 import { revalidatePath } from "next/cache"
 
 export async function setApprovi(
@@ -16,7 +17,18 @@ export async function setApprovi(
         ...Aprovis,
       },
     })
-    revalidatePath("/approvisionnement")
+    const exemplaire: any[] = []
+    livre.map((l) => {
+      for (let i = 0; i < l.QTE; i++) {
+        exemplaire.push({
+          ID_LIVRE: l.ID_LIVRE,
+          OBSERVATIONE: null,
+        })
+      }
+    })
+    await prisma.exemplaire.createMany({
+      data: exemplaire,
+    })
     await prisma.$disconnect
   } catch (e) {
     await prisma.$disconnect

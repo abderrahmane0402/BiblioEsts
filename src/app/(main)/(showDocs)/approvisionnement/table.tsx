@@ -18,17 +18,20 @@ export function Table({ data }: { data: any }) {
   const Columns: GridColDef[] = [
     {
       field: "ID_APRO",
-      headerName: "Numéro d'approvisionnement",
+      headerName: "Numéro",
       flex: 1,
       type: "string",
       hideable: false,
     },
     {
       field: "DATE",
-      headerName: "Date d'édition ",
+      headerName: "Date",
       flex: 1,
       type: "number",
       hideable: false,
+      valueGetter(params) {
+          return params.row.DATE.toLocaleDateString()
+      },
     },
     {
       field: "ENTREPRISE",

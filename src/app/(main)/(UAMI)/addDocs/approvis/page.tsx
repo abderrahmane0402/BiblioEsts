@@ -6,7 +6,6 @@ import { getFournisseurShort } from "@/db/Get/Fournisseur"
 import { getNinv } from "@/db/Get/Livres"
 import Link from "next/link"
 import Form from "./form"
-import AddLivre from "./addLivre"
 
 async function Page() {
   const [fournisseur, livre] = await Promise.all([
@@ -28,7 +27,7 @@ async function Page() {
             <f.FormField name='appro' className='w-full'>
               <div className='w-full'>
                 <Header size={"md"} className='p'>
-                  N d{"'"}approvisionnement :
+                  Numero :
                 </Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir le numero

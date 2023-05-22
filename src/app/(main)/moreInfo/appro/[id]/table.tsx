@@ -25,7 +25,7 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "AUTHEUR",
-      headerName: "Autheur",
+      headerName: "Auteur",
       flex: 1.5,
       type: "string",
       hideable: false,
@@ -41,7 +41,7 @@ export function Table({ data }: { data: any }) {
       field: "DATE_EDITION",
       headerName: "dateEdition",
       flex: 1,
-      type: "date",
+      type: "string",
     },
     { field: "CODE", headerName: "Code", flex: 1, type: "number" },
     {

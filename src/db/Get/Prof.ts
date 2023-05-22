@@ -16,6 +16,8 @@ export async function getProfshort() {
     const profs = await prisma.prof.findMany({
       select: {
         Code: true,
+        NOM:true,
+        PRENOM:true,
       },
       where: {
         emprunt_livre_prof: {
