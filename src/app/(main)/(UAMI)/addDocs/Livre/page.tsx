@@ -6,6 +6,8 @@ import Input from "@/ui/Input";
 import Form from "./form";
 
 export const dynamic = "force-dynamic";
+
+
 const Page = async () => {
   const data = await getCategories_Select();
  

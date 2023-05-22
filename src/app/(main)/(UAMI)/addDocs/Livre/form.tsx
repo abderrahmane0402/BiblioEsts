@@ -5,7 +5,7 @@ import addLivre from "@/components/server/Livre/addLivre";
 import Button from "@/components/ui/Button";
 import Header from "@/components/ui/Header";
 import * as Toast from "@/components/ui/toast";
-import { convertBase64 } from "@/utils/uploadIMG";
+import convertBase64 from "@/utils/uploadIMG";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -33,8 +33,6 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       action={async (FormData) => {
         const garde = await convertBase64(FormData.get("page_garde"));
         const som = await convertBase64(FormData.get("somaire"));
-
-       
         const data = await addLivre(FormData, livre, garde, som);
         if (data) {
           router.push("/livre");
