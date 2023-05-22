@@ -23,7 +23,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open2]);
   return (
-    <f.FormRoot 
+    <f.FormRoot
       onSubmit={() => {
         setOpen2(false);
         setIsLoading(true);
@@ -31,14 +31,11 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className="w-full pt-2"
       action={async (FormData) => {
-       
-     
-       const garde= await convertBase64(FormData.get("page_garde") )
-       console.log(garde)
-       const som= await convertBase64(FormData.get("somaire") )
-       
-        console.log(som)
-        const data = await addLivre(FormData, livre ,garde,som);
+        const garde = await convertBase64(FormData.get("page_garde"));
+        const som = await convertBase64(FormData.get("somaire"));
+
+        console.log(som);
+        const data = await addLivre(FormData, livre, garde, som);
         if (data) {
           router.push("/livre");
           setLivre(new Map());
@@ -49,9 +46,6 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-
-        
-
 
       <Header className="p-6">Ajouter un exemplaire</Header>
 

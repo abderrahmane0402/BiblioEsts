@@ -1,4 +1,4 @@
-import prisma from "@/utils/Prisma"
+import prisma from "@/utils/Prisma";
 
 export async function getLivres() {
   try {
@@ -16,12 +16,12 @@ export async function getLivres() {
           },
         },
       },
-    })
-    await prisma.$disconnect
-    return Livres
+    });
+    await prisma.$disconnect;
+    return Livres;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
@@ -44,12 +44,12 @@ export async function getLivre(id: number) {
       where: {
         ID_LIVRE: id,
       },
-    })
-    await prisma.$disconnect
-    return Livre
+    });
+    await prisma.$disconnect;
+    return Livre;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
@@ -59,44 +59,44 @@ export async function getExemplaire(id: number) {
       where: {
         N_INVENTAIRE: id,
       },
-    })
-    await prisma.$disconnect
-    return Exemplaire
+    });
+    await prisma.$disconnect;
+    return Exemplaire;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 export async function getExemplaires() {
   try {
-    const Exemplaire = await prisma.exemplaire.findMany()
-    await prisma.$disconnect
-    return Exemplaire
+    const Exemplaire = await prisma.exemplaire.findMany();
+    await prisma.$disconnect;
+    return Exemplaire;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 export async function getExemplairesLivre() {
   try {
     const Exemplaire = await prisma.exemplaire.findMany({
-      include:{
-        livre : {
-          select :{
-            TITRE : true,
-            AUTHEUR : true,
-            DATE_EDITION : true,
-            EDITEUR : true
-          }
-        }
-      }
-    })
+      include: {
+        livre: {
+          select: {
+            TITRE: true,
+            AUTHEUR: true,
+            DATE_EDITION: true,
+            EDITEUR: true,
+          },
+        },
+      },
+    });
 
-    await prisma.$disconnect
-    return Exemplaire
+    await prisma.$disconnect;
+    return Exemplaire;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
@@ -118,22 +118,40 @@ export async function getNinv() {
           },
         },
       },
-    })
-    await prisma.$disconnect
-    return Livres
+    });
+    await prisma.$disconnect;
+    return Livres;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }
 
 export async function getLivresShort() {
   try {
-    const Livres = await prisma.livre.findMany()
-    await prisma.$disconnect
-    return Livres
+    const Livres = await prisma.livre.findMany();
+    await prisma.$disconnect;
+    return Livres;
   } catch (e) {
-    await prisma.$disconnect
-    throw Error("somthing went wrong" + e)
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
+  }
+}
+
+export async function getSomaire(id: number) {
+  try {
+    const Livre = await prisma.livre.findFirst({
+      select: {
+        SOMAIRE: true,
+      },
+      where: {
+        ID_LIVRE: id,
+      },
+    });
+    await prisma.$disconnect;
+    return Livre;
+  } catch (e) {
+    await prisma.$disconnect;
+    throw Error("somthing went wrong" + e);
   }
 }

@@ -62,7 +62,7 @@ const page = async () => {
           <f.FormField name="sujet" className="w-full">
             <div className="w-full">
               <Header size={"md"} className="p">
-                Sujet :
+                Description :
               </Header>
               <f.FormMessage match={"valueMissing"}>
                 saisir le sujet

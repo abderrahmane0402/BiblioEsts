@@ -2,6 +2,10 @@ import Header from "@/components/mui/MuiHeader";
 import { Card } from "@/components/ui/Card";
 import MyImage from "@/components/ui/MyImage";
 import { getLivre } from "@/db/Get/Livres";
+import { Table } from "./table";
+import { Card } from "@/components/ui/Card";
+import Header from "@/components/mui/MuiHeader";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -30,30 +34,66 @@ const page = async ({ params }: { params: { id: string } }) => {
         <Header>Livre</Header>
         <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
           <span className="w-1/2 text-[#5B3169]">Titre</span>
-          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#242424]">{livre?.TITRE}</span>
         </div>
-        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
+        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
           <span className="w-1/2 text-[#5B3169]">Auteur</span>
-          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#242424]"> {livre?.AUTHEUR}</span>
         </div>
-        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
+        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
           <span className="w-1/2 text-[#5B3169]">Editeur</span>
-          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#242424]">{livre?.EDITEUR}</span>
         </div>
-        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
+        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
+          <span className="w-1/2 text-[#5B3169]">Categorie</span>
+          <span className="w-1/2 text-[#242424]">
+            {livre?.categorie.LIBELLE}
+          </span>
+        </div>
+        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
           <span className="w-1/2 text-[#5B3169]">Date d{"'"}edition</span>
-          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#242424]">{livre!.DATE_EDITION}</span>
         </div>
-        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
+        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
           <span className="w-1/2 text-[#5B3169]">Code</span>
-          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#242424]">{livre?.CODE}</span>
         </div>
-        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
+        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
           <span className="w-1/2 text-[#5B3169]">Prix</span>
-          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#242424]">
+            {livre?.PRIX?.toNumber()} DH
+          </span>
+        </div>
+        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
+          <span className="w-1/2 text-[#5B3169]">Somaire</span>
+          <span className="w-1/2 text-[#242424]">
+            <Link href={`/PDFviewer/${livre?.ID_LIVRE}`}>Afficher</Link>
+          </span>
         </div>
       </div>
-      <Card type={"full"} className="rounded-lg"></Card>
+
+      <div className="rounded-lg w-full h-fit bg-white shadow-lg pt-2">
+        <Header>Exemplaire</Header>
+        {livre?.exemplaire.length ? (
+          livre?.exemplaire.map((ex, index) => {
+            return (
+              <div
+                key={index}
+                className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide"
+              >
+                <span className="w-1/2 text-[#5B3169]">N inventaire</span>
+                <span className="w-1/2 text-[#242424]">{ex.N_INVENTAIRE}</span>
+              </div>
+            );
+          })
+        ) : (
+          <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
+            <span className="w-full text-center text-[#5B3169]">
+              aucun exemplaire trouver
+            </span>
+          </div>
+        )}
+      </div>
     </>
     // <div className="w-full h-full gap-3 overflow-auto scroll-smooth">
     //   <div className="flex w-full h-3/5 items-center justify-center">
