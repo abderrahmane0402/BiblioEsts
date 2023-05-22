@@ -82,13 +82,13 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<MdDelete className="text-xl" />}
-          label="delete"
+          label="Supprimer"
           showInMenu
         />,
         <GridActionsCellItem
           key={params.id}
           icon={<BiEdit className="text-xl" />}
-          label="editer"
+          label="Modifier"
           showInMenu
         />,
       ],

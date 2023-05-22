@@ -28,13 +28,14 @@ export async function getPlivre(id: number) {
         exemplaire: {
           include: {
             livre: {
-              select: {
-                AUTHEUR: true,
-                EDITEUR: true,
-                TITRE: true,
-                PAGE_DE_GARDE: true,
-                DATE_EDITION: true,
+              include : {
+                categorie: {
+                  select: {
+                    LIBELLE: true,
+                  },
+                }, 
               },
+
             },
           },
         },

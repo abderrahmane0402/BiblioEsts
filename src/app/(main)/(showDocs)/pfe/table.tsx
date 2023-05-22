@@ -61,7 +61,7 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<MdDelete className='text-xl' />}
-          label='delete'
+          label='Supprimer'
           onClick={() => {
             fetch(`/api/pfe/${params.id}`, {
               method: "DELETE",
@@ -82,7 +82,7 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<BiEdit className='text-xl' />}
-          label='editer'
+          label='Modifer'
           onClick={() => {
             router.push(`/updateDocs/Pfe/${params.id}`)
           }}

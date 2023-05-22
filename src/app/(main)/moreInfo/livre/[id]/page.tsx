@@ -1,6 +1,6 @@
-import MLink from "@/components/ui/MLink";
+import Header from "@/components/mui/MuiHeader";
+import { Card } from "@/components/ui/Card";
 import MyImage from "@/components/ui/MyImage";
-import Paragraph from "@/components/ui/Paragraph";
 import { getLivre } from "@/db/Get/Livres";
 import { Table } from "./table";
 import { Card } from "@/components/ui/Card";
@@ -105,7 +105,7 @@ const page = async ({ params }: { params: { id: string } }) => {
     //       />
     //     </div>
     //   </div>
-    //   <div className="h-2/5 w-full flex flex-col flex-wrap">
+    //   <div className="h-1/2 w-full flex flex-col flex-wrap">
     //     <div className="flex">
     //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
     //         Title :

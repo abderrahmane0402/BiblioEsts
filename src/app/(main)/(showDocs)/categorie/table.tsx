@@ -71,7 +71,7 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={`edit-${params.id}`}
           icon={<BiEdit className='text-xl' />}
-          label='Editer'
+          label='Modifier'
           onClick={() => {
             router.push(`/updateDocs/Categorie/${params.id}`)
           }}

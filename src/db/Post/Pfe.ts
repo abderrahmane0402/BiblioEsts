@@ -1,7 +1,8 @@
 import prisma from "@/utils/Prisma";
+import { pfe } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
-export async function setPfe( Pfe : any) {
+export async function setPfe( Pfe : pfe) {
     try {
         await prisma.pfe.create({
           data: { ...Pfe

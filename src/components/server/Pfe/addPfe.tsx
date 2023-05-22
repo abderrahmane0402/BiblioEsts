@@ -12,6 +12,8 @@ export default async function addPfe(data: FormData) {
       Filiere : data.get("filiere") as string,
       DATE_REALISATION: parseInt(data.get("date_realis") as string) || null,
     };
+    console.log(Pfe);
+    
     await setPfe(Pfe);
     return true;
   } catch (e) {

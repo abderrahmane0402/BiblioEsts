@@ -6,6 +6,7 @@ const CardVariants = cva(
   {
     variants: {
       type: {
+        tri : 'w-3/5',
         mini: "w-1/4",
         mid: "w-1/2",
         full: "w-full",
