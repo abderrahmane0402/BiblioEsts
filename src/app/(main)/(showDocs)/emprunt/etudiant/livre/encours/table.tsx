@@ -80,7 +80,7 @@ export function Table({ data }: { data: any }) {
           icon={<HiInformationCircle className="text-xl" />}
           label="plus d'infos"
           onClick={() => {
-            router.push(`/emprunt/etudiant/livre/${params.id}`);
+            router.push(`/moreInfo/emprunt/etudiant/livre/${params.id}`);
           }}
           title="plus d'infos"
           showInMenu
@@ -97,7 +97,7 @@ export function Table({ data }: { data: any }) {
           label="Modifier"
           showInMenu
           onClick={() => {
-            router.push(`/updateDocs/Emprunt/empLivEtud/${params.id}`);
+            router.push(`/updateDocs/emprunt/etudiant/livre/${params.id}`);
           }}
         />,
       ],

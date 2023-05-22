@@ -197,7 +197,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   className='h-12'
                   name='page_garde'
                   type='file'
-                  accept='.jpg, .jpeg, .png'
+                 
                   maxLength={50}
                 />
               </f.FormControl>

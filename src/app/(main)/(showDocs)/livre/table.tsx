@@ -100,7 +100,7 @@ export function Table({ data }: { data: any }) {
           onClick={() => {
             router.push(`/moreInfo/livre/${params.id}`);
           }}
-          title="plus d'infos"
+          title="Ajouter exemplaire"
         ></GridActionsCellItem>,
         <GridActionsCellItem
           key={params.id}
@@ -130,7 +130,7 @@ export function Table({ data }: { data: any }) {
           label="Modifer"
           showInMenu
           onClick={() => {
-            router.push(`/updateDocs/Livre/${params.id}`);
+            router.push(`/updateDocs/livre/${params.id}`);
           }}
         />,
       ],
