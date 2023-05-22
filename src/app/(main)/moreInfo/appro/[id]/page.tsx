@@ -1,8 +1,7 @@
 import Header from "@/components/ui/Header";
 import Paragraph from "@/components/ui/Paragraph";
-import { getAppro, getAppros } from "@/db/Get/Appro";
+import { getAppro } from "@/db/Get/Appro";
 import { Table } from "./table";
-import { livre } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
 

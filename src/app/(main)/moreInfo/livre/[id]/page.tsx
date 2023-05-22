@@ -1,10 +1,7 @@
-import MLink from "@/components/ui/MLink";
-import MyImage from "@/components/ui/MyImage";
-import Paragraph from "@/components/ui/Paragraph";
-import { getLivre } from "@/db/Get/Livres";
-import { Table } from "./table";
-import { Card } from "@/components/ui/Card";
 import Header from "@/components/mui/MuiHeader";
+import { Card } from "@/components/ui/Card";
+import MyImage from "@/components/ui/MyImage";
+import { getLivre } from "@/db/Get/Livres";
 
 export const dynamic = "force-dynamic";
 
@@ -31,29 +28,29 @@ const page = async ({ params }: { params: { id: string } }) => {
       </Card>
       <div className="rounded-lg w-full h-fit bg-white shadow-lg pt-2">
         <Header>Livre</Header>
-        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
-          <span className="w-2/5 text-[#5B3169]">Titre</span>
-          <span className="w-3/5 text-[#242424]">dernier jour d{"'"}un condane</span>
+        <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide">
+          <span className="w-1/2 text-[#5B3169]">Titre</span>
+          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
         </div>
         <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
-          <span className="w-2/5 text-[#5B3169]">Auteur</span>
-          <span className="w-3/5 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#5B3169]">Auteur</span>
+          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
         </div>
         <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
-          <span className="w-2/5 text-[#5B3169]">Editeur</span>
-          <span className="w-3/5 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#5B3169]">Editeur</span>
+          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
         </div>
         <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
-          <span className="w-2/5 text-[#5B3169]">Date d{"'"}edition</span>
-          <span className="w-3/5 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#5B3169]">Date d{"'"}edition</span>
+          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
         </div>
         <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
-          <span className="w-2/5 text-[#5B3169]">Code</span>
-          <span className="w-3/5 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#5B3169]">Code</span>
+          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
         </div>
         <div className="py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-lg tracking-wide">
-          <span className="w-2/5 text-[#5B3169]">Prix</span>
-          <span className="w-3/5 text-[#242424]">dernier jour d{"'"}un condane</span>
+          <span className="w-1/2 text-[#5B3169]">Prix</span>
+          <span className="w-1/2 text-[#242424]">dernier jour d{"'"}un condane</span>
         </div>
       </div>
       <Card type={"full"} className="rounded-lg"></Card>
@@ -68,7 +65,7 @@ const page = async ({ params }: { params: { id: string } }) => {
     //       />
     //     </div>
     //   </div>
-    //   <div className="h-2/5 w-full flex flex-col flex-wrap">
+    //   <div className="h-1/2 w-full flex flex-col flex-wrap">
     //     <div className="flex">
     //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
     //         Title :
