@@ -1,51 +1,51 @@
-"use client";
-import Header from "@/ui/Header";
-import { getTitle } from "@/utils/dashboard";
-import { ListItemIcon, Menu, MenuItem, Tooltip } from "@mui/material";
-import Avatar from "@mui/material/Avatar";
-import Chip from "@mui/material/Chip";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { BiLogOut } from "react-icons/bi";
+"use client"
+import Header from "@/ui/Header"
+import { getTitle } from "@/utils/dashboard"
+import { ListItemIcon, Menu, MenuItem, Tooltip } from "@mui/material"
+import Avatar from "@mui/material/Avatar"
+import Chip from "@mui/material/Chip"
+import { useRouter } from "next/navigation"
+import React, { useEffect, useState } from "react"
+import { BiLogOut } from "react-icons/bi"
 
 const PageHeader = () => {
-  const router = useRouter();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const title = getTitle();
-  const [user, setUser] = useState<{ NOM: string; PRENOM: string }>();
-  const open = Boolean(anchorEl);
+  const router = useRouter()
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const title = getTitle()
+  const [user, setUser] = useState<{ NOM: string; PRENOM: string }>()
+  const open = Boolean(anchorEl)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
   useEffect(() => {
     fetch("/api/user", { method: "POST", cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
-        setUser(data);
-      });
-  }, []);
+        setUser(data)
+      })
+  }, [])
 
   return (
-    <header className="container flex justify-between items-center px-3 py-1">
+    <header className='container flex justify-between items-center px-3 py-1'>
       <Header>{title}</Header>
-      <Tooltip title="Account settings">
+      <Tooltip title='Account settings'>
         <Chip
           onClick={handleClick}
-          variant="outlined"
-          color="primary"
+          variant='outlined'
+          color='primary'
           avatar={<Avatar>{user?.NOM.at(0)?.toUpperCase()}</Avatar>}
           label={(user?.NOM || "") + " " + (user?.PRENOM || "")}
           aria-controls={open ? "account-menu" : undefined}
-          aria-haspopup="true"
+          aria-haspopup='true'
           aria-expanded={open ? "true" : undefined}
         />
       </Tooltip>
       <Menu
         anchorEl={anchorEl}
-        id="account-menu"
+        id='account-menu'
         open={open}
         onClose={handleClose}
         onClick={handleClose}
@@ -80,9 +80,10 @@ const PageHeader = () => {
       >
         <MenuItem
           onClick={() => {
-            handleClose();
-            sessionStorage.clear();
-            router.push("/");
+            fetch("/api/logout", { method: "POST" }).then((res) =>
+              router.push("/")
+            )
+            handleClose()
           }}
         >
           <ListItemIcon>
@@ -92,6 +93,6 @@ const PageHeader = () => {
         </MenuItem>
       </Menu>
     </header>
-  );
-};
-export default PageHeader;
+  )
+}
+export default PageHeader

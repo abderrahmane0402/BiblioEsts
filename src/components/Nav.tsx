@@ -12,8 +12,10 @@ import { MdCategory, MdOutlineWork, MdSpaceDashboard } from "react-icons/md"
 import { TbBooks, TbReportMoney } from "react-icons/tb"
 import { VscRepo } from "react-icons/vsc"
 import { GiBlackBook } from "react-icons/gi"
+import { cookies } from "next/headers"
 
 export const ZNav = () => {
+  const root = cookies().get("login")?.value === "root"
   return (
     <nav className='h-4/5 overflow-auto scrollbar-none'>
       <ul>
@@ -41,15 +43,21 @@ export const ZNav = () => {
           title={["Etudiants", "Professeurs"]}
           icon={[<FaUserGraduate />, <FaUserTie />]}
         />
-        <Nav href='/utilisateur' title='Utilisateur' icon={<MdOutlineWork />} />
         <Nav href='/fournisseur' title='Fournisseur' icon={<TbReportMoney />} />
         <Nav
           href='/approvisionnement'
-          title='Approvis'
+          title='Approvisionnement'
           icon={<FaFileContract />}
         />
         <Nav href='/etudiant' title='Etudiant' icon={<FaUserGraduate />} />
         <Nav href='/prof' title='Professeur' icon={<FaUserTie />} />
+        {root ? (
+          <Nav
+            href='/utilisateur'
+            title='Utilisateur'
+            icon={<MdOutlineWork />}
+          />
+        ) : null}
       </ul>
     </nav>
   )

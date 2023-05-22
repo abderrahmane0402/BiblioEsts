@@ -39,7 +39,7 @@ const Page = async () => {
             </f.FormField>
             <f.FormField name="autheur" className="w-full">
               <div className="w-full">
-                <Header size={"md"}>Autheur :</Header>
+                <Header size={"md"}>Auteur :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir l{"'"}auteur
                 </f.FormMessage>
