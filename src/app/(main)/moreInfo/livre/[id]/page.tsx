@@ -2,9 +2,6 @@ import Header from "@/components/mui/MuiHeader";
 import { Card } from "@/components/ui/Card";
 import MyImage from "@/components/ui/MyImage";
 import { getLivre } from "@/db/Get/Livres";
-import { Table } from "./table";
-import { Card } from "@/components/ui/Card";
-import Header from "@/components/mui/MuiHeader";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";

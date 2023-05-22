@@ -34,7 +34,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         const garde = await convertBase64(FormData.get("page_garde"));
         const som = await convertBase64(FormData.get("somaire"));
 
-        console.log(som);
+       
         const data = await addLivre(FormData, livre, garde, som);
         if (data) {
           router.push("/livre");

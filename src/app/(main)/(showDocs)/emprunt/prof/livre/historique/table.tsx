@@ -89,6 +89,9 @@ export function Table({ data }: { data: any }) {
           key={params.id}
           icon={<BiEdit className="text-xl" />}
           label="Modifier"
+          onClick={() => {
+            router.push(`/updateDocs/emprunt/prof/pfe/${params.id}`);
+          }}
           showInMenu
         />,
       ],

@@ -33,14 +33,16 @@ export function AddExe({
   }
   const ExemplaireColumns: GridColDef[] = [
     {
+      width:350,
       field: "N_INVENTAIRE",
-      headerName: "n_inventaire",
+      headerName: "Numéro d'inventaire",
       type: "number",
       hideable: false,
     },
     {
+      width:350,
       field: "OBSERVATIONE",
-      headerName: "observation",
+      headerName: "Observation",
       type: "string",
       hideable: false,
     },

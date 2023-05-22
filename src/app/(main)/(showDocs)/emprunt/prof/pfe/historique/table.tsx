@@ -74,7 +74,7 @@ export function Table({ data }: { data: any }) {
           icon={<HiInformationCircle className='text-xl' />}
           label='showMore'
           onClick={() => {
-            router.push(`/moreInfo/livre/${params.id}`)
+            router.push(`/moreInfo/enprunt/prof/pfe/${params.id}`);
           }}
           title="plus d'infos"
         ></GridActionsCellItem>,

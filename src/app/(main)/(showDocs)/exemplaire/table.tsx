@@ -7,6 +7,7 @@ import {
   GridActionsCellItem,
   GridColDef,
   GridRowParams,
+  GridValueGetterParams,
 } from "@mui/x-data-grid"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -20,7 +21,7 @@ export function Table({ data }: { data: any }) {
   const Columns: GridColDef[] = [
     {
       field: "N_INVENTAIRE",
-      headerName: "N_Inventaire",
+      headerName: "Numéro d'Inventaire",
       type: "number",
       hideable: false,
     },
@@ -30,6 +31,8 @@ export function Table({ data }: { data: any }) {
       headerName: "Titre",
       type: "string",
       hideable: false,
+      valueGetter: (params: GridValueGetterParams) =>
+        params.row.livre.TITRE || "",
     },
     {
 
