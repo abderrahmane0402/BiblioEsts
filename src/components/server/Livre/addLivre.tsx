@@ -4,7 +4,6 @@ import { Prisma } from "@prisma/client";
 
 export default async function addLivre(
   data: FormData,
-  ex: Map<number, string>,
   garde : any,
   som : any
 ) {
@@ -22,11 +21,7 @@ export default async function addLivre(
       PAGE_DE_GARDE: garde  ,
       SOMAIRE: som ,
     };
-    let exemplaire = Array.from(ex, ([key, value]) => ({
-      N_INVENTAIRE: key,
-      OBSERVATIONE: value,
-    }));
-    await setLivres(livre, exemplaire);
+    await setLivres(livre);
     return true;
   } catch (error) {
     console.log(error);

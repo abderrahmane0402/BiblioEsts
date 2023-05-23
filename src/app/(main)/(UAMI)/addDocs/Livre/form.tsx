@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const Form = ({ children }: { children: React.ReactNode }) => {
-  const [livre, setLivre] = useState<Map<number, string>>(new Map());
   const form = useRef<HTMLFormElement>(null);
   const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,10 +32,9 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       action={async (FormData) => {
         const garde = await convertBase64(FormData.get("page_garde"));
         const som = await convertBase64(FormData.get("somaire"));
-        const data = await addLivre(FormData, livre, garde, som);
+        const data = await addLivre(FormData, garde, som);
         if (data) {
           router.push("/livre");
-          setLivre(new Map());
         } else {
           setOpen2(true);
           setTimeout(() => setOpen2(false), 5000);
@@ -44,16 +42,6 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-
-      <Header className="p-6">Ajouter un exemplaire</Header>
-
-      <AddExe
-        livre={{
-          set: setLivre,
-          value: livre,
-        }}
-      />
-
       <footer className="flex justify-center items-center py-12">
         <f.FormSubmit asChild>
           <Button
