@@ -81,9 +81,6 @@ const page = async ({ params }: { params: { id: string } }) => {
                 className='py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide'
               >
                 <span className='w-1/2 text-[#242424]'>{ex.N_INVENTAIRE}</span>
-                <span className='w-1/2 text-[#242424]'>
-                  
-                </span>
               </div>
             )
           })
