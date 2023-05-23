@@ -1,6 +1,7 @@
 "use server"
 import { getUserID } from "@/db/Post/Utilisateur"
 import { setEpfe } from "@/db/Post/emprunt/etudiant/Epfe"
+import { setPprof } from "@/db/Post/emprunt/prof/Ppfe"
 import { cookies } from "next/headers"
 
 export const empruntPfeE = async (formData: FormData) => {
@@ -36,7 +37,7 @@ export const empruntPfeP = async (formData: FormData) => {
       DATE_D: new Date(formData.get("date_D") as string),
       DATE_F: new Date(formData.get("date_f") as string),
     }
-    await setEpfe(emprunt)
+    await setPprof(emprunt)
     return true
   } catch (error) {
     console.log(error)
