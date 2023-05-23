@@ -1,3 +1,4 @@
+'use client'
 const convertBase64 = (file: any) => {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader()
@@ -5,10 +6,6 @@ const convertBase64 = (file: any) => {
 
     fileReader.onload = () => {
       resolve(fileReader.result)
-    }
-
-    fileReader.onerror = (error) => {
-      reject(error)
     }
   })
 }
