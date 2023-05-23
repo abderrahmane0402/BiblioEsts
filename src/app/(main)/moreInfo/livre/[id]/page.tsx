@@ -65,7 +65,9 @@ const page = async ({ params }: { params: { id: string } }) => {
         <div className='py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide'>
           <span className='w-1/2 text-[#5B3169]'>Somaire</span>
           <span className='w-1/2 text-blue-700 flex gap-2  items-center'>
-            <Link href={`/PDFviewer/${livre?.ID_LIVRE}`}>Afficher</Link>
+            <Link href={`/PDFviewer/${livre?.ID_LIVRE}`} target='_blank'>
+              Afficher
+            </Link>
             <FaFilePdf />
           </span>
         </div>
@@ -78,7 +80,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             return (
               <div
                 key={index}
-                className='py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide'
+                className='py-3 box-border inline-block w-1/3 text-center border-2 border-[#DEE2E6] text-md tracking-wide'
               >
                 <span className='w-1/2 text-[#242424]'>{ex.N_INVENTAIRE}</span>
               </div>

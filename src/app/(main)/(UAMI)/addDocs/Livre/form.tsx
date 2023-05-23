@@ -3,18 +3,8 @@ import * as f from "@/components/Form";
 import addLivre from "@/components/server/Livre/addLivre";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
-import convertBase64 from "@/utils/upload";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-
-async function upload(img: any, pdf: any) {
-  const [imgBase64, pdfBase64] = await Promise.all([convertBase64(img), convertBase64(pdf)])
-  return {
-    imgBase64,
-    pdfBase64,
-  }
-}
-
 
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null);
@@ -37,8 +27,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className="w-full pt-2"
       action={async (FormData) => {
-        let { imgBase64, pdfBase64 } = await upload(FormData.get("page_garde"), FormData.get("somaire"))
-        const data = await addLivre(FormData, imgBase64, pdfBase64);
+        const data = await addLivre(FormData);
         if (data) {
           router.push("/livre");
         } else {
