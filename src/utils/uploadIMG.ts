@@ -6,9 +6,5 @@ export default function convertBase64(file: any) {
     fileReader.onload = () => {
       resolve(fileReader.result)
     }
-
-    fileReader.onerror = (error) => {
-      reject(error)
-    }
   })
 }

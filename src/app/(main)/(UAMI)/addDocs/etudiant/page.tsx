@@ -38,7 +38,7 @@ const page = () => {
           </f.FormMessage>
         </div>
         <f.FormControl asChild>
-          <Input className='h-10' name='num_apoge' type='text' required />
+          <Input className='h-10' name='num_apoge' type='number' required />
         </f.FormControl>
       </f.FormField>
 
