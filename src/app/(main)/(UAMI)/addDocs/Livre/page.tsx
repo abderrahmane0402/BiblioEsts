@@ -4,8 +4,6 @@ import { getCategories_Select } from "@/db/Get/Categorie"
 import Header from "@/ui/Header"
 import Input from "@/ui/Input"
 import Form from "./form"
-import Img from "./Img"
-import Pdf from "./pdf"
 
 export const dynamic = "force-dynamic"
 
@@ -36,7 +34,6 @@ const Page = async () => {
                   name='title'
                   type='text'
                   maxLength={255}
-                  required
                 />
               </f.FormControl>
             </f.FormField>
@@ -96,10 +93,12 @@ const Page = async () => {
                   name='date_edi'
                   type='number'
                   maxLength={50}
-                  required
                 />
               </f.FormControl>
             </f.FormField>
+          </div>
+
+          <div className='w-full md:w-1/2 pl-4'>
             <f.FormField name='prix' className='w-full'>
               <div className='w-full'>
                 <Header size={"md"}>Prix :</Header>
@@ -139,9 +138,6 @@ const Page = async () => {
                 />
               </f.FormControl>
             </f.FormField>
-          </div>
-
-          <div className='w-full md:w-1/2 pl-4'>
             <f.FormField name='code' className='w-full'>
               <div className='w-full'>
                 <Header size={"md"}>Code :</Header>
@@ -158,58 +154,9 @@ const Page = async () => {
                   name='code'
                   type='number'
                   maxLength={50}
-                  required
                 />
               </f.FormControl>
             </f.FormField>
-            <f.FormField name='page_garde' className='w-full'>
-              <div className='w-full'>
-                <Header size={"md"}>Page de garde :</Header>
-                <f.FormMessage match={"valueMissing"}>
-                  Entrer l{"'"}page de garde
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  entrer l{"'"}page de garde valide
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <Img />
-              </f.FormControl>
-            </f.FormField>
-            <f.FormField name='somaire' className='w-full'>
-              <div className='w-full'>
-                <Header size={"md"}>SOMAIRE :</Header>
-                <f.FormMessage match={"valueMissing"}>
-                  Entrer un SOMAIRE
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  entrer le SOMAIRE valide
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <Pdf />
-              </f.FormControl>
-            </f.FormField>
-            {/* Observation */}
-            {/* <f.FormField name="observation" className="w-full">
-              <div className="w-full">
-                <Header size={"md"}>Observation :</Header>
-                <f.FormMessage match={"valueMissing"}>
-                  saisir l{"'"}observation
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  saisir l{"'"}observation valide
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <textarea
-                  cols={50}
-                  rows={5}
-                  name="observation"
-                  className="w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
-                />
-              </f.FormControl>
-            </f.FormField> */}
           </div>
         </div>
       </Form>

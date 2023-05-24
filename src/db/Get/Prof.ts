@@ -44,6 +44,25 @@ export async function getProfshort() {
   }
 }
 
+
+export async function getProfshortAll() {
+  try {
+    const profs = await prisma.prof.findMany({
+      select: {
+        Code: true,
+        NOM:true,
+        PRENOM:true,
+      },
+    });
+    await prisma.$disconnect;
+    return profs;
+  } catch (e) {
+    await prisma.$disconnect;
+    throw Error("somthing went wrong with the database" + e);
+  }
+}
+
+
 export async function getProf(id: string) {
   try {
     const prof = await prisma.prof.findUnique({

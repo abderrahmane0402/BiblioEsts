@@ -1,6 +1,4 @@
 import prisma from "@/utils/Prisma";
-import { livre } from "@prisma/client";
-import { revalidatePath } from "next/cache";
 
 export async function PutLivres(livreId: number, Livre: any ) {
   try {
@@ -13,7 +11,6 @@ export async function PutLivres(livreId: number, Livre: any ) {
        
       }
     });
-    revalidatePath("/livre")
     await prisma.$disconnect();
   } catch (e) {
     await prisma.$disconnect();

@@ -2,7 +2,8 @@
 import { setLivres } from "@/db/Post/Livre"
 import { Prisma } from "@prisma/client"
 
-export default async function addLivre(data: FormData) {
+export default async function addLivre(data: FormData, img: any, pdf: any) {
+  console.log(img)
   try {
     const livre = {
       TITRE: data.get("title") as string,
@@ -12,10 +13,10 @@ export default async function addLivre(data: FormData) {
       PRIX: new Prisma.Decimal(parseFloat(data.get("prix")!.toString())),
       ID_CAT: Number(data.get("categorie")),
       CODE: data.get("code") ? Number(data.get("code") as string) : null,
-      PAGE_DE_GARDE: data.get("page_garde") as string,
-      SOMAIRE: data.get("somaire") as string,
+      PAGE_DE_GARDE: img,
+      SOMAIRE: pdf,
     }
-    await setLivres(livre)
+    // await setLivres(livre)
     return true
   } catch (error) {
     console.log(error)

@@ -114,6 +114,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </f.FormControl>
             </f.FormField>
             {/* prix */}
+          </div>
+
+          <div className='w-full md:w-1/2 pl-4'>
+            {/* Code */}
             <f.FormField name='prix' className='w-full'>
               <div className='w-full'>
                 <Header size={"md"}>Prix :</Header>
@@ -156,10 +160,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 />
               </f.FormControl>
             </f.FormField>
-          </div>
-
-          <div className='w-full md:w-1/2 pl-4'>
-            {/* Code */}
             <f.FormField name='code' className='w-full'>
               <div className='w-full'>
                 <Header size={"md"}>Code :</Header>
@@ -178,48 +178,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   maxLength={50}
                   required
                   defaultValue={livre?.CODE as number}
-                />
-              </f.FormControl>
-            </f.FormField>
-            {/* page de garde */}
-            <f.FormField name='page_garde' className='w-full'>
-              <div className='w-full'>
-                <Header size={"md"}>Page de garde :</Header>
-                <f.FormMessage match={"valueMissing"}>
-                  Entrer l{"'"}page de garde
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  entrer l{"'"}page de garde valide
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <Input
-                  className='h-12'
-                  name='page_garde'
-                  type='file'
-                 
-                  maxLength={50}
-                />
-              </f.FormControl>
-            </f.FormField>
-            {/* SOMAIRE */}
-            <f.FormField name='somaire' className='w-full'>
-              <div className='w-full'>
-                <Header size={"md"}>SOMAIRE :</Header>
-                <f.FormMessage match={"valueMissing"}>
-                  Entrer un SOMAIRE
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  entrer le SOMAIRE valide
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <Input
-                  className='h-12'
-                  name='somaire'
-                  type='file'
-                  accept='.pdf'
-                  maxLength={50}
                 />
               </f.FormControl>
             </f.FormField>

@@ -2,8 +2,8 @@ import * as f from "@/components/Form"
 import Header from "@/components/ui/Header"
 import Input from "@/components/ui/Input"
 import AutoComplete from "@/components/ui/autoComplete"
-import { getNinv } from "@/db/Get/Livres"
-import { getProfshort } from "@/db/Get/Prof"
+import { getNinv, getNinvAll } from "@/db/Get/Livres"
+import { getProfshort, getProfshortAll } from "@/db/Get/Prof"
 import { getPlivreID } from "@/db/Get/emprunt/prof/Plivre"
 import { getDate } from "@/utils/date"
 import Form from "./form"
@@ -12,15 +12,14 @@ export const dynamic = "force-dynamic"
 
 const Page = async ({ params }: { params: { id: string } }) => {
   const id = parseInt(params.id)
+  const emp = await getPlivreID(id)
+  let Apoge: any, Inv: any
+  if (emp?.DATE_R)
+    [Apoge, Inv] = await Promise.all([getProfshortAll(), getNinvAll()])
+  else [Apoge, Inv] = await Promise.all([getProfshort(), getNinv()])
 
-  const [Apoge, Inv, emp] = await Promise.all([
-    getProfshort(),
-    getNinv(),
-    getPlivreID(id),
-  ])
-
-  const result = Apoge.map((obj) => obj.Code)
-  const result2 = Inv.map((obj) => obj.N_INVENTAIRE)
+  const result = Apoge.map((obj: any) => obj.NOM + " " + obj.PRENOM + " " + obj.Code)
+  const result2 = Inv.map((obj: any) => obj.N_INVENTAIRE)
   return (
     <Form id={id}>
       <div className='flex w-full'>
@@ -117,31 +116,31 @@ const Page = async ({ params }: { params: { id: string } }) => {
               />
             </f.FormControl>
           </f.FormField>
-          { emp!.DATE_R !== null ?
-          (<f.FormField name='date_r' className='w-full'>
-            <div className='w-full'>
-              <Header size={"md"} className='p'>
-                Date de retour :
-              </Header>
-              <f.FormMessage match={"valueMissing"}>
-                saisir la date retour
-              </f.FormMessage>
-              <f.FormMessage match={"typeMismatch"}>
-                saisir une date retour valide
-              </f.FormMessage>
-            </div>
-            <f.FormControl asChild>
-              <Input
-                className='h-10'
-                name='date_r'
-                type="date"
-                maxLength={255}
-                required
-                defaultValue={getDate(emp?.DATE_R) || ""}
-              />
-            </f.FormControl>
-          </f.FormField>) : null
-          }
+          {emp!.DATE_R !== null ? (
+            <f.FormField name='date_r' className='w-full'>
+              <div className='w-full'>
+                <Header size={"md"} className='p'>
+                  Date de retour :
+                </Header>
+                <f.FormMessage match={"valueMissing"}>
+                  saisir la date retour
+                </f.FormMessage>
+                <f.FormMessage match={"typeMismatch"}>
+                  saisir une date retour valide
+                </f.FormMessage>
+              </div>
+              <f.FormControl asChild>
+                <Input
+                  className='h-10'
+                  name='date_r'
+                  type='date'
+                  maxLength={255}
+                  required
+                  defaultValue={getDate(emp?.DATE_R) || ""}
+                />
+              </f.FormControl>
+            </f.FormField>
+          ) : null}
         </div>
       </div>
     </Form>
