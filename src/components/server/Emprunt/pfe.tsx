@@ -12,7 +12,7 @@ export const empruntPfeE = async (formData: FormData) => {
     const datef = new Date(dated.getTime() + 15 * 24 * 60 * 60 * 1000)
     const emprunt = {
       Cote: formData.get("pfe") as string,
-      N_inscription: formData.get("num_apoge") as string,
+      N_inscription: formData.get("num_apogee") as string,
       ID_U: user?.ID_U,
       DATE_D: dated,
       DATE_F: datef,

@@ -14,6 +14,7 @@ import { BiCheckCircle, BiEdit } from "react-icons/bi";
 import { HiInformationCircle } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
 import * as Toast from "@/components/ui/toast";
+import { getDate } from "@/utils/date";
 
 export function Table({ data }: { data: any }) {
   const router = useRouter();
@@ -22,6 +23,18 @@ export function Table({ data }: { data: any }) {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState<any>();
   const [open2, setOpen2] = useState(false);
+  const getRowClassName = (params: GridRowParams) : any => {
+    const currentDate = getDate(new Date()) || "";
+    const Date_f = params.row.DATE_F;
+  
+    if (Date_f < currentDate) {
+      return  `backgroundColor: 'rgba(255, 7, 0, 0.55)'
+       `; 
+    }
+  
+    return ""; 
+  };
+
   const Columns: GridColDef[] = [
     {
       field: "N_INVENTAIRE",
@@ -137,6 +150,7 @@ export function Table({ data }: { data: any }) {
           toolbar: CustomToolbar,
         }}
         autoPageSize
+        getRowClassName={getRowClassName}
       />
       <Dialog
         open={open}

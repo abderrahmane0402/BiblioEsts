@@ -79,6 +79,20 @@ export function Table({ data }: { data: any }) {
           key={params.id}
           icon={<MdDelete className='text-xl' />}
           label='Supprimer'
+          onClick={() => {
+            fetch(`/api/approvi/${params.id}`, {
+              method: "DELETE",
+            })
+              .then((res) => res.text())
+              .then((data) => {
+                if (data === "ok") {
+                  router.refresh()
+                  
+                } else {
+                  router.refresh()
+                }
+              })
+          }}
           showInMenu
         />,
         <GridActionsCellItem

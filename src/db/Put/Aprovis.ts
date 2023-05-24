@@ -9,7 +9,9 @@ export async function PutApprovi(
         where : {
           ID_APRO  : appro_Id
         },
+        data: {
         ...Aprovis,
+        },
       },
     )
     await prisma.$disconnect

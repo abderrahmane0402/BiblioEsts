@@ -143,16 +143,20 @@ export function Table({ data }: { data: any }) {
 
   return (
     <>
-        <DataTable
-          columns={Columns}
-          rows={data}
-          ID='ID_LIVRE'
-          customSlots={{
-            columnMenu: CustomColumnMenu,
-            toolbar: CustomToolbar,
-          }}
-          autoPageSize
-        />
+      <DataTable
+        columns={Columns}
+        rows={data}
+        ID="ID_LIVRE"
+        getRowClassName={(params) => ''}
+        // ={(params) => `super-app-theme--${params.row.status}`}
+        customSlots={{
+          columnMenu: CustomColumnMenu,
+          toolbar: CustomToolbar,
+        }}
+        
+        autoPageSize
+      />
+      
       <Toast.Provider>
         <Toast.Root open={isDeleted} Ttype={"success"}>
           <div>

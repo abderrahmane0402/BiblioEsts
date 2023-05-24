@@ -18,7 +18,7 @@ model approvisionement {
   TELEPHONE   String?     @db.VarChar(255)
   utilisateur utilisateur @relation(fields: [ID_U], references: [ID_U], onUpdate: Restrict, map: "FK_FAIRE")
   fournisseur fournisseur @relation(fields: [ID_FOR], references: [ID_FOR], onUpdate: Restrict, map: "FK_FOUNIR")
-  contient    contient[]
+  contient    contient[] 
 
   @@index([ID_U], map: "FK_FAIRE")
   @@index([ID_FOR], map: "FK_FOUNIR")
@@ -41,7 +41,7 @@ model contient {
   ID_LIVRE         Int
   QTE              Int?
   livre            livre            @relation(fields: [ID_LIVRE], references: [ID_LIVRE], onUpdate: Restrict, map: "FK_CONTIENT")
-  approvisionement approvisionement @relation(fields: [ID_APRO], references: [ID_APRO], onUpdate: Restrict, map: "FK_CONTIENT2")
+  approvisionement approvisionement @relation(fields: [ID_APRO], references: [ID_APRO], onUpdate: Restrict, map: "FK_CONTIENT2",  onDelete: Cascade )
 
   @@id([ID_APRO, ID_LIVRE])
   @@index([ID_LIVRE], map: "FK_CONTIENT")

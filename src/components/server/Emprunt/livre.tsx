@@ -13,7 +13,7 @@ export const empruntLivreE = async (formData: FormData) => {
     const datef = new Date(dated.getTime() + 5 * 24 * 60 * 60 * 1000)
     const emprunt = {
       N_INVENTAIRE: Number(formData.get("nmr_Inv")),
-      N_inscription: formData.get("num_apoge") as string,
+      N_inscription: formData.get("num_apogee") as string,
       ID_U: user?.ID_U,
       DATE_D: dated,
       DATE_F: datef,
