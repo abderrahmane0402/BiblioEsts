@@ -32,6 +32,7 @@ export function Table({ data }: { data: any }) {
       type: "string",
       hideable: false,
     },
+    
     {
       field: "REALISATEUR",
       flex: 2,
