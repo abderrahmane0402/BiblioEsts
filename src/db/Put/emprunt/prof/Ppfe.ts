@@ -1,7 +1,7 @@
 import prisma from "@/utils/Prisma";
 import { revalidatePath } from "next/cache";
 
-export async function setPprof(Pprof: any, id: number) {
+export async function PutPprof(Pprof: any, id: number) {
   try {
     await prisma.emprunt_pfe_prof.update({
       where: {

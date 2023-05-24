@@ -17,7 +17,6 @@ type Livre = {
   QTE: number | null;
 };
 
-
 const page = async ({ params }: { params: { id: string } }) => {
   const id = parseInt(params.id);
   const apro = await getAppro(id);
@@ -35,114 +34,169 @@ const page = async ({ params }: { params: { id: string } }) => {
     };
   });
   return (
-    <div className="w-full h-full gap-3 overflow-auto scroll-smooth">
-      <div className="flex">
-        <Paragraph type={"nrm"} size={"md"} className="font-semibold">
-          N_Approvisionnement :
-        </Paragraph>
-        <Paragraph type={"nrm"} size={"md"}>
-          {apro?.ID_APRO}
-        </Paragraph>
-      </div>
-      <Header size={"md"}>Entreprise</Header>
-      <div className="max-h-2/5 h-auto w-full flex flex-col flex-wrap">
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Nom d{"'"}entreprise :
+    
+    <div className=" w-full h-full">
+      <div className="w-full h-fit flex flex-col gap-4">
+        <div className="flex bg-sky-100 w-fit rounded-lg shadow-sky-200xl ">
+          <Paragraph type={"nrm"} size={"md"} className="font-semibold ">
+            N Approvisionnement :
           </Paragraph>
           <Paragraph type={"nrm"} size={"md"}>
-            {apro?.ENTREPRISE}
+            {apro?.ID_APRO}
           </Paragraph>
         </div>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            telephone ou fix :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {apro?.TELEPHONE?.toString()}
-          </Paragraph>
+        <div className="flex  w-full h-full  gap-4 ">
+          <div className="w-full  h-fit bg-sky-100  rounded-lg shadow-xl">
+            <Header size={"md"} className="flex justify-center items-center">
+              Entreprise
+            </Header>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Nom d{"'"}entreprise :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.ENTREPRISE}
+              </Paragraph>
+            </div>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Telephone ou fix :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.TELEPHONE?.toString()}
+              </Paragraph>
+            </div>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Adresse :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.ADRESSE}
+              </Paragraph>
+            </div>
+          </div>
+          <div className="w-full  h-fit bg-slate-200 rounded-lg shadow-xl">
+            <Header size={"md"} className="flex justify-center items-center">
+              Fournisseur
+            </Header>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Nom :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.fournisseur.NOM}
+              </Paragraph>
+            </div>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Prenom :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.fournisseur.PRENOM}
+              </Paragraph>
+            </div>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Gmail :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.fournisseur.GMAIL}
+              </Paragraph>
+            </div>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Adresse :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.fournisseur.ADDRESSE}
+              </Paragraph>
+            </div>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Telephone :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.fournisseur.TELEPHONE}
+              </Paragraph>
+            </div>
+          </div>
+          <div className="w-full  h-fit bg-sky-100  rounded-lg shadow-xl">
+            <Header size={"md"} className="flex justify-center items-center">
+              Utilisateur
+            </Header>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Nom :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.utilisateur.NOM}
+              </Paragraph>
+            </div>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Prenom :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.utilisateur.PRENOM}
+              </Paragraph>
+            </div>
+            <div className="flex tracking-wide border-t-2 border-[#969a9d]">
+              <Paragraph
+                type={"sub_title"}
+                size={"md"}
+                className="font-semibold"
+              >
+                Telephone :
+              </Paragraph>
+              <Paragraph type={"nrm"} size={"md"}>
+                {apro?.utilisateur.TELEPHONE}
+              </Paragraph>
+            </div>
+          </div>
         </div>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Adresse :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {apro?.ADRESSE}
-          </Paragraph>
+        <div className="w-full bg-slate-400 rounded-xl">
+          <Table data={Livre} />
         </div>
-      </div>
-      <div className="max-h-2/5 h-auto w-full flex flex-col flex-wrap">
-        <Header size={"md"}>Fournisseur</Header>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Nom :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {apro?.fournisseur.NOM}
-          </Paragraph>
-        </div>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Prenom :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {apro?.fournisseur.PRENOM}
-          </Paragraph>
-        </div>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Gmail :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {apro?.fournisseur.GMAIL}
-          </Paragraph>
-        </div>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Adresse :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {apro?.fournisseur.ADDRESSE}
-          </Paragraph>
-        </div>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Telephone :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {apro?.fournisseur.TELEPHONE}
-          </Paragraph>
-        </div>
-      </div>
-      <div className="max-h-2/5 h-auto w-full flex flex-col flex-wrap">
-        <Header size={"md"}>Utilisateur</Header>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Nom :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {apro?.utilisateur.NOM}
-          </Paragraph>
-        </div>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Prenom :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {apro?.utilisateur.PRENOM}
-          </Paragraph>
-        </div>
-        <div className="flex">
-          <Paragraph type={"sub_title"} size={"md"} className="font-semibold">
-            Telephone :
-          </Paragraph>
-          <Paragraph type={"nrm"} size={"md"}>
-            {apro?.utilisateur.TELEPHONE}
-          </Paragraph>
-        </div>
-      </div>
-      <div className="w-full">
-        <Table data={Livre} />
       </div>
     </div>
   );

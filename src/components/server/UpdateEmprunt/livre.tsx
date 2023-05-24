@@ -1,6 +1,5 @@
 "use server";
 
-import { getElivreID } from "@/db/Get/emprunt/etudiant/Elivre";
 import { getPlivreID } from "@/db/Get/emprunt/prof/Plivre";
 import { getUserID } from "@/db/Post/Utilisateur";
 import { PutElivre } from "@/db/Put/emprunt/etudiant/Elivre";
@@ -9,26 +8,28 @@ import { cookies } from "next/headers";
 
 export const UpdateEmpruntLivreE = async (formData: FormData, id: number) => {
   try {
-    const emp = await getElivreID(id);
-    let d, f;
-    if (formData.get("date_D")) {
-      d = formData.get("date_D");
-    } else {
-      d = emp?.DATE_D;
-    }
-    if (formData.get("date_f")) {
-      f = formData.get("date_f");
-    } else {
-      f = emp?.DATE_F;
+    console.log(formData.get("date_D") );
+    console.log(formData.get("date_f") );
+    console.log(formData.get("date_r") );
+    let date_r ;
+    if(formData.get("date_r"))
+    {
+      date_r= new Date(formData.get("date_r") as string ) ;
+
+    }else
+    {
+      date_r = null
     }
     const login = cookies().get("login")?.value;
     const user = await getUserID(login || "");
-    const emprunt = {
+    const emprunt   = {
       N_INVENTAIRE: Number(formData.get("nmr_Inv")),
       N_inscription: formData.get("num_apogee") as string,
       ID_U: user?.ID_U,
-      DATE_D: d,
-      DATE_F: f,
+      DATE_D: new Date(formData.get("date_D") as string),
+      DATE_F: new Date(formData.get("date_f") as string),
+      DATE_R : date_r,
+
     };
     await PutElivre(emprunt, id);
     return true;
@@ -40,26 +41,25 @@ export const UpdateEmpruntLivreE = async (formData: FormData, id: number) => {
 
 export async function UpdateEmpruntLivreP(formData: FormData, id: number) {
   try {
-    const emp = await getPlivreID(id);
+    let date_r ;
+    if(formData.get("date_r"))
+    {
+      date_r= new Date(formData.get("date_r") as string ) ;
+    }else
+    {
+      date_r = null
+    }
+   
     const login = cookies().get("login")?.value;
     const user = await getUserID(login || "");
-    let d, f;
-    if (formData.get("date_D")) {
-      d = formData.get("date_D");
-    } else {
-      d = emp?.DATE_D;
-    }
-    if (formData.get("date_f")) {
-      f = formData.get("date_f");
-    } else {
-      f = emp?.DATE_F;
-    }
+  
     const emprunt = {
       N_INVENTAIRE: Number(formData.get("nmr_Inv")),
       Code: formData.get("prof") as string,
       ID_U: user?.ID_U,
-      DATE_D: d,
-      DATE_F: f,
+      DATE_D: new Date(formData.get("date_D") as string),
+      DATE_F: new Date(formData.get("date_f") as string),
+      DATE_R :date_r,
     };
     await PutPlivre(emprunt, id);
     return true;

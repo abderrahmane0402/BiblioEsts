@@ -29,8 +29,8 @@ const Form = ({ id, children }: { id: number ,children : React.ReactNode }) => {
       ref={form}
       className="w-full"
       action={async (FormData) => {
-        const garde = await convertBase64(FormData.get("page_garde"));
-        const som = await convertBase64(FormData.get("somaire"));
+        const garde =  convertBase64(FormData.get("page_garde"));
+        const som =  convertBase64(FormData.get("somaire"));
         const data = await updateLivre(FormData,id,garde,som);
         if (data) {
           setOpen1(true);

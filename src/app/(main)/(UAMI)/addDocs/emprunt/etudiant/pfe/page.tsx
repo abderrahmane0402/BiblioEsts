@@ -5,6 +5,7 @@ import AutoComplete from "@/components/ui/autoComplete";
 import { getEtudiantsShort } from "@/db/Get/Etudiant";
 import { getCote } from "@/db/Get/Pfe";
 import Form from "./form";
+import { getDate } from "@/utils/date";
 
 export const dynamic = "force-dynamic"
 const Page = async () => {
@@ -31,7 +32,7 @@ const Page = async () => {
             </f.FormControl>
           </f.FormField>
           {/* nIns */}
-          <f.FormField name="nIns" className="w-full">
+          <f.FormField name="num_apogee" className="w-full">
             <div className="w-full">
               <Header size={"md"} className="p">
                 Numéro d{"'"}inscription :
@@ -44,7 +45,7 @@ const Page = async () => {
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
-              <AutoComplete options={result} name="nIns" />
+              <AutoComplete options={result} name="num_apogee" />
             </f.FormControl>
           </f.FormField>
           {/* date_D */}
@@ -67,6 +68,8 @@ const Page = async () => {
                 className="h-10"
                 name="date_D"
                 type="date"
+                defaultValue={getDate(new Date ) || ""}
+
                 maxLength={255}
                 required
               />

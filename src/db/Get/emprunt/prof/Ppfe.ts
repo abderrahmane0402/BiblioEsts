@@ -26,6 +26,12 @@ export async function Ppfe() {
   try {
     const emprunt = await prisma.emprunt_pfe_prof.findMany({
       include: {
+        prof :  {
+          select :{
+              NOM : true,
+              PRENOM : true,
+          },
+        },
         utilisateur: {
           select: {
             NOM: true,
@@ -56,7 +62,14 @@ export async function Ppfe() {
 export async function PpfeEncours() {
   try {
     const emprunt = await prisma.emprunt_pfe_prof.findMany({
+      
       include: {
+        prof :  {
+          select :{
+              NOM : true,
+              PRENOM : true,
+          },
+        },
         utilisateur: {
           select: {
             NOM: true,

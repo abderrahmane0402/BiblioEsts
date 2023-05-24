@@ -1,20 +1,16 @@
 "use client"
 import * as f from "@/components/Form"
-import addApprovi from "@/components/server/approvis/addApprovis"
+import UpdateAppro from "@/components/server/approvis/UpdateApprovis"
 import Button from "@/components/ui/Button"
-import Header from "@/components/ui/Header"
 import * as Toast from "@/components/ui/toast"
 import { useEffect, useRef, useState } from "react"
-import AddLivre from "./addLivre"
-import Link from "next/link"
 
-const Form = ({ children }: { children: React.ReactNode }) => {
+const Form = ({ children ,id  }: { children: React.ReactNode ,id : number}) => {
   const form = useRef<HTMLFormElement>(null)
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [livre, setLivre] = useState<Map<number, number>>(new Map())
-  const [userInfo, setUserInfo] = useState<string | null>(null)
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -32,7 +28,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       ref={form}
       className='w-full'
       action={async (FormData) => {
-        const data = await addApprovi(FormData, livre)
+        const data = await UpdateAppro(FormData , id )
         if (data) {
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)
@@ -45,7 +41,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-      <Header size={"md"}>livre :</Header>
+      {/* <Header size={"md"}>livre :</Header> */}
       {/* <div className='flex gap-4'>
         <AddLivre livre={{ value: livre, set: setLivre }} />
         <Link
@@ -62,7 +58,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             isLoading={isLoading}
             className='bg-[#CA3CFF] text-white w-3/12'
           >
-            Ajouter approvis
+            Modifier approvisionnemnet
           </Button>
         </f.FormSubmit>
       </footer>
@@ -72,7 +68,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
           <div>
             <Toast.Title>succès</Toast.Title>
             <Toast.Description>
-              approvisionement a été ajouté avec succés
+              Approvisionement a été modifié avec succés
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen1(false)}>

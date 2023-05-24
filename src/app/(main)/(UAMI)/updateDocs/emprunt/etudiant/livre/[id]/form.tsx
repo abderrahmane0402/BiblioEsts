@@ -6,12 +6,14 @@ import * as Toast from "@/components/ui/toast";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) => {
+const Form =  ({ children , id  }: { children: React.ReactNode , id : number  }) => {
   const form = useRef<HTMLFormElement>(null);
   const [open1, setOpen1] = useState(false);
+
   const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter()
+
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -29,8 +31,15 @@ const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) 
       ref={form}
       className="w-full"
       action={async (FormData) => {
+        
         const data = await UpdateEmpruntLivreE(FormData, id );
         if (data) {
+          if(FormData.get("date_r"))
+          router.push("/emprunt/etudiant/livre/historique");
+          else 
+          router.push("/emprunt/etudiant/livre/encours");
+
+
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);
           router.refresh
@@ -41,6 +50,7 @@ const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) 
       }}
     >
       {children}
+      
       <footer className="flex justify-center items-center py-12">
         <f.FormSubmit asChild>
           <Button
@@ -48,7 +58,7 @@ const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) 
             isLoading={isLoading}
             className="bg-[#CA3CFF] text-white w-3/12"
           >
-            Mofifier Emprunt
+            Modifier Emprunt
           </Button>
         </f.FormSubmit>
       </footer>

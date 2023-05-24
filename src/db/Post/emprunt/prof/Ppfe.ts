@@ -8,7 +8,6 @@ export async function setPprof(Pprof: any) {
         ...Pprof,
       },
     });
-    revalidatePath("/emprunt/prof/pfe/encours");
     await prisma.$disconnect;
   } catch (e) {
     await prisma.$disconnect;

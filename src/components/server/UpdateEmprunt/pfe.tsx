@@ -1,32 +1,30 @@
 "use server";
-import { getEpfeID } from "@/db/Get/emprunt/etudiant/Epfe";
-import { getPpfeID } from "@/db/Get/emprunt/prof/Ppfe";
 import { getUserID } from "@/db/Post/Utilisateur";
 import { PutEpfe } from "@/db/Put/emprunt/etudiant/Epfe";
+import { PutPprof } from "@/db/Put/emprunt/prof/Ppfe";
 import { cookies } from "next/headers";
 
 export const UpdateEmpruntPfeE = async (formData: FormData, id: number) => {
   try {
     const login = cookies().get("login")?.value;
     const user = await getUserID(login || "");
-    const emp = await getEpfeID(id);
-    let d, f;
-    if (formData.get("date_D")) {
-      d = formData.get("date_D");
-    } else {
-      d = emp?.DATE_D;
+    let date_r ;
+    if(formData.get("date_r"))
+    {
+      date_r= new Date(formData.get("date_r") as string ) ;
+    }else
+    {
+      date_r = null
     }
-    if (formData.get("date_f")) {
-      f = formData.get("date_f");
-    } else {
-      f = emp?.DATE_F;
-    }
-    const emprunt = {
-      Cote: formData.get("pfe") as string,
-      N_inscription: formData.get("num_apogee") as string,
+   
+    const emprunt    = {
+      Cote: formData.get("pfe") as string ,
+      N_inscription: formData.get("num_apoge") as string,
       ID_U: user?.ID_U,
-      DATE_D: d,
-      DATE_F: f,
+      DATE_D: new Date(formData.get("date_D") as string),
+      DATE_F: new Date(formData.get("date_f") as string),
+      DATE_R :date_r,
+
     };
     await PutEpfe(emprunt, id);
     return true;
@@ -38,28 +36,26 @@ export const UpdateEmpruntPfeE = async (formData: FormData, id: number) => {
 
 export const UpdateEmpruntPfeP = async (formData: FormData, id: number) => {
   try {
-    const emp = await getPpfeID(id);
     const login = cookies().get("login")?.value;
     const user = await getUserID(login || "");
-    let d, f;
-    if (formData.get("date_D")) {
-      d = formData.get("date_D");
-    } else {
-      d = emp?.DATE_D;
+    let date_r ;
+    if(formData.get("date_r"))
+    {
+      date_r= new Date(formData.get("date_r") as string ) ;
+    }else
+    {
+      date_r = null
     }
-    if (formData.get("date_f")) {
-      f = formData.get("date_f");
-    } else {
-      f = emp?.DATE_F;
-    }
+   
     const emprunt = {
       Cote: formData.get("pfe") as string,
       Code: formData.get("prof") as string,
       ID_U: user?.ID_U,
-      DATE_D: d,
-      DATE_F: f,
+      DATE_D: new Date(formData.get("date_D") as string),
+      DATE_F: new Date(formData.get("date_f") as string),
+      DATE_R :date_r,
     };
-    await PutEpfe(emprunt, id);
+    await PutPprof(emprunt, id);
     return true;
   } catch (error) {
     console.log(error);
