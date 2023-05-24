@@ -16,6 +16,9 @@ export async function getLivres() {
           },
         },
       },
+        orderBy:{
+          ID_LIVRE:'desc'
+        }
     });
     await prisma.$disconnect;
     return Livres;

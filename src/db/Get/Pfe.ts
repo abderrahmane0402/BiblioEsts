@@ -2,7 +2,11 @@ import prisma from "@/utils/Prisma"
 
 export async function getPfes() {
   try {
-    const pfes = await prisma.pfe.findMany()
+    const pfes = await prisma.pfe.findMany({
+      orderBy:{
+        Cote:'desc'
+      }
+    })
     await prisma.$disconnect
     return pfes
   } catch (e) {

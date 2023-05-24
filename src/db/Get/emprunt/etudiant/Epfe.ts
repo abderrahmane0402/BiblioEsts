@@ -6,7 +6,6 @@ export async function getEpfeID(id : number)
 {
   try {
   const emprunt  = await prisma.emprunt_pfe_etudiant.findUnique({
-
     where: {
       IDPE: id,
     },
@@ -59,6 +58,9 @@ export async function Epfe() {
           not: null,
         },
       },
+        orderBy:{
+          IDPE:'desc'
+        }
     })
     await prisma.$disconnect
     return epfe
@@ -84,6 +86,9 @@ export async function EpfeEncours() {
       where: {
         DATE_R: null,
       },
+      orderBy:{
+        IDPE:'desc'
+      }
     })
     await prisma.$disconnect
     return epfe

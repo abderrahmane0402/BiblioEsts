@@ -12,7 +12,6 @@ const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) 
   const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter()
-  const userInfo = sessionStorage.getItem("login");
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||

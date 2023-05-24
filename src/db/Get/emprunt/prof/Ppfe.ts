@@ -38,6 +38,10 @@ export async function Ppfe() {
           not: null,
         },
       },
+
+      orderBy: {
+        IDPP: "desc",
+      },
     })
     await prisma.$disconnect
     return emprunt
@@ -62,6 +66,9 @@ export async function PpfeEncours() {
       },
       where: {
         DATE_R: null,
+      },
+      orderBy: {
+        IDPP: "desc",
       },
     })
     await prisma.$disconnect

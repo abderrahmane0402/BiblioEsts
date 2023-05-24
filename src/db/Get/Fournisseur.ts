@@ -2,7 +2,11 @@ import prisma from "@/utils/Prisma"
 
 export async function getFournisseurs() {
   try {
-    const fournisseur = await prisma.fournisseur.findMany()
+    const fournisseur = await prisma.fournisseur.findMany({
+      orderBy:{
+        ID_FOR:'desc'
+      }
+    })
     await prisma.$disconnect
     return fournisseur
   } catch (e) {

@@ -2,7 +2,11 @@ import prisma from "@/utils/Prisma"
 
 export async function getUtilisateurs() {
   try {
-    const utilisateurs = await prisma.utilisateur.findMany()
+    const utilisateurs = await prisma.utilisateur.findMany({
+      orderBy:{
+        ID_U:'desc'
+      }
+    })
     await prisma.$disconnect
     return utilisateurs
   } catch (e) {
