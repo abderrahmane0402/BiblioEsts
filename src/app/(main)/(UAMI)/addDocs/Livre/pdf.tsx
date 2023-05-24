@@ -15,7 +15,7 @@ const Pdf = () => {
 
   return (
     <>
-      <input type='hidden' value={img} name='somaire' />
+      <textarea hidden value={img} name='somaire' />
       <Input
         className='h-12'
         name='somaire'

@@ -15,7 +15,7 @@ const Img = () => {
 
   return (
     <>
-      <input type='hidden' value={img} name='page_garde' />
+      <textarea hidden value={img} name='page_garde' />
       <Input
         className='h-12'
         name='page_garde'
