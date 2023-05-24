@@ -1,5 +1,4 @@
 import { removeExemplaire } from "@/db/Delete/exemplaire"
-import { revalidatePath } from "next/cache"
 
 export async function DELETE(
   req: Request,
@@ -7,7 +6,6 @@ export async function DELETE(
 ) {
   try {
     await removeExemplaire(parseInt(params.id as string))
-    revalidatePath("/exemplaire")
     return new Response("ok")
   } catch (e) {
     console.log(e)

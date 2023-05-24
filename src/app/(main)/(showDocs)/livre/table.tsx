@@ -11,7 +11,7 @@ import {
   GridValueGetterParams,
 } from "@mui/x-data-grid"
 import { useRouter } from "next/navigation"
-import { Suspense, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { BiEdit } from "react-icons/bi"
 import { HiInformationCircle } from "react-icons/hi"
 import { MdAddCircle, MdDelete } from "react-icons/md"
