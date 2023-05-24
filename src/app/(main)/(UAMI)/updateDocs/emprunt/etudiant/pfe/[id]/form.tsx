@@ -3,6 +3,7 @@ import * as f from "@/components/Form";
 import { UpdateEmpruntPfeE } from "@/components/server/UpdateEmprunt/pfe";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) => {
@@ -10,6 +11,7 @@ const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) 
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter()
   const userInfo = sessionStorage.getItem("login");
 
   useEffect(() => {
@@ -31,6 +33,10 @@ const Form = ({ children , id  }: { children: React.ReactNode , id : number  }) 
       action={async (FormData) => {
         const data = await UpdateEmpruntPfeE(FormData,id);
         if (data) {
+          if(FormData.get("date_r"))
+          router.push("/emprunt/etudiant/pfe/historique");
+          else 
+          router.push("/emprunt/etudiant/pfe/encours");
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);
           form.current?.reset();

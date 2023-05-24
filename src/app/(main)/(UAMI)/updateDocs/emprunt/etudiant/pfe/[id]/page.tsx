@@ -16,6 +16,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
     getCote(),
     getEpfeID(id),
   ])
+
   const result = Apoge.map((obj) => obj.N_inscription)
   const result2 = Inv.map((obj) => obj.Cote)
   return (
@@ -42,7 +43,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             </f.FormControl>
           </f.FormField>
           {/* nIns */}
-          <f.FormField name='nIns' className='w-full'>
+          <f.FormField name='num_apoge' className='w-full'>
             <div className='w-full'>
               <Header size={"md"} className='p'>
                 Numéro d{"'"}inscription :
@@ -57,7 +58,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <f.FormControl asChild>
               <AutoComplete
                 options={result}
-                name='nIns'
+                name='num_apoge'
                 defaultValue={emp?.N_inscription}
               />
             </f.FormControl>
@@ -112,6 +113,31 @@ const Page = async ({ params }: { params: { id: string } }) => {
               />
             </f.FormControl>
           </f.FormField>
+          { emp!.DATE_R !== null ?
+          (<f.FormField name='date_r' className='w-full'>
+            <div className='w-full'>
+              <Header size={"md"} className='p'>
+                Date de retour :
+              </Header>
+              <f.FormMessage match={"valueMissing"}>
+                saisir la date retour
+              </f.FormMessage>
+              <f.FormMessage match={"typeMismatch"}>
+                saisir une date retour valide
+              </f.FormMessage>
+            </div>
+            <f.FormControl asChild>
+              <Input
+                className='h-10'
+                name='date_r'
+                type="date"
+                maxLength={255}
+                required
+                defaultValue={getDate(emp?.DATE_R) || ""}
+              />
+            </f.FormControl>
+          </f.FormField>) : null
+          }
         </div>
       </div>
     </Form>

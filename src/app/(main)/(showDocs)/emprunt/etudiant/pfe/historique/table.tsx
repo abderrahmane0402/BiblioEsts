@@ -26,35 +26,35 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "N_inscription",
-      headerName: "N_inscription",
+      headerName: "N inscription",
       flex: 0.7,
       type: "string",
       hideable: false,
     },
     {
       field: "DATE_D",
-      headerName: "début",
+      headerName: "Début",
       flex: 0.7,
       type: "date",
       hideable: false,
     },
     {
       field: "DATE_R",
-      headerName: "retour",
+      headerName: "Retour",
       flex: 0.7,
       type: "date",
       hideable: false,
     },
     {
       field: "DATE_F",
-      headerName: "fin",
+      headerName: "Fin",
       flex: 0.7,
       type: "date",
       hideable: false,
     },
     {
       field: "utilisateur",
-      headerName: "utilisateur",
+      headerName: "Utilisateur",
       flex: 1,
       valueGetter(params) {
         return params.row.utilisateur.NOM + " " + params.row.utilisateur.PRENOM
@@ -80,6 +80,20 @@ export function Table({ data }: { data: any }) {
           key={params.id}
           icon={<MdDelete className='text-xl' />}
           label='Supprimer'
+          onClick={() => {
+            fetch(`/api/emprunt/etudiant/pfe/${params.id}`, {
+              method: "DELETE",
+            })
+              .then((res) => res.text())
+              .then((data) => {
+                if (data === "ok") {
+                  router.refresh()
+                  
+                } else {
+                  router.refresh()
+                }
+              })
+          }}
           showInMenu
         />,
         <GridActionsCellItem

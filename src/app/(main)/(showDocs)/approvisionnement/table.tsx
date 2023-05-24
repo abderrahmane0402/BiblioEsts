@@ -87,7 +87,7 @@ export function Table({ data }: { data: any }) {
           label='Modifier'
           showInMenu
           onClick={() => {
-            router.push(`/addDocs/appro/${params.id}`);
+            router.push(`/updateDocs/approvis/${params.id}`);
           }}
         />,
       ],

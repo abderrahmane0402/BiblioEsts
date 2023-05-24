@@ -8,24 +8,26 @@ import {
   GridRowParams,
 } from "@mui/x-data-grid";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { HiInformationCircle } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
 
 export function Table({ data }: { data: any }) {
+  const [isDeleted, setisDeleted] = useState(false)
+  const [notDeleted, setnotDeleted] = useState(false)
   const router = useRouter();
   const Columns: GridColDef[] = [
     {
       field: "N_INVENTAIRE",
-      headerName: "Numéro d'Inventaire",
+      headerName: "N Inventaire",
       flex: 0.7,
       type: "string",
       hideable: false,
     },
     {
       field: "N_inscription",
-      headerName: "Numéro inscription",
+      headerName: "N inscription",
       flex: 0.7,
       type: "string",
       hideable: false,
@@ -53,7 +55,7 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "utilisateur",
-      headerName: "utilisateur",
+      headerName: "Utilisateur",
       flex: 1,
       valueGetter(params) {
         return params.row.utilisateur.NOM + " " + params.row.utilisateur.PRENOM;
@@ -79,6 +81,22 @@ export function Table({ data }: { data: any }) {
           key={params.id}
           icon={<MdDelete className="text-xl" />}
           label="Supprimer"
+          onClick={() => {
+            fetch(`/api/emprunt/etudiant/livre/${params.id}`, {
+              method: "DELETE",
+            })
+              .then((res) => res.text())
+              .then((data) => {
+                if (data === "ok") {
+                  router.refresh()
+                  setisDeleted(data === "ok")
+                  setTimeout(() => setisDeleted(false), 2000)
+                } else {
+                  setnotDeleted(true)
+                  setTimeout(() => setnotDeleted(false), 2000)
+                }
+              })
+          }}
           showInMenu
         />,
         <GridActionsCellItem

@@ -31,7 +31,7 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "Code",
-      headerName: "enseignant",
+      headerName: "Enseignant",
       flex: 1,
       valueGetter(params) {
         return params.row.prof.NOM + " " + params.row.prof.PRENOM;
@@ -41,21 +41,21 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "DATE_D",
-      headerName: "début",
+      headerName: "Début",
       flex: 0.7,
       type: "date",
       hideable: false,
     },
     {
       field: "DATE_F",
-      headerName: "fin",
+      headerName: "Fin",
       flex: 0.7,
       type: "date",
       hideable: false,
     },
     {
       field: "utilisateur",
-      headerName: "utilisateur",
+      headerName: "Utilisateur",
       flex: 1,
       valueGetter(params) {
         return params.row.utilisateur.NOM + " " + params.row.utilisateur.PRENOM;
@@ -81,7 +81,7 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<HiInformationCircle className="text-xl" />}
-          label="showMore"
+          label="plus d'infos"
           onClick={() => {
             router.push(`/moreInfo/enprunt/prof/pfe/${params.id}`);
           }}
@@ -92,12 +92,29 @@ export function Table({ data }: { data: any }) {
           key={params.id}
           icon={<MdDelete className="text-xl" />}
           label="Supprimer"
+          onClick={() => {
+            fetch(`/api/emprunt/prof/pfe/${params.id}`, {
+              method: "DELETE",
+            })
+              .then((res) => res.text())
+              .then((data) => {
+                if (data === "ok") {
+                  router.refresh()
+                  
+                } else {
+                  router.refresh()
+                }
+              })
+          }}
           showInMenu
         />,
         <GridActionsCellItem
           key={params.id}
           icon={<BiEdit className="text-xl" />}
           label="Modifier"
+          onClick={() => {
+            router.push(`/updateDocs/emprunt/prof/pfe/${params.id}`);
+          }}
           showInMenu
         />,
       ],

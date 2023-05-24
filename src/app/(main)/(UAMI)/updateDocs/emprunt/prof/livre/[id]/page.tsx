@@ -18,6 +18,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
     getNinv(),
     getPlivreID(id),
   ])
+
   const result = Apoge.map((obj) => obj.Code)
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE)
   return (
@@ -116,6 +117,31 @@ const Page = async ({ params }: { params: { id: string } }) => {
               />
             </f.FormControl>
           </f.FormField>
+          { emp!.DATE_R !== null ?
+          (<f.FormField name='date_r' className='w-full'>
+            <div className='w-full'>
+              <Header size={"md"} className='p'>
+                Date de retour :
+              </Header>
+              <f.FormMessage match={"valueMissing"}>
+                saisir la date retour
+              </f.FormMessage>
+              <f.FormMessage match={"typeMismatch"}>
+                saisir une date retour valide
+              </f.FormMessage>
+            </div>
+            <f.FormControl asChild>
+              <Input
+                className='h-10'
+                name='date_r'
+                type="date"
+                maxLength={255}
+                required
+                defaultValue={getDate(emp?.DATE_R) || ""}
+              />
+            </f.FormControl>
+          </f.FormField>) : null
+          }
         </div>
       </div>
     </Form>

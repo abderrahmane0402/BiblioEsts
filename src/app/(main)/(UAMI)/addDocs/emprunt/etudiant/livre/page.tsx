@@ -5,6 +5,7 @@ import AutoComplete from "@/components/ui/autoComplete"
 import { getEtudiantsShort } from "@/db/Get/Etudiant"
 import { getNinv } from "@/db/Get/Livres"
 import Form from "./form"
+import { getDate } from "@/utils/date"
 
 export const dynamic = "force-dynamic"
 const Page = async () => {
@@ -70,6 +71,7 @@ const Page = async () => {
                 name='date_D'
                 type='date'
                 maxLength={255}
+                defaultValue={getDate(new Date ) || ""}
                 required
               />
             </f.FormControl>
