@@ -1,25 +1,26 @@
-import * as f from "@/components/Form";
-import InputSelect from "@/components/ui/Select";
-import { getCategories_Select } from "@/db/Get/Categorie";
-import Header from "@/ui/Header";
-import Input from "@/ui/Input";
-import Form from "./form";
+import * as f from "@/components/Form"
+import InputSelect from "@/components/ui/Select"
+import { getCategories_Select } from "@/db/Get/Categorie"
+import Header from "@/ui/Header"
+import Input from "@/ui/Input"
+import Form from "./form"
+import Img from "./Img"
+import Pdf from "./pdf"
 
-export const dynamic = "force-dynamic";
-
+export const dynamic = "force-dynamic"
 
 const Page = async () => {
-  const data = await getCategories_Select();
- 
+  const data = await getCategories_Select()
+
   return (
-    <div className="overflow-auto w-full h-full">
+    <div className='overflow-auto w-full h-full'>
       <Form>
         <Header size={"lg"}>Information de livre</Header>
-        <div className="flex flex-wrap ">
-          <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
-            <f.FormField name="title" className="w-full">
-              <div className="w-full">
-                <Header size={"md"} className="p">
+        <div className='flex flex-wrap '>
+          <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
+            <f.FormField name='title' className='w-full'>
+              <div className='w-full'>
+                <Header size={"md"} className='p'>
                   Titre :
                 </Header>
                 <f.FormMessage match={"valueMissing"}>
@@ -31,16 +32,16 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="title"
-                  type="text"
+                  className='h-10'
+                  name='title'
+                  type='text'
                   maxLength={255}
                   required
                 />
               </f.FormControl>
             </f.FormField>
-            <f.FormField name="autheur" className="w-full">
-              <div className="w-full">
+            <f.FormField name='autheur' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Auteur :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir l{"'"}auteur
@@ -51,16 +52,16 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="autheur"
-                  type="text"
+                  className='h-10'
+                  name='autheur'
+                  type='text'
                   maxLength={50}
                 />
               </f.FormControl>
             </f.FormField>
 
-            <f.FormField name="editeur" className="w-full">
-              <div className="w-full">
+            <f.FormField name='editeur' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Editeur :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir l{"'"}éditeur
@@ -71,16 +72,16 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="editeur"
-                  type="text"
+                  className='h-10'
+                  name='editeur'
+                  type='text'
                   maxLength={50}
                 />
               </f.FormControl>
             </f.FormField>
 
-            <f.FormField name="date_edi" className="w-full">
-              <div className="w-full">
+            <f.FormField name='date_edi' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Date d{"'"}édition :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir la date d{"'"}édition
@@ -91,16 +92,16 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="date_edi"
-                  type="number"
+                  className='h-10'
+                  name='date_edi'
+                  type='number'
                   maxLength={50}
                   required
                 />
               </f.FormControl>
             </f.FormField>
-            <f.FormField name="prix" className="w-full">
-              <div className="w-full">
+            <f.FormField name='prix' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Prix :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir le prix
@@ -111,16 +112,15 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="prix"
-                  type="number"
+                  className='h-10'
+                  name='prix'
+                  type='number'
                   maxLength={50}
-                  
                 />
               </f.FormControl>
             </f.FormField>
-            <f.FormField name="categorie" className="w-full">
-              <div className="w-full">
+            <f.FormField name='categorie' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Catégorie :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir une categorie
@@ -131,19 +131,19 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <InputSelect
+                  name='categorie'
                   options={data}
                   autoWidth={false}
                   multiple={false}
                   native={false}
-                  defaultValue=""
                 />
               </f.FormControl>
             </f.FormField>
           </div>
 
-          <div className="w-full md:w-1/2 pl-4">
-            <f.FormField name="code" className="w-full">
-              <div className="w-full">
+          <div className='w-full md:w-1/2 pl-4'>
+            <f.FormField name='code' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Code :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir le code
@@ -154,17 +154,16 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className="h-10"
-                  name="code"
-                  type="number"
+                  className='h-10'
+                  name='code'
+                  type='number'
                   maxLength={50}
                   required
-
                 />
               </f.FormControl>
             </f.FormField>
-            <f.FormField name="page_garde" className="w-full">
-              <div className="w-full">
+            <f.FormField name='page_garde' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>Page de garde :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   Entrer l{"'"}page de garde
@@ -174,17 +173,11 @@ const Page = async () => {
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-                <Input
-                  className="h-12"
-                  name="page_garde"
-                  type="file"
-                  required
-                  
-                />
+                <Img />
               </f.FormControl>
             </f.FormField>
-            <f.FormField name="somaire" className="w-full">
-              <div className="w-full">
+            <f.FormField name='somaire' className='w-full'>
+              <div className='w-full'>
                 <Header size={"md"}>SOMAIRE :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   Entrer un SOMAIRE
@@ -194,14 +187,7 @@ const Page = async () => {
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-                <Input
-                  className="h-12"
-                  name="somaire"
-                  type="file"
-                  accept=".pdf"
-                  maxLength={50}
-                  required
-                />
+                <Pdf />
               </f.FormControl>
             </f.FormField>
             {/* Observation */}
@@ -228,7 +214,7 @@ const Page = async () => {
         </div>
       </Form>
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

@@ -1,8 +1,11 @@
+import Exemplaire from "@/components/exemplaire"
+import Iconbutton from "@/components/mui/Iconbutton"
 import Header from "@/components/mui/MuiHeader"
 import { Card } from "@/components/ui/Card"
 import MyImage from "@/components/ui/MyImage"
 import { getLivre } from "@/db/Get/Livres"
 import Link from "next/link"
+import { BiBookAdd } from "react-icons/bi"
 import { FaFilePdf } from "react-icons/fa"
 
 export const dynamic = "force-dynamic"
@@ -29,7 +32,9 @@ const page = async ({ params }: { params: { id: string } }) => {
         </div>
       </Card>
       <div className='rounded-lg w-full h-fit bg-white shadow-lg pt-2'>
-        <Header>Livre</Header>
+        <Header variant='h4' textAlign={"center"} gutterBottom>
+          Livre
+        </Header>
         <div className='py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide'>
           <span className='w-1/2 text-[#5B3169]'>Titre</span>
           <span className='w-1/2 text-[#242424]'>{livre?.TITRE}</span>
@@ -65,20 +70,22 @@ const page = async ({ params }: { params: { id: string } }) => {
         <div className='py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide'>
           <span className='w-1/2 text-[#5B3169]'>Somaire</span>
           <span className='w-1/2 text-blue-700 flex gap-2  items-center'>
-            <Link href={`/PDFviewer/${livre?.ID_LIVRE}`}>Afficher</Link>
+            <Link href={`/PDFviewer/${livre?.ID_LIVRE}`} target='_blank'>
+              Afficher
+            </Link>
             <FaFilePdf />
           </span>
         </div>
       </div>
 
-      <div className='rounded-lg w-full h-fit bg-white shadow-lg pt-2'>
-        <Header>Exemplaire</Header>
+      <div className='rounded-lg w-full h-fit bg-white shadow-lg '>
+        <Exemplaire id={id}/>
         {livre?.exemplaire.length ? (
           livre?.exemplaire.map((ex, index) => {
             return (
               <div
                 key={index}
-                className='py-3 pl-4 border-t-2 border-[#DEE2E6] flex text-md tracking-wide'
+                className='py-3 box-border inline-block w-1/3  text-center border-2 border-[#DEE2E6] text-md tracking-wide mt-2'
               >
                 <span className='w-1/2 text-[#242424]'>{ex.N_INVENTAIRE}</span>
               </div>

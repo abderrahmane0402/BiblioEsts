@@ -1,12 +1,11 @@
-'use client'
-const convertBase64 = (file: any) => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader()
-    fileReader.readAsDataURL(file)
+export default function convertBase64(file: any) {
+  const fileReader = new FileReader()
+  fileReader.readAsDataURL(file)
 
-    fileReader.onload = () => {
-      resolve(fileReader.result)
-    }
-  })
+  fileReader.onload = () => {
+    return fileReader.result
+  }
+  fileReader.onerror = () => {
+    return fileReader.error
+  }
 }
-export default convertBase64

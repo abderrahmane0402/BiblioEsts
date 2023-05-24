@@ -1,11 +1,16 @@
-"use client";
-import Typography from "@mui/material/Typography";
-import React from "react";
+"use client"
+import Typography, { TypographyProps } from "@mui/material/Typography"
+import React, { FC } from "react"
 
-export default function Header({ children }: { children: React.ReactNode }) {
+interface HeaderProps extends TypographyProps {
+  children: React.ReactNode
+}
+
+const Header: FC<HeaderProps> = ({ children, ...props }) => {
   return (
-    <Typography variant="h4" textAlign={"center"} gutterBottom>
+    <Typography {...props}>
       {children}
     </Typography>
-  );
+  )
 }
+export default Header
