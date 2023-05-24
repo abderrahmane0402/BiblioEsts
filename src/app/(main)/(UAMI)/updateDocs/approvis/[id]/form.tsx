@@ -3,6 +3,7 @@ import * as f from "@/components/Form"
 import UpdateAppro from "@/components/server/approvis/UpdateApprovis"
 import Button from "@/components/ui/Button"
 import * as Toast from "@/components/ui/toast"
+import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const Form = ({ children ,id  }: { children: React.ReactNode ,id : number}) => {
@@ -10,6 +11,7 @@ const Form = ({ children ,id  }: { children: React.ReactNode ,id : number}) => {
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const router=useRouter()
   const [livre, setLivre] = useState<Map<number, number>>(new Map())
   useEffect(() => {
     if (
@@ -30,10 +32,13 @@ const Form = ({ children ,id  }: { children: React.ReactNode ,id : number}) => {
       action={async (FormData) => {
         const data = await UpdateAppro(FormData , id )
         if (data) {
+          
           setOpen1(true)
           setTimeout(() => setOpen1(false), 1000)
+          router.push("/approvisionnement")
+ 
           form.current?.reset()
-          setLivre(new Map())
+          
         } else {
           setOpen2(true)
           setTimeout(() => setOpen2(false), 1000)

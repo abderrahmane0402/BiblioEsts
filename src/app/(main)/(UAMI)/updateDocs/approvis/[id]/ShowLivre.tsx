@@ -4,28 +4,28 @@ import MyImage from "@/components/ui/MyImage";
 import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu";
 import { CustomToolbar } from "@/components/ui/x-data-grid-customization/CustomToolBar";
 import {
+  GridActionsCellItem,
     GridColDef,
+    GridRowParams,
     GridValueGetterParams
 } from "@mui/x-data-grid";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { BiEdit } from "react-icons/bi";
+import { HiInformationCircle } from "react-icons/hi";
+import { MdDelete } from "react-icons/md";
 export function Table({ data }: { data: any }) {
   const router = useRouter();
   const Columns: GridColDef[] = [
-    {
-      field: "PAGE_DE_GARDE",
-      headerName: "",
-      width: 60,
-      type: "string",
-      hideable: false,
-      renderCell(params) {
-        return (
-          <div className="relative w-full h-4/5">
-            <MyImage src={params.row.PAGE_DE_GARDE || ""} alt="page de garde" />
-          </div>
-        );
-      },
-    },
+    // {
+    //   field: "N_INVENTAIRE",
+    //   headerName: "Titre",
+    //   flex: 1.5,
+    //   valueGetter: (params: GridValueGetterParams) =>
+    //   params.row.Exemplaire.N_INVENTAIRE ,
+    //   type: "string",
+    //   hideable: false,
+    // },
     {
       field: "TITRE",
       headerName: "Titre",
@@ -35,7 +35,7 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "categorie",
-      headerName: "Catégorie",
+      headerName: "Categorie",
       flex: 1,
       type: "string",
       valueGetter: (params: GridValueGetterParams) =>
@@ -58,9 +58,9 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "DATE_EDITION",
-      headerName: "Date d'édition",
+      headerName: "dateEdition",
       flex: 1,
-      type: "number",
+      type: "string",
     },
     { field: "CODE", headerName: "Code", flex: 1, type: "number" },
     {
@@ -68,26 +68,34 @@ export function Table({ data }: { data: any }) {
       flex: 1,
       headerName: "Prix",
       type: "number",
-      hideable: true,
+      hideable: false,
     },
+    {
+      field: "QTE",
+      flex: 1,
+      headerName: "QTE",
+      type: "number",
+      hideable: false,
+    },
+    
   ];
+
   useEffect(() => {
     router.refresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <>
-      <DataTable
-        columns={Columns}
-        rows={data}
-        ID="ID_LIVRE"
-        customSlots={{
-          columnMenu: CustomColumnMenu,
-          toolbar: CustomToolbar,
-        }}
-        autoPageSize
-      />
-    </>
+    <DataTable
+      columns={Columns}
+      rows={data ? data : []}
+      ID="ID_LIVRE"
+      className="h-auto"
+      customSlots={{
+        columnMenu: CustomColumnMenu,
+      }}
+      hideFooter
+    />
   );
+
 }

@@ -23,8 +23,11 @@ async function Page({ params }: { params: { id: string } }) {
       LIBELLE: f.ID_FOR + " " + f.NOM + " " + f.PRENOM,
     };
   });
-  const Livre = apro?.contient.map((l) => {
+
+  const Livre  = apro?.contient.map((l) => {
+    
     return {
+    
       ID_LIVRE: l.livre.ID_LIVRE,
       TITRE: l.livre.TITRE,
       AUTHEUR: l.livre.AUTHEUR,
@@ -33,9 +36,13 @@ async function Page({ params }: { params: { id: string } }) {
       CODE: l.livre.CODE,
       DATE_EDITION: l.livre.DATE_EDITION,
       PRIX: l.livre.PRIX?.toString(),
-      QTE: l.QTE,
+      QTE : l.QTE
+      // Exemplaire : exemplaire
+
+    
     };
   });
+  
   return (
     <div className="overflow-auto w-full h-full">
       <Form id={id}>
@@ -131,58 +138,55 @@ async function Page({ params }: { params: { id: string } }) {
                 />
               </f.FormControl>
             </f.FormField>
-            {/* Date */}
-            <f.FormField name="date" className="w-full">
-              <div className="w-full">
+          </div>
+          <div className="w-full md:w-1/2 border-gray-700 px-4">
+            {/* fournisseur */}
+              {/* Date */}
+              <f.FormField name="date" className="w-full">
                 <div className="w-full">
-                  <Header size={"md"}>Date :</Header>
+                  <div className="w-full">
+                    <Header size={"md"}>Date :</Header>
+                    <f.FormMessage match={"valueMissing"}>
+                      saisir la date
+                    </f.FormMessage>
+                    <f.FormMessage match={"typeMismatch"}>
+                      saisir la date valide
+                    </f.FormMessage>
+                  </div>
+                  <f.FormControl asChild>
+                    <Input
+                      className="h-10"
+                      name="dateA"
+                      type="date"
+                      required
+                      defaultValue={getDate(apro?.DATE) || ""}
+                    />
+                  </f.FormControl>
+                </div>
+              </f.FormField>
+              {/* Devis */}
+              <f.FormField name="devis" className="w-full">
+                <div className="w-full">
+                  <Header size={"md"}>Devis :</Header>
                   <f.FormMessage match={"valueMissing"}>
-                    saisir la date
+                    saisir un devis
                   </f.FormMessage>
                   <f.FormMessage match={"typeMismatch"}>
-                    saisir la date valide
+                    saisir un devis valide
                   </f.FormMessage>
                 </div>
                 <f.FormControl asChild>
                   <Input
                     className="h-10"
-                    name="date"
-                    type="date"
+                    name="devis"
+                    type="number"
                     required
-                    defaultValue={getDate(apro?.DATE) || ""}
+                    defaultValue={parseFloat(apro!.DEVIS!.toString())}
                   />
                 </f.FormControl>
-              </div>
-            </f.FormField>
-            {/* Devis */}
-            <f.FormField name="devis" className="w-full">
-              <div className="w-full">
-                <Header size={"md"}>Devis :</Header>
-                <f.FormMessage match={"valueMissing"}>
-                  saisir un devis
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  saisir un devis valide
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <Input
-                  className="h-10"
-                  name="devis"
-                  type="number"
-                  required
-                  defaultValue={parseFloat(apro!.DEVIS!.toString())}
-                />
-              </f.FormControl>
-            </f.FormField>
-          </div>
-          <div className="w-full md:w-1/2 border-gray-700 px-4">
-            {/* fournisseur */}
-
-            <Header size={"md"}>Fournisseur :</Header>
-
-            <div className="flex gap-2 items-center justify-center">
+              </f.FormField>
               <f.FormField name="fournisseur" className="w-full">
+                <Header size={"md"}>Fournisseur :</Header>
                 <div className="w-full">
                   <f.FormMessage match={"valueMissing"}>
                     saisir une fournisseur
@@ -201,131 +205,13 @@ async function Page({ params }: { params: { id: string } }) {
                   />
                 </f.FormControl>
               </f.FormField>
-            </div>
-            <f.FormField name="nom" className="w-full">
-              <div className="w-full">
-                <Header size={"md"} className="p">
-                  Nom :
-                </Header>
-                <f.FormMessage match={"valueMissing"}>
-                  saisir le nom
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  saisir un nom valide
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <Input
-                  className="h-10"
-                  name="nom"
-                  type="text"
-                  defaultValue={apro?.fournisseur?.NOM as string}
-                  required
-                />
-              </f.FormControl>
-            </f.FormField>
-
-            {/* Prenom */}
-            <f.FormField name="prenom" className="w-full">
-              <div className="w-full">
-                <Header size={"md"} className="p">
-                  Prenom :
-                </Header>
-                <f.FormMessage match={"valueMissing"}>
-                  saisir le prenom
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  saisir un prenom valide
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <Input
-                  className="h-10"
-                  name="prenom"
-                  type="text"
-                  defaultValue={apro?.fournisseur?.PRENOM as string}
-                  required
-                />
-              </f.FormControl>
-            </f.FormField>
-
-            {/* email */}
-            <f.FormField name="email" className="w-full">
-              <div className="w-full">
-                <Header size={"md"} className="p">
-                  email :
-                </Header>
-                <f.FormMessage match={"valueMissing"}>
-                  saisir la email
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  saisir une email
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <Input
-                  type="email"
-                  name="email"
-                  defaultValue={apro?.fournisseur?.GMAIL as string}
-                  className="h-10"
-                />
-              </f.FormControl>
-            </f.FormField>
-
-            {/* adresse */}
-            <f.FormField name="adresse" className="w-full">
-              <div className="w-full">
-                <Header size={"md"} className="p">
-                  adresse :
-                </Header>
-                <f.FormMessage match={"valueMissing"}>
-                  saisir la adresse
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  saisir une adresse
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <Input
-                  type="text"
-                  name="adresse"
-                  defaultValue={apro?.fournisseur?.ADDRESSE as string}
-                  className="h-10"
-                />
-              </f.FormControl>
-            </f.FormField>
-
-            {/* telephone */}
-            <f.FormField name="telephone" className="w-full">
-              <div className="w-full">
-                <Header size={"md"} className="p">
-                  telephone :
-                </Header>
-                <f.FormMessage match={"valueMissing"}>
-                  saisir la telephone
-                </f.FormMessage>
-                <f.FormMessage match={"typeMismatch"}>
-                  saisir une telephone
-                </f.FormMessage>
-              </div>
-              <f.FormControl asChild>
-                <Input
-                  type="text"
-                  name="tele"
-                  defaultValue={
-                    apro?.fournisseur?.TELEPHONE as unknown as string
-                  }
-                  className="h-10"
-                />
-              </f.FormControl>
-            </f.FormField>
+            
           </div>
-          
         </div>
         <br />
         <div className="w-full bg-slate-400 rounded-xl">
-            <Table data={Livre} />
-          </div>
+          <Table data={Livre} />
+        </div>
       </Form>
     </div>
   );

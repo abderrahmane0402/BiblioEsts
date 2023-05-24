@@ -19,6 +19,11 @@ export async function getAppro(id: number) {
           include: {
             livre: {
               include: {
+                exemplaire:{
+                  select:{
+                    N_INVENTAIRE : true ,
+                  }  
+                },
                 categorie: {
                   select: {
                     LIBELLE: true,
