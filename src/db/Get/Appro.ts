@@ -1,13 +1,17 @@
-import prisma from "@/utils/Prisma";
+import prisma from "@/utils/Prisma"
 
 export async function getApprosShort() {
   try {
-    const appros = await prisma.approvisionement.findMany();
-    await prisma.$disconnect;
-    return appros;
+    const appros = await prisma.approvisionement.findMany({
+      orderBy: {
+        DATE: "desc",
+      },
+    })
+    await prisma.$disconnect
+    return appros
   } catch (e) {
-    await prisma.$disconnect;
-    throw Error("somthing went wrong" + e);
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
   }
 }
 
@@ -39,12 +43,12 @@ export async function getAppro(id: number) {
       where: {
         ID_APRO: id,
       },
-    });
-    await prisma.$disconnect;
-    return appros;
+    })
+    await prisma.$disconnect
+    return appros
   } catch (e) {
-    await prisma.$disconnect;
-    throw Error("somthing went wrong" + e);
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
   }
 }
 export async function getApproID(id: number) {
@@ -53,13 +57,12 @@ export async function getApproID(id: number) {
       where: {
         ID_APRO: id,
       },
-     
-    });
-    await prisma.$disconnect;
-    return appros;
+    })
+    await prisma.$disconnect
+    return appros
   } catch (e) {
-    await prisma.$disconnect;
-    throw Error("somthing went wrong" + e);
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
   }
 }
 
@@ -83,11 +86,11 @@ export async function getAppros() {
         fournisseur: true,
         utilisateur: true,
       },
-    });
-    await prisma.$disconnect;
-    return appros;
+    })
+    await prisma.$disconnect
+    return appros
   } catch (e) {
-    await prisma.$disconnect;
-    throw Error("somthing went wrong" + e);
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
   }
 }

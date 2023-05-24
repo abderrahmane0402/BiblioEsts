@@ -1,22 +1,20 @@
 // POUR LES PROFESSEURS
 
-import prisma from "@/utils/Prisma";
+import prisma from "@/utils/Prisma"
 
-export async function getPlivreID(id : number)
-{
+export async function getPlivreID(id: number) {
   try {
-  const emprunt  = await prisma.emprunt_livre_prof.findUnique({
-    where: {
-      IDLP: id,
-    },
-    }
-  )
-  await prisma.$disconnect
-  return emprunt
-} catch (e) {
-  await prisma.$disconnect
-  throw Error("somthing went wrong" + e)
-}
+    const emprunt = await prisma.emprunt_livre_prof.findUnique({
+      where: {
+        IDLP: id,
+      },
+    })
+    await prisma.$disconnect
+    return emprunt
+  } catch (e) {
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
+  }
 }
 
 export async function getPlivre(id: number) {
@@ -28,14 +26,13 @@ export async function getPlivre(id: number) {
         exemplaire: {
           include: {
             livre: {
-              include : {
+              include: {
                 categorie: {
                   select: {
                     LIBELLE: true,
                   },
-                }, 
+                },
               },
-
             },
           },
         },
@@ -43,12 +40,12 @@ export async function getPlivre(id: number) {
       where: {
         IDLP: id,
       },
-    });
-    await prisma.$disconnect;
-    return emprunt;
+    })
+    await prisma.$disconnect
+    return emprunt
   } catch (e) {
-    await prisma.$disconnect;
-    throw Error("somthing went wrong" + e);
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
   }
 }
 
@@ -76,12 +73,15 @@ export async function Plivre() {
           not: null,
         },
       },
-    });
-    await prisma.$disconnect;
-    return emprunt;
+      orderBy: {
+        IDLP: "desc",
+      },
+    })
+    await prisma.$disconnect
+    return emprunt
   } catch (e) {
-    await prisma.$disconnect;
-    throw Error("somthing went wrong" + e);
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
   }
 }
 
@@ -107,12 +107,15 @@ export async function PlivreEncours() {
       where: {
         DATE_R: null,
       },
-    });
-    await prisma.$disconnect;
-    return emprunt;
+      orderBy: {
+        IDLP: "desc",
+      },
+    })
+    await prisma.$disconnect
+    return emprunt
   } catch (e) {
-    await prisma.$disconnect;
-    throw Error("somthing went wrong" + e);
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
   }
 }
 

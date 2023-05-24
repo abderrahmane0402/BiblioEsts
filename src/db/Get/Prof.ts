@@ -2,7 +2,11 @@ import prisma from "@/utils/Prisma";
 
 export async function getProfs() {
   try {
-    const profs = await prisma.prof.findMany();
+    const profs = await prisma.prof.findMany({
+      orderBy:{
+        Code:'desc',
+      }
+    });
     await prisma.$disconnect;
     return profs;
   } catch (e) {

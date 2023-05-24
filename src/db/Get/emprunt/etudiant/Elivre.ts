@@ -6,7 +6,6 @@ export async function getElivreID(id : number)
 {
   try {
   const emprunt  = await prisma.emprunt_livre_etudiant.findUnique({
-
     where: {
       IDLE: id,
     },
@@ -72,6 +71,9 @@ export async function Elivre() {
           not: null,
         },
       },
+      orderBy:{
+        IDLE:'desc'
+      }
     })
     await prisma.$disconnect
     return emprunt
@@ -97,6 +99,9 @@ export async function ElivreEncours() {
       where: {
         DATE_R: null,
       },
+      orderBy:{
+        IDLE:'desc'
+      }
     })
     await prisma.$disconnect
     return emprunt

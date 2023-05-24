@@ -11,6 +11,9 @@ export async function getCategories() {
           },
         },
       },
+        orderBy:{
+          ID_CAT:'desc'
+        }
     });
     await prisma.$disconnect;
     return categories;
