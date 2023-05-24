@@ -1,9 +1,8 @@
 "use client"
 import Input from "@/components/ui/Input"
-import { useState } from "react"
+import { Dispatch } from "react"
 
-const Img = () => {
-  const [img, setImg] = useState<any>()
+const Img = ({ setImg }: { setImg: Dispatch<any> }) => {
   function convertBase64(file: any) {
     const fileReader = new FileReader()
     fileReader.readAsDataURL(file)
@@ -15,7 +14,6 @@ const Img = () => {
 
   return (
     <>
-      <textarea hidden value={img} name='page_garde' />
       <Input
         className='h-12'
         name='page_garde'

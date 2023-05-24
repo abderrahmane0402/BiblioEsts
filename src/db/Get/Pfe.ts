@@ -3,9 +3,9 @@ import prisma from "@/utils/Prisma"
 export async function getPfes() {
   try {
     const pfes = await prisma.pfe.findMany({
-      orderBy:{
-        Cote:'desc'
-      }
+      orderBy: {
+        Cote: "desc",
+      },
     })
     await prisma.$disconnect
     return pfes
@@ -48,11 +48,26 @@ export async function getCote() {
           },
         },
       },
-    });
-    await prisma.$disconnect;
-    return Livres;
+    })
+    await prisma.$disconnect
+    return Livres
   } catch (e) {
-    await prisma.$disconnect;
-    throw Error("somthing went wrong" + e);
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
+  }
+}
+
+export async function getCoteAll() {
+  try {
+    const Livres = await prisma.pfe.findMany({
+      select: {
+        Cote: true,
+      },
+    })
+    await prisma.$disconnect
+    return Livres
+  } catch (e) {
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
   }
 }

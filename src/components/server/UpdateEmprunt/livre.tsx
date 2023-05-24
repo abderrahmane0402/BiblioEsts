@@ -1,6 +1,5 @@
 "use server";
 
-import { getPlivreID } from "@/db/Get/emprunt/prof/Plivre";
 import { getUserID } from "@/db/Post/Utilisateur";
 import { PutElivre } from "@/db/Put/emprunt/etudiant/Elivre";
 import { PutPlivre } from "@/db/Put/emprunt/prof/Plivre";
@@ -8,9 +7,6 @@ import { cookies } from "next/headers";
 
 export const UpdateEmpruntLivreE = async (formData: FormData, id: number) => {
   try {
-    console.log(formData.get("date_D") );
-    console.log(formData.get("date_f") );
-    console.log(formData.get("date_r") );
     let date_r ;
     if(formData.get("date_r"))
     {
@@ -49,13 +45,15 @@ export async function UpdateEmpruntLivreP(formData: FormData, id: number) {
     {
       date_r = null
     }
+    
+    const code = (formData.get("prof") as string).split(" ")[2]
    
     const login = cookies().get("login")?.value;
     const user = await getUserID(login || "");
   
     const emprunt = {
       N_INVENTAIRE: Number(formData.get("nmr_Inv")),
-      Code: formData.get("prof") as string,
+      Code: code,
       ID_U: user?.ID_U,
       DATE_D: new Date(formData.get("date_D") as string),
       DATE_F: new Date(formData.get("date_f") as string),

@@ -85,7 +85,7 @@ export function Table({ data }: { data: any }) {
           icon={<BiEdit className='text-xl' />}
           label='Modifer'
           onClick={() => {
-            router.push(`/updateDocs/Pfe/${params.id}`)
+            router.push(`/updateDocs/pfe/${params.id}`)
           }}
         />,
       ],

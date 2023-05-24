@@ -1,14 +1,13 @@
 import Exemplaire from "@/components/exemplaire"
-import Iconbutton from "@/components/mui/Iconbutton"
 import Header from "@/components/mui/MuiHeader"
 import { Card } from "@/components/ui/Card"
 import MyImage from "@/components/ui/MyImage"
-import { getLivre } from "@/db/Get/Livres"
+import { getLivre, getLivres } from "@/db/Get/Livres"
 import Link from "next/link"
-import { BiBookAdd } from "react-icons/bi"
 import { FaFilePdf } from "react-icons/fa"
+import MenuExe from "./menu"
 
-export const dynamic = "force-dynamic"
+export const dynamic = "auto"
 
 // export async function generateStaticParams() {
 //   const livres = await getLivres()
@@ -79,15 +78,15 @@ const page = async ({ params }: { params: { id: string } }) => {
       </div>
 
       <div className='rounded-lg w-full h-fit bg-white shadow-lg '>
-        <Exemplaire id={id}/>
+        <Exemplaire id={id} />
         {livre?.exemplaire.length ? (
           livre?.exemplaire.map((ex, index) => {
             return (
               <div
                 key={index}
-                className='py-3 box-border inline-block w-1/3  text-center border-2 border-[#DEE2E6] text-md tracking-wide mt-2'
+                className='py-1 box-border inline-block w-1/4  text-center border-2 border-[#DEE2E6] text-md tracking-wide mt-1'
               >
-                <span className='w-1/2 text-[#242424]'>{ex.N_INVENTAIRE}</span>
+                <MenuExe>{ex.N_INVENTAIRE}</MenuExe>
               </div>
             )
           })
@@ -100,100 +99,6 @@ const page = async ({ params }: { params: { id: string } }) => {
         )}
       </div>
     </>
-    // <div className="w-full h-full gap-3 overflow-auto scroll-smooth">
-    //   <div className="flex w-full h-3/5 items-center justify-center">
-    //     <div className="relative w-1/5 h-full">
-    //       <MyImage
-    //         src={livre!.PAGE_DE_GARDE || ""}
-    //         alt="page de garde"
-    //         priority
-    //       />
-    //     </div>
-    //   </div>
-    //   <div className="h-1/2 w-full flex flex-col flex-wrap">
-    //     <div className="flex">
-    //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
-    //         Title :
-    //       </Paragraph>
-    //       <Paragraph type={"nrm"} size={"md"}>
-    //         {livre?.TITRE}
-    //       </Paragraph>
-    //     </div>
-    //     <div className="flex">
-    //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
-    //         Autheur :
-    //       </Paragraph>
-    //       <Paragraph type={"nrm"} size={"md"}>
-    //         {livre?.AUTHEUR}
-    //       </Paragraph>
-    //     </div>
-    //     <div className="flex">
-    //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
-    //         Editeur :
-    //       </Paragraph>
-    //       <Paragraph type={"nrm"} size={"md"}>
-    //         {livre?.EDITEUR}
-    //       </Paragraph>
-    //     </div>
-    //     <div className="flex">
-    //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
-    //         Date Edition :
-    //       </Paragraph>
-    //       <Paragraph type={"nrm"} size={"md"}>
-    //         {livre!.DATE_EDITION}
-    //       </Paragraph>
-    //     </div>
-    //     <div className="flex">
-    //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
-    //         Code :
-    //       </Paragraph>
-    //       <Paragraph type={"nrm"} size={"md"}>
-    //         {livre?.CODE}
-    //       </Paragraph>
-    //     </div>
-    //     <div className="flex">
-    //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
-    //         categorie :
-    //       </Paragraph>
-    //       <Paragraph type={"nrm"} size={"md"}>
-    //         {livre?.categorie.LIBELLE}
-    //       </Paragraph>
-    //     </div>
-    //     <div className="flex">
-    //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
-    //         Prix :
-    //       </Paragraph>
-    //       <Paragraph type={"nrm"} size={"md"}>
-    //         {livre?.PRIX?.toNumber()} DH
-    //       </Paragraph>
-    //     </div>
-    //     <div className="flex">
-    //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
-    //         Somaire :
-    //       </Paragraph>
-    //       <Paragraph type={"nrm"} size={"md"}>
-    //         <MLink
-    //           href={`/PDFviewer/${livre?.SOMAIRE}`}
-    //           font={"md"}
-    //           type={"link"}
-    //         >
-    //           ouvrir le pdf
-    //         </MLink>
-    //       </Paragraph>
-    //     </div>
-    //     <div className="flex">
-    //       <Paragraph type={"nrm"} size={"md"} className="font-bold">
-    //         OBSERVATION :
-    //       </Paragraph>
-    //       <Paragraph type={"nrm"} size={"md"}>
-    //         {livre?.OBSERVATIONL}
-    //       </Paragraph>
-    //     </div>
-    //   </div>
-    //   <div className="w-full">
-    //     <Table data={livre?.exemplaire} />
-    //   </div>
-    // </div>
   )
 }
 
