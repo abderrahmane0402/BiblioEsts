@@ -10,10 +10,7 @@ const Header: FC<HeaderProps> = ({ children, ...props }) => {
   return (
     <Typography
       {...props}
-      sx={{
-        fontFamily:
-          'Inter,sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
-      }}
+     
     >
       {children}
     </Typography>

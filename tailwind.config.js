@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       boxShadow: {
         "3d": "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-        "muiCard" : "0px 2px 10px 0px rgba(58, 53, 65, 0.1)"
+        muiCard: "0px 2px 10px 0px rgba(58, 53, 65, 0.1)",
+        li: "0px 4px 8px -4px rgba(58, 53, 65, 0.42)",
       },
       backgroundColor: {
         rblack: "#04080F",
@@ -17,6 +18,9 @@ module.exports = {
         pblue: "#A1C6EA",
         cblue: "#BBD1EA",
         platinum: "#DAE3E5",
+      },
+      backgroundImage: {
+        activeNav: "linear-gradient(98deg, #C6A7FE, #9155FD 94%)",
       },
       width: {
         nav: "260px",
@@ -46,4 +50,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwind-scrollbar")],
-};
+}

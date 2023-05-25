@@ -1,7 +1,9 @@
-'use client'
+"use client"
 import { FC, ReactNode } from "react"
 import MLink from "@/ui/MLink"
 import { isActive } from "@/utils/dashboard"
+import Link from "next/link"
+import Header from "@/components/mui/MuiHeader"
 
 interface NavProps {
   href: string
@@ -12,22 +14,22 @@ interface NavProps {
 export const Nav: FC<NavProps> = ({ href, icon, title }) => {
   const isactive = isActive(href)
   return (
-    <li>
-      <MLink
+    <li className='w-full mt-[0.375rem]'>
+      <Link
         href={href}
-        type='nav'
-        font='md'
         className={`${
           isactive
-            ? "bg-[#62a0d381]"
-            : "hover:bg-[#250262] active:bg-[#c6ddf05a]"
-        } pl-7 justify-between`}
+            ? "bg-activeNav text-white"
+            : "hover:bg-[#3a35410a] text-[#3a3541de]"
+        } pl-[22px] pr-[14px] py-[9px] flex gap-[10px] rounded-r-full`}
       >
         <div className='flex gap-5 items-center'>
           {icon}
-          {title}
+          <Header variant="body1" sx={{
+            letterSpacing:'0.15px'
+          }}>{title}</Header>
         </div>
-      </MLink>
+      </Link>
     </li>
   )
 }
