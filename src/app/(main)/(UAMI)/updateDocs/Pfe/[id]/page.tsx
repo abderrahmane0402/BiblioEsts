@@ -1,9 +1,9 @@
 import * as f from "@/components/Form"
-import Header from "@/ui/Header"
 import Input from "@/ui/Input"
 import Form from "./Form"
 import { getPfe } from "@/db/Get/Pfe"
 import AutoComplete from "@/components/ui/autoComplete"
+import Header from "@/components/mui/MuiHeader"
 const Filière = ["GI", "TM", "GIM", "TIMQ"]
 
 export const dynamic = "force-dynamic"
@@ -18,7 +18,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       {/* sujet */}
       <f.FormField name='cote' className='w-full'>
         <div className='w-full'>
-          <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Code :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le cote</f.FormMessage>
@@ -39,7 +39,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
       <f.FormField name='sujet' className='w-full'>
         <div className='w-full'>
-          <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Sujet :
           </Header>
           <f.FormMessage match={"valueMissing"}>
@@ -67,7 +67,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
       <f.FormField name='realisateur' className='w-full'>
         <div className='w-full'>
-          <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Réalisateur :
           </Header>
           <f.FormMessage match={"valueMissing"}>
@@ -93,7 +93,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       {/* encadrant */}
       <f.FormField name='encadrant' className='w-full'>
         <div className='w-full'>
-          <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Encadrant :
           </Header>
           <f.FormMessage match={"valueMissing"}>
@@ -117,8 +117,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
         </f.FormControl>
         <f.FormField name='filiere' className='w-full'>
           <div className='w-full'>
-            <Header size={"md"} className='p'>
-              Filiere
+              <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+              Filière
             </Header>
             <f.FormMessage match={"valueMissing"}>
               saisir la filiere
@@ -139,7 +139,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       {/* date_realis */}
       <f.FormField name='date_realis' className='w-full'>
         <div className='w-full'>
-          <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Date de réalisation :
           </Header>
           <f.FormMessage match={"valueMissing"}>

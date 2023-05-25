@@ -1,32 +1,40 @@
-import * as f from "@/components/Form"
-import Header from "@/components/ui/Header"
-import Input from "@/components/ui/Input"
-import AutoComplete from "@/components/ui/autoComplete"
-import { getEtudiantsShort, getEtudiantsShortAll } from "@/db/Get/Etudiant"
-import { getNinv, getNinvAll } from "@/db/Get/Livres"
-import { getElivreID } from "@/db/Get/emprunt/etudiant/Elivre"
-import { getDate } from "@/utils/date"
-import Form from "./form"
+import * as f from "@/components/Form";
+import Input from "@/components/ui/Input";
+import AutoComplete from "@/components/ui/autoComplete";
+import { getEtudiantsShort, getEtudiantsShortAll } from "@/db/Get/Etudiant";
+import { getNinv, getNinvAll } from "@/db/Get/Livres";
+import { getElivreID } from "@/db/Get/emprunt/etudiant/Elivre";
+import { getDate } from "@/utils/date";
+import Form from "./form";
+import Header from "@/components/mui/MuiHeader";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 const Page = async ({ params }: { params: { id: string } }) => {
-  const id = parseInt(params.id)
-  const emp = await getElivreID(id)
-  let Apoge: any, Inv: any
+  const id = parseInt(params.id);
+  const emp = await getElivreID(id);
+  let Apoge: any, Inv: any;
   if (emp?.DATE_R)
-    [Apoge, Inv] = await Promise.all([getEtudiantsShortAll(), getNinvAll()])
-  else [Apoge, Inv] = await Promise.all([getEtudiantsShort(), getNinv()])
+    [Apoge, Inv] = await Promise.all([getEtudiantsShortAll(), getNinvAll()]);
+  else [Apoge, Inv] = await Promise.all([getEtudiantsShort(), getNinv()]);
 
-  const result = Apoge.map((obj: any) => obj.N_inscription)
-  const result2 = Inv.map((obj: any) => obj.N_INVENTAIRE)
+  const result = Apoge.map((obj: any) => obj.N_inscription);
+  const result2 = Inv.map((obj: any) => obj.N_INVENTAIRE);
   return (
     <Form id={id}>
-      <div className='flex w-full'>
-        <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
+      <div className="flex w-full">
+        <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
           {/* nmr_Inv */}
-          <f.FormField name='nmr_Inv' className='w-full'>
-            <div className='w-full'>
-              <Header size={"md"} className='p'>
+          <f.FormField name="nmr_Inv" className="w-full">
+            <div className="w-full">
+              <Header
+                variant="h6"
+                sx={{
+                  fontSize: "1.4993rem",
+                  color: "#3a3541de",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 N d{"'"}inventaire :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -39,15 +47,23 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <f.FormControl asChild>
               <AutoComplete
                 options={result2}
-                name='nmr_Inv'
+                name="nmr_Inv"
                 defaultValue={emp?.N_INVENTAIRE}
               />
             </f.FormControl>
           </f.FormField>
           {/* num_apogee */}
-          <f.FormField name='num_apoge' className='w-full'>
-            <div className='w-full'>
-              <Header size={"md"} className='p'>
+          <f.FormField name="num_apoge" className="w-full">
+            <div className="w-full">
+              <Header
+                variant="h6"
+                sx={{
+                  fontSize: "1.4993rem",
+                  color: "#3a3541de",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 N inscription :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -60,17 +76,25 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <f.FormControl asChild>
               <AutoComplete
                 options={result}
-                name='num_apoge'
+                name="num_apoge"
                 defaultValue={emp?.N_inscription}
               />
             </f.FormControl>
           </f.FormField>
           {/* date_D */}
         </div>
-        <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
-          <f.FormField name='date_D' className='w-full'>
-            <div className='w-full'>
-              <Header size={"md"} className='p'>
+        <div className="w-full md:w-1/2 border-r-2 border-gray-700 px-4">
+          <f.FormField name="date_D" className="w-full">
+            <div className="w-full">
+              <Header
+                variant="h6"
+                sx={{
+                  fontSize: "1.4993rem",
+                  color: "#3a3541de",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 Date début :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -82,9 +106,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
             </div>
             <f.FormControl asChild>
               <Input
-                className='h-10'
-                name='date_D'
-                type='date'
+                className="h-10"
+                name="date_D"
+                type="date"
                 maxLength={255}
                 required
                 defaultValue={getDate(emp?.DATE_D) || ""}
@@ -92,9 +116,17 @@ const Page = async ({ params }: { params: { id: string } }) => {
             </f.FormControl>
           </f.FormField>
           {/* date_f */}
-          <f.FormField name='date_f' className='w-full'>
-            <div className='w-full'>
-              <Header size={"md"} className='p'>
+          <f.FormField name="date_f" className="w-full">
+            <div className="w-full">
+              <Header
+                variant="h6"
+                sx={{
+                  fontSize: "1.4993rem",
+                  color: "#3a3541de",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 Date fin :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -106,9 +138,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
             </div>
             <f.FormControl asChild>
               <Input
-                className='h-10'
-                name='date_f'
-                type='date'
+                className="h-10"
+                name="date_f"
+                type="date"
                 maxLength={255}
                 required
                 defaultValue={getDate(emp?.DATE_F) || ""}
@@ -118,9 +150,17 @@ const Page = async ({ params }: { params: { id: string } }) => {
           {/* date_f */}
 
           {emp!.DATE_R !== null ? (
-            <f.FormField name='date_r' className='w-full'>
-              <div className='w-full'>
-                <Header size={"md"} className='p'>
+            <f.FormField name="date_r" className="w-full">
+              <div className="w-full">
+                <Header
+                  variant="h6"
+                  sx={{
+                    fontSize: "1.4993rem",
+                    color: "#3a3541de",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
                   Date de retour :
                 </Header>
                 <f.FormMessage match={"valueMissing"}>
@@ -132,9 +172,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className='h-10'
-                  name='date_r'
-                  type='date'
+                  className="h-10"
+                  name="date_r"
+                  type="date"
                   maxLength={255}
                   required
                   defaultValue={getDate(emp?.DATE_R) || ""}
@@ -145,7 +185,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
         </div>
       </div>
     </Form>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

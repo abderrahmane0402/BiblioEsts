@@ -1,11 +1,11 @@
 import * as f from "@/components/Form"
-import Header from "@/components/ui/Header"
 import Input from "@/components/ui/Input"
 import InputSelect from "@/components/ui/Select"
 import { getFournisseurShort } from "@/db/Get/Fournisseur"
 import { getLastInventaire, getNinv } from "@/db/Get/Livres"
 import Link from "next/link"
 import Form from "./form"
+import Header from "@/components/mui/MuiHeader"
 
 async function Page() {
   const [fournisseur, livre] = await Promise.all([
@@ -26,8 +26,8 @@ async function Page() {
             {/* N d'approvisionnement */}
             <f.FormField name='appro' className='w-full'>
               <div className='w-full'>
-                <Header size={"md"} className='p'>
-                  Numero :
+                <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+                  Numero d{"'"}approvisionnement :
                 </Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir le numero
@@ -49,7 +49,9 @@ async function Page() {
             {/* Nom d'Entreprise */}
             <f.FormField name='entreprise' className='w-full'>
               <div className='w-full'>
-                <Header size={"md"}>Nom d{"'"}entreprise :</Header>
+              <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
+                  Nom d{"'"}entreprise :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir un nom
                 </f.FormMessage>
@@ -71,7 +73,9 @@ async function Page() {
 
             <f.FormField name='addresse' className='w-full'>
               <div className='w-full'>
-                <Header size={"md"}>Addresse :</Header>
+              <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
+                  Addresse :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir l{"'"}addresse
                 </f.FormMessage>
@@ -87,7 +91,9 @@ async function Page() {
             {/* Telephone ou fix */}
             <f.FormField name='tele' className='w-full'>
               <div className='w-full'>
-                <Header size={"md"}>Telephone ou fix :</Header>
+              <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
+                  Telephone ou fix :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir le numero
                 </f.FormMessage>
@@ -105,7 +111,9 @@ async function Page() {
             <f.FormField name='date' className='w-full'>
               <div className='w-full'>
                 <div className='w-full'>
-                  <Header size={"md"}>Date :</Header>
+                <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
+                    Date :</Header>
                   <f.FormMessage match={"valueMissing"}>
                     saisir la date
                   </f.FormMessage>
@@ -121,7 +129,8 @@ async function Page() {
             {/* Devis */}
             <f.FormField name='devis' className='w-full'>
               <div className='w-full'>
-                <Header size={"md"}>Devis :</Header>
+              <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+                  Devis :</Header>
                 <f.FormMessage match={"valueMissing"}>
                   saisir un numero
                 </f.FormMessage>
@@ -136,7 +145,10 @@ async function Page() {
 
             {/* fournisseur */}
             <div className='flex flex-col w-full'>
-              <Header size={"md"}>fournisseur :</Header>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
+                Fournisseur :
+                </Header>
               <div className='flex gap-2 items-center justify-center'>
                 <f.FormField name='fournisseur' className='w-full'>
                   <div className='w-full'>
@@ -161,7 +173,7 @@ async function Page() {
                   href={"/addDocs/fournisseur"}
                   className='h-10 flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-950 hover:bg-sky-600 active:bg-sky-200'
                 >
-                  nouveau
+                  Nouveau
                 </Link>
               </div>
             </div>

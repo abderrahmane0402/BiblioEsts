@@ -1,4 +1,3 @@
-import CercleChart from "@/components/cercleChart";
 import Header from "@/components/mui/MuiHeader";
 import {
   countElivre,
@@ -11,17 +10,11 @@ import {
   notificationPP,
 } from "@/db/Get/statistique";
 import { Card } from "@/ui/Card";
-
 import Paragraph from "@/ui/Paragraph";
-import { getDate } from "@/utils/date";
 import { AiOutlineProject } from "react-icons/ai";
 import { BiBook } from "react-icons/bi";
 import { FaBookOpen } from "react-icons/fa";
 import { GrStakeholder } from "react-icons/gr";
-import {
-  MdOutlineNotificationsActive,
-  MdOutlineNotificationsNone,
-} from "react-icons/md";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -76,7 +69,7 @@ const Page = async ({}) => {
              
            
             <div className="h-full flex justify-center items-center text-4xl">
-              <BiBook />
+              <BiBook className="text-[#3c2762]"/>
             </div>
           </div>
           <Paragraph size={"sm"} className="h-1/2 flex items-center">
@@ -89,7 +82,7 @@ const Page = async ({}) => {
              
 
             <div className="h-full flex justify-center items-center text-4xl">
-              <AiOutlineProject />
+              <AiOutlineProject className="text-[#3c2762]" />
             </div>
           </div>
           <Paragraph size={"sm"} className="h-1/2 flex items-center">
@@ -101,7 +94,7 @@ const Page = async ({}) => {
           <Header variant="h6" sx={{ fontSize: "1.25rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>  Livre empunter</Header>
 
             <div className="h-full flex justify-center items-center text-4xl">
-              <FaBookOpen />
+              <FaBookOpen className="text-[#3c2762]" />
             </div>
           </div>
           <Paragraph size={"sm"} className="h-1/2 flex items-center">
@@ -113,7 +106,7 @@ const Page = async ({}) => {
           <Header variant="h6" sx={{ fontSize: "1.25rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>  PFE emprunter</Header>
 
             <div className="h-full flex justify-center items-center text-4xl">
-              <GrStakeholder />
+              <GrStakeholder className="text-white" />
             </div>
           </div>
           <Paragraph size={"sm"} className="h-1/2 flex items-center">

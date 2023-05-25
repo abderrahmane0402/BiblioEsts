@@ -1,12 +1,11 @@
 import * as f from "@/components/Form";
 import AutoComplete from "@/components/ui/autoComplete";
-import Header from "@/ui/Header";
+
 import Input from "@/ui/Input";
 import Form from "./form";
+import Header from "@/components/mui/MuiHeader";
 
-const Filière = ["GI", "TM", "GIM", "TIMQ"]
-
-
+const Filière = ["GI", "TM", "GIM", "TIMQ"];
 
 const page = () => {
   return (
@@ -14,7 +13,15 @@ const page = () => {
       {/* sujet */}
       <f.FormField name="cote" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Code :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le cote</f.FormMessage>
@@ -29,7 +36,15 @@ const page = () => {
 
       <f.FormField name="sujet" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Sujet :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le sujet</f.FormMessage>
@@ -45,7 +60,15 @@ const page = () => {
 
       <f.FormField name="realisateur" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Réalisateur :
           </Header>
           <f.FormMessage match={"valueMissing"}>
@@ -62,7 +85,15 @@ const page = () => {
       {/* encadrant */}
       <f.FormField name="encadrant" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Encadrant :
           </Header>
           <f.FormMessage match={"valueMissing"}>
@@ -79,18 +110,40 @@ const page = () => {
       {/* filiere */}
       <f.FormField name="filiere" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">Filiere</Header>
-          <f.FormMessage match={"valueMissing"}>saisir la filiere</f.FormMessage>
-          <f.FormMessage match={"typeMismatch"}>saisir une filiere</f.FormMessage>
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            Filiere
+          </Header>
+          <f.FormMessage match={"valueMissing"}>
+            saisir la filiere
+          </f.FormMessage>
+          <f.FormMessage match={"typeMismatch"}>
+            saisir une filiere
+          </f.FormMessage>
         </div>
         <f.FormControl asChild>
-        <AutoComplete options={Filière} name="filiere"  />
+          <AutoComplete options={Filière} name="filiere" />
         </f.FormControl>
       </f.FormField>
       {/* date_realis */}
       <f.FormField name="date_realis" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Date de réalisation :
           </Header>
           <f.FormMessage match={"valueMissing"}>

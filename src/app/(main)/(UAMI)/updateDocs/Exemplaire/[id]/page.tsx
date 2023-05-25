@@ -1,22 +1,30 @@
-import * as f from "@/components/Form"
-import { getExemplaire } from "@/db/Get/Livres"
-import Header from "@/ui/Header"
-import Input from "@/ui/Input"
-import Form from "./Form"
+import * as f from "@/components/Form";
+import { getExemplaire } from "@/db/Get/Livres";
+import Input from "@/ui/Input";
+import Form from "./Form";
+import Header from "@/components/mui/MuiHeader";
 
-export const dynamic = "force-dynamic"
+export const dynamic = "force-dynamic";
 
 const Page = async ({ params }: { params: { id: string } }) => {
   // const data = await getCategories_Select();
-  const id = parseInt(params.id)
-  const Expl = await getExemplaire(id)
+  const id = parseInt(params.id);
+  const Expl = await getExemplaire(id);
 
   return (
     <Form id={id}>
       {/* nbr_INV */}
-      <f.FormField name='nbr_invEX' className='w-full'>
-        <div className='w-full'>
-          <Header size={"md"} className='p'>
+      <f.FormField name="nbr_invEX" className="w-full">
+        <div className="w-full">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Nombre d{"'"}inventaire :
           </Header>
           <f.FormMessage match={"valueMissing"}>
@@ -28,9 +36,9 @@ const Page = async ({ params }: { params: { id: string } }) => {
         </div>
         <f.FormControl asChild>
           <Input
-            className='h-10'
-            name='nbr_invEX'
-            type='number'
+            className="h-10"
+            name="nbr_invEX"
+            type="number"
             maxLength={255}
             defaultValue={Expl!.N_INVENTAIRE as number}
             required
@@ -38,12 +46,22 @@ const Page = async ({ params }: { params: { id: string } }) => {
         </f.FormControl>
       </f.FormField>
 
-      <input type='hidden' name='iD_LIVRE' value={Expl?.ID_LIVRE} />
+      <input type="hidden" name="iD_LIVRE" value={Expl?.ID_LIVRE} />
 
       {/* Observation_EXemplaire */}
-      <f.FormField name='observationEX' className='w-full'>
-        <div className='w-full'>
-          <Header size={"md"}>Observation :</Header>
+      <f.FormField name="observationEX" className="w-full">
+        <div className="w-full">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            Observation :
+          </Header>
           <f.FormMessage match={"valueMissing"}>
             saisir l{"'"}observation
           </f.FormMessage>
@@ -55,14 +73,14 @@ const Page = async ({ params }: { params: { id: string } }) => {
           <textarea
             cols={50}
             rows={5}
-            name='observationEX'
-            className='w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]'
+            name="observationEX"
+            className="w-full resize-none bg-slate-200 border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg max-h-[120px]"
             defaultValue={Expl?.OBSERVATIONE as string}
           />
         </f.FormControl>
       </f.FormField>
     </Form>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

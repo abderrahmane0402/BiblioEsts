@@ -1,7 +1,8 @@
 import * as f from "@/components/Form";
-import Header from "@/ui/Header";
+
 import Input from "@/ui/Input";
 import Form from "./form";
+import Header from "@/components/mui/MuiHeader";
 
 const page = () => {
   return (
@@ -9,7 +10,15 @@ const page = () => {
       {/* Nom */}
       <f.FormField name="nom_user" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Nom :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le nom</f.FormMessage>
@@ -24,7 +33,15 @@ const page = () => {
       {/* prenom */}
       <f.FormField name="prenom_user" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Prenom :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le prenom</f.FormMessage>
@@ -39,7 +56,15 @@ const page = () => {
       {/* telephone */}
       <f.FormField name="telep_user" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Telephone :
           </Header>
           <f.FormMessage match={"valueMissing"}>
@@ -56,7 +81,15 @@ const page = () => {
       {/* email  */}
       <f.FormField name="email_user" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Login :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le Login</f.FormMessage>
@@ -71,7 +104,15 @@ const page = () => {
       {/* password */}
       <f.FormField name="password_user" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             Mot de passe :
           </Header>
           <f.FormMessage match={"valueMissing"}>
@@ -92,7 +133,15 @@ const page = () => {
       </f.FormField>
       <f.FormField name="confirmation" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+          <Header
+            variant="h6"
+            sx={{
+              fontSize: "1.4993rem",
+              color: "#3a3541de",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
             confirmation du mot de passe :
           </Header>
           <f.FormMessage match={"valueMissing"}>

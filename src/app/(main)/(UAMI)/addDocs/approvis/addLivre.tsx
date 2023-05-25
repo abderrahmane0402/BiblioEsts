@@ -129,9 +129,9 @@ export default function AddLivre({
           e.preventDefault();
           setOpen(true);
         }}
-        className="className='h-10 flex text-lg items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-950 hover:bg-sky-600 active:bg-sky-200'"
+        className="className='h-10 flex text-xl items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-950 hover:bg-sky-600 active:bg-sky-200'"
       >
-        Ajouter livre
+        Ajouter Livre
       </button>
       <Modal
         open={open}

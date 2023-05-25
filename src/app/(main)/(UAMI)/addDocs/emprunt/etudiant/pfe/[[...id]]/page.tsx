@@ -1,11 +1,12 @@
 import * as f from "@/components/Form"
-import Header from "@/components/ui/Header"
+
 import Input from "@/components/ui/Input"
 import AutoComplete from "@/components/ui/autoComplete"
 import { getEtudiantsShort } from "@/db/Get/Etudiant"
 import { getCote } from "@/db/Get/Pfe"
 import Form from "./form"
 import { getDate } from "@/utils/date"
+import Header from "@/components/mui/MuiHeader"
 
 export const dynamic = "force-dynamic"
 const Page = async ({ params }: { params: { id: string[] } }) => {
@@ -19,7 +20,8 @@ const Page = async ({ params }: { params: { id: string[] } }) => {
           {/* nmr_Inv */}
           <f.FormField name='pfe' className='w-full'>
             <div className='w-full'>
-              <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
                 Cote :
               </Header>
               <f.FormMessage match={"valueMissing"}>saisir Cote</f.FormMessage>
@@ -38,7 +40,8 @@ const Page = async ({ params }: { params: { id: string[] } }) => {
           {/* nIns */}
           <f.FormField name='num_apogee' className='w-full'>
             <div className='w-full'>
-              <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
                 Numéro d{"'"}inscription :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -57,7 +60,8 @@ const Page = async ({ params }: { params: { id: string[] } }) => {
         <div className='w-full md:w-1/2 px-4'>
           <f.FormField name='date_D' className='w-full'>
             <div className='w-full'>
-              <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
                 Date début :
               </Header>
               <f.FormMessage match={"valueMissing"}>

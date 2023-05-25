@@ -1,11 +1,12 @@
 import * as f from "@/components/Form"
-import Header from "@/components/ui/Header"
+
 import Input from "@/components/ui/Input"
 import AutoComplete from "@/components/ui/autoComplete"
 import { getEtudiantsShort } from "@/db/Get/Etudiant"
 import { getNinv } from "@/db/Get/Livres"
 import Form from "./form"
 import { getDate } from "@/utils/date"
+import Header from "@/components/mui/MuiHeader"
 
 export const dynamic = "force-dynamic"
 const Page = async ({ params }: { params: { id: string } }) => {
@@ -19,7 +20,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
           {/* nmr_Inv */}
           <f.FormField name='nmr_Inv' className='w-full'>
             <div className='w-full'>
-              <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
                 N d{"'"}inventaire :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -36,7 +38,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
           {/* num_apogee */}
           <f.FormField name='num_apogee' className='w-full'>
             <div className='w-full'>
-              <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
                 Numéro d{"'"}inscription :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -55,7 +58,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
         <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
           <f.FormField name='date_D' className='w-full'>
             <div className='w-full'>
-              <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
                 Date début :
               </Header>
               <f.FormMessage match={"valueMissing"}>
