@@ -2,7 +2,7 @@ import { VariantProps, cva } from "class-variance-authority"
 import { FC } from "react"
 
 const CardVariants = cva(
-  "h-full bg-white shadow-lg",
+  "h-full bg-white shadow-muiCard rounded-lg",
   {
     variants: {
       type: {

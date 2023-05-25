@@ -50,7 +50,7 @@ const Form = ({ children, id }: { children: React.ReactNode; id: number }) => {
             isLoading={isLoading}
             className='bg-[#CA3CFF] text-white w-3/12'
           >
-            Modifier uun exemplaire
+            Modifier un exemplaire
           </Button>
         </f.FormSubmit>
       </footer>

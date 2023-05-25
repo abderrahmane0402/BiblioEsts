@@ -103,7 +103,7 @@ const Exemplaire: FC<ExemplaireProps> = ({ id }) => {
           <div>
             <Toast.Title>succès</Toast.Title>
             <Toast.Description>
-              Categorie Supprimer avec succés
+             Exemplaire a été ajouté avec succés
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setSuccess(false)}>

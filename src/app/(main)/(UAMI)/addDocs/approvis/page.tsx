@@ -3,7 +3,7 @@ import Header from "@/components/ui/Header"
 import Input from "@/components/ui/Input"
 import InputSelect from "@/components/ui/Select"
 import { getFournisseurShort } from "@/db/Get/Fournisseur"
-import { getNinv } from "@/db/Get/Livres"
+import { getLastInventaire, getNinv } from "@/db/Get/Livres"
 import Link from "next/link"
 import Form from "./form"
 
@@ -20,7 +20,7 @@ async function Page() {
   })
   return (
     <div className='overflow-auto w-full h-full'>
-      <Form>
+      <Form >
         <div className='flex flex-wrap'>
           <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
             {/* N d'approvisionnement */}

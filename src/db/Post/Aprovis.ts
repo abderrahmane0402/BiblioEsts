@@ -17,18 +17,18 @@ export async function setApprovi(
         ...Aprovis,
       },
     })
-    const exemplaire: any[] = []
-    livre.map((l) => {
-      for (let i = 0; i < l.QTE; i++) {
-        exemplaire.push({
-          ID_LIVRE: l.ID_LIVRE,
-          OBSERVATIONE: null,
-        })
-      }
-    })
-    await prisma.exemplaire.createMany({
-      data: exemplaire,
-    })
+    // const exemplaire: any[] = []
+    // livre.map((l) => {
+    //   for (let i = 0; i < l.QTE; i++) {
+    //     exemplaire.push({
+    //       ID_LIVRE: l.ID_LIVRE,
+    //       OBSERVATIONE: null,
+    //     })
+    //   }
+    // })
+    // await prisma.exemplaire.createMany({
+    //   data: exemplaire,
+    // })
     await prisma.$disconnect
   } catch (e) {
     await prisma.$disconnect
