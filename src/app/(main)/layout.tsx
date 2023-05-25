@@ -1,7 +1,6 @@
 import { MainLogo } from "@/components/MainLogo"
 import { ZNav } from "@/components/Nav"
 import PageHeader from "@/components/PageHeader"
-import EstLogo from "@/img/Mylogo.png"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { FC, ReactNode } from "react"
@@ -15,16 +14,16 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     redirect("/")
   return (
     <>
-      <main className='flex flex-row h-full w-full overflow-hidden'>
+      <main className='flex flex-row h-full w-full overflow-hidden gap-6'>
         {/* NAVIGATION BAR */}
         <div className='h-full min-w-[260px] w-nav text-[#FFF] bg-transparent flex flex-col justify-between'>
           <MainLogo />
           <ZNav />
         </div>
         {/* BODY OF THE PAGE */}
-        <div className='h-full w-main flex flex-col px-3'>
+        <div className='h-full w-full flex flex-col pr-6'>
           <PageHeader />
-          <div className='container h-full'>{children}</div>
+          <div className='container h-full py-6'>{children}</div>
         </div>
       </main>
     </>
