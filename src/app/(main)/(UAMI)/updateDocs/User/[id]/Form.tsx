@@ -50,7 +50,7 @@ const Form = ({ id, children }: { id: number ,children : React.ReactNode }) => {
         if (data) {
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);
-          router.refresh()
+          router.back()
         } else {
           setOpen2(true);
           setTimeout(() => setOpen2(false), 1000);

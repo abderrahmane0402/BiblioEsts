@@ -1,31 +1,30 @@
-"use client"
-import DataTable from "@/components/DataTable"
-import { Card } from "@/components/ui/Card"
-import MyImage from "@/components/ui/MyImage"
-import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu"
-import { getDate } from "@/utils/date"
-import { Button, Modal } from "@mui/material"
-import { GridColDef } from "@mui/x-data-grid"
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
-
+"use client";
+import DataTable from "@/components/DataTable";
+import { Card } from "@/components/ui/Card";
+import MyImage from "@/components/ui/MyImage";
+import { CustomColumnMenu } from "@/components/ui/x-data-grid-customization/CustomColumnMenu";
+import { Modal } from "@mui/material";
+import Button from "@mui/material/Button";
+import { GridColDef } from "@mui/x-data-grid";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 export default function AddLivre({
   livre,
 }: {
   livre?: {
-    value?: Map<number, number>
-    set: Dispatch<SetStateAction<Map<number, number>>>
-  }
+    value?: Map<number, number>;
+    set: Dispatch<SetStateAction<Map<number, number>>>;
+  };
 }) {
-  const [open, setOpen] = useState(false)
-  const [livres, setLivres] = useState([])
+  const [open, setOpen] = useState(false);
+  const [livres, setLivres] = useState([]);
   useEffect(() => {
     fetch("/api/livre", { method: "POST", cache: "no-store" })
       .then((res) => res.json())
-      .then((data) => setLivres(data))
+      .then((data) => setLivres(data));
     return () => {
-      setLivres([])
-    }
-  }, [])
+      setLivres([]);
+    };
+  }, []);
 
   const Columns: GridColDef[] = [
     {
@@ -35,21 +34,21 @@ export default function AddLivre({
       renderCell(params) {
         return (
           <input
-            type='checkbox'
+            type="checkbox"
             onChange={(e) => {
               if (e.currentTarget.checked) {
-                const clone = new Map(livre?.value)
-                clone.set(params.row.ID_LIVRE, 1)
-                livre?.set(clone)
+                const clone = new Map(livre?.value);
+                clone.set(params.row.ID_LIVRE, 1);
+                livre?.set(clone);
               } else {
-                const clone = new Map(livre?.value)
-                clone.delete(params.row.ID_LIVRE)
-                livre?.set(clone)
+                const clone = new Map(livre?.value);
+                clone.delete(params.row.ID_LIVRE);
+                livre?.set(clone);
               }
             }}
             checked={livre?.value?.has(params.row.ID_LIVRE)}
           />
-        )
+        );
       },
     },
     {
@@ -60,10 +59,10 @@ export default function AddLivre({
       hideable: false,
       renderCell(params) {
         return (
-          <div className='relative w-full h-4/5'>
-            <MyImage src={params.row.PAGE_DE_GARDE || ""} alt='page de garde' />
+          <div className="relative w-full h-4/5">
+            <MyImage src={params.row.PAGE_DE_GARDE || ""} alt="page de garde" />
           </div>
-        )
+        );
       },
     },
     {
@@ -75,7 +74,7 @@ export default function AddLivre({
     },
     {
       field: "AUTEUR",
-      headerName: "Autheur",
+      headerName: "Auteur",
       flex: 1.5,
       type: "string",
       hideable: false,
@@ -104,31 +103,31 @@ export default function AddLivre({
     {
       field: "QTE",
       renderCell(params) {
-        const Disabled = !livre?.value?.has(params.row.ID_LIVRE)
+        const Disabled = !livre?.value?.has(params.row.ID_LIVRE);
         return (
           <input
-            type='number'
-            className='w-4/5 h-4/5 text-center'
+            type="number"
+            className="w-4/5 h-4/5 text-center"
             disabled={Disabled}
             onChange={(e) => {
-              const clone = new Map(livre?.value)
-              clone.set(params.row.ID_LIVRE, parseInt(e.target.value))
-              livre?.set(clone)
+              const clone = new Map(livre?.value);
+              clone.set(params.row.ID_LIVRE, parseInt(e.target.value));
+              livre?.set(clone);
             }}
             value={livre?.value?.get(params.row.ID_LIVRE) || 0}
           />
-        )
+        );
       },
     },
-  ]
+  ];
 
   return (
     <>
-      <input type='hidden' name='livre' />
+      <input type="hidden" name="livre" />
       <button
         onClick={(e) => {
-          e.preventDefault()
-          setOpen(true)
+          e.preventDefault();
+          setOpen(true);
         }}
         className="className='h-10 flex text-lg items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-950 hover:bg-sky-600 active:bg-sky-200'"
       >
@@ -137,11 +136,11 @@ export default function AddLivre({
       <Modal
         open={open}
         onClose={() => setOpen(false)}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
-        className='flex justify-center items-center'
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="flex justify-center items-center"
       >
-        <div className='h-4/5 w-4/5'>
+        <div className="h-4/5 w-4/5">
           <Card type={"full"}>
             <DataTable
               columns={Columns}
@@ -150,11 +149,20 @@ export default function AddLivre({
               }}
               autoPageSize
               rows={livres}
-              ID='ID_LIVRE'
+              ID="ID_LIVRE"
             />
+            <Button
+              size={"large"}
+              variant="contained"
+              sx={{
+                fontWeight: 900,
+              }}
+            >
+              Ajouter
+            </Button>
           </Card>
         </div>
       </Modal>
     </>
-  )
+  );
 }

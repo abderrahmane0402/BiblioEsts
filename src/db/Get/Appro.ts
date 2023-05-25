@@ -14,6 +14,32 @@ export async function getApprosShort() {
     throw Error("somthing went wrong" + e)
   }
 }
+export async function getApproEx(id: number) {
+  try {
+    const appros = await prisma.contient.findMany({
+      include: {
+       livre :{
+        select :{
+          exemplaire : true,
+          TITRE : true ,
+          AUTHEUR : true ,
+          categorie : true,
+          PRIX :true ,
+          DATE_EDITION : true ,
+        }
+       }
+      },
+      where: {
+        ID_APRO: id,
+      },
+    })
+    await prisma.$disconnect
+    return appros
+  } catch (e) {
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
+  }
+}
 
 export async function getAppro(id: number) {
   try {
@@ -23,11 +49,6 @@ export async function getAppro(id: number) {
           include: {
             livre: {
               include: {
-                exemplaire:{
-                  select:{
-                    N_INVENTAIRE : true ,
-                  }  
-                },
                 categorie: {
                   select: {
                     LIBELLE: true,

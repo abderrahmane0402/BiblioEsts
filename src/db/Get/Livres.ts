@@ -173,3 +173,20 @@ export async function getSomaire(id: number) {
     throw Error("somthing went wrong" + e)
   }
 }
+
+export async function getLastInventaire() {
+  try {
+    const count = await prisma.exemplaire.findFirst({
+     select: {
+      N_INVENTAIRE : true ,
+      },
+      orderBy : {N_INVENTAIRE : "desc"}
+
+    })
+    await prisma.$disconnect
+    return count
+  } catch (e) {
+    await prisma.$disconnect
+    throw Error("somthing went wrong" + e)
+  }
+}

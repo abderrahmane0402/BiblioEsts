@@ -5,7 +5,7 @@ export async function removePFE(id: string) {
   try {
     await prisma.pfe.delete({
       where: {
-        Cote: id,
+        Cote : id,
       },
     });
     revalidatePath("/pfe");

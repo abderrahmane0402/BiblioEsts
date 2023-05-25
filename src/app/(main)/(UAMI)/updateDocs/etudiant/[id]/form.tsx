@@ -3,6 +3,7 @@ import * as f from "@/components/Form"
 import updateEtudiant from "@/components/server/etudiant/updateEtudiant"
 import Button from "@/components/ui/Button"
 import * as Toast from "@/components/ui/toast"
+import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
 const Form = ({ children , id }: { children: React.ReactNode , id : number }) => {
@@ -10,6 +11,8 @@ const Form = ({ children , id }: { children: React.ReactNode , id : number }) =>
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const router=useRouter()
+
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -30,6 +33,7 @@ const Form = ({ children , id }: { children: React.ReactNode , id : number }) =>
         const data = await updateEtudiant(FormData,id)
         if (data) {
           setOpen1(true)
+          router.push("/etudiant")
           setTimeout(() => setOpen1(false), 1000)
           form.current?.reset()
         } else {

@@ -7,7 +7,7 @@ export async function DELETE(
 ) {
   try {
     await removePFE(params.id as string)
-    revalidatePath("/pfe")
+    
     return new Response("ok")
   } catch (e) {
     console.log(e)

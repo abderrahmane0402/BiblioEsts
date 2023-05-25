@@ -9,6 +9,8 @@ import { Prisma, livre } from "@prisma/client"
 import { useEffect, useRef, useState } from "react"
 import Img from "../../../addDocs/livre/Img"
 import Pdf from "../../../addDocs/livre/pdf"
+import { useRouter } from "next/navigation"
+
 
 const Form = ({ id, children }: { id: number; children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null)
@@ -24,8 +26,11 @@ const Form = ({ id, children }: { id: number; children: React.ReactNode }) => {
     ) {
       setIsLoading(false)
     }
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open1, open2])
+  const router=useRouter()
+
   return (
     <f.FormRoot
       onSubmit={() => {
@@ -58,6 +63,8 @@ const Form = ({ id, children }: { id: number; children: React.ReactNode }) => {
               setOpen1(true)
               setTimeout(() => setOpen1(false), 1000)
               form.current?.reset()
+              router.back()
+              
             } else {
               setOpen2(true)
               setTimeout(() => setOpen2(false), 1000)

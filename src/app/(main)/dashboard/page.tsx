@@ -1,4 +1,5 @@
 import CercleChart from "@/components/cercleChart";
+import Header from "@/components/mui/MuiHeader";
 import {
   countElivre,
   countEpfe,
@@ -10,7 +11,7 @@ import {
   notificationPP,
 } from "@/db/Get/statistique";
 import { Card } from "@/ui/Card";
-import Header from "@/ui/Header";
+
 import Paragraph from "@/ui/Paragraph";
 import { getDate } from "@/utils/date";
 import { AiOutlineProject } from "react-icons/ai";
@@ -125,7 +126,7 @@ const Page = async ({}) => {
       <div className="h-2/5 w-full flex gap-6">
         <Card type={"mid"} className="p-2">
           <div className="h-1/5 w-full flex justify-between items-center">
-            <Header size={"md"}>notification</Header>
+            <Header  variant="h6">notification</Header>
             {nLE || nLP || nPP || nPE ? (
               <MdOutlineNotificationsActive className="text-2xl" />
             ) : (
@@ -167,7 +168,7 @@ const Page = async ({}) => {
         </Card>
         <Card type={"mid"} className="p-2">
           <div className="h-1/5 flex justify-between items-center">
-            <Header size={"md"}>statistique</Header>
+            <Header variant={"h6"}>statistique</Header>
           </div>
           <div className="h-4/5 flex gap-2 justify-center items-center">
             <CercleChart data={data} />

@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       boxShadow: {
         "3d": "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+        "muiCard" : "0px 2px 10px 0px rgba(58, 53, 65, 0.1)"
       },
       backgroundColor: {
         rblack: "#04080F",

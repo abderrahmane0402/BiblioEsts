@@ -62,7 +62,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       </div>
       <footer className='flex justify-center items-center py-12'>
         <f.FormSubmit asChild>
-          <Button
+        <Button
             size={"md"}
             isLoading={isLoading}
             className='bg-[#CA3CFF] text-white w-3/12'
