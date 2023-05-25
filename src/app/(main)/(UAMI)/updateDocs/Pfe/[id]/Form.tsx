@@ -14,6 +14,7 @@ const Form =  ({ id, children }: { id: string ,children : React.ReactNode }) => 
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -35,7 +36,8 @@ const Form =  ({ id, children }: { id: string ,children : React.ReactNode }) => 
         if (data) {
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);
-              router.refresh
+              router.back()
+
         } else {
           setOpen2(true);
           setTimeout(() => setOpen2(false), 1000);

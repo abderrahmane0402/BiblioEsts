@@ -17,23 +17,20 @@ type Livre = {
   CODE: number | null;
   PRIX?: string | null;
   QTE: number | null;
+
 };
 
 const page = async ({ params }: { params: { id: string } }) => {
   const id = parseInt(params.id);
   const apro = await getAppro(id);
   const Livre = apro?.contient.map((l) => {
-    const exemplaire = l.livre.exemplaire.map((e) => {
-      return {
-        N_INVENTAIRE: e.N_INVENTAIRE,
-      };
-    });
+   
     return {
       ID_LIVRE: l.livre.ID_LIVRE,
       TITRE: l.livre.TITRE,
       AUTHEUR: l.livre.AUTHEUR,
       EDITEUR: l.livre.EDITEUR,
-      categorie: l.livre.categorie.LIBELLE,
+      categorie: l.livre.categorie,
       CODE: l.livre.CODE,
       DATE_EDITION: l.livre.DATE_EDITION,
       PRIX: l.livre.PRIX?.toString(),

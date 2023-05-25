@@ -32,14 +32,12 @@ async function Page({ params }: { params: { id: string } }) {
       TITRE: l.livre.TITRE,
       AUTHEUR: l.livre.AUTHEUR,
       EDITEUR: l.livre.EDITEUR,
-      categorie: l.livre.categorie.LIBELLE,
+      categorie: l.livre.categorie,
       CODE: l.livre.CODE,
       DATE_EDITION: l.livre.DATE_EDITION,
       PRIX: l.livre.PRIX?.toString(),
       QTE : l.QTE
-      // Exemplaire : exemplaire
-
-    
+      // Exemplaire : exemplaire    
     };
   });
   

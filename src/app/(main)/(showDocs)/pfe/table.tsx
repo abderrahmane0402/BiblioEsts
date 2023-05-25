@@ -32,7 +32,7 @@ export function Table({ data }: { data: any }) {
       type: "string",
       hideable: false,
     },
-    
+
     {
       field: "REALISATEUR",
       flex: 2,
@@ -91,7 +91,6 @@ export function Table({ data }: { data: any }) {
       ],
     },
   ]
-
   useEffect(() => {
     router.refresh()
     // eslint-disable-next-line react-hooks/exhaustive-deps
