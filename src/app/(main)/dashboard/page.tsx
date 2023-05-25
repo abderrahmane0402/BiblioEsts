@@ -72,22 +72,22 @@ const Page = async ({}) => {
       <div className="h-1/5 w-full flex gap-6">
         <Card type={"mini"} className="p-2">
           <div className="flex justify-between item-center h-1/2">
-            <Paragraph size={"lg"} className="font-semibold flex items-center">
-              nombre des livres
-            </Paragraph>
+          <Header variant="h6" sx={{ fontSize: "1.25rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}> Nombre des livres</Header>
+             
+           
             <div className="h-full flex justify-center items-center text-4xl">
               <BiBook />
             </div>
           </div>
           <Paragraph size={"sm"} className="h-1/2 flex items-center">
-            {countL} livre
+            {countL} Livre
           </Paragraph>
         </Card>
         <Card type={"mini"} className="p-2">
           <div className="flex justify-between item-center h-1/2">
-            <Paragraph size={"lg"} className="font-semibold flex items-center">
-              nombre des PFE
-            </Paragraph>
+          <Header variant="h6" sx={{ fontSize: "1.25rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>  Nombre des PFE</Header>
+             
+
             <div className="h-full flex justify-center items-center text-4xl">
               <AiOutlineProject />
             </div>
@@ -98,37 +98,35 @@ const Page = async ({}) => {
         </Card>
         <Card type={"mini"} className="p-2">
           <div className="flex justify-between item-center h-1/2">
-            <Paragraph size={"lg"} className="font-semibold flex items-center">
-              livre empunter
-            </Paragraph>
+          <Header variant="h6" sx={{ fontSize: "1.25rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>  Livre empunter</Header>
+
             <div className="h-full flex justify-center items-center text-4xl">
               <FaBookOpen />
             </div>
           </div>
           <Paragraph size={"sm"} className="h-1/2 flex items-center">
-            {countEL} livre a ete emprunter
+            {countEL} Livre a été emprunté
           </Paragraph>
         </Card>
         <Card type={"mini"} className="p-2">
           <div className="flex justify-between item-center h-1/2">
-            <Paragraph size={"lg"} className="font-semibold flex items-center">
-              PFE emprunter
-            </Paragraph>
+          <Header variant="h6" sx={{ fontSize: "1.25rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>  PFE emprunter</Header>
+
             <div className="h-full flex justify-center items-center text-4xl">
               <GrStakeholder />
             </div>
           </div>
           <Paragraph size={"sm"} className="h-1/2 flex items-center">
-            {countEP} PFE a ete emprunter
+            {countEP} PFE a été emprunté
           </Paragraph>
         </Card>
       </div>
-      <div className="h-2/5 w-full flex gap-6">
+      {/* <div className="h-2/5 w-full flex gap-6">
         <Card type={"mid"} className="p-2">
           <div className="h-1/5 w-full flex justify-between items-center">
-            <Header variant="h6">notification</Header>
+            <Header variant="h6" sx={{ fontSize: "1.25rem" }}>Notification</Header>
             {nLE || nLP || nPP || nPE ? (
-              <MdOutlineNotificationsActive className="text-2xl" />
+              <MdOutlineNotificationsActive className="text-3xl text-yellow-300" />
             ) : (
               <MdOutlineNotificationsNone className="text-2xl" />
             )}
@@ -169,14 +167,14 @@ const Page = async ({}) => {
         <Card type={"mid"} className="p-2">
           <div className="h-1/5 flex justify-between items-center">
             <Header variant={"h5"} sx={{ fontSize: "1.25rem" }}>
-              statistique
+              Statistique
             </Header>
           </div>
           <div className="h-4/5 flex gap-2 justify-center items-center">
             <CercleChart data={data} />
           </div>
         </Card>
-      </div>
+      </div> */}
       {/* <div className='h-2/5 w-full'>
         <Card type={"full"} className='flex flex-col p-2'>
           <div className='h-1/5 w-full flex justify-between items-center'>
