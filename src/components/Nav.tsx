@@ -17,7 +17,7 @@ import { cookies } from "next/headers"
 export const ZNav = () => {
   const root = cookies().get("login")?.value === "root"
   return (
-    <nav className='h-4/5 overflow-auto scrollbar-none'>
+    <nav className='h-full overflow-auto scrollbar-none'>
       <ul>
         <Nav href='/dashboard' title='Accueil' icon={<MdSpaceDashboard />} />
         <NestedNav

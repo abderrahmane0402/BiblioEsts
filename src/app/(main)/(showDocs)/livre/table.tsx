@@ -95,15 +95,6 @@ export function Table({ data }: { data: any }) {
         ></GridActionsCellItem>,
         <GridActionsCellItem
           key={params.id}
-          icon={<MdAddCircle className='text-xl' />}
-          label='Ajouter exemplaire'
-          onClick={() => {
-            router.push(`/moreInfo/livre/${params.id}`)
-          }}
-          title='Ajouter exemplaire'
-        ></GridActionsCellItem>,
-        <GridActionsCellItem
-          key={params.id}
           icon={<MdDelete className='text-xl' />}
           label='Supprimer'
           showInMenu

@@ -11,7 +11,7 @@ import {
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import { BiEdit } from "react-icons/bi"
-import { MdDelete } from "react-icons/md"
+import { MdAddCircle, MdDelete } from "react-icons/md"
 
 export function Table({ data }: { data: any }) {
   const [isDeleted, setisDeleted] = useState(false)
@@ -55,9 +55,18 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "actions",
-      width: 70,
+      width: 100,
       type: "actions",
       getActions: (params: GridRowParams) => [
+        <GridActionsCellItem
+          key={params.id}
+          icon={<MdAddCircle className='text-xl' />}
+          label='emprunter pfe'
+          onClick={() => {
+            router.push(`/addDocs/emprunt/etudiant/pfe/${params.id}`)
+          }}
+          title='emprunter pfe'
+        />,
         <GridActionsCellItem
           key={params.id}
           icon={<MdDelete className='text-xl' />}

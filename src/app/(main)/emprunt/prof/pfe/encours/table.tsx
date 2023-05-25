@@ -7,6 +7,7 @@ import {
   GridColDef,
   GridRowParams,
 } from "@mui/x-data-grid";
+
 import * as Toast from "@/components/ui/toast";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -14,15 +15,13 @@ import { BiCheckCircle, BiEdit } from "react-icons/bi";
 import { HiInformationCircle } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
+import { getDate } from "@/utils/date";
 
 export function Table({ data }: { data: any }) {
   const router = useRouter();
-  const [isDeleted, setisDeleted] = useState(false)
-  const [notDeleted, setnotDeleted] = useState(false)
   const [open, setOpen] = useState(false);
   const [id, setId] = useState<any>();
   const [open2, setOpen2] = useState(false);
-
   const Columns: GridColDef[] = [
     {
       field: "Cote",
@@ -32,9 +31,12 @@ export function Table({ data }: { data: any }) {
       hideable: false,
     },
     {
-      field: "N_inscription",
-      headerName: "N inscription",
-      flex: 0.7,
+      field: "Code",
+      headerName: "Enseignant",
+      flex: 1,
+      valueGetter(params) {
+        return params.row.prof.NOM + " " + params.row.prof.PRENOM;
+      },
       type: "string",
       hideable: false,
     },
@@ -80,9 +82,9 @@ export function Table({ data }: { data: any }) {
         <GridActionsCellItem
           key={params.id}
           icon={<HiInformationCircle className="text-xl" />}
-          label="plus d'information"
+          label="plus d'infos"
           onClick={() => {
-            router.push(`/moreInfo/emprunt/etudiant/pfe/${params.id}`);
+            router.push(`/moreInfo/enprunt/prof/pfe/${params.id}`);
           }}
           title="plus d'infos"
           showInMenu
@@ -92,22 +94,19 @@ export function Table({ data }: { data: any }) {
           icon={<MdDelete className="text-xl" />}
           label="Supprimer"
           onClick={() => {
-            fetch(`/api/emprunt/etudiant/pfe/${params.id}`, {
+            fetch(`/api/emprunt/prof/pfe/${params.id}`, {
               method: "DELETE",
             })
               .then((res) => res.text())
               .then((data) => {
                 if (data === "ok") {
                   router.refresh()
-                  setisDeleted(data === "ok")
-                  setTimeout(() => setisDeleted(false), 2000)
+                  
                 } else {
-                  setnotDeleted(true)
-                  setTimeout(() => setnotDeleted(false), 2000)
+                  router.refresh()
                 }
               })
           }}
-          
           showInMenu
         />,
         <GridActionsCellItem
@@ -115,7 +114,7 @@ export function Table({ data }: { data: any }) {
           icon={<BiEdit className="text-xl" />}
           label="Modifier"
           onClick={() => {
-            router.push(`/updateDocs/emprunt/etudiant/pfe/${params.id}`);
+            router.push(`/updateDocs/emprunt/prof/pfe/${params.id}`);
           }}
           showInMenu
         />,
@@ -132,12 +131,21 @@ export function Table({ data }: { data: any }) {
       <DataTable
         columns={Columns}
         rows={data}
-        ID={"IDPE"}
+        ID={"IDPP"}
         customSlots={{
           columnMenu: CustomColumnMenu,
           toolbar: CustomToolbar,
         }}
         autoPageSize
+        getRowClassName={(params) => {
+          const currentDate = getDate(new Date()) || ""
+          const Date_f = params.row.DATE_F
+
+          if (Date_f < currentDate) {
+            return "Row-Retard"
+          }
+          return ""
+        }}
       />
       <Dialog
         open={open}
@@ -153,7 +161,7 @@ export function Table({ data }: { data: any }) {
           <Button
             onClick={() => {
               setOpen(false);
-              fetch("/api/emprunt/etudiant/pfe", {
+              fetch("/api/emprunt/prof/pfe", {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
@@ -163,7 +171,7 @@ export function Table({ data }: { data: any }) {
                 .then((res) => res.json())
                 .then((data) => {
                   if (data) {
-                    router.push("/emprunt/etudiant/pfe/historique");
+                    router.push("/emprunt/prof/pfe/historique");
                   } else {
                     router.refresh();
                     setOpen2(true);

@@ -15,6 +15,7 @@ import { MdDelete } from "react-icons/md"
 
 export function Table({ data }: { data: any }) {
   const router = useRouter()
+
   const Columns: GridColDef[] = [
     {
       field: "Cote",
@@ -24,12 +25,9 @@ export function Table({ data }: { data: any }) {
       hideable: false,
     },
     {
-      field: "Code",
-      headerName: "Enseignant",
-      flex: 1,
-      valueGetter(params) {
-        return params.row.prof.NOM + " " + params.row.prof.PRENOM
-      },
+      field: "N_inscription",
+      headerName: "N inscription",
+      flex: 0.7,
       type: "string",
       hideable: false,
     },
@@ -74,7 +72,7 @@ export function Table({ data }: { data: any }) {
           icon={<HiInformationCircle className='text-xl' />}
           label="plus d'infos"
           onClick={() => {
-            router.push(`/moreInfo/enprunt/prof/pfe/${params.id}`);
+            router.push(`/moreInfo/emprunt/etudiant/pfe/${params.id}`)
           }}
           title="plus d'infos"
         ></GridActionsCellItem>,
@@ -83,7 +81,7 @@ export function Table({ data }: { data: any }) {
           icon={<MdDelete className='text-xl' />}
           label='Supprimer'
           onClick={() => {
-            fetch(`/api/emprunt/prof/pfe/${params.id}`, {
+            fetch(`/api/emprunt/etudiant/pfe/${params.id}`, {
               method: "DELETE",
             })
               .then((res) => res.text())
@@ -103,7 +101,7 @@ export function Table({ data }: { data: any }) {
           icon={<BiEdit className='text-xl' />}
           label='Modifier'
           onClick={() => {
-            router.push(`/updateDocs/emprunt/prof/pfe/${params.id}`);
+            router.push(`/updateDocs/emprunt/etudiant/pfe/${params.id}`);
           }}
           showInMenu
         />,
@@ -119,12 +117,21 @@ export function Table({ data }: { data: any }) {
     <DataTable
       columns={Columns}
       rows={data}
-      ID={"IDPP"}
+      ID={"IDPE"}
       customSlots={{
         columnMenu: CustomColumnMenu,
         toolbar: CustomToolbar,
       }}
       autoPageSize
+      getRowClassName={(params) => {
+        const Date_f = params.row.DATE_F
+        const Date_r = params.row.DATE_R
+
+        if (Date_f < Date_r) {
+          return "Row-Retard"
+        }
+        return ""
+      }}
     />
   )
 }
