@@ -1,5 +1,4 @@
 "use client"
-import Header from "@/ui/Header"
 import { getTitle } from "@/utils/dashboard"
 import { ListItemIcon, Menu, MenuItem, Tooltip } from "@mui/material"
 import Avatar from "@mui/material/Avatar"
@@ -7,6 +6,7 @@ import Chip from "@mui/material/Chip"
 import { useRouter } from "next/navigation"
 import React, { useEffect, useState } from "react"
 import { BiLogOut } from "react-icons/bi"
+import Header from "@/components/mui/MuiHeader"
 
 const PageHeader = () => {
   const router = useRouter()
@@ -14,7 +14,7 @@ const PageHeader = () => {
   const title = getTitle()
   const [user, setUser] = useState<{ NOM: string; PRENOM: string }>()
   const open = Boolean(anchorEl)
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick: any = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
   const handleClose = () => {
@@ -29,8 +29,15 @@ const PageHeader = () => {
   }, [])
 
   return (
-    <header className='container flex justify-between items-center px-3 py-1'>
-      <Header>{title}</Header>
+    <header className='container flex justify-between items-center h-16'>
+      <Header
+        variant='h4'
+        sx={{
+          color: "#3a3541de",
+        }}
+      >
+        {title}
+      </Header>
       <Tooltip title='Account settings'>
         <Chip
           onClick={handleClick}
