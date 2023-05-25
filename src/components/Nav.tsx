@@ -13,49 +13,72 @@ import { TbBooks, TbReportMoney } from "react-icons/tb"
 import { VscRepo } from "react-icons/vsc"
 import { GiBlackBook } from "react-icons/gi"
 import { cookies } from "next/headers"
+import Separator from "@/ui/Separator"
 
 export const ZNav = () => {
   const root = cookies().get("login")?.value === "root"
   return (
-    <nav className='h-full overflow-auto scrollbar-none'>
-      <ul>
-        <Nav href='/dashboard' title='Accueil' icon={<MdSpaceDashboard />} />
-        <NestedNav
-          principale={{
-            title: "Documents",
-            href: "",
-            icon: <CgFileDocument />,
-          }}
-          href={["/livre", "/pfe", "/categorie", "/exemplaire"]}
-          title={["Livre", "PFE", "Categorie", "Exemplaire"]}
-          icon={[<TbBooks />, <VscRepo />, <MdCategory />, <GiBlackBook />]}
+    <nav className='h-full overflow-auto scrollbar-none text-[#3a3541de]'>
+      <ul className='pt-2 pr-[18px]'>
+        <Nav
+          href='/dashboard'
+          title='Accueil'
+          icon={<MdSpaceDashboard fontSize={"1.5rem"} />}
         />
-        <NestedNav
-          principale={{
-            title: "Emprunt",
-            href: "",
-            icon: <FaChalkboardTeacher />,
-          }}
-          href={[
-            "/emprunt/etudiant/livre/encours",
-            "/emprunt/prof/livre/encours",
-          ]}
-          title={["Etudiants", "Professeurs"]}
-          icon={[<FaUserGraduate />, <FaUserTie />]}
+        <Separator>DOCUMENTS</Separator>
+        <Nav
+          href='/livre'
+          title='Livre'
+          icon={<TbBooks fontSize={"1.5rem"} />}
         />
-        <Nav href='/fournisseur' title='Fournisseur' icon={<TbReportMoney />} />
+        <Nav href='/pfe' title='PFE' icon={<VscRepo fontSize={"1.5rem"} />} />
+        <Nav
+          href='/categorie'
+          title='Categorie'
+          icon={<MdCategory fontSize={"1.5rem"} />}
+        />
+        <Nav
+          href='/exemplaire'
+          title='Exemplaire'
+          icon={<GiBlackBook fontSize={"1.5rem"} />}
+        />
+        <Separator>EMPRUNT</Separator>
+        <Nav
+          href='/emprunt/etudiant/livre/encours'
+          title='Etudiant'
+          icon={<FaUserGraduate fontSize={"1.5rem"} />}
+        />
+        <Nav
+          href='/emprunt/prof/livre/encours'
+          title='Enseignant'
+          icon={<FaUserTie fontSize={"1.5rem"} />}
+        />
+        <Separator>AUTRE</Separator>
+        <Nav
+          href='/fournisseur'
+          title='Fournisseur'
+          icon={<TbReportMoney fontSize={"1.5rem"} />}
+        />
         <Nav
           href='/approvisionnement'
           title='Approvisionnement'
-          icon={<FaFileContract />}
+          icon={<FaFileContract fontSize={"1.5rem"} />}
         />
-        <Nav href='/etudiant' title='Etudiant' icon={<FaUserGraduate />} />
-        <Nav href='/prof' title='Professeur' icon={<FaUserTie />} />
+        <Nav
+          href='/etudiant'
+          title='Etudiant'
+          icon={<FaUserGraduate fontSize={"1.5rem"} />}
+        />
+        <Nav
+          href='/prof'
+          title='Professeur'
+          icon={<FaUserTie fontSize={"1.5rem"} />}
+        />
         {root ? (
           <Nav
             href='/utilisateur'
             title='Utilisateur'
-            icon={<MdOutlineWork />}
+            icon={<MdOutlineWork fontSize={"1.5rem"} />}
           />
         ) : null}
       </ul>

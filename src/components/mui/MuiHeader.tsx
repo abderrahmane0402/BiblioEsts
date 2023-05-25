@@ -8,7 +8,9 @@ interface HeaderProps extends TypographyProps {
 
 const Header: FC<HeaderProps> = ({ children, ...props }) => {
   return (
-    <Typography {...props}>
+    <Typography
+      {...props}
+    >
       {children}
     </Typography>
   )
