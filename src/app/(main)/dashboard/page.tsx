@@ -126,7 +126,7 @@ const Page = async ({}) => {
       <div className="h-2/5 w-full flex gap-6">
         <Card type={"mid"} className="p-2">
           <div className="h-1/5 w-full flex justify-between items-center">
-            <Header  variant="h6">notification</Header>
+            <Header variant="h6">notification</Header>
             {nLE || nLP || nPP || nPE ? (
               <MdOutlineNotificationsActive className="text-2xl" />
             ) : (
@@ -168,7 +168,9 @@ const Page = async ({}) => {
         </Card>
         <Card type={"mid"} className="p-2">
           <div className="h-1/5 flex justify-between items-center">
-            <Header variant={"h6"}>statistique</Header>
+            <Header variant={"h5"} sx={{ fontSize: "1.25rem" }}>
+              statistique
+            </Header>
           </div>
           <div className="h-4/5 flex gap-2 justify-center items-center">
             <CercleChart data={data} />
