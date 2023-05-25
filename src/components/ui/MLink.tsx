@@ -9,7 +9,7 @@ const MLinkVariants = cva("cursor-pointer select-none transition-colors", {
       nrm: "h-auto w-auto",
       nav: "box-border w-full h-12 flex justify-start items-center",
       link: "underline underline-offset-2",
-      logo: "h-full w-full p-3",
+      logo: "h-full w-full",
     },
     font: {
       lg: "font-semibold text-xl tracking-wide",

@@ -1,28 +1,25 @@
-import { Metadata } from "next";
-import { NextFont } from "next/dist/compiled/@next/font";
-import { Roboto } from "next/font/google";
-import { FC, ReactNode } from "react";
-import "./globals.css";
+import { Metadata } from "next"
+import { FC, ReactNode } from "react"
+import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Biblio",
   description: "application de gestion de bibliothique",
-};
-
-interface RootLayoutProps {
-  children: ReactNode;
 }
 
-const nunito: NextFont = Roboto({ weight: "400", subsets: ["latin"] });
+interface RootLayoutProps {
+  children: ReactNode
+}
+
 
 const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   return (
-    <html lang="en" className={nunito.className}>
-      <body className="flex flex-col bg-platinum h-screen">
+    <html lang='en'>
+      <body className='flex flex-col bg-[#F4F5FA] h-screen'>
         {children}
-        <div id="modal"></div>
+        <div id='modal'></div>
       </body>
     </html>
-  );
-};
-export default RootLayout;
+  )
+}
+export default RootLayout

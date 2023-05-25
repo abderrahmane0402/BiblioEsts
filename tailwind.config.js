@@ -18,8 +18,8 @@ module.exports = {
         platinum: "#DAE3E5",
       },
       width: {
-        nav: "15%",
-        main: "85%",
+        nav: "260px",
+        main: "100%",
       },
       animation: {
         hide: "hide 100ms ease-in",

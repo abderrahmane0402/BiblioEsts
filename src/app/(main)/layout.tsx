@@ -17,7 +17,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     <>
       <main className='flex flex-row h-full w-full overflow-hidden'>
         {/* NAVIGATION BAR */}
-        <div className='h-full w-nav text-white bg-[#011936] flex flex-col justify-between gap-1'>
+        <div className='h-full min-w-[260px] w-nav text-[#FFF] bg-transparent flex flex-col justify-between gap-1'>
             <MainLogo Logo={EstLogo} />
             <ZNav />
         </div>
