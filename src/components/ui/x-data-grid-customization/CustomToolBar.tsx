@@ -1,19 +1,19 @@
-"use client";
+"use client"
 import {
   GridToolbarColumnsButton,
   GridToolbarContainer,
   GridToolbarDensitySelector,
   GridToolbarExport,
   GridToolbarQuickFilter,
-} from "@mui/x-data-grid";
+} from "@mui/x-data-grid"
 
 export function CustomToolbar() {
   return (
-    <div className="flex justify-between">
+    <div className='flex justify-between'>
       <GridToolbarContainer>
+        <GridToolbarQuickFilter />
         <GridToolbarExport />
       </GridToolbarContainer>
-      <GridToolbarQuickFilter />
     </div>
-  );
+  )
 }

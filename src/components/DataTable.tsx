@@ -1,18 +1,18 @@
-"use client";
-import { styled } from "@mui/material";
+"use client"
+import { styled } from "@mui/material"
 import {
   DataGrid,
   DataGridProps,
   GridSlotsComponent,
   GridSlotsComponentsProps,
-} from "@mui/x-data-grid";
-import { UncapitalizeObjectKeys } from "@mui/x-data-grid/internals";
-import { FC, forwardRef } from "react";
+} from "@mui/x-data-grid"
+import { UncapitalizeObjectKeys } from "@mui/x-data-grid/internals"
+import { FC, forwardRef } from "react"
 
 interface DataTableProps extends DataGridProps {
-  ID?: string;
-  customSlots?: UncapitalizeObjectKeys<Partial<GridSlotsComponent>>;
-  customSlotsProps?: GridSlotsComponentsProps;
+  ID?: string
+  customSlots?: UncapitalizeObjectKeys<Partial<GridSlotsComponent>>
+  customSlotsProps?: GridSlotsComponentsProps
 }
 
 const StyledDataGrid = styled(DataGrid)(() => ({
@@ -59,7 +59,10 @@ const StyledDataGrid = styled(DataGrid)(() => ({
     fontSize: "18px",
     color: "#323539",
   },
-}));
+  "& .Row-Retard": {
+    backgroundColor: "rgba(255, 7, 0, 0.55)",
+  },
+}))
 
 const DataTable: FC<DataTableProps> = forwardRef<
   HTMLDivElement,
@@ -67,9 +70,6 @@ const DataTable: FC<DataTableProps> = forwardRef<
 >(({ rows, columns, ID, customSlots, customSlotsProps, ...props }, ref) => {
   return (
     <StyledDataGrid
-      sx={{
-        fontSize: "",
-      }}
       ref={ref}
       columns={columns}
       rows={rows}
@@ -79,9 +79,9 @@ const DataTable: FC<DataTableProps> = forwardRef<
       {...props}
       rowHeight={70}
     />
-  );
-});
+  )
+})
 
-DataTable.displayName = "DataTable";
+DataTable.displayName = "DataTable"
 
-export default DataTable;
+export default DataTable

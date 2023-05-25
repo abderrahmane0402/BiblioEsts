@@ -15,6 +15,7 @@ import { BiCheckCircle, BiEdit } from "react-icons/bi";
 import { HiInformationCircle } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
 import { Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
+import { getDate } from "@/utils/date";
 
 export function Table({ data }: { data: any }) {
   const router = useRouter();
@@ -136,6 +137,15 @@ export function Table({ data }: { data: any }) {
           toolbar: CustomToolbar,
         }}
         autoPageSize
+        getRowClassName={(params) => {
+          const currentDate = getDate(new Date()) || ""
+          const Date_f = params.row.DATE_F
+
+          if (Date_f < currentDate) {
+            return "Row-Retard"
+          }
+          return ""
+        }}
       />
       <Dialog
         open={open}

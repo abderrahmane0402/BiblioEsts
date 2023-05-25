@@ -8,18 +8,19 @@ import {
   GridRowParams,
 } from "@mui/x-data-grid"
 import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { BiEdit } from "react-icons/bi"
 import { HiInformationCircle } from "react-icons/hi"
 import { MdDelete } from "react-icons/md"
 
 export function Table({ data }: { data: any }) {
+  const [isDeleted, setisDeleted] = useState(false)
+  const [notDeleted, setnotDeleted] = useState(false)
   const router = useRouter()
-
   const Columns: GridColDef[] = [
     {
-      field: "Cote",
-      headerName: "Cote",
+      field: "N_INVENTAIRE",
+      headerName: "N Inventaire",
       flex: 0.7,
       type: "string",
       hideable: false,
@@ -39,15 +40,15 @@ export function Table({ data }: { data: any }) {
       hideable: false,
     },
     {
-      field: "DATE_R",
-      headerName: "Retour",
+      field: "DATE_F",
+      headerName: "Fin",
       flex: 0.7,
       type: "date",
       hideable: false,
     },
     {
-      field: "DATE_F",
-      headerName: "Fin",
+      field: "DATE_R",
+      headerName: "Retour",
       flex: 0.7,
       type: "date",
       hideable: false,
@@ -72,25 +73,27 @@ export function Table({ data }: { data: any }) {
           icon={<HiInformationCircle className='text-xl' />}
           label="plus d'infos"
           onClick={() => {
-            router.push(`/moreInfo/emprunt/etudiant/pfe/${params.id}`)
+            router.push(`/moreInfo/emprunt/etudiant/livre/${params.id}`)
           }}
           title="plus d'infos"
-        ></GridActionsCellItem>,
+        />,
         <GridActionsCellItem
           key={params.id}
           icon={<MdDelete className='text-xl' />}
           label='Supprimer'
           onClick={() => {
-            fetch(`/api/emprunt/etudiant/pfe/${params.id}`, {
+            fetch(`/api/emprunt/etudiant/livre/${params.id}`, {
               method: "DELETE",
             })
               .then((res) => res.text())
               .then((data) => {
                 if (data === "ok") {
                   router.refresh()
-                  
+                  setisDeleted(data === "ok")
+                  setTimeout(() => setisDeleted(false), 2000)
                 } else {
-                  router.refresh()
+                  setnotDeleted(true)
+                  setTimeout(() => setnotDeleted(false), 2000)
                 }
               })
           }}
@@ -100,10 +103,10 @@ export function Table({ data }: { data: any }) {
           key={params.id}
           icon={<BiEdit className='text-xl' />}
           label='Modifier'
-          onClick={() => {
-            router.push(`/updateDocs/emprunt/etudiant/pfe/${params.id}`);
-          }}
           showInMenu
+          onClick={() => {
+            router.push(`/updateDocs/emprunt/etudiant/livre/${params.id}`)
+          }}
         />,
       ],
     },
@@ -114,15 +117,26 @@ export function Table({ data }: { data: any }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <DataTable
-      columns={Columns}
-      rows={data}
-      ID={"IDPE"}
-      customSlots={{
-        columnMenu: CustomColumnMenu,
-        toolbar: CustomToolbar,
-      }}
-      autoPageSize
-    />
+    <>
+      <DataTable
+        columns={Columns}
+        rows={data}
+        ID={"IDLE"}
+        customSlots={{
+          columnMenu: CustomColumnMenu,
+          toolbar: CustomToolbar,
+        }}
+        autoPageSize
+        getRowClassName={(params) => {
+          const Date_f = params.row.DATE_F
+          const Date_r = params.row.DATE_R
+
+          if (Date_f < Date_r) {
+            return "Row-Retard"
+          }
+          return ""
+        }}
+      />
+    </>
   )
 }
