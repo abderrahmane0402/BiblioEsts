@@ -6,14 +6,17 @@ import * as Toast from "@/components/ui/toast"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 
-const Form = ({ children }: { children: React.ReactNode }) => {
+const Form = ({
+  children,
+}: {
+  children: React.ReactNode
+}) => {
   const router = useRouter()
-
   const form = useRef<HTMLFormElement>(null)
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  
+
   useEffect(() => {
     if (
       (open1 === true && isLoading === true) ||
@@ -60,7 +63,9 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         <Toast.Root open={open1} Ttype={"success"}>
           <div>
             <Toast.Title>succès</Toast.Title>
-            <Toast.Description>Emprunt a été  ajouté avec succés</Toast.Description>
+            <Toast.Description>
+              Emprunt a été ajouté avec succés
+            </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen1(false)}>
             <button className='bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg'>

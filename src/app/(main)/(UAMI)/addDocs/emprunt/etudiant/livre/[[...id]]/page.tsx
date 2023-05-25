@@ -8,7 +8,7 @@ import Form from "./form"
 import { getDate } from "@/utils/date"
 
 export const dynamic = "force-dynamic"
-const Page = async () => {
+const Page = async ({ params }: { params: { id: string } }) => {
   const [Apoge, Inv] = await Promise.all([getEtudiantsShort(), getNinv()])
   const result = Apoge.map((obj) => obj.N_inscription)
   const result2 = Inv.map((obj) => obj.N_INVENTAIRE)
@@ -30,7 +30,7 @@ const Page = async () => {
               </f.FormMessage>
             </div>
             <f.FormControl asChild>
-              <AutoComplete options={result2} name='nmr_Inv' />
+              <AutoComplete defaultValue={params?.id?.at(0)} options={result2} name='nmr_Inv' />
             </f.FormControl>
           </f.FormField>
           {/* num_apogee */}
@@ -71,7 +71,7 @@ const Page = async () => {
                 name='date_D'
                 type='date'
                 maxLength={255}
-                defaultValue={getDate(new Date ) || ""}
+                defaultValue={getDate(new Date()) || ""}
                 required
               />
             </f.FormControl>
