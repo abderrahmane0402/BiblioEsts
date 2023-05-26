@@ -20,8 +20,10 @@ const Form = ({ children }: { children: React.ReactNode }) => {
   const [pdf, setPdf] = useState<any>(null)
 
   useEffect(() => {
-    if ((open1 === true && isLoading === true) ||
-    (open2 === true && isLoading === true)) {
+    if (
+      (open1 === true && isLoading === true) ||
+      (open2 === true && isLoading === true)
+    ) {
       setIsLoading(false)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -40,7 +42,9 @@ const Form = ({ children }: { children: React.ReactNode }) => {
           AUTHEUR: data.get("autheur") as string,
           EDITEUR: data.get("editeur") as string,
           DATE_EDITION: Number(data.get("date_edi") as string),
-          PRIX: new Prisma.Decimal(parseFloat(data.get("prix")!.toString())),
+          PRIX:
+            new Prisma.Decimal(parseFloat(data.get("prix")!.toString())) ||
+            null,
           ID_CAT: Number(data.get("categorie")),
           CODE: data.get("code") ? Number(data.get("code") as string) : null,
           // PAGE_DE_GARDE: img,
@@ -56,8 +60,8 @@ const Form = ({ children }: { children: React.ReactNode }) => {
           .then((res) => res.text())
           .then((data) => {
             if (data) {
-              setOpen1(true);
-              setTimeout(() => setOpen1(false), 1000);
+              setOpen1(true)
+              setTimeout(() => setOpen1(false), 1000)
               router.push("/livre")
             } else {
               setOpen2(true)
@@ -71,8 +75,17 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       <div className='w-full flex   '>
         <f.FormField name='page_garde' className='w-1/2  px-4'>
           <div className='w-full'>
-          <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
-                Page de garde :</Header>
+            <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.4993rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              Page de garde :
+            </Header>
             <f.FormMessage match={"valueMissing"}>
               Entrer l{"'"}page de garde
             </f.FormMessage>
@@ -86,10 +99,17 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         </f.FormField>
         <f.FormField name='somaire' className='w-full  pl-4'>
           <div className='w-full'>
-          <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
-
-              Somaire :</Header>
-
+            <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.4993rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              Somaire :
+            </Header>
 
             <f.FormMessage match={"valueMissing"}>
               Entrer un SOMAIRE
@@ -122,7 +142,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             <Toast.Description>pfe ajouté avec succés</Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen1(false)}>
-            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
+            <button className='bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg'>
               fermer
             </button>
           </Toast.Close>
@@ -135,12 +155,12 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen2(false)}>
-            <button className="border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg">
+            <button className='border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg'>
               fermer
             </button>
           </Toast.Close>
         </Toast.Root>
-        <Toast.ToastViewport className="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none" />
+        <Toast.ToastViewport className='[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none' />
       </Toast.Provider>
     </f.FormRoot>
   )

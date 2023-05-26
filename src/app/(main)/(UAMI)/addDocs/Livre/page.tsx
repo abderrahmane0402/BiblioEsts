@@ -54,6 +54,7 @@ const Page = async () => {
                   name='title'
                   type='text'
                   maxLength={255}
+                  required
                 />
               </f.FormControl>
             </f.FormField>
@@ -168,14 +169,16 @@ const Page = async () => {
                 </f.FormMessage>
               </div>
               <f.FormControl asChild>
-                <InputSelect
-                  name='categorie'
-                  options={data}
-                  autoWidth={false}
-                  multiple={false}
-                  native={false}
-                />
-                <Refresh />
+                <div className='flex gap-2 items-center'>
+                  <InputSelect
+                    name='categorie'
+                    options={data}
+                    autoWidth={false}
+                    multiple={false}
+                    native={false}
+                  />
+                  <Refresh />
+                </div>
               </f.FormControl>
             </f.FormField>
             <f.FormField name='code' className='w-full'>
@@ -204,7 +207,6 @@ const Page = async () => {
                   name='code'
                   type='number'
                   maxLength={50}
-                  
                 />
               </f.FormControl>
             </f.FormField>

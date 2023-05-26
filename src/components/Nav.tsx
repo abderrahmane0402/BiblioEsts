@@ -1,19 +1,16 @@
 /* eslint-disable react/jsx-key */
+import Separator from "@/ui/Separator"
 import { Nav } from "@/ui/nav"
-import { NestedNav } from "@/ui/nestedNav"
-import { CgFileDocument } from "react-icons/cg"
+import { cookies } from "next/headers"
 import {
-  FaChalkboardTeacher,
   FaFileContract,
   FaUserGraduate,
-  FaUserTie,
+  FaUserTie
 } from "react-icons/fa"
+import { GiBlackBook } from "react-icons/gi"
 import { MdCategory, MdOutlineWork, MdSpaceDashboard } from "react-icons/md"
 import { TbBooks, TbReportMoney } from "react-icons/tb"
 import { VscRepo } from "react-icons/vsc"
-import { GiBlackBook } from "react-icons/gi"
-import { cookies } from "next/headers"
-import Separator from "@/ui/Separator"
 
 export const ZNav = () => {
   const root = cookies().get("login")?.value === "root"
