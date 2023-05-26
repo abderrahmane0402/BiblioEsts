@@ -1,9 +1,9 @@
-import Header from "@/components/ui/Header";
 import Paragraph from "@/components/ui/Paragraph";
 import { getAppro } from "@/db/Get/Appro";
 import { Table } from "./table";
 import { getDate } from "@/utils/date";
 import Exemplaire from "@/components/exemplaire";
+import Header from "@/components/mui/MuiHeader";
 
 export const dynamic = "force-dynamic";
 
@@ -42,7 +42,7 @@ const page = async ({ params }: { params: { id: string } }) => {
     <>
       <div className=" w-full h-full">
         <div className="w-full h-fit flex flex-col gap-4">
-          {/* <div className="flex bg-sky-100 w-fit rounded-lg shadow-sky-200xl ">
+          {/* <div className="flex bg-slate-100 w-fit rounded-lg shadow-sky-200xl ">
           <Paragraph type={"nrm"} size={"md"} className="font-semibold  text-[#5B3169] w-1/2 ">
             N Approvisionnement :
           </Paragraph>
@@ -51,124 +51,178 @@ const page = async ({ params }: { params: { id: string } }) => {
           </Paragraph>
         </div> */}
           <div className="flex  w-full h-full  gap-4 ">
-            <div className="w-full  h-fit bg-sky-100  rounded-lg shadow-xl">
-              <Header size={"md"} className="flex justify-center items-center">
+            <div className="w-full  h-fit bg-slate-100  rounded-lg shadow-lg">
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }} className="flex justify-center items-center">
                 Entreprise
               </Header>
-              <div className="flex tracking-wide border-t-2 border-[#969a9d]">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2"
+              <div className="flex tracking-wide border-t-2 border-[#98969d]">
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            
+                  className=" text-[#5B3169] w-1/2"
                 >
                   Nom d{"'"}entreprise :
-                </Paragraph>
+                </Header>
                 <Paragraph type={"nrm"} size={"md"}>
                   {apro?.ENTREPRISE}
                 </Paragraph>
               </div>
               <div className="flex tracking-wide border-t-2 border-[#969a9d]">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2"
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            
+                  className=" text-[#5B3169] w-1/2"
                 >
                   Telephone ou fix :
-                </Paragraph>
+                </Header>
                 <Paragraph type={"nrm"} size={"md"}>
                   {apro?.TELEPHONE?.toString()}
                 </Paragraph>
               </div>
               <div className="flex tracking-wide border-t-2 border-[#969a9d]">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2"
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            
+                  className=" text-[#5B3169] w-1/2"
                 >
                   Adresse :
-                </Paragraph>
+                </Header>
                 <Paragraph type={"nrm"} size={"md"}>
                   {apro?.ADRESSE}
                 </Paragraph>
               </div>
             </div>
-            <div className="w-full  h-fit bg-slate-200 rounded-lg shadow-xl">
-              <Header size={"md"} className="flex justify-center items-center">
+            <div className="w-full  h-fit bg-slate-100  rounded-lg shadow-lg">
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}  className="flex justify-center items-center">
                 Fournisseur
               </Header>
               <div className="flex tracking-wide border-t-2 border-[#969a9d]">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2"
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            
+                  className=" text-[#5B3169] w-1/2"
                 >
                   Nom :
-                </Paragraph>
+                </Header>
                 <Paragraph type={"nrm"} size={"md"}>
                   {apro?.fournisseur.NOM}
                 </Paragraph>
               </div>
               <div className="flex tracking-wide border-t-2 border-[#969a9d]">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2"
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            
+                  className=" text-[#5B3169] w-1/2"
                 >
                   Prenom :
-                </Paragraph>
+                </Header>
                 <Paragraph type={"nrm"} size={"md"}>
                   {apro?.fournisseur.PRENOM}
                 </Paragraph>
               </div>
               <div className="flex tracking-wide border-t-2 border-[#969a9d]">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2"
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            
+                  className=" text-[#5B3169] w-1/2"
                 >
                   Gmail :
-                </Paragraph>
+                  </Header>
                 <Paragraph type={"nrm"} size={"md"}>
                   {apro?.fournisseur.GMAIL}
                 </Paragraph>
               </div>
               <div className="flex tracking-wide border-t-2 border-[#969a9d]">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2"
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            
+                  className=" text-[#5B3169] w-1/2"
                 >
                   Adresse :
-                </Paragraph>
-                <Paragraph type={"nrm"} size={"md"}>
+                  </Header>
+                                  <Paragraph type={"nrm"} size={"md"}>
                   {apro?.fournisseur.ADDRESSE}
                 </Paragraph>
               </div>
               <div className="flex tracking-wide border-t-2 border-[#969a9d]">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2"
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            
+                  className=" text-[#5B3169] w-1/2"
                 >
                   Telephone :
-                </Paragraph>
-                <Paragraph type={"nrm"} size={"md"}>
+                  </Header>
+                                  <Paragraph type={"nrm"} size={"md"}>
                   {apro?.fournisseur.TELEPHONE}
                 </Paragraph>
               </div>
             </div>
-            <div className="w-full  h-fit bg-sky-100  rounded-lg shadow-xl">
-              <Header size={"md"} className="flex justify-center items-center">
+            <div className="w-full  h-fit bg-slate-100  rounded-lg shadow-lg">
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }} className="flex justify-center items-center">
                 Approvisionnement
               </Header>
               <div className="flex tracking-wide border-t-2 border-[#969a9d]   ">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2  "
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            
+                  className=" text-[#5B3169] w-1/2  "
                 >
                   N Approvisionnement :
-                </Paragraph>
+                  </Header>
                 <Paragraph
                   type={"nrm"}
                   size={"md"}
@@ -178,14 +232,20 @@ const page = async ({ params }: { params: { id: string } }) => {
                 </Paragraph>
               </div>
               <div className="flex tracking-wide border-t-2 border-[#969a9d]   ">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2 "
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+          
+                  className=" text-[#5B3169] w-1/2 "
                 >
                   Devis :
-                </Paragraph>
-                <Paragraph
+                  </Header>   
+                               <Paragraph
                   type={"nrm"}
                   size={"md"}
                   className="text-[#242424] w-1/2"
@@ -194,13 +254,19 @@ const page = async ({ params }: { params: { id: string } }) => {
                 </Paragraph>
               </div>
               <div className="flex tracking-wide border-t-2 border-[#969a9d]  ">
-                <Paragraph
-                  type={"sub_title"}
-                  size={"md"}
-                  className="font-semibold  text-[#5B3169] w-1/2"
+                <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            
+                  className=" text-[#5B3169] w-1/2"
                 >
                   Date d{"'"}approvisionnemnt :
-                </Paragraph>
+                  </Header>
                 <Paragraph type={"nrm"} size={"md"}>
                   {getDate(apro?.DATE) || ""}
                 </Paragraph>
@@ -208,7 +274,8 @@ const page = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
         </div>
-        <div className="w-full bg-slate-400 rounded-xl flex">
+        <br />
+        <div className="w-full rounded-xl flex bg-white">
           <Table data={Livre} />
         </div>
       </div>

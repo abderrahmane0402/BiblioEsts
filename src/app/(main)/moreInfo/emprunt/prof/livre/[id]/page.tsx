@@ -14,7 +14,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       <MyImage src={data?.exemplaire.livre.PAGE_DE_GARDE || ""} alt="page de garde" />
       </div>
     </Card>
-    <div className="w-full  h-fit bg-slate-200  rounded-lg shadow-xl">
+    <div className="w-full  h-fit     bg-slate-100  rounded-lg shadow-lg">
       {/* <div className="h-2/5 w-full flex flex-col flex-wrap"> */}
         <Header size={"md"} className="flex justify-center items-center">Livre </Header>
         
@@ -61,7 +61,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       {/* </div> */}
       </div> 
     <div className="w-full h-fit flex flex-col gap-4">
-      <div className=" w-full h-fit  bg-slate-100   rounded-lg shadow-xl">
+    <div className="w-full  h-fit     bg-slate-100  rounded-lg shadow-lg">
         {/* <div className="h-2/5 w-full flex flex-col flex-wrap"> */}
           <Header size={"md"} className="flex justify-center items-center">Enseignant  </Header>
           <div className="flex tracking-wide border-t-2 border-[#DEE2E6] ">
@@ -101,7 +101,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
         {/* </div> */}
       </div>
       
-        <div className="w-full     bg-slate-100 h-fit shadow-xl rounded-lg">  
+      <div className="w-full  h-fit     bg-slate-100  rounded-lg shadow-lg">  
           {/* <div className="h-2/5 w-full flex flex-col flex-wrap"> */}
             <Header size={"md"} className="flex justify-center items-center">Emprunt  </Header>
             <div className="flex tracking-wide border-t-2 border-[#DEE2E6]">

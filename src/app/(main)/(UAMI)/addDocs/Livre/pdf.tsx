@@ -15,7 +15,7 @@ const Pdf = ({ setPdf }: { setPdf: Dispatch<any> }) => {
   return (
     <>
       <Input
-        className='h-12'
+        className='h-12 font-medium '
         name='somaire'
         type='file'
         accept='.pdf'
