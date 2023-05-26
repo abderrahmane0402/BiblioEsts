@@ -15,7 +15,7 @@ const Img = ({ setImg }: { setImg: Dispatch<any> }) => {
   return (
     <>
       <Input
-        className='h-12'
+        className='h-12 font-medium '
         name='page_garde'
         type='file'
         required

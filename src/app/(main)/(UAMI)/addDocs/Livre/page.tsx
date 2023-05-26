@@ -19,7 +19,7 @@ const Page = async () => {
 
           Information de livre</Header>
         <div className='flex flex-wrap '>
-          <div className='w-full md:w-1/2 border-r-2 border-gray-700 px-4'>
+          <div className='w-full md:w-1/2 px-4'>
             <f.FormField name='title' className='w-full'>
               <div className='w-full'>
               <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
@@ -35,7 +35,7 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className='h-10'
+                  className='h-10 font-medium  '
                   name='title'
                   type='text'
                   maxLength={255}
@@ -55,7 +55,7 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className='h-10'
+                  className='h-10 font-medium '
                   name='autheur'
                   type='text'
                   maxLength={50}
@@ -79,7 +79,7 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className='h-10'
+                  className='h-10 font-medium '
                   name='date_edi'
                   type='number'
                   maxLength={50}
@@ -102,7 +102,7 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className='h-10'
+                  className='h-10 font-medium '
                   name='prix'
                   type='number'
                   maxLength={50}
@@ -145,10 +145,11 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className='h-10'
+                  className='h-10 font-medium  '
                   name='code'
                   type='number'
                   maxLength={50}
+                  
                 />
               </f.FormControl>
             </f.FormField>
@@ -171,7 +172,7 @@ const Page = async () => {
               </div>
               <f.FormControl asChild>
                 <Input
-                  className='h-10'
+                  className='h-10 font-medium '
                   name='editeur'
                   type='text'
                   maxLength={50}

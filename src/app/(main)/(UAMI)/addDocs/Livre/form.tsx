@@ -13,13 +13,15 @@ import Header from "@/components/mui/MuiHeader"
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null)
   const [open2, setOpen2] = useState(false)
+  const [open1, setOpen1] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
   const [img, setImg] = useState<any>(null)
   const [pdf, setPdf] = useState<any>(null)
 
   useEffect(() => {
-    if (open2 === true && isLoading === true) {
+    if ((open1 === true && isLoading === true) ||
+    (open2 === true && isLoading === true)) {
       setIsLoading(false)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,6 +56,8 @@ const Form = ({ children }: { children: React.ReactNode }) => {
           .then((res) => res.text())
           .then((data) => {
             if (data) {
+              setOpen1(true);
+              setTimeout(() => setOpen1(false), 1000);
               router.push("/livre")
             } else {
               setOpen2(true)
@@ -64,8 +68,8 @@ const Form = ({ children }: { children: React.ReactNode }) => {
     >
       {children}
 
-      <div className='w-full flex gap-3 pl-4'>
-        <f.FormField name='page_garde' className='w-1/2'>
+      <div className='w-full flex   '>
+        <f.FormField name='page_garde' className='w-1/2  px-4'>
           <div className='w-full'>
           <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
                 Page de garde :</Header>
@@ -80,11 +84,11 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             <Img setImg={setImg} />
           </f.FormControl>
         </f.FormField>
-        <f.FormField name='somaire' className='w-full'>
+        <f.FormField name='somaire' className='w-full  pl-4'>
           <div className='w-full'>
           <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
 
-              SOMAIRE :</Header>
+              Somaire :</Header>
 
 
             <f.FormMessage match={"valueMissing"}>
@@ -111,7 +115,18 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         </f.FormSubmit>
       </footer>
 
-      <Toast.Provider>
+      <Toast.Provider duration={1000}>
+        <Toast.Root open={open1} Ttype={"success"}>
+          <div>
+            <Toast.Title>succès</Toast.Title>
+            <Toast.Description>pfe ajouté avec succés</Toast.Description>
+          </div>
+          <Toast.Close asChild onClick={() => setOpen1(false)}>
+            <button className="bg-transparent border-2 border-blue-700/50 hover:border-blue-700  focus:border-blue-700 focus:outline-none rounded-md p-2 font-thin text-lg">
+              fermer
+            </button>
+          </Toast.Close>
+        </Toast.Root>
         <Toast.Root open={open2} Ttype={"error"}>
           <div>
             <Toast.Title>Error</Toast.Title>
@@ -120,12 +135,12 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             </Toast.Description>
           </div>
           <Toast.Close asChild onClick={() => setOpen2(false)}>
-            <button className='border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg'>
+            <button className="border-2 border-white/50 hover:border-white rounded-md p-2 font-thin text-lg">
               fermer
             </button>
           </Toast.Close>
         </Toast.Root>
-        <Toast.ToastViewport className='[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none' />
+        <Toast.ToastViewport className="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none" />
       </Toast.Provider>
     </f.FormRoot>
   )

@@ -33,7 +33,7 @@ const Page = async ({ params }: { params: { id: string[] } }) => {
               <AutoComplete
                 options={result2}
                 name='pfe'
-                defaultValue={params.id.join("/") || ""}
+                defaultValue={params?.id?.join("/") || ""}
               />
             </f.FormControl>
           </f.FormField>
