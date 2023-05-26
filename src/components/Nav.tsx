@@ -71,7 +71,7 @@ export const ZNav = () => {
         />
         <Nav
           href='/prof'
-          title='Professeur'
+          title='Enseignant'
           icon={<FaUserTie fontSize={"1.5rem"} />}
         />
         {root ? (
