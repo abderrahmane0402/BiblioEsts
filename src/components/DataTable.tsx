@@ -34,30 +34,19 @@ const StyledDataGrid = styled(DataGrid)(() => ({
   // "& .MuiDataGrid-columnsContainer": {
   //   backgroundColor: '',
   // },
-  "& .MuiDataGrid-iconSeparator": {
-    display: "none",
-  },
-  "& .MuiDataGrid-columnHeader, .MuiDataGrid-cell": {
-    borderRight: `2px solid #DEE2E6`,
-  },
-  "& .MuiDataGrid-columnsContainer, .MuiDataGrid-cell": {
-    borderBottom: `2px solid #DEE2E6`,
-  },
-
-  "& .MuiDataGrid-columnHeaders": {
-    borderBottom: `2px solid #DEE2E6`,
-  },
-  "& .MuiPaginationItem-root": {
-    borderRadius: 0,
-  },
   "& .MuiDataGrid-columnHeaderTitle": {
-    fontSize: "18px",
-    fontWeight: "bold",
-    color: "#212529",
+    fontSize: "0.8rem",
+    fontWeight: "600",
+    color: "#3a3541de",
+    textTransform: "uppercase",
+    letterSpacing: "0.5px",
   },
   "& .MuiDataGrid-cellContent": {
-    fontSize: "18px",
-    color: "#323539",
+    fontSize: "0.9rem",
+    color: "rgba(58, 53, 65, 0.68)",
+  },
+  "& .MuiDataGrid-columnHeadersInner": {
+    backgroundColor: "#f9fafc",
   },
   "& .Row-Retard": {
     backgroundColor: "rgba(255, 7, 0, 0.55)",
@@ -78,6 +67,7 @@ const DataTable: FC<DataTableProps> = forwardRef<
       getRowId={(row) => row[ID || "id"]}
       {...props}
       rowHeight={70}
+      sx={{}}
     />
   )
 })

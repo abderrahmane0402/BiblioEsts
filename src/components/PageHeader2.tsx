@@ -3,26 +3,27 @@ import { getLink, getTitle } from "@/utils/dashboard"
 import Button from "@mui/material/Button"
 import { TocIconN } from "./mui icons/icon"
 import Link from "next/link"
+import Header from "@/components/mui/MuiHeader"
 
 export function PageHeader2() {
   const link = getLink()
+  const Title = getTitle()
   return (
-    <div className='w-full border-b px-2 py-2 border-black/30 flex justify-between items-center'>
-      <div className='flex gap-3 justify-center items-center'>
-        <span className='rounded-full p-1 bg-blue-500'>
-          <TocIconN />
-        </span>
-        <span className='px-3 text-2xl tracking-wider font-medium round'>
-          Liste
-        </span>
-      </div>
-      <Link href={link || ''}>
+    <div className='w-full flex justify-between items-center'>
+      <Header
+        variant='h5'
+        sx={{ color: "#9155FD", fontSize: "1.4993rem", fontWeight: 500 }}
+      >
+        Liste Des {Title}
+      </Header>
+      <Link href={link || ""}>
         <Button
-          variant='outlined'
+          variant='contained'
           sx={{
-            fontWeight: 900,
-            borderRadius: "16px",
+            fontWeight: 700,
+            backgroundColor: "#9155FD",
           }}
+          size='large'
         >
           Ajouter
         </Button>

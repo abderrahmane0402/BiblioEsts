@@ -8,16 +8,17 @@ import {
   notificationLP,
   notificationPE,
   notificationPP,
-} from "@/db/Get/statistique";
-import { Card } from "@/ui/Card";
-import Paragraph from "@/ui/Paragraph";
-import { AiOutlineProject } from "react-icons/ai";
-import { BiBook } from "react-icons/bi";
-import { FaBookOpen } from "react-icons/fa";
-import { GrStakeholder } from "react-icons/gr";
+} from "@/db/Get/statistique"
+import { Card } from "@/ui/Card"
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+import Paragraph from "@/ui/Paragraph"
+import { AiOutlineProject } from "react-icons/ai"
+import { BiBook } from "react-icons/bi"
+import { FaBookOpen } from "react-icons/fa"
+import { GrStakeholder } from "react-icons/gr"
+
+export const dynamic = "force-dynamic"
+export const revalidate = 0
 const data = {
   labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
   datasets: [
@@ -43,7 +44,7 @@ const data = {
       borderWidth: 1,
     },
   ],
-};
+}
 
 const Page = async ({}) => {
   //TODO:Test notification and complete the page
@@ -52,64 +53,109 @@ const Page = async ({}) => {
     countPFE(),
     countElivre(),
     countEpfe(),
-  ]);
+  ])
   const [nLE, nLP, nPE, nPP] = await Promise.all([
     notificationLE(),
     notificationLP(),
     notificationPE(),
     notificationPP(),
-  ]);
+  ])
   return (
-    <div className="h-full w-full flex flex-col gap-3">
+    <div className='h-full w-full flex flex-col gap-3'>
       {/* mini cartes */}
-      <div className="h-1/5 w-full flex gap-6">
-        <Card type={"mini"} className="p-2">
-          <div className="flex justify-between item-center h-1/2">
-          <Header variant="h6" sx={{ fontSize: "1.25rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}> Nombre des livres</Header>
-             
-           
-            <div className="h-full flex justify-center items-center text-4xl">
+      <div className='h-1/5 w-full flex gap-6'>
+        <Card type={"mini"} className='p-2'>
+          <div className='flex justify-between item-center h-1/2'>
+            <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              {" "}
+              Nombre des livres
+            </Header>
+
+            <div className='h-full flex justify-center items-center text-4xl'>
               <BiBook className="text-[#3c2762]"/>
             </div>
           </div>
-          <Paragraph size={"sm"} className="h-1/2 flex items-center">
+          <Paragraph size={"sm"} className='h-1/2 flex items-center text-[#3a3541ad]'>
             {countL} Livre
           </Paragraph>
         </Card>
-        <Card type={"mini"} className="p-2">
-          <div className="flex justify-between item-center h-1/2">
-          <Header variant="h6" sx={{ fontSize: "1.25rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>  Nombre des PFE</Header>
-             
+        <Card type={"mini"} className='p-2'>
+          <div className='flex justify-between item-center h-1/2'>
+            <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              {" "}
+              Nombre des PFE
+            </Header>
 
-            <div className="h-full flex justify-center items-center text-4xl">
+            <div className='h-full flex justify-center items-center text-4xl'>
               <AiOutlineProject className="text-[#3c2762]" />
             </div>
           </div>
-          <Paragraph size={"sm"} className="h-1/2 flex items-center">
+          <Paragraph size={"sm"} className='h-1/2 flex items-center text-[#3a3541ad]'>
             {countP} PFE
           </Paragraph>
         </Card>
-        <Card type={"mini"} className="p-2">
-          <div className="flex justify-between item-center h-1/2">
-          <Header variant="h6" sx={{ fontSize: "1.25rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>  Livre empunter</Header>
+        <Card type={"mini"} className='p-2'>
+          <div className='flex justify-between item-center h-1/2'>
+            <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              {" "}
+              Livre empunter
+            </Header>
 
-            <div className="h-full flex justify-center items-center text-4xl">
+            <div className='h-full flex justify-center items-center text-4xl'>
               <FaBookOpen className="text-[#3c2762]" />
             </div>
           </div>
-          <Paragraph size={"sm"} className="h-1/2 flex items-center">
+          <Paragraph size={"sm"} className='h-1/2 flex items-center text-[#3a3541ad]'>
             {countEL} Livre a été emprunté
           </Paragraph>
         </Card>
-        <Card type={"mini"} className="p-2">
-          <div className="flex justify-between item-center h-1/2">
-          <Header variant="h6" sx={{ fontSize: "1.25rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>  PFE emprunter</Header>
+        <Card type={"mini"} className='p-2'>
+          <div className='flex justify-between item-center h-1/2'>
+            <Header
+              variant='h6'
+              sx={{
+                fontSize: "1.25rem",
+                color: "#3a3541de",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              {" "}
+              PFE emprunter
+            </Header>
 
-            <div className="h-full flex justify-center items-center text-4xl">
+            <div className='h-full flex justify-center items-center text-4xl'>
               <GrStakeholder className="text-white" />
             </div>
           </div>
-          <Paragraph size={"sm"} className="h-1/2 flex items-center">
+          <Paragraph
+            size={"sm"}
+            className='h-1/2 flex items-center color text-[#3a3541ad]'
+          >
             {countEP} PFE a été emprunté
           </Paragraph>
         </Card>
@@ -188,7 +234,7 @@ const Page = async ({}) => {
         </Card>
       </div> */}
     </div>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page
