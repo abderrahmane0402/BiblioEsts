@@ -8,7 +8,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="flex  w-full h-full  gap-4 ">
     
-    <div className="w-full  h-fit bg-slate-200  rounded-lg shadow-xl">
+    <div className="w-full  h-fit     bg-slate-100  rounded-lg shadow-lg">
       {/* <div className="h-2/5 w-full flex flex-col flex-wrap"> */}
         <Header size={"md"} className="flex justify-center items-center">PDF </Header>
         
@@ -63,7 +63,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       {/* </div> */}
       </div> 
     
-      <div className=" w-full h-fit  bg-slate-100   rounded-lg shadow-xl">
+      <div className=" w-full h-fit      bg-slate-100  rounded-lg shadow-lg">
         {/* <div className="h-2/5 w-full flex flex-col flex-wrap"> */}
           <Header size={"md"} className="flex justify-center items-center">Etudiant </Header>
           <div className="flex tracking-wide border-t-2 border-[#DEE2E6] ">
