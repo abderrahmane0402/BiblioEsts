@@ -1,10 +1,10 @@
 import * as f from "@/components/Form"
-import { filiere } from "@/types"
-import Header from "@/ui/Header"
+
 import Input from "@/ui/Input"
 import AutoComplete from "@/components/ui/autoComplete"
 import Form from "./form"
 import { getProf } from "@/db/Get/Prof"
+import Header from "@/components/mui/MuiHeader"
 
 export const dynamic = "force-dynamic"
 
@@ -19,7 +19,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       {/* Numero Apogee */}
       <f.FormField name='code' className='w-full'>
         <div className='w-full'>
-          <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Code :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir un Code</f.FormMessage>
@@ -41,7 +41,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       {/* Nom */}
       <f.FormField name='nom' className='w-full'>
         <div className='w-full'>
-          <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Nom :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le nom</f.FormMessage>
@@ -63,7 +63,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       {/* Prenom */}
       <f.FormField name='prenom' className='w-full'>
         <div className='w-full'>
-          <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Prenom :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le prenom</f.FormMessage>
@@ -85,7 +85,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       {/* filiere */}
       <f.FormField name='filiere' className='w-full'>
         <div className='w-full'>
-          <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Filiere
           </Header>
           <f.FormMessage match={"valueMissing"}>

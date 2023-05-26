@@ -1,5 +1,4 @@
 import * as f from "@/components/Form"
-import Header from "@/components/ui/Header"
 import Input from "@/components/ui/Input"
 import AutoComplete from "@/components/ui/autoComplete"
 import { getNinv, getNinvAll } from "@/db/Get/Livres"
@@ -7,6 +6,7 @@ import { getProfshort, getProfshortAll } from "@/db/Get/Prof"
 import { getPlivreID } from "@/db/Get/emprunt/prof/Plivre"
 import { getDate } from "@/utils/date"
 import Form from "./form"
+import Header from "@/components/mui/MuiHeader"
 
 export const dynamic = "force-dynamic"
 
@@ -27,7 +27,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           {/* nmr_Inv */}
           <f.FormField name='nmr_Inv' className='w-full'>
             <div className='w-full'>
-              <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
                 N d{"'"}inventaire :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -48,7 +48,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           {/* npm et prenom */}
           <f.FormField name='prof' className='w-full'>
             <div className='w-full'>
-              <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
                 Code :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -71,7 +71,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           {/* date_D */}
           <f.FormField name='date_D' className='w-full'>
             <div className='w-full'>
-              <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
                 Date début :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -95,7 +95,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           {/* date_f */}
           <f.FormField name='date_f' className='w-full'>
             <div className='w-full'>
-              <Header size={"md"} className='p'>
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
                 Date fin :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -119,7 +119,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           {emp!.DATE_R !== null ? (
             <f.FormField name='date_r' className='w-full'>
               <div className='w-full'>
-                <Header size={"md"} className='p'>
+              <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
                   Date de retour :
                 </Header>
                 <f.FormMessage match={"valueMissing"}>

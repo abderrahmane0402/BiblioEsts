@@ -1,9 +1,10 @@
 import * as f from "@/components/Form";
-import Header from "@/ui/Header";
+
 import Input from "@/ui/Input";
 import Form from "./form";
 import { getCategorie, getCategories_Select } from "@/db/Get/Categorie";
 import InputSelect from "@/components/ui/Select";
+import Header from "@/components/mui/MuiHeader";
 
 export const dynamic = "force-dynamic";
 const page = async ({ params }: { params: { id: string } }) => {
@@ -20,7 +21,15 @@ const page = async ({ params }: { params: { id: string } }) => {
           {/* Libelle */}
           <f.FormField name="libelle" className="w-full">
             <div className="w-full">
-              <Header size={"md"} className="p">
+              <Header
+                variant="h6"
+                sx={{
+                  fontSize: "1.4993rem",
+                  color: "#3a3541de",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 Titre :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -42,7 +51,15 @@ const page = async ({ params }: { params: { id: string } }) => {
           </f.FormField>
           <f.FormField name="categorie" className="w-full">
             <div className="w-full">
-              <Header size={"md"} className="p">
+              <Header
+                variant="h6"
+                sx={{
+                  fontSize: "1.4993rem",
+                  color: "#3a3541de",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 Catégorie mère:
               </Header>
             </div>
@@ -53,7 +70,8 @@ const page = async ({ params }: { params: { id: string } }) => {
                 multiple={false}
                 native={false}
                 name="categorie"
-                defaultValue={cat?.CAT_ID_CAT?.toString() || ""}              />
+                defaultValue={cat?.CAT_ID_CAT?.toString() || ""}
+              />
             </f.FormControl>
           </f.FormField>
         </div>
@@ -63,7 +81,15 @@ const page = async ({ params }: { params: { id: string } }) => {
         <div className="w-full md:w-1/2 pl-4">
           <f.FormField name="sujet" className="w-full">
             <div className="w-full">
-              <Header size={"md"} className="p">
+              <Header
+                variant="h6"
+                sx={{
+                  fontSize: "1.4993rem",
+                  color: "#3a3541de",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 Sujet :
               </Header>
               <f.FormMessage match={"valueMissing"}>

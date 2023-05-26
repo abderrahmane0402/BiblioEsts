@@ -1,9 +1,9 @@
 import * as f from "@/components/Form";
 import InputSelect from "@/components/ui/Select";
 import { getCategories_Select } from "@/db/Get/Categorie";
-import Header from "@/ui/Header";
 import Input from "@/ui/Input";
 import Form from "./form";
+import Header from "@/components/mui/MuiHeader";
 
 // const [categoryId, setCategoryId] = useState<number | null>(null);
 
@@ -23,7 +23,8 @@ const page = async () => {
           {/* Libelle */}
           <f.FormField name="libelle" className="w-full">
             <div className="w-full">
-              <Header size={"md"} className="p">
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
                 Titre :
               </Header>
               <f.FormMessage match={"valueMissing"}>
@@ -39,7 +40,8 @@ const page = async () => {
           </f.FormField>
           <f.FormField name="categorie" className="w-full">
             <div className="w-full">
-              <Header size={"md"} className="p">
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
                 Catégorie mère:
               </Header>
             </div>
@@ -61,7 +63,7 @@ const page = async () => {
         <div className="w-full md:w-1/2 pl-4">
           <f.FormField name="sujet" className="w-full">
             <div className="w-full">
-              <Header size={"md"} className="p">
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
                 Description :
               </Header>
               <f.FormMessage match={"valueMissing"}>

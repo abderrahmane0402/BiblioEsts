@@ -1,13 +1,14 @@
 "use client"
 import * as f from "@/components/Form"
 import Button from "@/components/ui/Button"
-import Header from "@/components/ui/Header"
+
 import * as Toast from "@/components/ui/toast"
 import { Prisma } from "@prisma/client"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import Img from "./Img"
 import Pdf from "./pdf"
+import Header from "@/components/mui/MuiHeader"
 
 const Form = ({ children }: { children: React.ReactNode }) => {
   const form = useRef<HTMLFormElement>(null)
@@ -66,7 +67,8 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       <div className='w-full flex gap-3 pl-4'>
         <f.FormField name='page_garde' className='w-1/2'>
           <div className='w-full'>
-            <Header size={"md"}>Page de garde :</Header>
+          <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+                Page de garde :</Header>
             <f.FormMessage match={"valueMissing"}>
               Entrer l{"'"}page de garde
             </f.FormMessage>
@@ -80,7 +82,11 @@ const Form = ({ children }: { children: React.ReactNode }) => {
         </f.FormField>
         <f.FormField name='somaire' className='w-full'>
           <div className='w-full'>
-            <Header size={"md"}>SOMAIRE :</Header>
+          <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
+              SOMAIRE :</Header>
+
+
             <f.FormMessage match={"valueMissing"}>
               Entrer un SOMAIRE
             </f.FormMessage>

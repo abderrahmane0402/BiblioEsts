@@ -1,4 +1,4 @@
-import Header from "@/components/mui/MuiHeader"
+import Header from "@/components/mui/MuiHeader";
 import {
   countElivre,
   countEpfe,
@@ -80,7 +80,7 @@ const Page = async ({}) => {
             </Header>
 
             <div className='h-full flex justify-center items-center text-4xl'>
-              <BiBook />
+              <BiBook className="text-[#3c2762]"/>
             </div>
           </div>
           <Paragraph size={"sm"} className='h-1/2 flex items-center text-[#3a3541ad]'>
@@ -103,7 +103,7 @@ const Page = async ({}) => {
             </Header>
 
             <div className='h-full flex justify-center items-center text-4xl'>
-              <AiOutlineProject />
+              <AiOutlineProject className="text-[#3c2762]" />
             </div>
           </div>
           <Paragraph size={"sm"} className='h-1/2 flex items-center text-[#3a3541ad]'>
@@ -126,7 +126,7 @@ const Page = async ({}) => {
             </Header>
 
             <div className='h-full flex justify-center items-center text-4xl'>
-              <FaBookOpen />
+              <FaBookOpen className="text-[#3c2762]" />
             </div>
           </div>
           <Paragraph size={"sm"} className='h-1/2 flex items-center text-[#3a3541ad]'>
@@ -149,7 +149,7 @@ const Page = async ({}) => {
             </Header>
 
             <div className='h-full flex justify-center items-center text-4xl'>
-              <GrStakeholder />
+              <GrStakeholder className="text-white" />
             </div>
           </div>
           <Paragraph

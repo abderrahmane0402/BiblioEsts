@@ -2,12 +2,12 @@
 import * as f from "@/components/Form"
 import addApprovi from "@/components/server/approvis/addApprovis"
 import Button from "@/components/ui/Button"
-import Header from "@/components/ui/Header"
 import * as Toast from "@/components/ui/toast"
 import { useEffect, useRef, useState } from "react"
 import AddLivre from "./addLivre"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import Header from "@/components/mui/MuiHeader"
 
 export const dynamic = "force-dynamic"
 
@@ -50,14 +50,16 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-      <Header size={"md"}>livre :</Header>
+      <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+
+        Livre :</Header>
       <div className='flex gap-4'>
         <AddLivre livre={{ value: livre, set: setLivre }} />
         <Link
           href={"/addDocs/livre"}
           className='h-10 text-xl flex items-center justify-center transition-colors px-2 rounded-md text-white bg-sky-950 hover:bg-sky-600 active:bg-sky-200'
         >
-          nouveau Livre
+          Nouveau Livre
         </Link>
       </div>
       <footer className='flex justify-center items-center py-12'>
@@ -67,7 +69,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
             isLoading={isLoading}
             className='bg-[#CA3CFF] text-white w-3/12'
           >
-            Ajouter approvis
+            Ajouter approvisionnement
           </Button>
         </f.FormSubmit>
       </footer>

@@ -1,8 +1,8 @@
 import * as f from "@/components/Form";
-import Header from "@/ui/Header";
 import Input from "@/ui/Input";
 import Form from "./form";
 import { getFournisseur } from "@/db/Get/Fournisseur";
+import Header from "@/components/mui/MuiHeader";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +14,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       {/* Nom */}
       <f.FormField name="nom" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Nom :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le nom</f.FormMessage>
@@ -36,7 +36,7 @@ const page = async ({ params }: { params: { id: string } }) => {
       {/* Prenom */}
       <f.FormField name="prenom" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
             Prenom :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le prenom</f.FormMessage>
@@ -58,8 +58,8 @@ const page = async ({ params }: { params: { id: string } }) => {
       {/* email */}
       <f.FormField name="email" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
-            email :
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+            Email :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir la email</f.FormMessage>
           <f.FormMessage match={"typeMismatch"}>saisir une email</f.FormMessage>
@@ -77,8 +77,8 @@ const page = async ({ params }: { params: { id: string } }) => {
       {/* adresse */}
       <f.FormField name="adresse" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
-            adresse :
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+            Adresse :
           </Header>
           <f.FormMessage match={"valueMissing"}>
             saisir la adresse
@@ -100,8 +100,8 @@ const page = async ({ params }: { params: { id: string } }) => {
       {/* telephone */}
       <f.FormField name="telephone" className="w-full">
         <div className="w-full">
-          <Header size={"md"} className="p">
-            telephone :
+            <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
+            Téléphone :
           </Header>
           <f.FormMessage match={"valueMissing"}>
             saisir la telephone
