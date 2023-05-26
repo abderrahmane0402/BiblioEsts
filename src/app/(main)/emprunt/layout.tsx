@@ -3,13 +3,11 @@ import { Card } from "@/components/ui/Card"
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className='w-full h-full flex flex-col gap-2'>
-      <div className='h-full pb-2'>
-        <Card type={"full"} className='flex flex-col'>
-          <PageHeader2 />
+    <div className='w-full h-full flex flex-col'>
+        <PageHeader2 />
+        <Card type={"full"} className='flex flex-col mt-6'>
           <div className='h-full w-full'>{children}</div>
         </Card>
-      </div>
     </div>
     // <div className="w-full h-full flex flex-col">
     //   <div className="flex justify-center items-center pt-2 gap-4">
