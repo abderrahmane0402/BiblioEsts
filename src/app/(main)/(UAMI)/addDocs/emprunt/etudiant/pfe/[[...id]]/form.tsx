@@ -34,8 +34,7 @@ const Form = ({ children }: { children: React.ReactNode }) => {
       action={async (FormData) => {
         const data = await empruntPfeE(FormData)
         if (data) {
-          setOpen1(true)
-          setTimeout(() => setOpen1(false), 1000)
+         
           router.push("/emprunt/etudiant/pfe/encours")
 
           form.current?.reset()
