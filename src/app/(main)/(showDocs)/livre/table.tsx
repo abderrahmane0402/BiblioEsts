@@ -81,7 +81,7 @@ export function Table({ data }: { data: any }) {
     },
     {
       field: "actions",
-      width: 150,
+      width: 70,
       type: "actions",
       getActions: (params: GridRowParams) => [
         <GridActionsCellItem

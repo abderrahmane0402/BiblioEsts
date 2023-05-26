@@ -5,7 +5,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className='w-full h-full flex flex-col gap-2'>
       <div className='h-full pb-2'>
-        <Card type={"full"} className='rounded-3xl flex flex-col'>
+        <Card type={"full"} className='flex flex-col'>
           <PageHeader2 />
           <div className='h-full w-full'>{children}</div>
         </Card>

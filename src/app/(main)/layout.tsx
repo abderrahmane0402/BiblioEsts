@@ -14,16 +14,19 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     redirect("/")
   return (
     <>
-      <main className='flex flex-row h-full w-full overflow-hidden gap-6'>
+      <main className='flex flex-row h-full w-full max-w-full gap-6'>
         {/* NAVIGATION BAR */}
         <div className='h-full min-w-[260px] w-nav text-[#FFF] bg-transparent flex flex-col justify-between'>
           <MainLogo />
           <ZNav />
         </div>
         {/* BODY OF THE PAGE */}
-        <div className='h-full w-full flex flex-col pr-6'>
-          <PageHeader />
-          <div className='container h-full py-6'>{children}</div>
+        <div className='min-h-full w-full flex flex-col pr-6 overflow-auto'>
+          <div className='min-h-full flex flex-col'>
+            <PageHeader />
+            <div className='container h-full py-6'>{children}</div>
+          </div>
+          <footer className='h-14 p-4 w-full'>hello world</footer>
         </div>
       </main>
     </>

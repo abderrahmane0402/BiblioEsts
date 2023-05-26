@@ -9,11 +9,11 @@ import {
 
 export function CustomToolbar() {
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify-between py-2 px-5'>
       <GridToolbarContainer>
         <GridToolbarQuickFilter />
-        <GridToolbarExport />
       </GridToolbarContainer>
+      <GridToolbarExport />
     </div>
   )
 }

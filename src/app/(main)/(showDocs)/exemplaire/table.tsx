@@ -21,45 +21,47 @@ export function Table({ data }: { data: any }) {
   const Columns: GridColDef[] = [
     {
       field: "N_INVENTAIRE",
-      headerName: "Numéro d'Inventaire",
+      headerName: "N d'Inventaire",
       type: "number",
       hideable: false,
+      flex: 1,
     },
     {
-      
       field: "TITRE",
       headerName: "Titre",
       type: "string",
       hideable: false,
       valueGetter: (params: GridValueGetterParams) =>
         params.row.livre.TITRE || "",
+      flex: 1.5,
     },
     {
-
       field: "AUTHEUR",
       headerName: "Auteur",
       type: "string",
       hideable: true,
-    },{
-
+      flex: 1,
+    },
+    {
       field: "EDITEUR",
       headerName: "Editeur",
       type: "string",
       hideable: true,
+      flex: 1,
     },
     {
-
       field: "DATE_EDITION",
       headerName: "Date d'édition",
       type: "number",
       hideable: true,
+      flex: 1,
     },
     {
-      width: 350,
       field: "OBSERVATIONE",
       headerName: "Observation",
       type: "string",
       hideable: false,
+      flex: 3,
     },
     {
       field: "actions",
@@ -109,12 +111,10 @@ export function Table({ data }: { data: any }) {
         columns={Columns}
         rows={data ? data : []}
         ID='N_INVENTAIRE'
-        className='h-auto'
         customSlots={{
           columnMenu: CustomColumnMenu,
           toolbar: CustomToolbar,
         }}
-        hideFooter
         autoPageSize
       />
       <Toast.Provider>
