@@ -14,6 +14,8 @@ export default async function addApprovi(
     ID_LIVRE: key,
     QTE: value,
   }));
+  console.log(formData.get("fournisseur"));
+  
   try {
     const Approvi: approvisionement = {
       ID_APRO: Number(formData.get("appro")),

@@ -43,7 +43,7 @@ const PageHeader = () => {
           onClick={handleClick}
           variant='outlined'
           color='primary'
-          avatar={<Avatar>{user?.NOM.at(0)?.toUpperCase()}</Avatar>}
+          avatar={<Avatar>{user?.NOM?.at(0)?.toUpperCase()}</Avatar>}
           label={(user?.NOM || "") + " " + (user?.PRENOM || "")}
           aria-controls={open ? "account-menu" : undefined}
           aria-haspopup='true'

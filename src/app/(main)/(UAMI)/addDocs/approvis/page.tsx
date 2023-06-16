@@ -214,6 +214,7 @@ async function Page() {
                         autoWidth={false}
                         multiple={false}
                         native={false}
+                        name="fournisseur"
                       />
                       <Refresh />
                     </div>
