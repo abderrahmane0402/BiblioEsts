@@ -26,7 +26,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             <PageHeader />
             <div className='container h-full py-6'>{children}</div>
           </div>
-          <footer className='h-14 p-4 w-full'>hello world</footer>
+          <footer className='h-14 p-4 w-full font-semibold'>© 2023 EST SAFI | Developed By A.SABKARI and Z.RAKHELA</footer>
         </div>
       </main>
     </>

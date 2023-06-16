@@ -116,7 +116,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
             className='h-10'
             name='password_user'
             type='password'
-            required
           />
         </f.FormControl>
       </f.FormField>
@@ -137,7 +136,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
             className='h-10'
             name='confirmation'
             type='password'
-            required
           />
         </f.FormControl>
       </f.FormField>
