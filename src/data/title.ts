@@ -1,6 +1,6 @@
 export const menuMap = new Map()
 //showDocs
-menuMap.set("/dashboard", "Acceuil")
+menuMap.set("/dashboard", "Accueil")
 menuMap.set("/livre", "Livre")
 menuMap.set("/pfe", "PFE")
 menuMap.set("/etudiant", "Etudiant")
