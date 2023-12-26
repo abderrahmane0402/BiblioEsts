@@ -5,6 +5,7 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Biblio",
   description: "application de gestion de bibliothique",
+  
 }
 
 interface RootLayoutProps {

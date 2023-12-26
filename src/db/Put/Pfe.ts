@@ -10,10 +10,8 @@ export async function PutPfe(pfe_Id: string ,Pfe: any) {
       },
       data: {
         ...Pfe,
-       
       }
     });
-    revalidatePath("/pfe")
     await prisma.$disconnect();
   } catch (e) {
     await prisma.$disconnect();

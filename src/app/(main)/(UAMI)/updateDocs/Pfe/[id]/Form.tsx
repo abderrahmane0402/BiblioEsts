@@ -3,11 +3,12 @@ import * as f from "@/components/Form";
 import updatePfe from "@/components/server/Pfe/UpdatePfe";
 import Button from "@/components/ui/Button";
 import * as Toast from "@/components/ui/toast";
+import { log } from "console";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 
-const Form =  ({ id, children }: { id: string ,children : React.ReactNode }) => {
+const Form =  ({ id, children }: { id : string ,children : React.ReactNode }) => {
   const router = useRouter()
 
   const form = useRef<HTMLFormElement>(null);
@@ -32,7 +33,10 @@ const Form =  ({ id, children }: { id: string ,children : React.ReactNode }) => 
       ref={form}
       className="w-full"
       action={async (FormData) => {
+        console.log(FormData);
         const data = await updatePfe(FormData,id);
+        console.log("ff");
+        
         if (data) {
           setOpen1(true);
           setTimeout(() => setOpen1(false), 1000);

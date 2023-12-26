@@ -19,7 +19,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       <f.FormField name='cote' className='w-full'>
         <div className='w-full'>
             <Header variant="h6" sx={{ fontSize: "1.4993rem" , color: "#3a3541de" , display:'flex' , alignItems:'center' }}>
-            Code :
+            Cote :
           </Header>
           <f.FormMessage match={"valueMissing"}>saisir le cote</f.FormMessage>
           <f.FormMessage match={"typeMismatch"}>
