@@ -17,7 +17,7 @@ export default async function updatePfe(data: FormData ,id: string) {
         fil = pfe!.Filiere as string
       }
     
-        const Pfe  : pfe = {
+        const Pfe  = {
             Cote : data.get("cote") as string ,
             SUJET: data.get("sujet") as string,
             REALISATEUR: data.get("realisateur") as string,
@@ -25,8 +25,6 @@ export default async function updatePfe(data: FormData ,id: string) {
             Filiere : fil ,
             DATE_REALISATION: data.get("date_realis") ? Number(data.get("date_realis") as string) : null, 
         };
-      
-        
         await PutPfe(id,Pfe);
         return true;
       } catch (error) {

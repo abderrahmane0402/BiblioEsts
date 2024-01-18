@@ -18,7 +18,7 @@ const Img = ({ setImg }: { setImg: Dispatch<any> }) => {
         className='h-12 font-medium '
         name='page_garde'
         type='file'
-        required
+        
         onChange={(e) => {
           convertBase64(e.target.files ? e.target.files[0] : null)
         }}
